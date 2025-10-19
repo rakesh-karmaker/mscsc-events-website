@@ -1,0 +1,10 @@
+@import url("./fonts.css");
+@import "tailwindcss";
+
+:root {
+  --geist-sans: "Geist Sans", sans-serif;
+}
+
+body {
+  font-family: var(--geist-sans);
+}
