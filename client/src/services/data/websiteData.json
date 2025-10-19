@@ -1,7 +1,7 @@
 {
   "template": "centered website",
   "eventName": "Explorion",
-  "eventIconUrl": "/explorion/event-icon.png",
+  "eventLogoUrl": "/explorion/event-icon.png",
   "eventDate": "3 July, 2026",
   "eventLocation": "Mirpur, Dhaka",
   "isInnerRegistration": true,

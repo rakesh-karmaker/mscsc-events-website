@@ -3,8 +3,43 @@
 
 :root {
   --geist-sans: "Geist Sans", sans-serif;
+  --max-width: 1550px;
+
+  --pure-black: #000000;
+  --black: #222222;
+
+  --pure-white: #ffffff;
+  --white: #f9f9f9;
+
+  --light-gray: #d1d1d1;
+  --dark-gray: #373737;
+
+  --blue: #3979f5;
+}
+
+/* tailwind variables */
+@theme inline {
+  --color-pure-black: var(--pure-black);
+  --color-black: var(--black);
+
+  --color-pure-white: var(--pure-white);
+  --color-white: var(--white);
+
+  --color-light-gray: var(--light-gray);
+  --color-dark-gray: var(--dark-gray);
+
+  --color-blue: var(--blue);
+
+  --spacing-max-width: var(--max-width);
 }
 
 body {
   font-family: var(--geist-sans);
+  background-color: var(--white);
+}
+
+@media screen and (max-width: 1600px) {
+  :root {
+    --max-width: 90vw;
+  }
 }
