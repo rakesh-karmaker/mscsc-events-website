@@ -5,6 +5,8 @@
   "eventDate": "3 July, 2026",
   "eventLocation": "Mirpur, Dhaka",
   "isInnerRegistration": true,
+  "eventDescription": "A celebration of knowledge, innovation, and human curiosity. From the tiniest atoms to the farthest galaxies, every mystery awaits discovery.",
+  "registrationUrl": "",
   "contactLinks": {
     "email": "info@explorion.com",
     "facebook": "https://www.facebook.com/explorionevent",
@@ -21,9 +23,6 @@
     "faqs",
     "contact"
   ],
-  "navbar": {
-    "registrationUrl": ""
-  },
   "hero": {
     "icons": ["division", "rocket", "chess", "atom"],
     "heading": "Exploring the Universe Within and Beyond",

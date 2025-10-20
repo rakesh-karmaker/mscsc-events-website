@@ -5,11 +5,18 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 
 import "./index.css";
+import HomeLayout from "./layouts/HomeLayout.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/:eventId?",
-    element: <App />,
+    element: <HomeLayout />,
+    children: [
+      {
+        index: true, // This defines the default child route
+        element: <App />,
+      },
+    ],
   },
 ]);
 

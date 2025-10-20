@@ -18,7 +18,7 @@ export default function Navbar({ navbarData }: NavbarProps): ReactNode {
   const currentEventId = useParams().eventId || "";
 
   return (
-    <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-white/40 backdrop:blur-sm z-9999 shadow-[0px_0px_0px_1px_rgba(0,_0,_0,_0.1)]">
+    <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-white/60 backdrop-blur-[2px] z-9999 shadow-[0px_0px_0px_1px_rgba(0,_0,_0,_0.1)]">
       <nav className="py-3 w-full max-w-max-width h-fit flex justify-between items-center">
         <EventLogo
           logoUrl={navbarData.eventLogoUrl}

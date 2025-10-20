@@ -8,30 +8,48 @@ export default function NavLinks({
 }): ReactNode {
   const currentUrl = useLocation().pathname;
 
-  const preferredNavLinks: Record<string, string> = {
-    hero: "Home",
-    about: "About",
-    segments: "Segments",
-    schedule: "Schedule",
-    faqs: "FAQs",
-    contact: "Contact",
+  const preferredNavLinks: Record<string, { name: string; url: string }> = {
+    hero: {
+      name: "Home",
+      url: "#home",
+    },
+    about: {
+      name: "About",
+      url: "#about",
+    },
+    segments: {
+      name: "Segments",
+      url: "#segments",
+    },
+    schedule: {
+      name: "Schedule",
+      url: "#schedule",
+    },
+    faqs: {
+      name: "FAQs",
+      url: "#faqs",
+    },
+    contact: {
+      name: "Contact",
+      url: "#contact",
+    },
   };
 
   const preferredSections: string[] = Object.keys(preferredNavLinks);
 
   return (
-    <ul className="list-none flex gap-2.5">
+    <ul className="list-none flex gap-6">
       {preferredSections.map((section) => {
         if (sections.includes(section)) {
           return (
             <li key={section}>
               <NavLink
-                to={`${currentUrl}#${section}`}
+                to={`${currentUrl}${preferredNavLinks[section].url}`}
                 className={
-                  "text-black text-[1.1em] hover:text-blue focus:text-blue focus-within:text-blue transition-colors duration-200"
+                  "text-black text-[1em] hover:text-blue focus:text-blue focus-within:text-blue transition-colors duration-200"
                 }
               >
-                {preferredNavLinks[section]}
+                {preferredNavLinks[section].name}
               </NavLink>
             </li>
           );
