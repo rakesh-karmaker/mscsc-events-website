@@ -2,7 +2,9 @@ import type { ReactNode } from "react";
 import { Link } from "react-router";
 
 type PrimaryBtnProps = {
-  onClick?: () => void;
+  onClick?: (
+    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
+  ) => void;
   children: ReactNode;
   className?: string;
   isLink?: boolean;
@@ -22,7 +24,7 @@ export default function PrimaryBtn({
 
   if (isLink && href) {
     return (
-      <Link to={href} className={classname}>
+      <Link to={href} className={classname} onClick={onClick}>
         {children}
       </Link>
     );

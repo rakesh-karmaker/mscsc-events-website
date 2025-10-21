@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import EventMeta from "./EventMeta";
 import HeroContent from "./HeroContent";
+import HeroIcons from "./HeroIcons";
 
 type HeroProps = {
   eventDate: string;
@@ -25,8 +26,8 @@ export default function Hero({
 }: HeroProps): ReactNode {
   return (
     <section
-      id="hero"
-      className="relative min-h-fit h-[calc(100vh-var(--nav-height))] flex items-center justify-center"
+      id="home"
+      className="relative min-h-[calc(100vh-var(--nav-height)-20vh)] flex items-center justify-center"
     >
       <div className="flex flex-col gap-6.5 items-center">
         <EventMeta eventDate={eventDate} eventLocation={eventLocation} />
@@ -38,6 +39,7 @@ export default function Hero({
           sections={sections}
         />
       </div>
+      <HeroIcons icons={heroData.icons} />
     </section>
   );
 }

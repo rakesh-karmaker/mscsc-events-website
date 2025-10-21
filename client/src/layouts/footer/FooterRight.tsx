@@ -1,4 +1,5 @@
 import formatUrl from "@/utils/formatUrl";
+import { useLenis } from "lenis/react";
 import type { ReactNode } from "react";
 import { Link } from "react-router";
 
@@ -15,6 +16,8 @@ export default function FooterRight({
   eventLocation,
   sections,
 }: FooterRightProps): ReactNode {
+  const lenis = useLenis();
+
   const contactLinkItems = [
     { platform: "Email", url: contactLinks.email, isLink: true },
     { platform: "Phone", url: contactLinks.phone, isLink: true },
@@ -76,13 +79,17 @@ export default function FooterRight({
                 if (!sections.includes(section)) return null;
 
                 return (
-                  <Link
+                  <a
                     key={section}
-                    to={`${url}`}
+                    href={`${url}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      lenis?.scrollTo(url, { offset: -100 });
+                    }}
                     className="transition-all duration-200 hover:text-blue"
                   >
                     {name}
-                  </Link>
+                  </a>
                 );
               }
             )}

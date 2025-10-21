@@ -8,11 +8,12 @@ import {
   FaPhoneAlt,
   FaPuzzlePiece,
 } from "react-icons/fa";
-import { FaDivide, FaEnvelope, FaRobot } from "react-icons/fa6";
+import { FaEnvelope, FaRobot } from "react-icons/fa6";
 import { GiChessQueen } from "react-icons/gi";
 import { HiLightBulb } from "react-icons/hi";
 import { IoMdRocket } from "react-icons/io";
 import { LiaAtomSolid } from "react-icons/lia";
+import { LuDivide } from "react-icons/lu";
 import { TbMath } from "react-icons/tb";
 
 type IconProps = {
@@ -29,7 +30,7 @@ export default function Icon({ iconName, className }: IconProps): ReactNode {
     phone: <FaPhoneAlt className={className} />,
 
     // general icons
-    division: <FaDivide className={className} />,
+    division: <LuDivide className={className} />,
     rocket: <IoMdRocket className={className} />,
     chess: <GiChessQueen className={className} />,
     atom: <LiaAtomSolid className={className} />,

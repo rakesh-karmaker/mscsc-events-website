@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import PrimaryBtn from "@/components/ui/PrimaryBtn";
 import { useParams } from "react-router";
+import { useLenis } from "lenis/react";
 
 type HeroContentProps = {
   heading: string;
@@ -17,6 +18,8 @@ export default function HeroContent({
   registrationUrl,
   sections,
 }: HeroContentProps): ReactNode {
+  const lenis = useLenis();
+
   const learnMoreSection = sections.includes("about") ? "about" : "segments";
 
   const eventId = useParams().eventId;
@@ -44,6 +47,10 @@ export default function HeroContent({
           <PrimaryBtn
             isLink={true}
             href={`#${learnMoreSection}`}
+            onClick={(e) => {
+              e.preventDefault();
+              lenis?.scrollTo(`#${learnMoreSection}`, { offset: -100 });
+            }}
             className="before:!bg-black after:!bg-blue !text-[1.1em]/[155%] tracking-wide !px-4 !py-2.5"
           >
             Learn More

@@ -1,11 +1,13 @@
+import { useLenis } from "lenis/react";
 import { type ReactNode } from "react";
-import { NavLink } from "react-router";
 
 export default function NavLinks({
   sections,
 }: {
   sections: string[];
 }): ReactNode {
+  const lenis = useLenis();
+
   const preferredNavLinks: Record<string, { name: string; url: string }> = {
     hero: {
       name: "Home",
@@ -41,14 +43,20 @@ export default function NavLinks({
         if (sections.includes(section)) {
           return (
             <li key={section}>
-              <NavLink
-                to={`${preferredNavLinks[section].url}`}
+              <a
+                href={`${preferredNavLinks[section].url}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  lenis?.scrollTo(preferredNavLinks[section].url, {
+                    offset: -100,
+                  });
+                }}
                 className={
                   "text-black text-[1em] hover:text-blue focus:text-blue focus-within:text-blue transition-colors duration-200"
                 }
               >
                 {preferredNavLinks[section].name}
-              </NavLink>
+              </a>
             </li>
           );
         }
