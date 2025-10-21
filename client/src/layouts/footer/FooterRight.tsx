@@ -1,6 +1,6 @@
 import formatUrl from "@/utils/formatUrl";
 import type { ReactNode } from "react";
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 
 type FooterRightProps = {
   eventName: string;
@@ -15,8 +15,6 @@ export default function FooterRight({
   eventLocation,
   sections,
 }: FooterRightProps): ReactNode {
-  const currentUrl = useLocation().pathname;
-
   const contactLinkItems = [
     { platform: "Email", url: contactLinks.email, isLink: true },
     { platform: "Phone", url: contactLinks.phone, isLink: true },
@@ -80,7 +78,7 @@ export default function FooterRight({
                 return (
                   <Link
                     key={section}
-                    to={`${currentUrl}${url}`}
+                    to={`${url}`}
                     className="transition-all duration-200 hover:text-blue"
                   >
                     {name}

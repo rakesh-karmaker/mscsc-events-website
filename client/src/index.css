@@ -4,6 +4,7 @@
 :root {
   --geist-sans: "Geist Sans", sans-serif;
   --max-width: 1550px;
+  --nav-height: 65px;
 
   --pure-black: #000000;
   --black: #222222;
@@ -31,6 +32,7 @@
   --color-blue: var(--blue);
 
   --spacing-max-width: var(--max-width);
+  --spacing-nav-height: var(--nav-height);
 }
 
 body {

@@ -1,13 +1,11 @@
 import { type ReactNode } from "react";
-import { NavLink, useLocation } from "react-router";
+import { NavLink } from "react-router";
 
 export default function NavLinks({
   sections,
 }: {
   sections: string[];
 }): ReactNode {
-  const currentUrl = useLocation().pathname;
-
   const preferredNavLinks: Record<string, { name: string; url: string }> = {
     hero: {
       name: "Home",
@@ -44,7 +42,7 @@ export default function NavLinks({
           return (
             <li key={section}>
               <NavLink
-                to={`${currentUrl}${preferredNavLinks[section].url}`}
+                to={`${preferredNavLinks[section].url}`}
                 className={
                   "text-black text-[1em] hover:text-blue focus:text-blue focus-within:text-blue transition-colors duration-200"
                 }
