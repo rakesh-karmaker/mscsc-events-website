@@ -56,8 +56,8 @@ export default function FooterRight({
   };
 
   return (
-    <div className="w-full border-l-1 border-light-gray flex flex-col gap-15 pt-26 pb-10 relative">
-      <div className="ml-15 flex gap-42 mr-[calc((100vw-var(--max-width))/2)]">
+    <div className="w-full border-l-1 border-light-gray flex flex-col gap-15 pt-26 pb-10 relative max-[950px]:border-l-0 max-[950px]:border-t-1 max-[950px]:pt-12">
+      <div className="ml-15 flex gap-42 mr-[calc((100vw-var(--max-width))/2)] max-[1500px]:gap-12 max-[1500px]:justify-between max-[950px]:!mx-0 max-[470px]:flex-col max-[950px]:px-[calc((100vw-var(--max-width))/2)]">
         <div className="flex flex-col gap-6">
           <h3 className="text-[28px] font-semibold">Contact us</h3>
           <div className="flex flex-col gap-5">
@@ -73,7 +73,7 @@ export default function FooterRight({
         </div>
         <div className="flex flex-col gap-6">
           <h3 className="text-[28px] font-semibold">Pages</h3>
-          <div className="grid grid-cols-2 grid-rows-4 gap-x-16 gap-y-3">
+          <div className="grid grid-cols-2 grid-rows-4 gap-x-16 gap-y-3 max-[1500px]:grid-cols-1 max-[950px]:grid-cols-2 max-sm:grid-cols-1 max-[470px]:grid-cols-2">
             {Object.entries(formattedSections).map(
               ([section, { name, url }]) => {
                 if (!sections.includes(section)) return null;
@@ -96,7 +96,7 @@ export default function FooterRight({
           </div>
         </div>
       </div>
-      <p className="w-full pl-15 pr-[calc((100vw-var(--max-width))/2)] pt-10 border-t border-light-gray text-[1.1em]">
+      <p className="w-full pl-15 pr-[calc((100vw-var(--max-width))/2)] pt-10 border-t border-light-gray text-[1.1em] max-[1500px]:text-[1em] max-[950px]:pl-0 max-[950px]:pr-0 max-[950px]:!px-[calc((100vw-var(--max-width))/2)]">
         <span>
           Copyright © {new Date().getFullYear()} {eventName} - All rights
           reserved || Designed By:{" "}

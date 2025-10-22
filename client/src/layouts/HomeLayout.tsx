@@ -17,7 +17,7 @@ export default function HomeLayout(): ReactNode {
         }}
       />
       <Outlet />
-      {/* <Footer
+      <Footer
         footerData={{
           eventName: websiteData.eventName,
           eventLogoUrl: websiteData.eventLogoUrl,
@@ -28,7 +28,7 @@ export default function HomeLayout(): ReactNode {
           registrationUrl: websiteData.registrationUrl,
           sections: websiteData.sections,
         }}
-      /> */}
+      />
     </>
   );
 }
