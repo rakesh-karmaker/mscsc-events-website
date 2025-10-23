@@ -19,7 +19,7 @@ export default function Navbar({ navbarData }: NavbarProps): ReactNode {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-pure-white/80 backdrop-blur-[4px] z-9999 shadow-[0px_0px_0px_1px_rgba(0,_0,_0,_0.1)]">
+    <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-gradient-to-b from-pure-white to-pure-white/80 backdrop-blur-[4px] z-9999 shadow-[0px_0px_0px_1px_rgba(0,_0,_0,_0.1)]">
       <nav className="py-3 w-full max-w-max-width h-fit flex justify-between items-center">
         <Activity mode={window.innerWidth >= 768 ? "hidden" : "visible"}>
           <button

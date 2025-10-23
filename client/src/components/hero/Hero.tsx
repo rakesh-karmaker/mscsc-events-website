@@ -27,7 +27,12 @@ export default function Hero({
   return (
     <section
       id="home"
-      className="relative min-h-[calc(100vh-var(--nav-height)-20vh)] flex items-center justify-center"
+      className="relative flex items-center justify-center max-xl:max-w-max-width [@media(max-height:640px)]:pt-20"
+      style={{
+        minHeight: sections.includes("video")
+          ? "calc(100vh - var(--nav-height) - 20vh)"
+          : "calc(100vh - var(--nav-height))",
+      }}
     >
       <div className="flex flex-col gap-6.5 items-center">
         <EventMeta eventDate={eventDate} eventLocation={eventLocation} />
@@ -39,7 +44,7 @@ export default function Hero({
           sections={sections}
         />
       </div>
-      <HeroIcons icons={heroData.icons} />
+      <HeroIcons icons={heroData.icons} sections={sections} />
     </section>
   );
 }
