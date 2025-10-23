@@ -29,7 +29,8 @@
     "text": "A celebration of knowledge, innovation, and human curiosity. From the tiniest atoms to the farthest galaxies, every mystery awaits discovery. Join us on a journey to explore the wonders of science — within us and beyond the stars."
   },
   "video": {
-    "url": "https://youtu.be/qCQiOryAI-Y?si=uoaPdkXujyZ6oTeX"
+    "hasAudio": false,
+    "url": "/explorion/promo-video.mp4"
   },
   "about": {
     "heading": "Why attend Explorion",

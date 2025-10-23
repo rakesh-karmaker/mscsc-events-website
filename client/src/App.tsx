@@ -1,11 +1,26 @@
 import Hero from "./components/hero/Hero";
 import websiteData from "@/services/data/websiteData.json";
-import { ReactLenis } from "lenis/react";
+import { ReactLenis, type LenisRef } from "lenis/react";
+import Video from "./components/Video";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function App() {
+  const lenisRef = useRef<LenisRef | null>(null);
+
+  useEffect(() => {
+    function update(time: number) {
+      lenisRef.current?.lenis?.raf(time * 1000); // GSAP provides time in seconds, Lenis expects milliseconds
+    }
+
+    gsap.ticker.add(update);
+
+    return () => gsap.ticker.remove(update);
+  }, []);
+
   return (
     <>
-      <ReactLenis root />
+      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
       <main className="flex flex-col items-center">
         <Hero
           eventDate={websiteData.eventDate}
@@ -15,8 +30,7 @@ export default function App() {
           registrationUrl={websiteData.registrationUrl}
           sections={websiteData.sections}
         />
-        {/* <div className="relative w-full h-396 bg-gray-700">
-        </div> */}
+        <Video url={websiteData.video.url} />
       </main>
     </>
   );
