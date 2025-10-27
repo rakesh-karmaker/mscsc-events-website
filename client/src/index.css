@@ -16,6 +16,9 @@
   --dark-gray: #373737;
 
   --blue: #3979f5;
+
+  --skeleton-from: hsl(200, 20%, 80%);
+  --skeleton-to: hsl(200, 20%, 95%);
 }
 
 /* tailwind variables */
@@ -43,5 +46,18 @@ body {
 @media screen and (max-width: 1600px) {
   :root {
     --max-width: 90vw;
+  }
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--skeleton-from);
+  }
+  100% {
+    background-color: var(--skeleton-to);
   }
 }

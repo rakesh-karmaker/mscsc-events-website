@@ -17,7 +17,7 @@ export default function animateHeroIcons(container: HTMLElement) {
       height: "100%",
       duration: 1,
       ease: "power2.out",
-    }
+    },
   );
 
   gsap.utils.toArray<HTMLElement>(container.children).forEach((icon, index) => {
@@ -33,7 +33,7 @@ export default function animateHeroIcons(container: HTMLElement) {
         scale: 1,
         duration: 1,
         ease: "back.out",
-      }
+      },
     );
   });
 }

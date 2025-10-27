@@ -4,7 +4,8 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/geist-bold-webfont.woff2") format("woff2"),
+  src:
+    url("/fonts/geist-bold-webfont.woff2") format("woff2"),
     url("/fonts/geist-bold-webfont.woff") format("woff");
 }
 
@@ -14,7 +15,8 @@
   font-weight: 500;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/geist-medium-webfont.woff2") format("woff2"),
+  src:
+    url("/fonts/geist-medium-webfont.woff2") format("woff2"),
     url("/fonts/geist-medium-webfont.woff") format("woff");
 }
 
@@ -24,7 +26,8 @@
   font-weight: 500;
   font-style: italic;
   font-display: swap;
-  src: url("/fonts/geist-mediumitalic-webfont.woff2") format("woff2"),
+  src:
+    url("/fonts/geist-mediumitalic-webfont.woff2") format("woff2"),
     url("/fonts/geist-mediumitalic-webfont.woff") format("woff");
 }
 
@@ -34,7 +37,8 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/geist-regular-webfont.woff2") format("woff2"),
+  src:
+    url("/fonts/geist-regular-webfont.woff2") format("woff2"),
     url("/fonts/geist-regular-webfont.woff") format("woff");
 }
 
@@ -44,7 +48,8 @@
   font-weight: 400;
   font-style: italic;
   font-display: swap;
-  src: url("/fonts/geist-regularitalic-webfont.woff2") format("woff2"),
+  src:
+    url("/fonts/geist-regularitalic-webfont.woff2") format("woff2"),
     url("/fonts/geist-regularitalic-webfont.woff") format("woff");
 }
 
@@ -54,6 +59,7 @@
   font-weight: 600;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/geist-semibold-webfont.woff2") format("woff2"),
+  src:
+    url("/fonts/geist-semibold-webfont.woff2") format("woff2"),
     url("/fonts/geist-semibold-webfont.woff") format("woff");
 }

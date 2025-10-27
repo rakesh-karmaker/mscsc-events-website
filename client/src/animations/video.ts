@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function animateVideo(
   videoContainer: HTMLDivElement,
-  innerWidth: number
+  innerWidth: number,
 ) {
   gsap.fromTo(
     videoContainer,
@@ -17,7 +17,7 @@ export default function animateVideo(
       y: 0,
       opacity: 1,
       duration: 1,
-    }
+    },
   );
 
   gsap.fromTo(
@@ -33,6 +33,6 @@ export default function animateVideo(
         end: "center center",
         scrub: 0.5,
       },
-    }
+    },
   );
 }

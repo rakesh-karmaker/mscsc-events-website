@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 type PrimaryBtnProps = {
   onClick?: (
-    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
+    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
   ) => void;
   children: ReactNode;
   className?: string;

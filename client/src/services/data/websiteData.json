@@ -13,6 +13,8 @@
     "instagram": "https://www.instagram.com/explorionevent",
     "phone": "+8801234567890"
   },
+  "registrations": 256,
+  "prizeCount": 25,
   "sections": [
     "hero",
     "video",
@@ -33,8 +35,8 @@
     "url": "/explorion/promo-video.mp4"
   },
   "about": {
-    "heading": "Why attend Explorion",
-    "subheading": "Explorion is not just an event, it’s a journey into the unknown, inspiring the next generation of thinkers, dreamers, and innovators.",
+    "title": "Why attend Explorion",
+    "heading": "Explorion is not just an event, it’s a journey into the unknown, inspiring the next generation of thinkers, dreamers, and innovators.",
     "text": "Explorion is where ideas take shape and imagination finds purpose. From interactive experiments to thought-provoking exhibitions, the event brings together curious minds eager to explore the wonders of science. Whether you’re a participant, a visitor, or a mentor, Explorion offers the perfect space to learn, share, and get inspired by innovation happening all around you."
   },
   "segments": [

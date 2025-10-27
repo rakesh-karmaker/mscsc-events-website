@@ -4,6 +4,7 @@ import { ReactLenis, type LenisRef } from "lenis/react";
 import Video from "./components/Video";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import About from "./components/about/About";
 
 export default function App() {
   const lenisRef = useRef<LenisRef | null>(null);
@@ -31,6 +32,12 @@ export default function App() {
           sections={websiteData.sections}
         />
         <Video url={websiteData.video.url} />
+        <About
+          about={websiteData.about}
+          isInnerRegistration={websiteData.isInnerRegistration}
+          registrationUrl={websiteData.registrationUrl}
+          contactLinks={websiteData.contactLinks}
+        />
       </main>
     </>
   );

@@ -91,7 +91,7 @@ export default function FooterRight({
                     {name}
                   </a>
                 );
-              }
+              },
             )}
           </div>
         </div>

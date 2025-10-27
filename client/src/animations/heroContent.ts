@@ -5,7 +5,7 @@ gsap.registerPlugin(SplitText);
 
 export default function animateHeroContent(
   headingRef: HTMLElement,
-  textContentRef: HTMLElement
+  textContentRef: HTMLElement,
 ) {
   gsap.set(headingRef, { opacity: 1 });
   let split: gsap.core.Tween;
@@ -35,7 +35,7 @@ export default function animateHeroContent(
       duration: 1,
       stagger: 0.1,
       ease: "power2.out",
-    }
+    },
   );
 
   return () => {
