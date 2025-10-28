@@ -8,7 +8,7 @@ import {
   FaPhoneAlt,
   FaPuzzlePiece,
 } from "react-icons/fa";
-import { FaEnvelope, FaRobot } from "react-icons/fa6";
+import { FaEnvelope, FaRobot, FaStar } from "react-icons/fa6";
 import { GiChessQueen } from "react-icons/gi";
 import { HiLightBulb } from "react-icons/hi";
 import { IoMdRocket } from "react-icons/io";
@@ -41,6 +41,7 @@ export default function Icon({ iconName, className }: IconProps): ReactNode {
     math: <TbMath className={className} />,
     puzzle: <FaPuzzlePiece className={className} />,
     debate: <BiSolidConversation className={className} />,
+    star: <FaStar className={className} />,
   };
 
   return icons[iconName] || null;

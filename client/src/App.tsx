@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import About from "./components/about/About";
 import Segments from "./components/segments/Segments";
+import Schedule from "./components/schedule/Schedule";
 
 export default function App() {
   const lenisRef = useRef<LenisRef | null>(null);
@@ -43,6 +44,7 @@ export default function App() {
           prizeCount={websiteData.prizeCount}
         />
         <Segments segments={websiteData.segments} />
+        <Schedule scheduleData={websiteData.schedule} />
       </main>
     </>
   );
