@@ -5,6 +5,7 @@ import Video from "./components/Video";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import About from "./components/about/About";
+import Segments from "./components/segments/Segments";
 
 export default function App() {
   const lenisRef = useRef<LenisRef | null>(null);
@@ -41,6 +42,7 @@ export default function App() {
           segmentCount={websiteData.segments.length}
           prizeCount={websiteData.prizeCount}
         />
+        <Segments segments={websiteData.segments} />
       </main>
     </>
   );

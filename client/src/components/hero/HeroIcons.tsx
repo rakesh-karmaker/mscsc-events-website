@@ -11,20 +11,18 @@ export default function HeroIcons({
   sections: string[];
 }): ReactNode {
   const commonClassNames =
-    "absolute w-30 h-30 max-xl:w-25 max-xl:h-25 text-dark-gray/65";
+    "absolute w-30 h-30 max-xl:w-25 max-xl:h-25 max-md:w-20 max-md:h-20 max-sm:w-15 max-sm:h-15 text-dark-gray/65";
   const iconContainerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     if (iconContainerRef.current) {
-      animateHeroIcons(iconContainerRef.current);
+      animateHeroIcons(iconContainerRef.current, window.innerHeight);
     }
   }, []);
-  ``;
-
   return (
     <div
       ref={iconContainerRef}
-      className="absolute w-[120%] max-w-[min(1150px,var(--max-width))] h-full max-h-[1080px] [@media(max-height:700px)]:min-h-[110%] aspect-[16/10] -z-50"
+      className="absolute max-md:overflow-hidden w-[120%] max-w-[min(1150px,var(--max-width))] h-full max-h-[1080px]  aspect-[16/10] -z-50"
       style={{
         maxHeight: sections.includes("video") ? "auto" : "90%",
       }}

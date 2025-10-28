@@ -46,7 +46,7 @@ export default function HeroContent({
   return (
     <div className="max-w-[1150px] flex flex-col gap-4 items-center">
       <h1
-        className="text-[5.375em]/[115%] max-xl:text-[3.5em] max-md:text-[3em] max-sm:text-[2.5em] text-black font-bold max-w-[20ch] text-center"
+        className="text-[5.375em]/[115%] max-xl:text-[3.5em] max-md:text-[3em] max-sm:text-[2.5em] max-[450px]:text-[2em] text-black font-bold max-w-[20ch] text-center"
         ref={headingRef}
         style={{
           opacity: 0,
@@ -59,10 +59,10 @@ export default function HeroContent({
         className="flex flex-col gap-8 items-center max-md:gap-5"
         ref={textContentRef}
       >
-        <p className="text-[1.165em]/[120%] max-xl:text-[1.1em] max-md:text-[1em] max-sm:text-[0.975em] text-gray-700 text-center max-w-[70ch]">
+        <p className="text-[1.165em]/[120%] max-xl:text-[1.1em] max-md:text-[1em] max-sm:text-[0.975em] max-[450px]:text-[0.8rem] text-gray-700 text-center max-w-[70ch]">
           {text}
         </p>
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap justify-center">
           <PrimaryBtn
             isLink={true}
             href={registrationLink}

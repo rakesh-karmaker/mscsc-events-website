@@ -1,6 +1,9 @@
 import { gsap } from "gsap";
 
-export default function animateHeroIcons(container: HTMLElement) {
+export default function animateHeroIcons(
+  container: HTMLElement,
+  innerHeight: number
+) {
   const rotations: number[] = [20, 45, 27, -20]; // Corresponding rotations for each icon
 
   gsap.fromTo(
@@ -14,10 +17,10 @@ export default function animateHeroIcons(container: HTMLElement) {
       delay: 0.5,
       opacity: 1,
       width: "120%",
-      height: "100%",
+      height: innerHeight > 700 ? "100%" : "110%",
       duration: 1,
       ease: "power2.out",
-    },
+    }
   );
 
   gsap.utils.toArray<HTMLElement>(container.children).forEach((icon, index) => {
@@ -33,7 +36,7 @@ export default function animateHeroIcons(container: HTMLElement) {
         scale: 1,
         duration: 1,
         ease: "back.out",
-      },
+      }
     );
   });
 }
