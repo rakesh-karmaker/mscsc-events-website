@@ -12,3 +12,9 @@ export type ScheduleType = {
   title: string;
   description: string;
 };
+
+export type SponsorType = {
+  name: string;
+  logoUrl: string;
+  websiteUrl: string;
+};

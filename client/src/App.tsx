@@ -7,6 +7,7 @@ import gsap from "gsap";
 import About from "./components/about/About";
 import Segments from "./components/segments/Segments";
 import Schedule from "./components/schedule/Schedule";
+import Sponsors from "./components/Sponsors";
 
 export default function App() {
   const lenisRef = useRef<LenisRef | null>(null);
@@ -45,6 +46,10 @@ export default function App() {
         />
         <Segments segments={websiteData.segments} />
         <Schedule scheduleData={websiteData.schedule} />
+        <Sponsors
+          sponsorData={websiteData["sponsors&partners"]}
+          eventName={websiteData.eventName}
+        />
       </main>
     </>
   );

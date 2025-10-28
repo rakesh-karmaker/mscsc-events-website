@@ -26,7 +26,7 @@ export default function Video({ url }: { url: string }): ReactNode {
       gsap.fromTo(
         playerRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 2, ease: "power2.out" },
+        { opacity: 1, duration: 2, ease: "power2.out" }
       );
     }
   }, [isReady]);
@@ -38,11 +38,11 @@ export default function Video({ url }: { url: string }): ReactNode {
   return (
     <section
       id="video"
-      className="w-full max-w-[1920px] aspect-video my-16 px-4 flex justify-center max-md:px-0"
+      className="w-full max-w-[110rem] aspect-video my-16 max-[111rem]:px-4 flex justify-center max-md:px-0"
     >
       <div
         ref={videoContainerRef}
-        className="w-full h-fit rounded-2xl overflow-hidden max-md:rounded-none"
+        className="w-full h-fit rounded-2xl aspect-video overflow-hidden max-md:rounded-none"
       >
         <Suspense
           fallback={<div className="skeleton h-full w-full aspect-video"></div>}
