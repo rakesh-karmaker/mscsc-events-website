@@ -53,7 +53,7 @@ export default function ScheduleRight({
 
   return (
     <div
-      className="w-full h-full overflow-hidden border-l-1 border-light-gray/90 flex flex-col"
+      className="w-full h-full overflow-hidden border-l-1 max-lg:border-l-0 border-light-gray/90 flex flex-col max-lg:border-t-1"
       ref={segmentContainerRef}
     >
       {currentScheduleData.map((item, index) => {

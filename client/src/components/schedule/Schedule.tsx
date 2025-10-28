@@ -21,7 +21,7 @@ export default function Schedule({ scheduleData }: ScheduleProps): ReactNode {
   return (
     <section
       id="schedule"
-      className="my-20 w-full flex border-t-1 border-b-1 border-light-gray/90"
+      className="my-20 w-full flex border-t-1 border-b-1 border-light-gray/90 max-lg:flex-col"
     >
       <ScheduleLeft
         dates={Object.keys(scheduleData)}

@@ -38,14 +38,17 @@ export default function ScheduleLeft({
   }, []);
 
   return (
-    <div className="w-fit ml-[calc((100vw-var(--max-width))/2)] relative p-10 border-l-1 border-light-gray/90">
-      <div className="sticky top-[calc(var(--nav-height)+2rem)] w-full min-w-[50ch] h-fit flex flex-col gap-6">
+    <div className="w-fit ml-[calc((100vw-var(--max-width))/2)] max-sm:mr-[calc((100vw-var(--max-width))/2)] relative p-10 max-lg:!px-0 border-l-1 max-lg:border-l-0 border-light-gray/90">
+      <div className="sticky top-[calc(var(--nav-height)+2rem)] w-full min-w-[50ch] max-xl:min-w-[30ch] max-sm:min-w-full  h-fit flex flex-col gap-6">
         <div className="w-full flex flex-col gap-3">
-          <h2 className="text-5xl font-semibold" ref={headingRef}>
+          <h2
+            className="text-5xl font-semibold max-xl:text-4xl"
+            ref={headingRef}
+          >
             Event Schedule
           </h2>
           <p
-            className="text-[1.1rem]/[135%] text-black/90 max-w-[40ch]"
+            className="text-[1.1rem]/[135%] max-xl:text-[1rem] text-black/90 max-w-[40ch]"
             ref={subHeadingRef}
           >
             A detailed overview of all sessions, competitions, and key
