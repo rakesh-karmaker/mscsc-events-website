@@ -9,6 +9,17 @@
     url("/fonts/geist-bold-webfont.woff") format("woff");
 }
 
+/* regular semibold font-face declarations for Geist Sans font */
+@font-face {
+  font-family: "Geist Sans";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url("/fonts/geist-semibold-webfont.woff2") format("woff2"),
+    url("/fonts/geist-semibold-webfont.woff") format("woff");
+}
+
 /* regular medium font-face declarations for Geist Sans font */
 @font-face {
   font-family: "Geist Sans";
@@ -53,13 +64,35 @@
     url("/fonts/geist-regularitalic-webfont.woff") format("woff");
 }
 
-/* regular semibold font-face declarations for Geist Sans font */
+/* normal light font-face declarations for Geist Sans font */
 @font-face {
   font-family: "Geist Sans";
-  font-weight: 600;
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
   src:
-    url("/fonts/geist-semibold-webfont.woff2") format("woff2"),
-    url("/fonts/geist-semibold-webfont.woff") format("woff");
+    url("/fonts/geist-light-webfont.woff2") format("woff2"),
+    url("/fonts/geist-light-webfont.woff") format("woff");
+}
+
+/* normal extra light font-face declarations for Geist Sans font */
+@font-face {
+  font-family: "Geist Sans";
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url("/fonts/geist-extralight-webfont.woff2") format("woff2"),
+    url("/fonts/geist-extralight-webfont.woff") format("woff");
+}
+
+/* normal thin font-face declarations for Geist Sans font */
+@font-face {
+  font-family: "Geist Sans";
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url("/fonts/geist-thin-webfont.woff2") format("woff2"),
+    url("/fonts/geist-thin-webfont.woff") format("woff");
 }

@@ -42,9 +42,7 @@ export default function AboutInfo({
           {heading}
         </h3>
         <div className="relative">
-          <p className="text-gray-600 max-xl:text-[1.01em]/[136%] mb-4">
-            {text}
-          </p>
+          <p className="text-gray-800 text-[1.01em]/[136%] mb-4">{text}</p>
           <PrimaryBtn
             isLink={true}
             href={

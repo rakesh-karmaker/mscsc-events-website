@@ -27,7 +27,7 @@ export default function Hero({
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center max-xl:max-w-max-width [@media(max-height:640px)]:pt-20"
+      className="relative flex !max-h-[1080px] items-center justify-center max-xl:max-w-max-width [@media(max-height:700px)]:pt-20 [@media(min-width:2000px)]:!min-h-[1000px]"
       style={{
         minHeight: sections.includes("video")
           ? "calc(100vh - var(--nav-height) - 20vh)"

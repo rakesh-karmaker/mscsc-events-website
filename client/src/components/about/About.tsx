@@ -1,11 +1,15 @@
 import type { ReactNode } from "react";
 import AboutTop from "./AboutTop";
+import AboutBottom from "./AboutBottom";
 
 type AboutProps = {
   about: { title: string; heading: string; text: string };
   isInnerRegistration: boolean;
   registrationUrl: string;
   contactLinks: { [platform: string]: string };
+  registrations: number;
+  segmentCount: number;
+  prizeCount: number;
 };
 
 export default function About({
@@ -13,6 +17,9 @@ export default function About({
   isInnerRegistration,
   registrationUrl,
   contactLinks,
+  registrations,
+  segmentCount,
+  prizeCount,
 }: AboutProps): ReactNode {
   return (
     <section
@@ -24,6 +31,11 @@ export default function About({
         isInnerRegistration={isInnerRegistration}
         registrationUrl={registrationUrl}
         contactLinks={contactLinks}
+      />
+      <AboutBottom
+        registrations={registrations}
+        segmentCount={segmentCount}
+        prizeCount={prizeCount}
       />
     </section>
   );

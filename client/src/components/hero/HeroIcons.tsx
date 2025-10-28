@@ -24,7 +24,7 @@ export default function HeroIcons({
   return (
     <div
       ref={iconContainerRef}
-      className="absolute w-[120%] max-w-[min(1150px,var(--max-width))] h-full [@media(max-height:640px)]:min-h-[110%] aspect-[16/10] -z-50"
+      className="absolute w-[120%] max-w-[min(1150px,var(--max-width))] h-full max-h-[1080px] [@media(max-height:700px)]:min-h-[110%] aspect-[16/10] -z-50"
       style={{
         maxHeight: sections.includes("video") ? "auto" : "90%",
       }}

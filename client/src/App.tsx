@@ -37,6 +37,9 @@ export default function App() {
           isInnerRegistration={websiteData.isInnerRegistration}
           registrationUrl={websiteData.registrationUrl}
           contactLinks={websiteData.contactLinks}
+          registrations={websiteData.registrations}
+          segmentCount={websiteData.segments.length}
+          prizeCount={websiteData.prizeCount}
         />
       </main>
     </>
