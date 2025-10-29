@@ -52,7 +52,7 @@ export default function Sponsors({
   }, []);
   return (
     <section
-      id="sponsors&partners"
+      id="sponsors"
       className="w-full max-w-max-width my-16 flex flex-col gap-12"
     >
       <div className="w-full flex flex-col gap-3">

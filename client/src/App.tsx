@@ -9,6 +9,8 @@ import Segments from "./components/segments/Segments";
 import Schedule from "./components/schedule/Schedule";
 import Sponsors from "./components/Sponsors";
 import Faq from "./components/faq/Faq";
+import Contact from "./components/contact/Contact";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   const lenisRef = useRef<LenisRef | null>(null);
@@ -52,7 +54,12 @@ export default function App() {
           eventName={websiteData.eventName}
         />
         <Faq faqData={websiteData.faqs} />
+        <Contact
+          contactData={websiteData.contactLinks}
+          eventName={websiteData.eventName}
+        />
       </main>
+      <Toaster position="top-right" />
     </>
   );
 }
