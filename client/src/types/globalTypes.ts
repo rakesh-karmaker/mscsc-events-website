@@ -18,3 +18,8 @@ export type SponsorType = {
   logoUrl: string;
   websiteUrl: string;
 };
+
+export type FaqType = {
+  question: string;
+  answer: string;
+};

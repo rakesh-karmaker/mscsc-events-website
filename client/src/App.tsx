@@ -8,6 +8,7 @@ import About from "./components/about/About";
 import Segments from "./components/segments/Segments";
 import Schedule from "./components/schedule/Schedule";
 import Sponsors from "./components/Sponsors";
+import Faq from "./components/faq/Faq";
 
 export default function App() {
   const lenisRef = useRef<LenisRef | null>(null);
@@ -50,6 +51,7 @@ export default function App() {
           sponsorData={websiteData["sponsors&partners"]}
           eventName={websiteData.eventName}
         />
+        <Faq faqData={websiteData.faqs} />
       </main>
     </>
   );
