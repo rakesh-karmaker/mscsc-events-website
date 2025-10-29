@@ -1,18 +1,11 @@
-import Hero from "./components/hero/Hero";
-import websiteData from "@/services/data/websiteData.json";
 import { ReactLenis, type LenisRef } from "lenis/react";
-import Video from "./components/Video";
-import { useEffect, useRef } from "react";
+
+import { useEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
-import About from "./components/about/About";
-import Segments from "./components/segments/Segments";
-import Schedule from "./components/schedule/Schedule";
-import Sponsors from "./components/Sponsors";
-import Faq from "./components/faq/Faq";
-import Contact from "./components/contact/Contact";
+
 import { Toaster } from "react-hot-toast";
 
-export default function App() {
+export default function App({ children }: { children: ReactNode }): ReactNode {
   const lenisRef = useRef<LenisRef | null>(null);
 
   useEffect(() => {
@@ -22,43 +15,18 @@ export default function App() {
 
     gsap.ticker.add(update);
 
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    }); // Scroll to top on initial load
+
     return () => gsap.ticker.remove(update);
   }, []);
 
   return (
     <>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
-      <main className="flex flex-col items-center">
-        <Hero
-          eventDate={websiteData.eventDate}
-          eventLocation={websiteData.eventLocation}
-          heroData={websiteData.hero}
-          isInnerRegistration={websiteData.isInnerRegistration}
-          registrationUrl={websiteData.registrationUrl}
-          sections={websiteData.sections}
-        />
-        <Video url={websiteData.video.url} />
-        <About
-          about={websiteData.about}
-          isInnerRegistration={websiteData.isInnerRegistration}
-          registrationUrl={websiteData.registrationUrl}
-          contactLinks={websiteData.contactLinks}
-          registrations={websiteData.registrations}
-          segmentCount={websiteData.segments.length}
-          prizeCount={websiteData.prizeCount}
-        />
-        <Segments segments={websiteData.segments} />
-        <Schedule scheduleData={websiteData.schedule} />
-        <Sponsors
-          sponsorData={websiteData["sponsors&partners"]}
-          eventName={websiteData.eventName}
-        />
-        <Faq faqData={websiteData.faqs} />
-        <Contact
-          contactData={websiteData.contactLinks}
-          eventName={websiteData.eventName}
-        />
-      </main>
+      <main className="flex flex-col items-center">{children}</main>
       <Toaster position="top-right" />
     </>
   );
