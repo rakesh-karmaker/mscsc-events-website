@@ -1,5 +1,5 @@
-import { useLenis } from "lenis/react";
 import { type ReactNode } from "react";
+import { NavLink, useParams } from "react-router";
 
 export default function NavLinks({
   sections,
@@ -8,32 +8,32 @@ export default function NavLinks({
   sections: string[];
   isOpen: boolean;
 }): ReactNode {
-  const lenis = useLenis();
+  const eventId = useParams().eventId;
 
   const preferredNavLinks: Record<string, { name: string; url: string }> = {
     hero: {
       name: "Home",
-      url: "#home",
+      url: "home",
     },
     about: {
       name: "About",
-      url: "#about",
+      url: "about",
     },
     segments: {
       name: "Segments",
-      url: "#segments",
+      url: "segments",
     },
     schedule: {
       name: "Schedule",
-      url: "#schedule",
+      url: "schedule",
     },
     faqs: {
       name: "FAQs",
-      url: "#faqs",
+      url: "faqs",
     },
     contact: {
       name: "Contact",
-      url: "#contact",
+      url: "contact",
     },
   };
 
@@ -51,20 +51,14 @@ export default function NavLinks({
           if (sections.includes(section)) {
             return (
               <li key={section}>
-                <a
-                  href={`${preferredNavLinks[section].url}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    lenis?.scrollTo(preferredNavLinks[section].url, {
-                      offset: -100,
-                    });
-                  }}
+                <NavLink
+                  to={`/${eventId}/${preferredNavLinks[section].url}`}
                   className={
                     "text-black text-[1em] max-lg:text-[0.96em] max-md:text-[1em] hover:text-blue focus:text-blue focus-within:text-blue transition-colors duration-200 max-md:shadow-[0px_0px_0px_1px_rgba(0,_0,_0,_0.04)] max-md:w-full max-md:block max-md:px-[5vw] max-md:py-4 max-md:hover:bg-light-gray/20 max-md:focus:bg-light-gray/20 max-md:focus-within:bg-light-gray/20 rounded-md"
                   }
                 >
                   {preferredNavLinks[section].name}
-                </a>
+                </NavLink>
               </li>
             );
           }

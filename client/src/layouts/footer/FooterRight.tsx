@@ -1,7 +1,7 @@
 import formatUrl from "@/utils/formatUrl";
 import { useLenis } from "lenis/react";
 import type { ReactNode } from "react";
-import { Link } from "react-router";
+import { Link, NavLink, useParams } from "react-router";
 
 type FooterRightProps = {
   eventName: string;
@@ -17,6 +17,7 @@ export default function FooterRight({
   sections,
 }: FooterRightProps): ReactNode {
   const lenis = useLenis();
+  const eventId = useParams().eventId || "";
 
   const contactLinkItems = [
     { platform: "Email", url: contactLinks.email, isLink: true },
@@ -27,31 +28,31 @@ export default function FooterRight({
   const formattedSections: Record<string, { name: string; url: string }> = {
     hero: {
       name: "Home",
-      url: "#home",
+      url: "home",
     },
     about: {
       name: "About",
-      url: "#about",
+      url: "about",
     },
     segments: {
       name: "Segments",
-      url: "#segments",
+      url: "segments",
     },
     schedule: {
       name: "Schedule",
-      url: "#schedule",
+      url: "schedule",
     },
     "sponsors&partners": {
       name: "Sponsors",
-      url: "#sponsors",
+      url: "sponsors",
     },
     faqs: {
       name: "FAQs",
-      url: "#faqs",
+      url: "faqs",
     },
     contact: {
       name: "Contact",
-      url: "#contact",
+      url: "contact",
     },
   };
 
@@ -79,19 +80,15 @@ export default function FooterRight({
                 if (!sections.includes(section)) return null;
 
                 return (
-                  <a
+                  <NavLink
                     key={section}
-                    href={`${url}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      lenis?.scrollTo(url, { offset: -100 });
-                    }}
+                    to={`/${eventId}/${url}`}
                     className="transition-all duration-200 hover:text-blue"
                   >
                     {name}
-                  </a>
+                  </NavLink>
                 );
-              },
+              }
             )}
           </div>
         </div>

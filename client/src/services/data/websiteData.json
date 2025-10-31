@@ -13,6 +13,27 @@
     "instagram": "https://www.instagram.com/explorionevent",
     "phone": "+8801234567890"
   },
+  "formData": {
+    "title": "Explorion - Participant Registration",
+    "details": "<p data-start=\"50\" data-end=\"244\"><strong data-start=\"50\" data-end=\"67\">Event Details</strong><br data-start=\"67\" data-end=\"70\">\nA celebration of science, creativity, and innovation featuring hands-on activities, project exhibitions, and learning experiences designed to inspire curiosity and discovery.</p>\n<p data-start=\"246\" data-end=\"266\"><strong data-start=\"246\" data-end=\"264\">What to Expect</strong></p>\n<ul data-start=\"267\" data-end=\"408\"><li data-start=\"267\" data-end=\"305\">\n<p data-start=\"269\" data-end=\"305\">Science and technology exhibitions</p>\n</li><li data-start=\"306\" data-end=\"343\">\n<p data-start=\"308\" data-end=\"343\">Workshops and live demonstrations</p>\n</li><li data-start=\"344\" data-end=\"380\">\n<p data-start=\"346\" data-end=\"380\">Innovation and research projects</p>\n</li><li data-start=\"381\" data-end=\"408\">\n<p data-start=\"383\" data-end=\"408\">Competitions and awards</p>\n</li></ul>\n<p data-start=\"410\" data-end=\"537\"><strong data-start=\"410\" data-end=\"433\">Who Can Participate</strong><br data-start=\"433\" data-end=\"436\">\nStudents, science club members, and young innovators with a passion for learning and experimentation.</p>\n<p data-start=\"539\" data-end=\"553\"><strong data-start=\"539\" data-end=\"551\">Why Join</strong></p><ul data-start=\"554\" data-end=\"698\"><li data-start=\"554\" data-end=\"588\">\n<p data-start=\"556\" data-end=\"588\">Hands-on scientific experience</p>\n</li><li data-start=\"589\" data-end=\"625\">\n<p data-start=\"591\" data-end=\"625\">Opportunity to showcase projects</p>\n</li><li data-start=\"626\" data-end=\"658\">\n<p data-start=\"628\" data-end=\"658\">Certificates and recognition</p>\n</li><li data-start=\"659\" data-end=\"698\">\n<p data-start=\"661\" data-end=\"698\">Collaboration and knowledge sharing</p></li></ul>",
+    "fees": 200,
+    "transactionMethods": {
+      "bkash": {
+        "number": "017XXXXXXXX",
+        "code": "*247#",
+        "qrCodeUrl": "/explorion/payment/bkashqr.png"
+      },
+      "nagad": {
+        "number": "018XXXXXXXX",
+        "code": "*167#",
+        "qrCodeUrl": "/explorion/payment/nagadqr.png"
+      },
+      "rocket": {
+        "number": "019XXXXXXXX",
+        "code": "*322#"
+      }
+    }
+  },
   "registrations": 256,
   "prizeCount": 25,
   "sections": [

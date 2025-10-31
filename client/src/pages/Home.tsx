@@ -7,9 +7,29 @@ import Schedule from "@/components/schedule/Schedule";
 import Sponsors from "@/components/Sponsors";
 import Faq from "@/components/faq/Faq";
 import Contact from "@/components/contact/Contact";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
+import { useParams } from "react-router";
+import { useLenis } from "lenis/react";
 
 export default function Home(): ReactNode {
+  const sectionId = useParams().section || "home";
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (lenis) {
+      // Use requestAnimationFrame to ensure scrolling happens after rendering
+      requestAnimationFrame(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          window.scrollTo({
+            top: section.offsetTop - 100,
+            behavior: "smooth",
+          });
+        }
+      });
+    }
+  }, [sectionId, lenis]);
+
   return (
     <>
       <Hero
