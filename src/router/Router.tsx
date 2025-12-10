@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate } from "react-router";
 import HomeLayout from "@/layouts/HomeLayout.tsx";
 import { lazy, Suspense } from "react";
 import Loader from "@/components/ui/Loader";
+import PageNotFound from "@/pages/PageNotFound";
 
 const HomePage = lazy(() => import("@/pages/Home"));
 const RegistrationPage = lazy(() => import("@/pages/Registration"));
@@ -66,6 +67,13 @@ export const router = createBrowserRouter([
             <RegistrationPage />
           </Suspense>
         ),
+        errorElement: <PageNotFound />,
+      },
+
+      // Fallback route for unmatched paths
+      {
+        path: "*",
+        element: <PageNotFound />,
       },
     ],
   },

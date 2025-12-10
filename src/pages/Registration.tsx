@@ -3,8 +3,15 @@ import FormInfo from "@/components/forms/registrationForm/FormInfo";
 import RegistrationHeader from "@/components/RegistrationHeader";
 import { useEffect, type ReactNode } from "react";
 import RegistrationForm from "@/components/forms/registrationForm/RegistrationForm";
+import { useEventData } from "@/hooks/useEventData";
 
 export default function Registration(): ReactNode {
+  // Fetch event data using the custom hook
+  const { formData, segmentData } = useEventData();
+  if (!formData || !segmentData) {
+    throw new Error("Registration data is unavailable");
+  }
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -23,7 +30,7 @@ export default function Registration(): ReactNode {
         <RegistrationForm
           transactionMethods={websiteData.formData.transactionMethods}
           fees={websiteData.formData.fees}
-          segments={websiteData.segments}
+          segments={segmentData}
         />
       </div>
     </section>

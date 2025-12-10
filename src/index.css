@@ -41,6 +41,7 @@
 body {
   font-family: var(--geist-sans);
   background-color: var(--white);
+  overflow-x: hidden;
 }
 
 @media screen and (max-width: 1600px) {

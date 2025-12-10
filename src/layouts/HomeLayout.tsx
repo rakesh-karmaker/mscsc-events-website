@@ -18,7 +18,11 @@ export default function HomeLayout(): ReactNode {
   }, []);
 
   if (!hasFetchedData || !eventMetaData) {
-    return <Loader />; // or a loading spinner
+    return (
+      <div className="w-full h-full min-h-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    ); // or a loading spinner
   }
 
   return (
