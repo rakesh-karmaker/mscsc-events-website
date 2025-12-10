@@ -30,8 +30,9 @@ export default function Home(): ReactNode {
     }
   }, [sectionId, lenis]);
 
-  return (
-    <>
+  // Map section keys to their respective components
+  const sectionComponents: { [key: string]: ReactNode } = {
+    hero: (
       <Hero
         eventDate={websiteData.eventDate}
         eventLocation={websiteData.eventLocation}
@@ -40,7 +41,9 @@ export default function Home(): ReactNode {
         registrationUrl={websiteData.registrationUrl}
         sections={websiteData.sections}
       />
-      <Video url={websiteData.video.url} />
+    ),
+    video: <Video url={websiteData.video.url} />,
+    about: (
       <About
         about={websiteData.about}
         isInnerRegistration={websiteData.isInnerRegistration}
@@ -49,18 +52,31 @@ export default function Home(): ReactNode {
         registrations={websiteData.registrations}
         segmentCount={websiteData.segments.length}
         prizeCount={websiteData.prizeCount}
+        sections={websiteData.sections}
       />
-      <Segments segments={websiteData.segments} />
-      <Schedule scheduleData={websiteData.schedule} />
+    ),
+    segments: <Segments segments={websiteData.segments} />,
+    schedule: <Schedule scheduleData={websiteData.schedule} />,
+    "sponsors&partners": (
       <Sponsors
         sponsorData={websiteData["sponsors&partners"]}
         eventName={websiteData.eventName}
       />
-      <Faq faqData={websiteData.faqs} />
+    ),
+    faqs: <Faq faqData={websiteData.faqs} />,
+    contact: (
       <Contact
         contactData={websiteData.contactLinks}
         eventName={websiteData.eventName}
       />
+    ),
+  };
+
+  return (
+    <>
+      {websiteData.sections.map((section) => {
+        return sectionComponents[section] || null;
+      })}
     </>
   );
 }

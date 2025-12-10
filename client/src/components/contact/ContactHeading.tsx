@@ -23,17 +23,18 @@ export default function ContactHeading(): ReactNode {
       <div className="w-full flex flex-col">
         <div className="w-full flex flex-col gap-3">
           <h2
-            className="text-5xl max-w-[15ch] font-semibold max-xl:text-4xl"
+            className="text-5xl uppercase max-w-[16ch] font-semibold max-xl:text-4xl"
             ref={headingRef}
           >
-            Frequently asked questions
+            Drop us a message
           </h2>
           <p
             className="text-[1.1rem]/[135%] max-xl:text-[1rem] text-black/90 max-w-[50ch]"
             ref={subHeadingRef}
           >
-            Here are some quick answers about who we are, what the event holds,
-            and where it will take place.
+            We’re here to help you at anytime ! Drop us a message, and our org
+            will get back to you as soon as possible. Whether you have
+            inquiries, feedback, or just want to say how can we help you.
           </p>
         </div>
       </div>

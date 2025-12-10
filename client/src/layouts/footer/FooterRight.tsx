@@ -1,5 +1,4 @@
 import formatUrl from "@/utils/formatUrl";
-import { useLenis } from "lenis/react";
 import type { ReactNode } from "react";
 import { Link, NavLink, useParams } from "react-router";
 
@@ -16,7 +15,6 @@ export default function FooterRight({
   eventLocation,
   sections,
 }: FooterRightProps): ReactNode {
-  const lenis = useLenis();
   const eventId = useParams().eventId || "";
 
   const contactLinkItems = [
@@ -83,7 +81,9 @@ export default function FooterRight({
                   <NavLink
                     key={section}
                     to={`/${eventId}/${url}`}
-                    className="transition-all duration-200 hover:text-blue"
+                    className={({ isActive }) =>
+                      `transition-all duration-200 hover:text-blue ${isActive ? "text-blue" : "text-black"}`
+                    }
                   >
                     {name}
                   </NavLink>

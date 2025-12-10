@@ -33,11 +33,15 @@ export default function Navbar({ navbarData }: NavbarProps): ReactNode {
           logoUrl={navbarData.eventLogoUrl}
           eventName={navbarData.eventName}
         />
-        <NavLinks sections={navbarData.sections} isOpen={isOpen} />
+        <NavLinks
+          sections={navbarData.sections}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
         <NavLink
           to={
             navbarData.isInnerRegistration
-              ? "/registration/" + currentEventId
+              ? currentEventId + "/registration/"
               : navbarData.registrationUrl
           }
           target={navbarData.isInnerRegistration ? "_self" : "_blank"}

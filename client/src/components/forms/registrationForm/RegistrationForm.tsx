@@ -1,12 +1,14 @@
+import FileInput from "@/components/ui/FileInput";
 import PaymentSteps from "@/components/ui/PaymentSteps";
 import PrimaryBtn from "@/components/ui/PrimaryBtn";
 import {
   registerSchema,
   type RegisterSchemaType,
 } from "@/lib/validation/registerSchema";
+import type { SegmentType } from "@/types/globalTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Stack, TextField } from "@mui/material";
-import type { ReactNode } from "react";
+import { Checkbox, FormControlLabel, Stack, TextField } from "@mui/material";
+import { useState, type ReactNode } from "react";
 import { useForm } from "react-hook-form";
 
 type RegistrationFormProps = {
@@ -14,24 +16,34 @@ type RegistrationFormProps = {
     [platform: string]: { number: string; code: string; qrCodeUrl?: string };
   };
   fees: number;
+  segments: SegmentType[];
 };
 
 export default function RegistrationForm({
   transactionMethods,
   fees,
+  segments,
 }: RegistrationFormProps): ReactNode {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
     resolver: zodResolver(registerSchema),
+    defaultValues: {
+      segments: [],
+      transactionMethod: transactionMethods
+        ? Object.keys(transactionMethods)[0]
+        : "",
+    },
   });
+
+  const [selectedSegments, setSelectedSegments] = useState<string[]>([]);
 
   const onSubmit = (data: RegisterSchemaType) => {
     console.log(data);
   };
-
   const handlePaymentMethodChange = (method: string) => {
     register("transactionMethod").onChange({ target: { value: method } });
   };
@@ -90,8 +102,12 @@ export default function RegistrationForm({
               fullWidth
             />
           </div>
+          <FileInput register={register} errors={errors} name={"photo"}>
+            Upload Your Photo
+          </FileInput>
         </div>
       </FormBox>
+
       <FormBox title="Institution Information">
         <div className="flex flex-col gap-6">
           <Stack spacing={3} sx={{ maxWidth: "100%" }}>
@@ -119,6 +135,57 @@ export default function RegistrationForm({
           </Stack>
         </div>
       </FormBox>
+
+      <FormBox title="Segment Selection">
+        <div className="flex flex-col gap-6">
+          <div className="w-full grid grid-cols-2 max-2xl:grid-cols-1 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4">
+            {segments.map((segment, index) => (
+              <div
+                key={index}
+                className="flex items-center px-5 py-3 rounded-md border-1 border-gray-400/20 hover:!bg-light-gray/20 transition-colors cursor-pointer"
+                style={{
+                  background: selectedSegments.includes(segment.title)
+                    ? "color-mix(in oklab, var(--light-gray) 20%, transparent)"
+                    : "color-mix(in oklab, var(--white) 20%, transparent)",
+                }}
+                onClick={() => {
+                  let updatedSegments;
+                  if (selectedSegments.includes(segment.title)) {
+                    updatedSegments = selectedSegments.filter(
+                      (item) => item !== segment.title
+                    );
+                  } else {
+                    updatedSegments = [...selectedSegments, segment.title];
+                  }
+                  setSelectedSegments(updatedSegments);
+                  setValue("segments", updatedSegments); // Sync with form
+                }}
+              >
+                <div className="pointer-events-none">
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        {...register("segments")}
+                        checked={selectedSegments.includes(segment.title)}
+                      />
+                    }
+                    label={segment.title}
+                    style={{
+                      pointerEvents: "none",
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          {errors.segments && (
+            <p className="text-red-600 text-sm">
+              {errors.segments.message as string}
+            </p>
+          )}
+        </div>
+      </FormBox>
+
       <FormBox title="Payment Information">
         <div className="flex flex-col gap-6">
           <div className="w-full flex flex-col gap-2">
@@ -178,7 +245,7 @@ export default function RegistrationForm({
       </FormBox>
 
       <PrimaryBtn type="submit" className="!px-4 !text-lg">
-        Submit Registration{" "}
+        Submit Registration
       </PrimaryBtn>
     </form>
   );

@@ -47,7 +47,7 @@ export default function AboutInfo({
             isLink={true}
             href={
               isInnerRegistration
-                ? "/registration/" + currentEventId
+                ? currentEventId + "/registration/"
                 : registrationUrl
             }
             className="flex gap-1.5 items-center z-99"

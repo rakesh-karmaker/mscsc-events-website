@@ -31,7 +31,7 @@ export default function HeroContent({
 
   const eventId = useParams().eventId;
   const registrationLink = isInnerRegistration
-    ? `/registration/${eventId}`
+    ? `${eventId}/registration/`
     : registrationUrl;
 
   const headingRef = useRef<HTMLDivElement>(null);

@@ -14,10 +14,10 @@ type FooterInfoProps = {
 };
 
 export default function FooterInfo({ footerData }: FooterInfoProps): ReactNode {
-  const eventId = useParams().eventId;
+  const eventId = useParams().eventId || "";
 
   const registrationLink = footerData.isInnerRegistration
-    ? `/registration/${eventId}`
+    ? `${eventId}/registration/`
     : footerData.registrationUrl;
 
   return (

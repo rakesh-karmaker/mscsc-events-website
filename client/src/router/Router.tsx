@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true, // This defines the default child route
-        element: <Navigate to="/home" replace />,
+        element: <Navigate to="/demo" replace />,
       },
       {
         path: "/:eventId/:section?",
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/registration/:eventId",
+        path: "/:eventId/registration/",
         element: (
           <Suspense
             fallback={
