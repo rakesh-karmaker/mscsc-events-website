@@ -1,19 +1,20 @@
-import type { SegmentType } from "@/types/globalTypes";
 import { useRef, type ReactNode } from "react";
-import Segment from "./Segment";
-
+import SegmentCard from "./SegmentCard";
 import { useGSAP } from "@gsap/react";
 import animateTextReveal from "@/animations/textReveal";
 import animateFadeUp from "@/animations/fadeUp";
 import gsap from "gsap";
+import { useEventData } from "@/hooks/useEventData";
 
 gsap.registerPlugin(useGSAP);
 
-export default function Segments({
-  segments,
-}: {
-  segments: SegmentType[];
-}): ReactNode {
+export default function Segments(): ReactNode {
+  // Fetch segment data using the custom hook
+  const { segmentData } = useEventData();
+  if (!segmentData || segmentData.length === 0) {
+    return null;
+  }
+
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subHeadingRef = useRef<HTMLParagraphElement>(null);
 
@@ -42,8 +43,8 @@ export default function Segments({
         </p>
       </div>
       <div className="w-full grid grid-cols-2 max-lg:grid-cols-1 gap-7">
-        {segments.map((segment, index) => {
-          return <Segment key={index} segmentData={segment} />;
+        {segmentData.map((segment, index) => {
+          return <SegmentCard key={index} segmentData={segment} />;
         })}
       </div>
     </section>

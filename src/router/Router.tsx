@@ -6,6 +6,7 @@ import Loader from "@/components/ui/Loader";
 
 const HomePage = lazy(() => import("@/pages/Home"));
 const RegistrationPage = lazy(() => import("@/pages/Registration"));
+const SegmentPage = lazy(() => import("@/pages/Segment"));
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,24 @@ export const router = createBrowserRouter([
           </Suspense>
         ),
       },
+
+      // Segments path
+      {
+        path: "/segments/:eventId/:segmentId",
+        element: (
+          <Suspense
+            fallback={
+              <div className="w-full h-[calc(100vh-var(--nav-height))]">
+                <Loader />
+              </div>
+            }
+          >
+            <SegmentPage />
+          </Suspense>
+        ),
+      },
+
+      // Registration path
       {
         path: "/:eventId/registration/",
         element: (

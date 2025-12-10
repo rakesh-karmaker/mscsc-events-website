@@ -1,4 +1,5 @@
 export type SegmentType = {
+  segment_slug: string;
   icon: string;
   imageUrl: string;
   title: string;

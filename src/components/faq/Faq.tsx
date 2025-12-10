@@ -1,10 +1,16 @@
-import type { FaqType } from "@/types/globalTypes";
 import { Activity, type ReactNode } from "react";
 import FaqLeft from "./FaqLeft";
 import FaqRight from "./FaqRight";
 import ContactBox from "./ContactBox";
+import { useEventData } from "@/hooks/useEventData";
 
-export default function Faq({ faqData }: { faqData: FaqType[] }): ReactNode {
+export default function Faq(): ReactNode {
+  // Fetch event data using the custom hook
+  const { faqData } = useEventData();
+  if (!faqData || faqData.length === 0) {
+    return null;
+  }
+
   return (
     <section
       id="faqs"

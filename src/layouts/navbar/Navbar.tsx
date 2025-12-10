@@ -3,20 +3,17 @@ import EventLogo from "./EventLogo";
 import { NavLink, useParams } from "react-router";
 import NavLinks from "./NavLinks";
 import { FaArrowRight, FaBars, FaXmark } from "react-icons/fa6";
+import { useEventData } from "@/hooks/useEventData";
 
-type NavbarProps = {
-  navbarData: {
-    eventName: string;
-    eventLogoUrl: string;
-    isInnerRegistration: boolean;
-    registrationUrl: string;
-    sections: string[];
-  };
-};
-
-export default function Navbar({ navbarData }: NavbarProps): ReactNode {
+export default function Navbar(): ReactNode {
   const currentEventId = useParams().eventId || "";
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const { eventMetaData, sections } = useEventData();
+
+  if (!eventMetaData) {
+    return null;
+  }
 
   return (
     <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-gradient-to-b from-pure-white to-pure-white/80 backdrop-blur-[4px] z-9999 shadow-[0px_0px_0px_1px_rgba(0,_0,_0,_0.1)]">
@@ -30,21 +27,17 @@ export default function Navbar({ navbarData }: NavbarProps): ReactNode {
           </button>
         </Activity>
         <EventLogo
-          logoUrl={navbarData.eventLogoUrl}
-          eventName={navbarData.eventName}
+          logoUrl={eventMetaData.eventLogoUrl || ""}
+          eventName={eventMetaData.eventName || ""}
         />
-        <NavLinks
-          sections={navbarData.sections}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        />
+        <NavLinks sections={sections} isOpen={isOpen} setIsOpen={setIsOpen} />
         <NavLink
           to={
-            navbarData.isInnerRegistration
+            eventMetaData.isInnerRegistration
               ? currentEventId + "/registration/"
-              : navbarData.registrationUrl
+              : eventMetaData.registrationUrl || ""
           }
-          target={navbarData.isInnerRegistration ? "_self" : "_blank"}
+          target={eventMetaData.isInnerRegistration ? "_self" : "_blank"}
           className="flex gap-1.25 items-center text-[1.08em] px-4.25 py-2 max-xl:text-[0.9em]/[140%] max-xl:px-3.5 bg-blue text-white rounded-full hover:bg-light-gray/40 hover:text-black focus:bg-light-gray/40 focus:text-black focus-within:bg-light-gray/40 focus-within:text-black transition-colors duration-200"
         >
           Register <FaArrowRight />

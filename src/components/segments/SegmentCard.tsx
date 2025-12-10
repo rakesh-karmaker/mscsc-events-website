@@ -6,14 +6,17 @@ import { FaArrowRight } from "react-icons/fa6";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import animateSegment from "@/animations/segment";
+import { useParams } from "react-router";
 
 gsap.registerPlugin(useGSAP);
 
-export default function Segment({
+export default function SegmentCard({
   segmentData,
 }: {
   segmentData: SegmentType;
 }): ReactNode {
+  const eventId = useParams().eventId || "";
+
   const { icon, imageUrl, title, summary } = segmentData;
   const segmentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -46,7 +49,7 @@ export default function Segment({
         </div>
         <PrimaryBtn
           isLink={true}
-          href="#"
+          href={`/segments/${eventId}/${segmentData.segment_slug}`}
           className="!px-4 flex gap-0.1 items-center"
         >
           Learn More <FaArrowRight className="ml-2" />

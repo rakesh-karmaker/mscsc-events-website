@@ -1,28 +1,16 @@
 import type { ReactNode } from "react";
 import AboutTop from "./AboutTop";
 import AboutBottom from "./AboutBottom";
+import { useEventData } from "@/hooks/useEventData";
 
-type AboutProps = {
-  about: { title: string; heading: string; text: string };
-  isInnerRegistration: boolean;
-  registrationUrl: string;
-  contactLinks: { [platform: string]: string };
-  registrations: number;
-  segmentCount: number;
-  prizeCount: number;
-  sections: string[];
-};
+export default function About(): ReactNode {
+  // Fetch event data using the custom hook
+  const { eventMetaData, aboutData, sections, segmentData, contactLinks } =
+    useEventData();
+  if (!eventMetaData || !aboutData) {
+    return null;
+  }
 
-export default function About({
-  about,
-  isInnerRegistration,
-  registrationUrl,
-  contactLinks,
-  registrations,
-  segmentCount,
-  prizeCount,
-  sections,
-}: AboutProps): ReactNode {
   return (
     <section
       id="about"
@@ -32,15 +20,15 @@ export default function About({
       }}
     >
       <AboutTop
-        about={about}
-        isInnerRegistration={isInnerRegistration}
-        registrationUrl={registrationUrl}
-        contactLinks={contactLinks}
+        about={aboutData}
+        isInnerRegistration={eventMetaData.isInnerRegistration}
+        registrationUrl={eventMetaData.registrationUrl || ""}
+        contactLinks={contactLinks || {}}
       />
       <AboutBottom
-        registrations={registrations}
-        segmentCount={segmentCount}
-        prizeCount={prizeCount}
+        registrations={eventMetaData.registrations}
+        segmentCount={segmentData?.length || 0}
+        prizeCount={eventMetaData.prizeCount}
       />
     </section>
   );

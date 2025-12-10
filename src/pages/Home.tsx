@@ -32,44 +32,14 @@ export default function Home(): ReactNode {
 
   // Map section keys to their respective components
   const sectionComponents: { [key: string]: ReactNode } = {
-    hero: (
-      <Hero
-        eventDate={websiteData.eventDate}
-        eventLocation={websiteData.eventLocation}
-        heroData={websiteData.hero}
-        isInnerRegistration={websiteData.isInnerRegistration}
-        registrationUrl={websiteData.registrationUrl}
-        sections={websiteData.sections}
-      />
-    ),
-    video: <Video url={websiteData.video.url} />,
-    about: (
-      <About
-        about={websiteData.about}
-        isInnerRegistration={websiteData.isInnerRegistration}
-        registrationUrl={websiteData.registrationUrl}
-        contactLinks={websiteData.contactLinks}
-        registrations={websiteData.registrations}
-        segmentCount={websiteData.segments.length}
-        prizeCount={websiteData.prizeCount}
-        sections={websiteData.sections}
-      />
-    ),
-    segments: <Segments segments={websiteData.segments} />,
-    schedule: <Schedule scheduleData={websiteData.schedule} />,
-    "sponsors&partners": (
-      <Sponsors
-        sponsorData={websiteData["sponsors&partners"]}
-        eventName={websiteData.eventName}
-      />
-    ),
-    faqs: <Faq faqData={websiteData.faqs} />,
-    contact: (
-      <Contact
-        contactData={websiteData.contactLinks}
-        eventName={websiteData.eventName}
-      />
-    ),
+    hero: <Hero key={"home"} />,
+    video: <Video key={"video"} />,
+    about: <About key={"about"} />,
+    segments: <Segments key={"segments"} />,
+    schedule: <Schedule key={"schedule"} />,
+    sp: <Sponsors key={"sp"} />,
+    faqs: <Faq key={"faqs"} />,
+    contact: <Contact key={"contact"} />,
   };
 
   return (

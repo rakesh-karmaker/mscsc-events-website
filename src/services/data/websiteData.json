@@ -1,5 +1,5 @@
 {
-  "template": "centered website",
+  "template": "Explorion",
   "eventName": "Explorion",
   "eventLogoUrl": "/explorion/event-icon.png",
   "eventDate": "3 July, 2026",
@@ -42,26 +42,27 @@
     "about",
     "segments",
     "schedule",
-    "sponsors&partners",
+    "sp",
     "faqs",
     "contact"
   ],
-  "hero": {
+  "heroData": {
     "icons": ["division", "rocket", "chess", "atom"],
     "heading": "Exploring the Universe Within and Beyond",
     "text": "A celebration of knowledge, innovation, and human curiosity. From the tiniest atoms to the farthest galaxies, every mystery awaits discovery. Join us on a journey to explore the wonders of science — within us and beyond the stars."
   },
-  "video": {
+  "videoData": {
     "hasAudio": false,
     "url": "/explorion/promo-video.mp4"
   },
-  "about": {
+  "aboutData": {
     "title": "Why attend Explorion",
     "heading": "Explorion is not just an event, it’s a journey into the unknown, inspiring the next generation of thinkers, dreamers, and innovators.",
     "text": "Explorion is where ideas take shape and imagination finds purpose. From interactive experiments to thought-provoking exhibitions, the event brings together curious minds eager to explore the wonders of science. Whether you’re a participant, a visitor, or a mentor, Explorion offers the perfect space to learn, share, and get inspired by innovation happening all around you."
   },
-  "segments": [
+  "segmentsData": [
     {
+      "segment_slug": "robotics-automation",
       "icon": "robot",
       "imageUrl": "/explorion/segments/robotics-automation.png",
       "title": "Robotics & Automation Challenge",
@@ -69,6 +70,7 @@
       "details": "Participants will design and construct robots capable of performing specific tasks, such as navigating obstacle courses, completing challenges, or engaging in robot battles. This segment encourages creativity, engineering skills, and teamwork."
     },
     {
+      "segment_slug": "innovation-model-exhibition",
       "icon": "bulb",
       "imageUrl": "/explorion/segments/innovation.png",
       "title": "Innovation & Model Exhibition",
@@ -76,6 +78,7 @@
       "details": "Participants will present innovative models or prototypes that address various challenges, ranging from environmental issues to technological advancements. This segment promotes critical thinking, problem-solving, and creativity."
     },
     {
+      "segment_slug": "environmental-science-fair",
       "icon": "globe",
       "imageUrl": "/explorion/segments/environmental-science-fair.png",
       "title": "Environmental Science Fair",
@@ -83,6 +86,7 @@
       "details": "Participants will develop projects focused on environmental conservation, renewable energy, waste management, and other sustainability topics. This segment aims to raise awareness about environmental issues and inspire eco-conscious solutions."
     },
     {
+      "segment_slug": "tech-art-poster-design",
       "icon": "paint",
       "imageUrl": "/explorion/segments/tech-art-poster-design.png",
       "title": "Tech Art & Poster Design",
@@ -90,6 +94,7 @@
       "details": "Participants will create visually appealing posters or artworks that communicate scientific concepts, technological advancements, or environmental themes. This segment encourages artistic expression and effective communication of complex ideas."
     },
     {
+      "segment_slug": "space-astronomy-quest",
       "icon": "rocket",
       "imageUrl": "/explorion/segments/space-astronomy-quest.png",
       "title": "Space & Astronomy Quest",
@@ -97,6 +102,7 @@
       "details": "Participants will engage in activities related to space exploration, astronomy, and astrophysics. This segment includes quizzes, interactive discussions, and stargazing sessions to deepen understanding of the cosmos."
     },
     {
+      "segment_slug": "math-marathon",
       "icon": "math",
       "imageUrl": "/explorion/segments/math-marathon.png",
       "title": "Math Marathon",
@@ -104,6 +110,7 @@
       "details": "Participants will tackle a series of challenging mathematical problems and puzzles that test their analytical and problem-solving skills. This segment promotes logical thinking, numerical proficiency, and a love for mathematics."
     },
     {
+      "segment_slug": "science-quiz-bowl",
       "icon": "puzzle",
       "imageUrl": "/explorion/segments/science-quiz-bowl.png",
       "title": "Science Quiz Bowl",
@@ -111,6 +118,7 @@
       "details": "Participants will compete in a quiz format that covers various scientific disciplines, including physics, chemistry, biology, and general science. This segment encourages quick thinking, teamwork, and a broad understanding of scientific concepts."
     },
     {
+      "segment_slug": "scientific-debate",
       "icon": "debate",
       "imageUrl": "/explorion/segments/science-debate.png",
       "title": "Scientific Debate",
@@ -118,7 +126,7 @@
       "details": "Participants will engage in structured debates on various scientific issues, encouraging critical thinking, effective communication, and the ability to analyze different perspectives. This segment fosters a deeper understanding of scientific discourse and argumentation."
     }
   ],
-  "schedule": {
+  "scheduleData": {
     "July 3, 2025": [
       {
         "icon": "globe",
@@ -234,7 +242,7 @@
       }
     ]
   },
-  "sponsors&partners": [
+  "spData": [
     {
       "name": "TechNova",
       "logoUrl": "/explorion/sponsors/sponsor1.png",
@@ -276,7 +284,7 @@
       "websiteUrl": "#"
     }
   ],
-  "faqs": [
+  "faqData": [
     {
       "question": "Who can participate in Explorion?",
       "answer": "Explorion is open to students, educators, and science enthusiasts of all ages who are passionate about exploring scientific concepts and innovations."

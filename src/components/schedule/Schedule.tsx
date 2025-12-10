@@ -1,17 +1,19 @@
-import type { ScheduleType } from "@/types/globalTypes";
 import { useState, type ReactNode } from "react";
 import ScheduleLeft from "./ScheduleLeft";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import ScheduleRight from "./ScheduleRight";
+import { useEventData } from "@/hooks/useEventData";
 
 dayjs.extend(localizedFormat);
 
-type ScheduleProps = {
-  scheduleData: { [date: string]: ScheduleType[] };
-};
+export default function Schedule(): ReactNode {
+  // Fetch event data using the custom hook
+  const { scheduleData } = useEventData();
+  if (!scheduleData || Object.keys(scheduleData).length === 0) {
+    return null;
+  }
 
-export default function Schedule({ scheduleData }: ScheduleProps): ReactNode {
   const currentDate = dayjs().format("LL");
 
   const [date, setDate] = useState<string>(

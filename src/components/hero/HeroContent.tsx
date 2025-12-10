@@ -6,34 +6,30 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import animateHeroContent from "@/animations/heroContent";
+import { useEventData } from "@/hooks/useEventData";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(SplitText);
 
-type HeroContentProps = {
-  heading: string;
-  text: string;
-  isInnerRegistration: boolean;
-  registrationUrl: string;
-  sections: string[];
-};
-
-export default function HeroContent({
-  heading,
-  text,
-  isInnerRegistration,
-  registrationUrl,
-  sections,
-}: HeroContentProps): ReactNode {
+export default function HeroContent(): ReactNode {
   const lenis = useLenis();
 
+  // Fetch event data using the custom hook
+  const { eventMetaData, sections, heroData } = useEventData();
+  if (!eventMetaData || !heroData) {
+    return null;
+  }
+
+  // Determine which section to link to for "Learn More"
   const learnMoreSection = sections.includes("about") ? "about" : "segments";
 
+  // Get eventId from URL parameters
   const eventId = useParams().eventId;
-  const registrationLink = isInnerRegistration
+  const registrationLink = eventMetaData.isInnerRegistration
     ? `${eventId}/registration/`
-    : registrationUrl;
+    : eventMetaData.registrationUrl;
 
+  // Refs for GSAP animation
   const headingRef = useRef<HTMLDivElement>(null);
   const textContentRef = useRef<HTMLDivElement>(null);
 
@@ -53,14 +49,14 @@ export default function HeroContent({
           willChange: "transform",
         }}
       >
-        {heading}
+        {heroData.heading}
       </h1>
       <div
         className="flex flex-col gap-8 items-center max-md:gap-5"
         ref={textContentRef}
       >
         <p className="text-[1.165em]/[120%] max-xl:text-[1.1em] max-md:text-[1em] max-sm:text-[0.975em] max-[450px]:text-[0.8rem] text-gray-700 text-center max-w-[70ch]">
-          {text}
+          {heroData.text}
         </p>
         <div className="flex gap-4 flex-wrap justify-center">
           <PrimaryBtn

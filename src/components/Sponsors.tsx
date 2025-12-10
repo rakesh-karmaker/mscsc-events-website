@@ -1,6 +1,6 @@
 import animateFadeUp from "@/animations/fadeUp";
 import animateTextReveal from "@/animations/textReveal";
-import type { SponsorType } from "@/types/globalTypes";
+import { useEventData } from "@/hooks/useEventData";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,15 +9,13 @@ import { useRef, type ReactNode } from "react";
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
-type SponsorsProps = {
-  sponsorData: SponsorType[];
-  eventName: string;
-};
+export default function Sponsors(): ReactNode {
+  // Fetch event data using the custom hook
+  const { eventMetaData, spData } = useEventData();
+  if (!spData || spData.length === 0 || !eventMetaData) {
+    return null;
+  }
 
-export default function Sponsors({
-  sponsorData,
-  eventName,
-}: SponsorsProps): ReactNode {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subheadingRef = useRef<HTMLParagraphElement>(null);
   const sponsorContainerRefs = useRef<HTMLDivElement>(null);
@@ -63,15 +61,15 @@ export default function Sponsors({
           className="text-[1.1rem]/[135%] text-black/90 max-w-[40ch]"
           ref={subheadingRef}
         >
-          {eventName} is made possible through the generous support of our
-          sponsors and partners.
+          {eventMetaData.eventName} is made possible through the generous
+          support of our sponsors and partners.
         </p>
       </div>
       <div
         className="w-full grid grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-3 max-sm:grid-cols-2 max-[450px]:!grid-cols-1"
         ref={sponsorContainerRefs}
       >
-        {sponsorData.map((sponsor, index) => (
+        {spData.map((sponsor, index) => (
           <a
             key={index}
             href={sponsor.websiteUrl}

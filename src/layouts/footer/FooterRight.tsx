@@ -1,16 +1,14 @@
-import formatUrl from "@/utils/formatUrl";
 import type { ReactNode } from "react";
 import { Link, NavLink, useParams } from "react-router";
+import ContactLinkItem from "./ContactLinkItem";
 
 type FooterRightProps = {
-  eventName: string;
   contactLinks: { [platform: string]: string };
   eventLocation: string;
   sections: string[];
 };
 
 export default function FooterRight({
-  eventName,
   contactLinks,
   eventLocation,
   sections,
@@ -40,7 +38,7 @@ export default function FooterRight({
       name: "Schedule",
       url: "schedule",
     },
-    "sponsors&partners": {
+    sp: {
       name: "Sponsors",
       url: "sponsors",
     },
@@ -95,8 +93,8 @@ export default function FooterRight({
       </div>
       <p className="w-full pl-15 pr-[calc((100vw-var(--max-width))/2)] pt-10 border-t border-light-gray text-[1.1em] max-[1500px]:text-[1em] max-[950px]:pl-0 max-[950px]:pr-0 max-[950px]:!px-[calc((100vw-var(--max-width))/2)]">
         <span>
-          Copyright © {new Date().getFullYear()} {eventName} - All rights
-          reserved || Designed By:{" "}
+          Copyright © {new Date().getFullYear()} MSCSC - All rights reserved ||
+          Designed By:{" "}
           <Link
             to="https://github.com/rakesh-karmaker"
             className="text-black/80 transition-all duration-200 hover:text-black/60"
@@ -105,32 +103,6 @@ export default function FooterRight({
           </Link>
         </span>
       </p>
-    </div>
-  );
-}
-
-function ContactLinkItem({
-  platform,
-  url,
-  isLink,
-}: {
-  platform: string;
-  url: string;
-  isLink: boolean;
-}): ReactNode {
-  return (
-    <div>
-      <h4 className="font-semibold text-xl mb-0.75">{platform}</h4>
-      {isLink ? (
-        <Link
-          to={formatUrl(platform, url)}
-          className="transition-all duration-200 hover:text-blue"
-        >
-          {url}
-        </Link>
-      ) : (
-        <pre className="text-lg">{url}</pre>
-      )}
     </div>
   );
 }

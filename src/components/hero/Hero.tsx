@@ -2,28 +2,15 @@ import type { ReactNode } from "react";
 import EventMeta from "./EventMeta";
 import HeroContent from "./HeroContent";
 import HeroIcons from "./HeroIcons";
+import { useEventData } from "@/hooks/useEventData";
 
-type HeroProps = {
-  eventDate: string;
-  eventLocation: string;
-  heroData: {
-    icons: string[];
-    heading: string;
-    text: string;
-  };
-  isInnerRegistration: boolean;
-  registrationUrl: string;
-  sections: string[];
-};
+export default function Hero(): ReactNode {
+  const { eventMetaData, sections, heroData } = useEventData();
 
-export default function Hero({
-  eventDate,
-  eventLocation,
-  heroData,
-  isInnerRegistration,
-  registrationUrl,
-  sections,
-}: HeroProps): ReactNode {
+  if (!eventMetaData || !heroData) {
+    return null;
+  }
+
   return (
     <section
       id="home"
@@ -35,14 +22,11 @@ export default function Hero({
       }}
     >
       <div className="flex flex-col gap-6.5 items-center">
-        <EventMeta eventDate={eventDate} eventLocation={eventLocation} />
-        <HeroContent
-          heading={heroData.heading}
-          text={heroData.text}
-          isInnerRegistration={isInnerRegistration}
-          registrationUrl={registrationUrl}
-          sections={sections}
+        <EventMeta
+          eventDate={eventMetaData.eventDate}
+          eventLocation={eventMetaData.eventLocation}
         />
+        <HeroContent />
       </div>
       <HeroIcons icons={heroData.icons} sections={sections} />
     </section>
