@@ -1,7 +1,7 @@
 import { Activity, useState, type ReactNode } from "react";
-import EventLogo from "./EventLogo";
+import EventLogo from "./event-logo";
 import { NavLink, useParams } from "react-router";
-import NavLinks from "./NavLinks";
+import NavLinks from "./nav-links";
 import { FaArrowRight, FaBars, FaXmark } from "react-icons/fa6";
 import { useEventData } from "@/hooks/useEventData";
 

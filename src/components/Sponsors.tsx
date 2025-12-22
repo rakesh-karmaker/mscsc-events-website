@@ -1,5 +1,5 @@
-import animateFadeUp from "@/animations/fadeUp";
-import animateTextReveal from "@/animations/textReveal";
+import animateFadeUp from "@/animations/fade-up";
+import animateTextReveal from "@/animations/text-reveal";
 import { useEventData } from "@/hooks/useEventData";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

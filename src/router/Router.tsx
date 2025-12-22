@@ -1,13 +1,13 @@
-import App from "@/App.tsx";
+import App from "@/app";
 import { createBrowserRouter, Navigate } from "react-router";
-import HomeLayout from "@/layouts/HomeLayout.tsx";
+import HomeLayout from "@/layouts/home-layout";
 import { lazy, Suspense } from "react";
-import Loader from "@/components/ui/Loader";
-import PageNotFound from "@/pages/PageNotFound";
+import Loader from "@/components/ui/loader";
+import PageNotFound from "@/pages/page-not-found";
 
-const HomePage = lazy(() => import("@/pages/Home"));
-const RegistrationPage = lazy(() => import("@/pages/Registration"));
-const SegmentPage = lazy(() => import("@/pages/Segment"));
+const HomePage = lazy(() => import("@/pages/home"));
+const RegistrationPage = lazy(() => import("@/pages/registration"));
+const SegmentPage = lazy(() => import("@/pages/segment"));
 
 export const router = createBrowserRouter([
   {

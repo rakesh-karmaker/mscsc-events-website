@@ -9,7 +9,7 @@ import type {
   ExplorionSPType,
   ExplorionVideoSectionType,
   FormDataType,
-} from "@/types/eventDataTypes";
+} from "@/types/event-data-types";
 import { create } from "zustand";
 
 export type EventDataStateType = {

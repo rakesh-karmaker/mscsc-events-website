@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import EventMeta from "./EventMeta";
-import HeroContent from "./HeroContent";
-import HeroIcons from "./HeroIcons";
+import EventMeta from "./event-meta";
+import HeroContent from "./hero-content";
+import HeroIcons from "./hero-icons";
 import { useEventData } from "@/hooks/useEventData";
 
 export default function Hero(): ReactNode {

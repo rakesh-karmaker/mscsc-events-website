@@ -1,8 +1,8 @@
 import { useRef, type ReactNode } from "react";
-import SegmentCard from "./SegmentCard";
+import SegmentCard from "./segment-card";
 import { useGSAP } from "@gsap/react";
-import animateTextReveal from "@/animations/textReveal";
-import animateFadeUp from "@/animations/fadeUp";
+import animateTextReveal from "@/animations/text-reveal";
+import animateFadeUp from "@/animations/fade-up";
 import gsap from "gsap";
 import { useEventData } from "@/hooks/useEventData";
 

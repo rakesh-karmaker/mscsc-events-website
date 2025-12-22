@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import FooterInfo from "./FooterInfo";
-import FooterRight from "./FooterRight";
+import FooterInfo from "./footer-info";
+import FooterRight from "./footer-right";
 import { useEventData } from "@/hooks/useEventData";
 
 export default function Footer(): ReactNode {

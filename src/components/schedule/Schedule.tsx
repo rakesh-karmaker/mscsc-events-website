@@ -1,8 +1,8 @@
 import { useState, type ReactNode } from "react";
-import ScheduleLeft from "./ScheduleLeft";
+import ScheduleLeft from "./schedule-left";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
-import ScheduleRight from "./ScheduleRight";
+import ScheduleRight from "./schedule-right";
 import { useEventData } from "@/hooks/useEventData";
 
 dayjs.extend(localizedFormat);

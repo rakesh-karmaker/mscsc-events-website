@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import AboutTop from "./AboutTop";
-import AboutBottom from "./AboutBottom";
+import AboutTop from "./about-top";
+import AboutBottom from "./about-bottom";
 import { useEventData } from "@/hooks/useEventData";
 
 export default function About(): ReactNode {

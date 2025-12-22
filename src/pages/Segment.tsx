@@ -1,4 +1,4 @@
-import SegmentInfo from "@/components/segmentPage/SegmentInfo";
+import SegmentInfo from "@/components/segment-page/segment-info";
 import { useEventData } from "@/hooks/useEventData";
 import type { ReactNode } from "react";
 import { useParams } from "react-router";

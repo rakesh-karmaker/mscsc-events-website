@@ -1,7 +1,7 @@
 import { Activity, type ReactNode } from "react";
-import FaqLeft from "./FaqLeft";
-import FaqRight from "./FaqRight";
-import ContactBox from "./ContactBox";
+import FaqLeft from "./faq-left";
+import FaqRight from "./faq-right";
+import ContactBox from "./contact-box";
 import { useEventData } from "@/hooks/useEventData";
 
 export default function Faq(): ReactNode {

@@ -1,8 +1,8 @@
-import websiteData from "@/services/data/websiteData.json";
-import FormInfo from "@/components/forms/registrationForm/FormInfo";
-import RegistrationHeader from "@/components/RegistrationHeader";
+import websiteData from "@/services/data/website-data.json";
+import FormInfo from "@/components/forms/registration-form/form-info";
+import RegistrationHeader from "@/components/registration-header";
 import { useEffect, type ReactNode } from "react";
-import RegistrationForm from "@/components/forms/registrationForm/RegistrationForm";
+import RegistrationForm from "@/components/forms/registration-form/registration-form";
 import { useEventData } from "@/hooks/useEventData";
 
 export default function Registration(): ReactNode {
