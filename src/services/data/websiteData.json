@@ -62,68 +62,92 @@
   },
   "segmentsData": [
     {
-      "segment_slug": "robotics-automation",
+      "segmentSlug": "robotics-automation",
+      "locationType": "onsite",
+      "teamType": "solo",
       "icon": "robot",
       "imageUrl": "/explorion/segments/robotics-automation.png",
       "title": "Robotics & Automation Challenge",
       "summary": "Build, program, and compete with your own robots in thrilling automation tasks.",
-      "details": "Participants will design and construct robots capable of performing specific tasks, such as navigating obstacle courses, completing challenges, or engaging in robot battles. This segment encourages creativity, engineering skills, and teamwork."
+      "details": "Participants will design and construct robots capable of performing specific tasks, such as navigating obstacle courses, completing challenges, or engaging in robot battles. This segment encourages creativity, engineering skills, and teamwork.",
+      "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
     },
     {
-      "segment_slug": "innovation-model-exhibition",
+      "segmentSlug": "innovation-model-exhibition",
+      "locationType": "onsite",
+      "teamType": "solo",
       "icon": "bulb",
       "imageUrl": "/explorion/segments/innovation.png",
       "title": "Innovation & Model Exhibition",
       "summary": "Showcase creative models and prototypes that solve real-world problems.",
-      "details": "Participants will present innovative models or prototypes that address various challenges, ranging from environmental issues to technological advancements. This segment promotes critical thinking, problem-solving, and creativity."
+      "details": "Participants will present innovative models or prototypes that address various challenges, ranging from environmental issues to technological advancements. This segment promotes critical thinking, problem-solving, and creativity.",
+      "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
     },
     {
-      "segment_slug": "environmental-science-fair",
+      "segmentSlug": "environmental-science-fair",
+      "locationType": "onsite",
+      "teamType": "solo",
       "icon": "globe",
       "imageUrl": "/explorion/segments/environmental-science-fair.png",
       "title": "Environmental Science Fair",
       "summary": "Present projects that promote sustainability and eco-friendly innovation.",
-      "details": "Participants will develop projects focused on environmental conservation, renewable energy, waste management, and other sustainability topics. This segment aims to raise awareness about environmental issues and inspire eco-conscious solutions."
+      "details": "Participants will develop projects focused on environmental conservation, renewable energy, waste management, and other sustainability topics. This segment aims to raise awareness about environmental issues and inspire eco-conscious solutions.",
+      "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
     },
     {
-      "segment_slug": "tech-art-poster-design",
+      "segmentSlug": "tech-art-poster-design",
+      "locationType": "onsite",
+      "teamType": "solo",
       "icon": "paint",
       "imageUrl": "/explorion/segments/tech-art-poster-design.png",
       "title": "Tech Art & Poster Design",
       "summary": "Combine creativity and science through artistic visuals and posters.",
-      "details": "Participants will create visually appealing posters or artworks that communicate scientific concepts, technological advancements, or environmental themes. This segment encourages artistic expression and effective communication of complex ideas."
+      "details": "Participants will create visually appealing posters or artworks that communicate scientific concepts, technological advancements, or environmental themes. This segment encourages artistic expression and effective communication of complex ideas.",
+      "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
     },
     {
-      "segment_slug": "space-astronomy-quest",
+      "segmentSlug": "space-astronomy-quest",
+      "locationType": "onsite",
+      "teamType": "solo",
       "icon": "rocket",
       "imageUrl": "/explorion/segments/space-astronomy-quest.png",
       "title": "Space & Astronomy Quest",
       "summary": "Explore the mysteries of the universe with quizzes, discussions, and observations.",
-      "details": "Participants will engage in activities related to space exploration, astronomy, and astrophysics. This segment includes quizzes, interactive discussions, and stargazing sessions to deepen understanding of the cosmos."
+      "details": "Participants will engage in activities related to space exploration, astronomy, and astrophysics. This segment includes quizzes, interactive discussions, and stargazing sessions to deepen understanding of the cosmos.",
+      "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
     },
     {
-      "segment_slug": "math-marathon",
+      "segmentSlug": "math-marathon",
+      "locationType": "onsite",
+      "teamType": "solo",
       "icon": "math",
       "imageUrl": "/explorion/segments/math-marathon.png",
       "title": "Math Marathon",
       "summary": "Combine creativity and science through artistic visuals and posters.",
-      "details": "Participants will tackle a series of challenging mathematical problems and puzzles that test their analytical and problem-solving skills. This segment promotes logical thinking, numerical proficiency, and a love for mathematics."
+      "details": "Participants will tackle a series of challenging mathematical problems and puzzles that test their analytical and problem-solving skills. This segment promotes logical thinking, numerical proficiency, and a love for mathematics.",
+      "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
     },
     {
-      "segment_slug": "science-quiz-bowl",
+      "segmentSlug": "science-quiz-bowl",
+      "locationType": "onsite",
+      "teamType": "solo",
       "icon": "puzzle",
       "imageUrl": "/explorion/segments/science-quiz-bowl.png",
       "title": "Science Quiz Bowl",
       "summary": "Test your knowledge across all fields of science in a fast-paced quiz.",
-      "details": "Participants will compete in a quiz format that covers various scientific disciplines, including physics, chemistry, biology, and general science. This segment encourages quick thinking, teamwork, and a broad understanding of scientific concepts."
+      "details": "Participants will compete in a quiz format that covers various scientific disciplines, including physics, chemistry, biology, and general science. This segment encourages quick thinking, teamwork, and a broad understanding of scientific concepts.",
+      "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
     },
     {
-      "segment_slug": "scientific-debate",
+      "segmentSlug": "scientific-debate",
+      "locationType": "onsite",
+      "teamType": "solo",
       "icon": "debate",
       "imageUrl": "/explorion/segments/science-debate.png",
       "title": "Scientific Debate",
       "summary": "Express your ideas and defend your stance on thought-provoking scientific topics.",
-      "details": "Participants will engage in structured debates on various scientific issues, encouraging critical thinking, effective communication, and the ability to analyze different perspectives. This segment fosters a deeper understanding of scientific discourse and argumentation."
+      "details": "Participants will engage in structured debates on various scientific issues, encouraging critical thinking, effective communication, and the ability to analyze different perspectives. This segment fosters a deeper understanding of scientific discourse and argumentation.",
+      "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
     }
   ],
   "scheduleData": {
@@ -307,7 +331,8 @@
     },
     {
       "question": "Will there be prizes for the competitions?",
-      "answer": "Yes, there will be awards and recognition for outstanding participants in various segments of the event. Details about the prizes will be provided during the event."
+      "answer": "Yes, there will be awards and recognition for outstanding participants in various segments of the event. Details about the prizes will be provided during the event.",
+      "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
     },
     {
       "question": "How can I stay updated about the event?",

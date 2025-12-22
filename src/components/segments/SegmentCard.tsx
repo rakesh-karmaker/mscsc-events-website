@@ -49,7 +49,7 @@ export default function SegmentCard({
         </div>
         <PrimaryBtn
           isLink={true}
-          href={`/segments/${eventId}/${segmentData.segment_slug}`}
+          href={`/segments/${eventId}/${segmentData.segmentSlug}`}
           className="!px-4 flex gap-0.1 items-center"
         >
           Learn More <FaArrowRight className="ml-2" />

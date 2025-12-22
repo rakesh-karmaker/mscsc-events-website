@@ -22,7 +22,7 @@ export default function HomeLayout(): ReactNode {
       <div className="w-full h-full min-h-screen flex justify-center items-center">
         <Loader />
       </div>
-    ); // or a loading spinner
+    );
   }
 
   return (

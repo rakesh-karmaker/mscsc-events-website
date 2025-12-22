@@ -1,10 +1,13 @@
 export type SegmentType = {
-  segment_slug: string;
+  segmentSlug: string;
+  locationType: "online" | "onsite" | "hybrid";
+  teamType: "solo" | "team";
   icon: string;
   imageUrl: string;
   title: string;
   summary: string;
   details: string;
+  rules: string;
 };
 
 export type ScheduleType = {

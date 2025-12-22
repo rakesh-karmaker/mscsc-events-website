@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
 
       // Segments path
       {
-        path: "/segments/:eventId/:segmentId",
+        path: "/segments/:eventId/:segmentSlug",
         element: (
           <Suspense
             fallback={
@@ -51,6 +51,7 @@ export const router = createBrowserRouter([
             <SegmentPage />
           </Suspense>
         ),
+        errorElement: <PageNotFound />,
       },
 
       // Registration path
