@@ -13,7 +13,7 @@ export default function AboutBottom({
   prizeCount,
 }: AboutBottomProps): ReactNode {
   return (
-    <div className="w-full h-full border-t-1 border-light-gray/60 pt-5 grid grid-cols-3 max-[810px]:grid-cols-2 max-[810px]:grid-rows-2 gap-10 max-sm:grid-cols-1">
+    <div className="w-full h-full border-t-2 border-primary pt-5 grid grid-cols-3 max-[810px]:grid-cols-2 max-[810px]:grid-rows-2 gap-10 max-sm:grid-cols-1">
       <AboutCounterItem count={registrations}>Registrations</AboutCounterItem>
       <AboutCounterItem count={segmentCount}>
         Interesting Segments
@@ -36,13 +36,15 @@ function AboutCounterItem({
         <Counter
           value={count}
           height={window.innerWidth < 1280 ? 72 : 112}
-          className="text-[7rem] max-xl:text-7xl font-light max-w-[calc(1ch*0.92)]"
+          className="text-[7rem] max-xl:text-7xl font-light max-w-[calc(1ch*0.92)] text-primary"
         />
-        <span className="text-[7rem]/[100%] max-xl:text-[4.5rem]/[100%] font-extralight h-fit pb-3">
+        <span className="text-[7rem]/[100%] max-xl:text-[4.5rem]/[100%] font-extralight h-fit pb-3 text-primary">
           +
         </span>
       </div>
-      <p className="text-2xl font-medium -mt-2 max-xl:text-xl">{children}</p>
+      <p className="text-2xl font-medium -mt-2 max-xl:text-xl text-text">
+        {children}
+      </p>
     </div>
   );
 }

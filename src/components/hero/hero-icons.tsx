@@ -11,7 +11,7 @@ export default function HeroIcons({
   sections: string[];
 }): ReactNode {
   const commonClassNames =
-    "absolute w-30 h-30 max-xl:w-25 max-xl:h-25 max-md:w-20 max-md:h-20 max-sm:w-15 max-sm:h-15 text-dark-gray/65";
+    "absolute w-30 h-30 max-xl:w-25 max-xl:h-25 max-md:w-20 max-md:h-20 max-sm:w-15 max-sm:h-15 text-light-orange";
   const iconContainerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {

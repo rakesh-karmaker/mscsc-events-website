@@ -13,16 +13,16 @@ export default function ContactLinkItem({
 }): ReactNode {
   return (
     <div>
-      <h4 className="font-semibold text-xl mb-0.75">{platform}</h4>
+      <h4 className="font-semibold text-xl mb-0.75 text-primary">{platform}</h4>
       {isLink ? (
         <Link
           to={formatUrl(platform, url)}
-          className="transition-all duration-200 hover:text-blue"
+          className="transition-all duration-200 hover:text-primary text-primary/70"
         >
           {url}
         </Link>
       ) : (
-        <pre className="text-lg">{url}</pre>
+        <span className="text-lg">{url}</span>
       )}
     </div>
   );

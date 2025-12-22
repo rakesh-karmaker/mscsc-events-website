@@ -6,6 +6,15 @@
   --max-width: 1550px;
   --nav-height: 65px;
 
+  --primary-bg: rgb(255, 248, 236);
+  --secondary-bg: rgb(255, 241, 218);
+
+  --primary-color: rgb(4, 56, 65);
+  --text-color: rgb(29, 75, 82);
+
+  --light-orange: rgb(255, 211, 146);
+  --dark-teal: rgb(2, 137, 159);
+
   --pure-black: #000000;
   --black: #222222;
 
@@ -23,6 +32,15 @@
 
 /* tailwind variables */
 @theme inline {
+  --color-primary-bg: var(--primary-bg);
+  --color-secondary-bg: var(--secondary-bg);
+
+  --color-primary: var(--primary-color);
+  --color-text: var(--text-color);
+
+  --color-light-orange: var(--light-orange);
+  --color-dark-teal: var(--dark-teal);
+
   --color-pure-black: var(--pure-black);
   --color-black: var(--black);
 
@@ -40,7 +58,7 @@
 
 body {
   font-family: var(--geist-sans);
-  background-color: var(--white);
+  background-color: var(--primary-bg);
   overflow-x: hidden;
 }
 
@@ -71,7 +89,7 @@ body {
 
 .loader {
   fill: none;
-  stroke: var(--blue);
+  stroke: var(--primary-color);
   stroke-width: 3;
   stroke-dasharray: 2, 200;
   stroke-dashoffset: 0;
@@ -99,4 +117,11 @@ body {
   100% {
     stroke-dashoffset: -125px;
   }
+}
+.gradient-text {
+  background: linear-gradient(88.63deg, #043841 3.66%, #02899f 118.11%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }

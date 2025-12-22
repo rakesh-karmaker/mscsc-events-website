@@ -9,8 +9,12 @@ dayjs.extend(localizedFormat);
 
 export default function Schedule(): ReactNode {
   // Fetch event data using the custom hook
-  const { scheduleData } = useEventData();
-  if (!scheduleData || Object.keys(scheduleData).length === 0) {
+  const { scheduleData, eventMetaData } = useEventData();
+  if (
+    !eventMetaData ||
+    !scheduleData ||
+    Object.keys(scheduleData).length === 0
+  ) {
     return null;
   }
 
@@ -23,12 +27,13 @@ export default function Schedule(): ReactNode {
   return (
     <section
       id="schedule"
-      className="my-20 w-full flex border-t-1 border-b-1 border-light-gray/90 max-lg:flex-col"
+      className="my-20 w-full flex border-t-2 border-b-2 border-primary max-lg:flex-col"
     >
       <ScheduleLeft
         dates={Object.keys(scheduleData)}
         setDate={setDate}
         date={date}
+        name={eventMetaData.eventName}
       />
       <ScheduleRight scheduleData={scheduleData} date={date} />
     </section>

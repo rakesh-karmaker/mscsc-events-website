@@ -10,17 +10,17 @@ export default function EventMeta({
   eventLocation: string;
 }): ReactNode {
   return (
-    <div className="relative w-fit h-fit bg-white/60 backdrop-blur-[2px] px-4 py-2 flex justify-center items-center gap-5 border-1 border-light-gray max-sm:gap-3">
+    <div className="relative w-fit h-fit backdrop-blur-[2px] px-4 py-2 flex justify-center items-center gap-5 border border-primary max-sm:gap-3">
       <div className="flex gap-1.5 items-center min-w-fit">
-        <FaClock className="text-black max-md:text-sm" />
-        <p className="text-black font-medium text-lg max-md:text-sm">
+        <FaClock className="text-text max-md:text-sm" />
+        <p className="text-text font-medium text-lg max-md:text-sm">
           {eventDate}
         </p>
       </div>
-      <div className="w-0.5 h-6 bg-light-gray" />
+      <div className="w-0.5 h-6 bg-text/60" />
       <div className="flex gap-1 items-center min-w-fit">
-        <FaLocationDot className="text-black max-md:text-sm" />
-        <p className="text-black font-medium text-lg max-md:text-sm">
+        <FaLocationDot className="text-text max-md:text-sm" />
+        <p className="text-text font-medium text-lg max-md:text-sm">
           {eventLocation}
         </p>
       </div>

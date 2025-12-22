@@ -53,13 +53,12 @@ export default function ScheduleRight({
 
   return (
     <div
-      className="w-full h-full overflow-hidden border-l-1 max-lg:border-l-0 border-light-gray/90 flex flex-col max-lg:border-t-1"
+      className="w-full h-full overflow-hidden border-l-2 max-lg:border-l-0 border-primary flex flex-col max-lg:border-t-1"
       ref={segmentContainerRef}
     >
-      {currentScheduleData.map((item, index) => {
-        const isLast = index === currentScheduleData.length - 1;
-        return <ScheduleCard key={index} scheduleData={item} isLast={isLast} />;
-      })}
+      {currentScheduleData.map((item, index) => (
+        <ScheduleCard key={index} scheduleData={item} />
+      ))}
     </div>
   );
 }

@@ -14,7 +14,7 @@ export default function About(): ReactNode {
   return (
     <section
       id="about"
-      className="mb-6 mx-4 max-md:mx-0 w-fit max-w-[110rem] h-full p-10 max-md:py-8 max-md:!px-[calc((100vw-var(--max-width))/2)]  bg-pure-white rounded-xl max-xl:rounded-none flex flex-col gap-10 shadow-[0px_0px_0px_1px_rgba(0,_0,_0,_0.05)]"
+      className="mb-6 mx-4 max-md:mx-0 w-fit max-w-[110rem] h-full p-10 max-md:py-8 max-md:!px-[calc((100vw-var(--max-width))/2)] bg-secondary-bg rounded-xl max-xl:rounded-none flex flex-col gap-10 shadow-[0px_0px_0px_1px_rgba(255,_255,_255,_0.05)]"
       style={{
         maxWidth: sections.includes("video") ? "110rem" : "var(--max-width)",
       }}

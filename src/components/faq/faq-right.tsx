@@ -9,6 +9,7 @@ import {
   type ReactNode,
   type SetStateAction,
 } from "react";
+import { RxCross2 } from "react-icons/rx";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -79,19 +80,31 @@ function FaqItem({
   return (
     <div>
       <div
-        className="w-full h-fit flex flex-col gap-3 max-md:gap-2 pb-3 max-md:pb-2 border-b-1 border-light-gray/90 cursor-pointer hover:scale-[0.99] transition-all"
+        className="w-full h-fit flex flex-col gap-3 max-md:gap-2 pb-3 max-md:pb-2 border-b-2 border-primary cursor-pointer hover:scale-[0.99] transition-all"
         onClick={() => {
           setActiveIndex(index);
         }}
       >
-        <p className="text-2xl max-md:text-xl font-medium">{question}</p>
+        <div className="w-full flex justify-between items-center">
+          <p className="text-2xl max-md:text-xl font-medium text-primary">
+            {question}
+          </p>
+          <span className="text-3xl max-md:text-2xl text-primary">
+            <RxCross2
+              className="transition-all duration-200"
+              style={{
+                rotate: isActive ? "0deg" : "45deg",
+              }}
+            />
+          </span>
+        </div>
         <div
           className="w-full f-fit grid transition-all"
           style={{
             gridTemplateRows: isActive ? "1fr" : "0fr",
           }}
         >
-          <p className="text-base overflow-hidden">{answer}</p>
+          <p className="text-base overflow-hidden text-text">{answer}</p>
         </div>
       </div>
     </div>

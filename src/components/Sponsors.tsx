@@ -54,11 +54,11 @@ export default function Sponsors(): ReactNode {
       className="w-full max-w-max-width my-16 flex flex-col gap-12"
     >
       <div className="w-full flex flex-col gap-3">
-        <h2 className="text-5xl font-semibold" ref={headingRef}>
-          Sponsors & Partners
+        <h2 className="text-5xl font-semibold gradient-text" ref={headingRef}>
+          Powered by Our Partners
         </h2>
         <p
-          className="text-[1.1rem]/[135%] text-black/90 max-w-[40ch]"
+          className="text-[1.1rem]/[135%] text-text max-w-[40ch]"
           ref={subheadingRef}
         >
           {eventMetaData.eventName} is made possible through the generous
@@ -75,7 +75,7 @@ export default function Sponsors(): ReactNode {
             href={sponsor.websiteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full h-[144px] py-4 relative flex justify-center items-center border-1 border-light-gray/70 hover:bg-light-gray/10 transition-colors duration-200"
+            className="w-full h-[144px] py-4 relative flex justify-center items-center border-1 border-primary hover:bg-secondary-bg transition-colors duration-200"
           >
             <img
               src={sponsor.logoUrl}

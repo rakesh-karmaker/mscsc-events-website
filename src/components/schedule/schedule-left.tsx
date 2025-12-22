@@ -18,12 +18,14 @@ type ScheduleLeftProps = {
   dates: string[];
   setDate: Dispatch<SetStateAction<string>>;
   date: string;
+  name: string;
 };
 
 export default function ScheduleLeft({
   dates,
   setDate,
   date,
+  name,
 }: ScheduleLeftProps): ReactNode {
   const headingRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -38,21 +40,22 @@ export default function ScheduleLeft({
   }, []);
 
   return (
-    <div className="w-fit ml-[calc((100vw-var(--max-width))/2)] max-sm:mr-[calc((100vw-var(--max-width))/2)] relative p-10 max-lg:!px-0 border-l-1 max-lg:border-l-0 border-light-gray/90">
+    <div className="w-fit ml-[calc((100vw-var(--max-width))/2)] max-sm:mr-[calc((100vw-var(--max-width))/2)] relative p-10 max-lg:!px-0 border-l-2 max-lg:border-l-0 border-primary">
       <div className="sticky top-[calc(var(--nav-height)+2rem)] w-full min-w-[50ch] max-xl:min-w-[30ch] max-sm:min-w-full  h-fit flex flex-col gap-6">
         <div className="w-full flex flex-col gap-3">
           <h2
-            className="text-5xl font-semibold max-xl:text-4xl"
+            className="text-5xl font-semibold max-xl:text-4xl gradient-text"
             ref={headingRef}
           >
             Event Schedule
           </h2>
           <p
-            className="text-[1.1rem]/[135%] max-xl:text-[1rem] text-black/90 max-w-[40ch]"
+            className="text-[1.1rem]/[135%] max-xl:text-[1rem] text-text max-w-[40ch]"
             ref={subHeadingRef}
           >
-            A detailed overview of all sessions, competitions, and key
-            highlights of the fest.
+            Plan your day at {name}. Explore the full schedule of events,
+            segments, and activities, all organized to help you make the most of
+            the fest.
           </p>
         </div>
         <div className="flex flex-col gap-4" ref={contentRef}>
@@ -85,7 +88,7 @@ function DateItem({
       className={
         currentDate === date
           ? ""
-          : `before:!bg-light-gray/20 !text-black after:!bg-blue hover:!text-white`
+          : `before:!bg-secondary-bg !text-primary after:!bg-primary hover:!text-white`
       }
     >
       <span className="w-fit flex gap-1 items-center">

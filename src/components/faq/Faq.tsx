@@ -14,7 +14,7 @@ export default function Faq(): ReactNode {
   return (
     <section
       id="faqs"
-      className="w-full h-full my-16 mb-0 bg-pure-white py-13 flex justify-center"
+      className="w-full h-full my-16 mb-0 bg-secondary-bg py-13 flex justify-center border-b-2 border-primary "
     >
       <div className="w-full max-w-max-width flex gap-8 justify-between max-lg:flex-col max-lg:gap-10">
         <FaqLeft />

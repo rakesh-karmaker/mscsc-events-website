@@ -40,7 +40,7 @@ export default function ContactInfo({
   }, []);
 
   return (
-    <div className="w-full max-w-[730px] border-r-1 max-lg:border-r-0 max-lg:border-b-1 max-lg:max-w-full border-light-gray/90 py-16 pr-4">
+    <div className="w-full max-w-[730px] border-r-2 max-lg:border-r-0 max-lg:border-b-2 max-lg:max-w-full border-primary py-16 pr-4">
       <div className="w-full max-w-[550px] flex flex-col gap-8">
         <ContactHeading />
         <div className="w-full flex flex-col gap-7" ref={iconsContainerRef}>
@@ -81,17 +81,19 @@ function ContactItem({
 }): ReactNode {
   return (
     <div className="w-full flex gap-4 items-center">
-      <div className="w-15 h-15 min-w-15 min-h-15 flex justify-center items-center bg-blue rounded-sm">
+      <div className="w-15 h-15 min-w-15 min-h-15 flex justify-center items-center bg-primary rounded-sm">
         <Icon iconName={icon} className="w-7 h-7 text-white" />
       </div>
       <div className="flex flex-col">
-        <h4 className="text-2xl font-semibold uppercase">{heading}</h4>
+        <h4 className="text-2xl font-semibold uppercase text-primary">
+          {heading}
+        </h4>
         <div>
           <a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-dark-gray/80 hover:text-blue focus:text-blue transition-colors duration-200"
+            className="text-primary/70 hover:text-primary focus:text-primary transition-colors duration-200 "
           >
             {text}
           </a>
