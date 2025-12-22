@@ -10,14 +10,37 @@ export default function animateAboutInfo(
   contentRef: HTMLDivElement
 ) {
   gsap.set(titleRef, { opacity: 1 });
-  let splitTitle: gsap.core.Tween;
+  let split: gsap.core.Tween;
+  const applyGradientAcrossWords = (container: HTMLElement) => {
+    if (!container) return;
+    const gradient =
+      "linear-gradient(88.63deg, #043841 3.66%, #02899f 118.11%)";
+    const width = container.offsetWidth;
+    const words = container.querySelectorAll<HTMLElement>(
+      ".will-change-transform"
+    );
+    words.forEach((w) => {
+      w.style.display = "inline-block";
+      w.style.backgroundImage = gradient;
+      w.style.backgroundSize = `${width}px 100%`;
+      w.style.backgroundPosition = `-${w.offsetLeft}px 0px`;
+      (w.style as any).webkitBackgroundClip = "text";
+      w.style.backgroundClip = "text";
+      (w.style as any).webkitTextFillColor = "transparent";
+      w.style.color = "transparent";
+    });
+  };
+
+  let resizeObserver: ResizeObserver | null = null;
+  const resizeHandler = () => applyGradientAcrossWords(titleRef);
+
   SplitText.create(titleRef, {
     type: "words,lines",
     wordsClass: "will-change-transform",
     autoSplit: true,
     mask: "lines",
     onSplit: (self) => {
-      splitTitle = gsap.from(self.words, {
+      split = gsap.from(self.words, {
         duration: 1,
         yPercent: 100,
         opacity: 0,
@@ -28,7 +51,18 @@ export default function animateAboutInfo(
           start: "top 80%",
         },
       });
-      return splitTitle;
+      // Apply the gradient to each split word and align it across the full heading width (fixes Chromium behavior)
+      applyGradientAcrossWords(titleRef);
+
+      // Reapply on resize so the gradient stays aligned
+      if (typeof ResizeObserver !== "undefined") {
+        resizeObserver = new ResizeObserver(resizeHandler);
+        resizeObserver.observe(titleRef);
+      } else {
+        window.addEventListener("resize", resizeHandler);
+      }
+
+      return split;
     },
   });
 
@@ -47,4 +81,10 @@ export default function animateAboutInfo(
       },
     }
   );
+
+  return () => {
+    split?.kill();
+    if (resizeObserver) resizeObserver.disconnect();
+    else window.removeEventListener("resize", resizeHandler);
+  };
 }

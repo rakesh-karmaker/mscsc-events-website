@@ -1,14 +1,12 @@
 import type { SegmentType } from "@/types/global-types";
-import { useRef, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import Icon from "../ui/icon";
 import PrimaryBtn from "../ui/primary-btn";
 import { FaArrowRight } from "react-icons/fa6";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import animateSegment from "@/animations/segment";
 import { useParams } from "react-router";
-
-gsap.registerPlugin(useGSAP);
+import { GoPeople } from "react-icons/go";
+import { FaGlobeAsia } from "react-icons/fa";
+import { IoLocationOutline } from "react-icons/io5";
 
 export default function SegmentCard({
   segmentData,
@@ -17,52 +15,49 @@ export default function SegmentCard({
 }): ReactNode {
   const eventId = useParams().eventId || "";
 
-  const { icon, imageUrl, title, summary } = segmentData;
-  const segmentRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-
-  useGSAP(() => {
-    if (segmentRef.current && imageRef.current) {
-      animateSegment(segmentRef.current, imageRef.current);
-    }
-  }, []);
+  const { icon, title, summary } = segmentData;
 
   return (
-    <div
-      className="relative overflow-hidden w-full p-6 rounded-md before:absolute before:w-[90%] before:h-[220%] before:-top-30 before:-left-15 before:rotate-15 before:bg-gradient-to-r before:from-pure-black before:to-black/0 before:z-0"
-      ref={segmentRef}
-    >
-      <div className="flex flex-col gap-8 relative z-99">
-        <div className="flex flex-col gap-4">
-          <Icon
-            iconName={icon}
-            className="w-14 h-14 max-xl:h-11 max-xl:w-11 text-white"
-          />
-          <div className="flex flex-col gap-1.5">
-            <h3 className="text-2xl max-w-[20ch] text-white font-medium">
-              {title}
-            </h3>
-            <p className="text-[1rem]/[135%] max-w-[34ch] text-white">
-              {summary}
-            </p>
+    <div className="w-full h-full pl-1.5 pb-1.5 relative group">
+      <div className="w-full h-full p-6 bg-primary-bg rounded-md border-2 border-primary flex flex-col gap-6 relative z-99 group-hover:-translate-x-1.5 group-hover:translate-y-1.5 transition-transform cursor-pointer">
+        <div className="w-full h-full flex flex-col gap-3">
+          <div className="w-20 h-20 rounded-md relative">
+            <div className="w-20 h-20 rounded-md bg-primary flex justify-center items-center group-hover:rotate-5 transition-transform origin-bottom-right">
+              <Icon iconName={icon} className="text-5xl text-white" />
+            </div>
+            <div className="w-full h-full absolute top-0 left-0 border-2 border-primary rounded-md z-999"></div>
+          </div>
+          <div className="w-full flex flex-col gap-3">
+            <h3 className="text-2xl font-medium text-primary">{title}</h3>
+            <div className="w-full flex flex-col gap-2">
+              <div className="w-full flex gap-3">
+                <div className="px-3 py-1.5 bg-primary rounded-sm text-white flex gap-1.5 items-center">
+                  <GoPeople />
+                  <p>{segmentData.teamType}</p>
+                </div>
+                <div className="px-3 py-1.5 bg-primary rounded-sm text-white flex gap-1.5 items-center">
+                  {segmentData.locationType === "online" ? (
+                    <FaGlobeAsia />
+                  ) : (
+                    <IoLocationOutline />
+                  )}
+                  <p>{segmentData.locationType}</p>
+                </div>
+              </div>
+              <p className="text-[1rem]/[135%] text-text">{summary}</p>
+            </div>
           </div>
         </div>
         <PrimaryBtn
           isLink={true}
           href={`/segments/${eventId}/${segmentData.segmentSlug}`}
-          className="!px-4 flex gap-0.1 items-center"
+          className="flex items-center group-hover:after:w-full! group-hover:after:left-0! group-hover:after:top-0! group-hover:text-primary!"
         >
-          Learn More <FaArrowRight className="ml-2" />
+          Learn More{" "}
+          <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
         </PrimaryBtn>
       </div>
-      <div className="absolute w-full h-full -z-1 left-0 top-0 overflow-hidden">
-        <img
-          ref={imageRef}
-          src={imageUrl}
-          alt={title}
-          className="w-full h-full object-cover object-center"
-        />
-      </div>
+      <div className="absolute w-[calc(100%-0.375rem)] h-[calc(100%-0.375rem)] border-2 border-primary rounded-md bottom-0 left-0 bg-secondary-bg"></div>
     </div>
   );
 }

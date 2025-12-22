@@ -20,7 +20,7 @@ export default function Navbar(): ReactNode {
       <nav className="py-3 w-full max-w-max-width h-fit flex justify-between items-center">
         <Activity mode={window.innerWidth >= 768 ? "hidden" : "visible"}>
           <button
-            className="text-2xl cursor-pointer transition-colors duration-200 hover:text-secondary-bg focus:text-secondary-bg focus-within:text-secondary-bg"
+            className="text-2xl cursor-pointer transition-colors duration-200 hover:text-primary/70 focus:text-primary/70 focus-within:text-primary/70"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <FaXmark /> : <FaBars />}
