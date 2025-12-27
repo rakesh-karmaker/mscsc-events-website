@@ -11,14 +11,16 @@ import { useNavigate, useParams } from "react-router";
 import { useLenis } from "lenis/react";
 import { useEventData } from "@/hooks/useEventData";
 import Loader from "@/components/ui/loader";
+import { Helmet } from "react-helmet-async";
+import capitalize from "@/utils/capitalize";
 
 export default function Home(): ReactNode {
   const sectionId = useParams().section || "home";
   const lenis = useLenis();
   const navigate = useNavigate();
-  const { sections } = useEventData();
+  const { sections, eventMetaData } = useEventData();
 
-  if (!sections) {
+  if (!sections || !eventMetaData) {
     navigate("/");
     return (
       <div className="w-full h-full min-h-screen flex justify-center items-center">
@@ -56,6 +58,11 @@ export default function Home(): ReactNode {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {eventMetaData.eventName} - {capitalize(sectionId)}
+        </title>
+      </Helmet>
       {sections.map((section) => {
         return sectionComponents[section] || null;
       })}

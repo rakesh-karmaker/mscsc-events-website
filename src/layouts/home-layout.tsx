@@ -5,6 +5,7 @@ import { Outlet } from "react-router";
 import Footer from "./footer/footer";
 import { useEventData } from "@/hooks/useEventData";
 import Loader from "@/components/ui/loader";
+import { Helmet } from "react-helmet-async";
 
 export default function HomeLayout(): ReactNode {
   const { setEventData, eventMetaData, hasFetchedData, setHasFetchedData } =
@@ -27,6 +28,11 @@ export default function HomeLayout(): ReactNode {
 
   return (
     <>
+      <Helmet>
+        <title>{eventMetaData.eventName}</title>
+        <meta name="description" content={eventMetaData.eventDescription} />
+        <link rel="icon" href={eventMetaData.eventLogoUrl} />
+      </Helmet>
       <Navbar />
       <Outlet />
       <Footer />
