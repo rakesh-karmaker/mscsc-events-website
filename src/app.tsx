@@ -26,7 +26,9 @@ export default function App({ children }: { children: ReactNode }): ReactNode {
   return (
     <>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
-      <main className="flex flex-col items-center">{children}</main>
+      <main className="flex flex-col items-center w-full min-h-screen">
+        {children}
+      </main>
       <Toaster position="top-right" />
     </>
   );
