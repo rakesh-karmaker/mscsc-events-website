@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import animateHeroContent from "@/animations/hero-content";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(SplitText);
@@ -40,7 +40,7 @@ export default function HeroContent(): ReactNode {
   }, []);
 
   return (
-    <div className="max-w-[1150px] flex flex-col gap-4 items-center">
+    <div className="max-w-287.5 flex flex-col gap-4 items-center">
       <h1
         className="text-[5.375em]/[115%] max-xl:text-[3.5em] max-md:text-[3em] max-sm:text-[2.5em] max-[450px]:text-[2em] text-black font-bold max-w-[20ch] text-center gradient-text"
         ref={headingRef}
@@ -62,7 +62,7 @@ export default function HeroContent(): ReactNode {
           <PrimaryBtn
             isLink={true}
             href={registrationLink}
-            className="!text-[1.1em]/[155%] tracking-wide !px-4 !py-2.5 max-xl:!px-3.25 max-xl:!py-2 max-xl:!text-[1em]/[150%] "
+            className="text-[1.1em]/[155%]! tracking-wide px-4! py-2.5! max-xl:px-3.25! max-xl:py-2! max-xl:text-[1em]/[150%]! "
           >
             Register Now
           </PrimaryBtn>
@@ -73,7 +73,7 @@ export default function HeroContent(): ReactNode {
               e.preventDefault();
               lenis?.scrollTo(`#${learnMoreSection}`, { offset: -100 });
             }}
-            className="before:bg-secondary-bg text-black! after:!bg-primary hover:text-white! !text-[1.1em]/[155%] tracking-wide !px-4 !py-2.5 max-xl:!px-3.25 max-xl:!py-2 max-xl:!text-[1em]/[150%]"
+            className="before:bg-secondary-bg text-black! after:bg-primary! hover:text-white! text-[1.1em]/[155%]! tracking-wide px-4! py-2.5! max-xl:px-3.25! max-xl:py-2! max-xl:text-[1em]/[150%]!"
           >
             Learn More
           </PrimaryBtn>

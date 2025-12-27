@@ -40,7 +40,7 @@ export default function ScheduleLeft({
   }, []);
 
   return (
-    <div className="w-fit ml-[calc((100vw-var(--max-width))/2)] max-sm:mr-[calc((100vw-var(--max-width))/2)] relative p-10 max-lg:!px-0 border-l-2 max-lg:border-l-0 border-primary">
+    <div className="w-fit ml-[calc((100vw-var(--max-width))/2)] max-sm:mr-[calc((100vw-var(--max-width))/2)] relative p-10 max-lg:px-0! border-l-2 max-lg:border-l-0 border-primary">
       <div className="sticky top-[calc(var(--nav-height)+2rem)] w-full min-w-[50ch] max-xl:min-w-[30ch] max-sm:min-w-full  h-fit flex flex-col gap-6">
         <div className="w-full flex flex-col gap-3">
           <h2
@@ -88,7 +88,7 @@ function DateItem({
       className={
         currentDate === date
           ? ""
-          : `before:!bg-secondary-bg !text-primary after:!bg-primary hover:!text-white`
+          : `before:bg-secondary-bg! text-primary! after:bg-primary! hover:text-white!`
       }
     >
       <span className="w-fit flex gap-1 items-center">

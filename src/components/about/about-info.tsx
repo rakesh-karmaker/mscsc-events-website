@@ -29,7 +29,7 @@ export default function AboutInfo({
 
   return (
     <div className="w-full h-full flex flex-col gap-7.5">
-      <div className="w-full h-fit pb-3.5 border-b-1 border-primary">
+      <div className="w-full h-fit pb-3.5 border-b border-primary">
         <h2
           ref={titleRef}
           className="text-5xl max-xl:text-4xl font-semibold opacity-0 gradient-text"

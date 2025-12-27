@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export default function ContactBox(): ReactNode {
   return (
-    <div className="w-full h-fit p-8 shadow-[0px_0px_0px_1px_rgba(255,_255,_255,_0.1)] bg-primary-bg flex flex-col gap-4 rounded-md relative z-99">
+    <div className="w-full h-fit p-8 shadow-[0px_0px_0px_1px_rgba(255,255,255,0.1)] bg-primary-bg flex flex-col gap-4 rounded-md relative z-99">
       <div className="flex flex-col gap-1">
         <h3 className="text-2xl font-medium text-primary">
           Can't find your answer?

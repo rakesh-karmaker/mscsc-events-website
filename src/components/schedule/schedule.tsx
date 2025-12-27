@@ -3,7 +3,7 @@ import ScheduleLeft from "./schedule-left";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import ScheduleRight from "./schedule-right";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 
 dayjs.extend(localizedFormat);
 

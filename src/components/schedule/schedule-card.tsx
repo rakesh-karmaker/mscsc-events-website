@@ -9,7 +9,7 @@ export default function ScheduleCard({
 }): ReactNode {
   return (
     <div className="w-full h-fit pl-10 max-lg:pl-0 py-5 border-b-2 border-primary last:border-b-0">
-      <div className="w-full pr-[calc((100vw-var(--max-width))/2)] max-lg:!px-[calc((100vw-var(--max-width))/2)] flex max-sm:flex-col gap-3 items-center max-sm:items-start">
+      <div className="w-full pr-[calc((100vw-var(--max-width))/2)] max-lg:px-[calc((100vw-var(--max-width))/2)]! flex max-sm:flex-col gap-3 items-center max-sm:items-start">
         <div className="w-16 h-16 rounded-sm bg-primary flex justify-center items-center">
           <Icon
             iconName={scheduleData.icon}

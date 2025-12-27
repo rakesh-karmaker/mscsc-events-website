@@ -40,8 +40,8 @@ export default function ContactInfo({
   }, []);
 
   return (
-    <div className="w-full max-w-[730px] border-r-2 max-lg:border-r-0 max-lg:border-b-2 max-lg:max-w-full border-primary py-16 pr-4">
-      <div className="w-full max-w-[550px] flex flex-col gap-8">
+    <div className="w-full max-w-182.5 border-r-2 max-lg:border-r-0 max-lg:border-b-2 max-lg:max-w-full border-primary py-16 pr-4">
+      <div className="w-full max-w-137.5 flex flex-col gap-8">
         <ContactHeading />
         <div className="w-full flex flex-col gap-7" ref={iconsContainerRef}>
           <ContactItem

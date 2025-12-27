@@ -1,5 +1,5 @@
 import animateVideo from "@/animations/video";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -46,7 +46,7 @@ export default function Video(): ReactNode {
   return (
     <section
       id="video"
-      className="w-full max-w-[110rem] aspect-video my-16 max-[111rem]:px-4 flex justify-center max-md:px-0"
+      className="w-full max-w-440 aspect-video my-16 max-[111rem]:px-4 flex justify-center max-md:px-0"
     >
       <div
         ref={videoContainerRef}

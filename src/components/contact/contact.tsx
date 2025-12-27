@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import ContactInfo from "./contact-info";
 import ContactForm from "../forms/contact-form";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 
 export default function Contact(): ReactNode {
   // Fetch event data using the custom hook

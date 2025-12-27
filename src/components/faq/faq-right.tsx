@@ -47,7 +47,7 @@ export default function FaqRight({
 
   return (
     <div
-      className="w-full h-full flex flex-col gap-6 max-md:gap-4 max-w-[800px]"
+      className="w-full h-full flex flex-col gap-6 max-md:gap-4 max-w-200"
       ref={containerRef}
     >
       {faqData.map((faq: FaqType, index: number) => (

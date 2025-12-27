@@ -19,7 +19,7 @@ export default function FaqLeft(): ReactNode {
   }, []);
 
   return (
-    <div className="w-full max-w-[500px] flex flex-col justify-between gap-10">
+    <div className="w-full max-w-125 flex flex-col justify-between gap-10">
       <div className="w-full flex flex-col gap-3">
         <h2
           className="text-5xl max-w-[15ch] font-semibold max-xl:text-4xl gradient-text"

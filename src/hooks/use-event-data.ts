@@ -1,4 +1,4 @@
-import { useEventDataStore } from "@/stores/useEventDataStore";
+import { useEventDataStore } from "@/stores/use-event-data-store";
 
 export function useEventData() {
   const eventMetaData = useEventDataStore((state) => state.eventMetaData);

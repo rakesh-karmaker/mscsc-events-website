@@ -54,7 +54,7 @@ export default function FooterRight({
 
   return (
     <div className="w-full border-l-2 border-primary flex flex-col gap-15 pt-26 pb-10 relative max-[950px]:border-l-0 max-[950px]:border-t-2 max-[950px]:pt-12">
-      <div className="ml-15 flex gap-42 mr-[calc((100vw-var(--max-width))/2)] max-[1500px]:gap-12 max-[1500px]:justify-between max-[950px]:!mx-0 max-[470px]:flex-col max-[950px]:px-[calc((100vw-var(--max-width))/2)]">
+      <div className="ml-15 flex gap-42 mr-[calc((100vw-var(--max-width))/2)] max-[1500px]:gap-12 max-[1500px]:justify-between max-[950px]:mx-0! max-[470px]:flex-col max-[950px]:px-[calc((100vw-var(--max-width))/2)]">
         <div className="flex flex-col gap-6">
           <h3 className="text-[28px] font-semibold text-primary">Contact us</h3>
           <div className="flex flex-col gap-5">
@@ -91,7 +91,7 @@ export default function FooterRight({
           </div>
         </div>
       </div>
-      <p className="w-full pl-15 pr-[calc((100vw-var(--max-width))/2)] pt-10 border-t-2 border-primary text-[1.1em] max-[1500px]:text-[1em] max-[950px]:pl-0 max-[950px]:pr-0 max-[950px]:!px-[calc((100vw-var(--max-width))/2)]">
+      <p className="w-full pl-15 pr-[calc((100vw-var(--max-width))/2)] pt-10 border-t-2 border-primary text-[1.1em] max-[1500px]:text-[1em] max-[950px]:pl-0 max-[950px]:pr-0 max-[950px]:px-[calc((100vw-var(--max-width))/2)]!">
         <span className="text-primary">
           Copyright © {new Date().getFullYear()} MSCSC - All rights reserved ||
           Designed By:{" "}

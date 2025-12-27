@@ -3,7 +3,7 @@ import EventLogo from "./event-logo";
 import { NavLink, useParams } from "react-router";
 import NavLinks from "./nav-links";
 import { FaArrowRight, FaBars, FaXmark } from "react-icons/fa6";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 
 export default function Navbar(): ReactNode {
   const currentEventId = useParams().eventId || "";
@@ -16,7 +16,7 @@ export default function Navbar(): ReactNode {
   }
 
   return (
-    <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-gradient-to-b from-primary-bg to-primary-bg/80 backdrop-blur-[4px] z-9999 shadow-[0px_0px_0px_1px_rgba(0,_0,_0,_0.1)]">
+    <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-linear-to-b from-primary-bg to-primary-bg/80 backdrop-blur-xs z-9999 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.1)]">
       <nav className="py-3 w-full max-w-max-width h-fit flex justify-between items-center">
         <Activity mode={window.innerWidth >= 768 ? "hidden" : "visible"}>
           <button

@@ -61,7 +61,7 @@ function QrCode({
   if (!qrCodeUrl) return null;
 
   return (
-    <div className="p-4 rounded-md border-1 bg-primary-bg border-primary flex flex-col gap-2 items-center">
+    <div className="p-4 rounded-md border bg-primary-bg border-primary flex flex-col gap-2 items-center">
       <img src={qrCodeUrl} alt="QR Code" className="w-48 h-48 object-contain" />
       <h4 className="font-medium text-text text-sm">
         Scan to pay via {platform.charAt(0).toUpperCase() + platform.slice(1)}

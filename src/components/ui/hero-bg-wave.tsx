@@ -1,4 +1,8 @@
-export default function HeroBgWave() {
+export default function HeroBgWave({
+  isRegistrationPage,
+}: {
+  isRegistrationPage: boolean;
+}) {
   return (
     <div className="w-full h-full">
       <svg
@@ -11,7 +15,7 @@ export default function HeroBgWave() {
         <g filter="url(#filter0_f_3236_784)">
           <path
             d="M135.106 74.2639C14.4685 86.0001 4 31.5 4 4L993 4L993 435C957.355 397.091 794.543 376.568 787.799 374.394C664.293 353.919 571.92 270.407 541.172 231.211C512.833 203.685 453.553 146.315 443.148 137.043C339.584 37.3211 147.092 73.0979 135.106 74.2639Z"
-            fill="#ffd392"
+            fill={isRegistrationPage ? "#ffd392" : "#fff1da"}
           />
         </g>
         <defs>

@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import animateTextReveal from "@/animations/text-reveal";
 import animateFadeUp from "@/animations/fade-up";
 import gsap from "gsap";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP);

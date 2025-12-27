@@ -9,7 +9,7 @@ import Contact from "@/components/contact/contact";
 import { useEffect, type ReactNode } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useLenis } from "lenis/react";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 import Loader from "@/components/ui/loader";
 import { Helmet } from "react-helmet-async";
 import capitalize from "@/utils/capitalize";

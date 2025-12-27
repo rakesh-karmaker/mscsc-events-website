@@ -2,7 +2,7 @@ import { Activity, type ReactNode } from "react";
 import FaqLeft from "./faq-left";
 import FaqRight from "./faq-right";
 import ContactBox from "./contact-box";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 
 export default function Faq(): ReactNode {
   // Fetch event data using the custom hook

@@ -3,7 +3,7 @@ import Navbar from "@/layouts/navbar/navbar";
 import websiteData from "@/services/data/website-data.json";
 import { Outlet } from "react-router";
 import Footer from "./footer/footer";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 import Loader from "@/components/ui/loader";
 import { Helmet } from "react-helmet-async";
 

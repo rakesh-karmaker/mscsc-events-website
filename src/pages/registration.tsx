@@ -2,7 +2,7 @@ import FormInfo from "@/components/forms/registration-form/form-info";
 import RegistrationHeader from "@/components/registration-header";
 import { useEffect, type ReactNode } from "react";
 import RegistrationForm from "@/components/forms/registration-form/registration-form";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 import { Helmet } from "react-helmet-async";
 
 export default function Registration(): ReactNode {

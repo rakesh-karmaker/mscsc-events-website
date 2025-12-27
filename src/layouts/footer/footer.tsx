@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import FooterInfo from "./footer-info";
 import FooterRight from "./footer-right";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 
 export default function Footer(): ReactNode {
   const { eventMetaData, contactLinks, sections } = useEventData();

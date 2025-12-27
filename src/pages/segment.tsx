@@ -1,5 +1,5 @@
 import SegmentInfo from "@/components/segment-page/segment-info";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 import type { ReactNode } from "react";
 import { useParams } from "react-router";
 
@@ -21,7 +21,7 @@ export default function Segment(): ReactNode {
   return (
     <section className="w-full max-w-max-width h-full flex gap-10 py-7">
       <SegmentInfo segment={segment} />
-      <aside className="min-w-[27.5rem] h-full bg-black/30">hello</aside>
+      <aside className="min-w-110 h-full bg-black/30">hello</aside>
     </section>
   );
 }

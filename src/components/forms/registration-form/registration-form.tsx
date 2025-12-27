@@ -142,7 +142,7 @@ export default function RegistrationForm({
             {segments.map((segment, index) => (
               <div
                 key={index}
-                className="flex items-center px-5 py-3 rounded-sm border border-primary hover:!bg-light-gray/20 transition-colors cursor-pointer"
+                className="flex items-center px-5 py-3 rounded-sm border border-primary hover:bg-light-gray/20! transition-colors cursor-pointer"
                 style={{
                   background: selectedSegments.includes(segment.title)
                     ? "color-mix(in oklab, var(--light-gray) 20%, transparent)"
@@ -250,7 +250,7 @@ export default function RegistrationForm({
 
       <PrimaryBtn
         type="submit"
-        className="!px-4 !text-lg max-sm:!w-full max-sm:!self-center max-sm:!max-w-[calc(100%_-_10vw)]"
+        className="px-4! text-lg! max-sm:w-full! max-sm:self-center! max-sm:max-w-[calc(100%-10vw)]!"
       >
         Submit Registration
       </PrimaryBtn>

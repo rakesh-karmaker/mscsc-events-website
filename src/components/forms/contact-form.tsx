@@ -61,7 +61,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-[680px] max-lg:max-w-full py-16 w-full flex flex-col gap-8"
+      className="max-w-170 max-lg:max-w-full py-16 w-full flex flex-col gap-8"
       ref={contactForm}
     >
       <div className="w-full flex flex-col gap-8">
@@ -130,7 +130,7 @@ export default function ContactForm() {
         />
       </div>
 
-      <PrimaryBtn className="!px-6">Send the message</PrimaryBtn>
+      <PrimaryBtn className="px-6!">Send the message</PrimaryBtn>
       {errors.root && (
         <p className="error-message text-red-500">{errors.root.message}</p>
       )}

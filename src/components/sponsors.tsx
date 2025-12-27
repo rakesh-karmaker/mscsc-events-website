@@ -1,6 +1,6 @@
 import animateFadeUp from "@/animations/fade-up";
 import animateTextReveal from "@/animations/text-reveal";
-import { useEventData } from "@/hooks/useEventData";
+import { useEventData } from "@/hooks/use-event-data";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -66,7 +66,7 @@ export default function Sponsors(): ReactNode {
         </p>
       </div>
       <div
-        className="w-full grid grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-3 max-sm:grid-cols-2 max-[450px]:!grid-cols-1"
+        className="w-full grid grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-3 max-sm:grid-cols-2 max-[450px]:grid-cols-1!"
         ref={sponsorContainerRefs}
       >
         {spData.map((sponsor, index) => (
@@ -75,7 +75,7 @@ export default function Sponsors(): ReactNode {
             href={sponsor.websiteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full h-[144px] py-4 relative flex justify-center items-center border-1 border-primary hover:bg-secondary-bg transition-colors duration-200"
+            className="w-full h-36 py-4 relative flex justify-center items-center border border-primary hover:bg-secondary-bg transition-colors duration-200"
           >
             <img
               src={sponsor.logoUrl}
