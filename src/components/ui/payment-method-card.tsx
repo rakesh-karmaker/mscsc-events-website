@@ -50,8 +50,9 @@ export default function PaymentMethodCard({
       onClick={() => setCurrentMethod(platform)}
       type="button"
       style={{
-        borderColor: isSelected ? methodInfo.border : "#ececec",
-        backgroundColor: isSelected ? methodInfo.color : "#fcfcfc",
+        borderColor: isSelected ? methodInfo.border : "var(--primary-color)",
+        backgroundColor: isSelected ? methodInfo.color : "var(--primary-bg)",
+        filter: isSelected ? "none" : "grayscale(80%)",
       }}
     >
       <img src={methodInfo.logo} alt={methodInfo.name} className="px-2" />

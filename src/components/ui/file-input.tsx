@@ -51,7 +51,7 @@ export default function FileInput<T extends RegisterSchemaType>({
   return (
     <div className="w-full flex flex-col items-end gap-2">
       <div className="w-full flex items-center justify-between gap-6 flex-wrap">
-        <p className="text-lg">{children}</p>
+        <p className="text-lg text-primary">{children}</p>
         <input
           {...registerProps}
           id={name as string}
@@ -63,7 +63,7 @@ export default function FileInput<T extends RegisterSchemaType>({
         <label
           ref={labelRef}
           htmlFor={name as string}
-          className="text-blue cursor-pointer p-[10px_20px] [border:0.4px_solid_rgba(0,0,0,0.25)] rounded-sm transition-all duration-200 flex gap-2 items-center hover:bg-[#c9e0ff]"
+          className="text-primary cursor-pointer p-[10px_20px] border-2 border-primary rounded-sm transition-all duration-200 flex gap-2 items-center bg-primary-bg hover:bg-secondary-bg"
         >
           <FaUpload /> <span>Upload Photo</span>
         </label>

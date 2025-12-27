@@ -1,4 +1,3 @@
-import websiteData from "@/services/data/website-data.json";
 import FormInfo from "@/components/forms/registration-form/form-info";
 import RegistrationHeader from "@/components/registration-header";
 import { useEffect, type ReactNode } from "react";
@@ -20,16 +19,13 @@ export default function Registration(): ReactNode {
   }, []);
 
   return (
-    <section className="w-full h-full flex flex-col gap-10 items-center">
+    <section className="w-full h-full flex flex-col gap-10 max-sm:gap-0 items-center">
       <RegistrationHeader />
-      <div className="w-full flex gap-10 max-w-max-width mb-20 max-lg:flex-col">
-        <FormInfo
-          title={websiteData.formData.title}
-          details={websiteData.formData.details}
-        />
+      <div className="w-full flex gap-10 max-w-max-width max-sm:max-w-full mb-20 max-lg:flex-col">
+        <FormInfo title={formData.title} details={formData.details} />
         <RegistrationForm
-          transactionMethods={websiteData.formData.transactionMethods}
-          fees={websiteData.formData.fees}
+          transactionMethods={formData.transactionMethods}
+          fees={formData.fees}
           segments={segmentData}
         />
       </div>

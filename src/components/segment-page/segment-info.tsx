@@ -1,4 +1,3 @@
-import { useEventData } from "@/hooks/useEventData";
 import type { ExplorionSegmentType } from "@/types/event-data-types";
 
 import type { ReactNode } from "react";
@@ -9,8 +8,6 @@ export default function SegmentInfo({
 }: {
   segment: ExplorionSegmentType;
 }): ReactNode {
-  const { eventMetaData } = useEventData();
-
   return (
     <div className="w-full h-full flex flex-col gap-4">
       <img

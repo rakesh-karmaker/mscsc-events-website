@@ -1,4 +1,3 @@
-import websiteData from "@/services/data/website-data.json";
 import Hero from "@/components/hero/hero";
 import Video from "@/components/video";
 import About from "@/components/about/about";
@@ -8,12 +7,25 @@ import Sponsors from "@/components/sponsors";
 import Faq from "@/components/faq/faq";
 import Contact from "@/components/contact/contact";
 import { useEffect, type ReactNode } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useLenis } from "lenis/react";
+import { useEventData } from "@/hooks/useEventData";
+import Loader from "@/components/ui/loader";
 
 export default function Home(): ReactNode {
   const sectionId = useParams().section || "home";
   const lenis = useLenis();
+  const navigate = useNavigate();
+  const { sections } = useEventData();
+
+  if (!sections) {
+    navigate("/");
+    return (
+      <div className="w-full h-full min-h-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    );
+  }
 
   useEffect(() => {
     if (lenis) {
@@ -44,7 +56,7 @@ export default function Home(): ReactNode {
 
   return (
     <>
-      {websiteData.sections.map((section) => {
+      {sections.map((section) => {
         return sectionComponents[section] || null;
       })}
     </>

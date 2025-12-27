@@ -142,7 +142,7 @@ export default function RegistrationForm({
             {segments.map((segment, index) => (
               <div
                 key={index}
-                className="flex items-center px-5 py-3 rounded-md border-1 border-gray-400/20 hover:!bg-light-gray/20 transition-colors cursor-pointer"
+                className="flex items-center px-5 py-3 rounded-sm border border-primary hover:!bg-light-gray/20 transition-colors cursor-pointer"
                 style={{
                   background: selectedSegments.includes(segment.title)
                     ? "color-mix(in oklab, var(--light-gray) 20%, transparent)"
@@ -167,11 +167,15 @@ export default function RegistrationForm({
                       <Checkbox
                         {...register("segments")}
                         checked={selectedSegments.includes(segment.title)}
+                        style={{
+                          color: "var(--primary-color)",
+                        }}
                       />
                     }
                     label={segment.title}
                     style={{
                       pointerEvents: "none",
+                      color: "var(--primary-color)",
                     }}
                   />
                 </div>
@@ -189,7 +193,7 @@ export default function RegistrationForm({
       <FormBox title="Payment Information">
         <div className="flex flex-col gap-6">
           <div className="w-full flex flex-col gap-2">
-            <h3 className="text-xl max-sm:text-lg font-medium">
+            <h3 className="text-xl max-sm:text-lg font-medium text-primary">
               Select Transaction Method:
             </h3>
             <div>
@@ -244,7 +248,10 @@ export default function RegistrationForm({
         </div>
       </FormBox>
 
-      <PrimaryBtn type="submit" className="!px-4 !text-lg">
+      <PrimaryBtn
+        type="submit"
+        className="!px-4 !text-lg max-sm:!w-full max-sm:!self-center max-sm:!max-w-[calc(100%_-_10vw)]"
+      >
         Submit Registration
       </PrimaryBtn>
     </form>
@@ -259,8 +266,8 @@ function FormBox({
   title: string;
 }): ReactNode {
   return (
-    <div className="w-full h-fit flex flex-col gap-8 p-8 max-sm:shadow-none max-sm:p-0 max-sm:bg-white bg-pure-white shadow-[0px_0px_0px_1px_rgba(0,_0,_0,_0.1)] rounded-lg">
-      <h2 className="text-3xl max-sm:text-2xl font-medium pb-3 border-b-1 border-light-gray/90">
+    <div className="w-full h-fit flex flex-col gap-8 p-8 bg-secondary-bg border-2 border-primary max-sm:border-l-0 max-sm:border-r-0 max-sm:rounded-none max-sm:p-[5vw] rounded-lg">
+      <h2 className="text-3xl max-sm:text-2xl text-primary font-medium pb-3 border-b border-primary">
         {title}
       </h2>
       <div>{children}</div>
