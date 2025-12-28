@@ -28,6 +28,8 @@
 
   --skeleton-from: hsl(200, 20%, 80%);
   --skeleton-to: hsl(200, 20%, 95%);
+
+  --highlighted-color: rgb(2, 137, 159);
 }
 
 /* tailwind variables */

@@ -7,7 +7,7 @@ import PageNotFound from "@/pages/page-not-found";
 
 const HomePage = lazy(() => import("@/pages/home"));
 const RegistrationPage = lazy(() => import("@/pages/registration"));
-const SegmentPage = lazy(() => import("@/pages/segment"));
+const EventPage = lazy(() => import("@/pages/event"));
 
 export const router = createBrowserRouter([
   {
@@ -37,9 +37,9 @@ export const router = createBrowserRouter([
         ),
       },
 
-      // Segments path
+      // events path
       {
-        path: "/segments/:eventId/:segmentSlug",
+        path: "/:eventId/events/:seSlug",
         element: (
           <Suspense
             fallback={
@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
               </div>
             }
           >
-            <SegmentPage />
+            <EventPage />
           </Suspense>
         ),
         errorElement: <PageNotFound />,

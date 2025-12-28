@@ -9,6 +9,7 @@ export function useEventData() {
   const videoData = useEventDataStore((state) => state.videoData);
   const aboutData = useEventDataStore((state) => state.aboutData);
   const segmentData = useEventDataStore((state) => state.segmentData);
+  const experienceData = useEventDataStore((state) => state.experienceData);
   const scheduleData = useEventDataStore((state) => state.scheduleData);
   const spData = useEventDataStore((state) => state.spData);
   const faqData = useEventDataStore((state) => state.faqData);
@@ -28,6 +29,7 @@ export function useEventData() {
     videoData,
     aboutData,
     segmentData,
+    experienceData,
     scheduleData,
     spData,
     faqData,

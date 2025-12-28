@@ -57,6 +57,13 @@ export type ExplorionSegmentType = {
   rules: string;
 };
 
+export type ExplorionExperienceType = {
+  experienceSlug: string;
+  icon: string;
+  title: string;
+  details: string;
+};
+
 export type ExplorionScheduleSectionType = {
   [date: string]: {
     icon: string;

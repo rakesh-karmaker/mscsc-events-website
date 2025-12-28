@@ -2,6 +2,7 @@ import type {
   ContactLinksType,
   EventMetaDataType,
   ExplorionAboutSectionType,
+  ExplorionExperienceType,
   ExplorionFAQType,
   ExplorionHeroSectionType,
   ExplorionScheduleSectionType,
@@ -36,6 +37,9 @@ export type EventDataStateType = {
 
   segmentData: ExplorionSegmentType[] | null;
   setSegmentData: (segmentData: ExplorionSegmentType[]) => void;
+
+  experienceData: ExplorionExperienceType[] | null;
+  setExperienceData: (experienceData: ExplorionExperienceType[]) => void;
 
   scheduleData: ExplorionScheduleSectionType | null;
   setScheduleData: (scheduleData: ExplorionScheduleSectionType) => void;
@@ -75,6 +79,9 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
 
   segmentData: null,
   setSegmentData: (segmentData) => set({ segmentData }),
+
+  experienceData: null,
+  setExperienceData: (experienceData) => set({ experienceData }),
 
   scheduleData: null,
   setScheduleData: (scheduleData) => set({ scheduleData }),
@@ -123,6 +130,9 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
 
     // set the segment data
     set({ segmentData: websiteData.segmentsData || null });
+
+    // set the experience data
+    set({ experienceData: websiteData.experienceData || null });
 
     // set the schedule data
     set({ scheduleData: websiteData.scheduleData || null });

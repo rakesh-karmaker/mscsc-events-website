@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { BiSolidConversation } from "react-icons/bi";
 import {
+  FaChalkboardTeacher,
   FaFacebook,
   FaGlobeAsia,
   FaInstagram,
@@ -15,6 +16,7 @@ import { IoMdRocket } from "react-icons/io";
 import { LiaAtomSolid } from "react-icons/lia";
 import { LuDivide } from "react-icons/lu";
 import { TbMath } from "react-icons/tb";
+import { MdGames } from "react-icons/md";
 
 type IconProps = {
   iconName: string;
@@ -42,6 +44,8 @@ export default function Icon({ iconName, className }: IconProps): ReactNode {
     puzzle: <FaPuzzlePiece className={className} />,
     debate: <BiSolidConversation className={className} />,
     star: <FaStar className={className} />,
+    games: <MdGames className={className} />,
+    workshops: <FaChalkboardTeacher className={className} />,
   };
 
   return icons[iconName] || null;

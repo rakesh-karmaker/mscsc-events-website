@@ -50,7 +50,7 @@ export default function SegmentCard({
         </div>
         <PrimaryBtn
           isLink={true}
-          href={`/segments/${eventId}/${segmentData.segmentSlug}`}
+          href={`/${eventId}/events/${segmentData.segmentSlug}`}
           className="flex items-center group-hover:after:w-full! group-hover:after:left-0! group-hover:after:top-0! group-hover:text-primary!"
         >
           Learn More{" "}

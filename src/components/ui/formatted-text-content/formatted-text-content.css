@@ -1,7 +1,7 @@
 .content-container {
   max-width: 100%; /* Set your desired max width */
   font-size: 1.125em;
-  color: var(--text-primary);
+  color: var(--text-color);
 
   /* overflow: hidden;
   word-wrap: break-word; */
@@ -54,7 +54,7 @@
 }
 
 .content-container {
-  color: var(--text-primary) !important;
+  color: var(--text-color) !important;
 }
 
 .content-container p {

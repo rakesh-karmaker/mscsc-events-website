@@ -150,6 +150,26 @@
       "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
     }
   ],
+  "experienceData": [
+    {
+      "experienceSlug": "workshops",
+      "icon": "workshops",
+      "title": "Hands-on Workshops",
+      "details": "Two insightful sessions will be organized for all the participants. One will introduce them to the vast wonders of language and how to better use it to propel themselves to the peaks of excellence, while the other will attempt to unravel their minds to the infinite possibilities of science and the unending mysteries of nature."
+    },
+    {
+      "experienceSlug": "games",
+      "icon": "games",
+      "title": "On-spot Games",
+      "details": "Besides all the spectacular contests and events, there will also be tons of opportunities for fun and games. At the stall placed on the venue participants can take part in fun word games, binge quizzes, cube solving, and much more. The quizzes will cover a wide range of TV shows, series, comics, books, games, and all other fandoms. So you are guaranteed to get your hype!"
+    },
+    {
+      "experienceSlug": "art-exhibition",
+      "icon": "paint",
+      "title": "Art Exhibition",
+      "details": "On specific days of the event, an art exhibition will take place to exhibit the best submissions from the participants as well as to showcase the best talents of our school. With spectacular submissions from eager participants all around, we can only hope the exhibition will be marvelous!"
+    }
+  ],
   "scheduleData": {
     "July 3, 2025": [
       {
