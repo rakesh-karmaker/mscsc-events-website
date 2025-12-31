@@ -11,9 +11,13 @@ type FooterInfoProps = {
     isInnerRegistration: boolean;
     registrationUrl: string;
   };
+  isHomepage: boolean;
 };
 
-export default function FooterInfo({ footerData }: FooterInfoProps): ReactNode {
+export default function FooterInfo({
+  footerData,
+  isHomepage,
+}: FooterInfoProps): ReactNode {
   const eventId = useParams().eventId || "";
 
   const registrationLink = footerData.isInnerRegistration
@@ -33,9 +37,9 @@ export default function FooterInfo({ footerData }: FooterInfoProps): ReactNode {
           <PrimaryBtn
             className="px-4.5! py-2.5! text-[1.08em]"
             isLink={true}
-            href={registrationLink}
+            href={isHomepage ? "https://mscsc.netlify.app/" : registrationLink}
           >
-            Register Now
+            {isHomepage ? "Visit Page" : "Register Now"}
           </PrimaryBtn>
         </div>
       </div>

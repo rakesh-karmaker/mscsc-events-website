@@ -7,7 +7,7 @@ import PageNotFound from "@/pages/page-not-found";
 
 const HomePage = lazy(() => import("@/pages/home"));
 const RegistrationPage = lazy(() => import("@/pages/registration"));
-const EventPage = lazy(() => import("@/pages/event"));
+const EventPage = lazy(() => import("@/pages/es"));
 
 export const router = createBrowserRouter([
   {
@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
         ),
       },
 
-      // events path
+      // es path
       {
         path: "/:eventId/events/:seSlug",
         element: (

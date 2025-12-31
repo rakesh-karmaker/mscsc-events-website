@@ -8,9 +8,15 @@ interface CounterProps {
   value: number;
   height: number;
   className?: string;
+  willRepeat?: boolean;
 }
 
-export default function Counter({ value, height, className }: CounterProps) {
+export default function Counter({
+  value,
+  height,
+  className,
+  willRepeat = true,
+}: CounterProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,7 +43,9 @@ export default function Counter({ value, height, className }: CounterProps) {
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top bottom",
-            toggleActions: "play none none reverse",
+            toggleActions: willRepeat
+              ? "play none none reverse"
+              : "play none none none",
           },
         }
       );

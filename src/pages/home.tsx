@@ -13,6 +13,7 @@ import { useEventData } from "@/hooks/use-event-data";
 import Loader from "@/components/ui/loader";
 import { Helmet } from "react-helmet-async";
 import capitalize from "@/utils/capitalize";
+import Events from "@/components/events/events";
 
 export default function Home(): ReactNode {
   const sectionId = useParams().section || "home";
@@ -49,6 +50,7 @@ export default function Home(): ReactNode {
     hero: <Hero key={"home"} />,
     video: <Video key={"video"} />,
     about: <About key={"about"} />,
+    events: <Events key={"events"} />,
     segments: <Segments key={"segments"} />,
     schedule: <Schedule key={"schedule"} />,
     sp: <Sponsors key={"sp"} />,

@@ -31,17 +31,19 @@ export default function Navbar(): ReactNode {
           eventName={eventMetaData.eventName || ""}
         />
         <NavLinks sections={sections} isOpen={isOpen} setIsOpen={setIsOpen} />
-        <NavLink
-          to={
-            eventMetaData.isInnerRegistration
-              ? currentEventId + "/registration/"
-              : eventMetaData.registrationUrl || ""
-          }
-          target={eventMetaData.isInnerRegistration ? "_self" : "_blank"}
-          className="flex gap-1.25 items-center text-[1.08em] border-2 border-primary px-4.25 py-2 max-xl:text-[0.9em]/[140%] max-xl:px-3.5 bg-primary text-white rounded-full hover:bg-secondary-bg hover:text-primary focus:bg-secondary-bg focus:text-primary focus-within:bg-secondary-bg focus-within:text-primary transition-colors duration-200"
-        >
-          Register <FaArrowRight />
-        </NavLink>
+        {eventMetaData.isHomepage ? null : (
+          <NavLink
+            to={
+              eventMetaData.isInnerRegistration
+                ? currentEventId + "/registration/"
+                : eventMetaData.registrationUrl || ""
+            }
+            target={eventMetaData.isInnerRegistration ? "_self" : "_blank"}
+            className="flex gap-1.25 items-center text-[1.08em] border-2 border-primary px-4.25 py-2 max-xl:text-[0.9em]/[140%] max-xl:px-3.5 bg-primary text-white rounded-full hover:bg-secondary-bg hover:text-primary focus:bg-secondary-bg focus:text-primary focus-within:bg-secondary-bg focus-within:text-primary transition-colors duration-200"
+          >
+            Register <FaArrowRight />
+          </NavLink>
+        )}
       </nav>
     </header>
   );

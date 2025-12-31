@@ -25,6 +25,7 @@ export default function Hero(): ReactNode {
       >
         <div className="flex flex-col gap-6.5 items-center relative justify-center">
           <EventMeta
+            isHomePage={eventMetaData.isHomepage}
             eventDate={eventMetaData.eventDate}
             eventLocation={eventMetaData.eventLocation}
           />

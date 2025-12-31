@@ -1,5 +1,6 @@
 export type EventMetaDataType = {
   template: string;
+  isHomepage: boolean;
   eventName: string;
   eventLogoUrl: string;
   eventDate: string;
@@ -43,6 +44,17 @@ export type ExplorionAboutSectionType = {
   title: string;
   heading: string;
   text: string;
+};
+
+export type ExplorionPastEventType = {
+  eventSlug: string;
+  imgUrl: string;
+  eventName: string;
+  eventDescription: string;
+  location: string;
+  date: string;
+  participantCount: number;
+  segmentCount: number;
 };
 
 export type ExplorionSegmentType = {

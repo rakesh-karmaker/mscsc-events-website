@@ -24,12 +24,15 @@ export default function About(): ReactNode {
         isInnerRegistration={eventMetaData.isInnerRegistration}
         registrationUrl={eventMetaData.registrationUrl || ""}
         contactLinks={contactLinks || {}}
+        isHomePage={eventMetaData.isHomepage}
       />
-      <AboutBottom
-        registrations={eventMetaData.registrations}
-        segmentCount={segmentData?.length || 0}
-        prizeCount={eventMetaData.prizeCount}
-      />
+      {eventMetaData.isHomepage ? null : (
+        <AboutBottom
+          registrations={eventMetaData.registrations}
+          segmentCount={segmentData?.length || 0}
+          prizeCount={eventMetaData.prizeCount}
+        />
+      )}
     </section>
   );
 }

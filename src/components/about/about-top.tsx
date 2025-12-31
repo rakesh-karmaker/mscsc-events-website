@@ -12,6 +12,7 @@ export type AboutTopProps = {
   about: { title: string; heading: string; text: string };
   isInnerRegistration: boolean;
   registrationUrl: string;
+  isHomePage: boolean;
 };
 
 export default function AboutTop({
@@ -19,6 +20,7 @@ export default function AboutTop({
   isInnerRegistration,
   registrationUrl,
   contactLinks,
+  isHomePage,
 }: AboutTopProps & {
   contactLinks: { [platform: string]: string };
 }): ReactNode {
@@ -48,6 +50,7 @@ export default function AboutTop({
           about={about}
           isInnerRegistration={isInnerRegistration}
           registrationUrl={registrationUrl}
+          isHomePage={isHomePage}
         />
         <SocialIcons contactLinks={contactLinks} />
       </div>

@@ -1,7 +1,6 @@
 import { useRef, type ReactNode } from "react";
 import PrimaryBtn from "@/components/ui/primary-btn";
 import { useParams } from "react-router";
-import { useLenis } from "lenis/react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -12,8 +11,6 @@ gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(SplitText);
 
 export default function HeroContent(): ReactNode {
-  const lenis = useLenis();
-
   // Fetch event data using the custom hook
   const { eventMetaData, sections, heroData } = useEventData();
   if (!eventMetaData || !heroData) {
@@ -24,7 +21,7 @@ export default function HeroContent(): ReactNode {
   const learnMoreSection = sections.includes("about") ? "about" : "segments";
 
   // Get eventId from URL parameters
-  const eventId = useParams().eventId;
+  const eventId = useParams().eventId || "";
   const registrationLink = eventMetaData.isInnerRegistration
     ? `${eventId}/registration/`
     : eventMetaData.registrationUrl;
@@ -61,21 +58,25 @@ export default function HeroContent(): ReactNode {
         <div className="flex gap-4 flex-wrap justify-center">
           <PrimaryBtn
             isLink={true}
-            href={registrationLink}
+            href={
+              eventMetaData.isHomepage
+                ? `/${eventId}/${learnMoreSection}`
+                : registrationLink
+            }
             className="text-[1.1em]/[155%]! tracking-wide px-4! py-2.5! max-xl:px-3.25! max-xl:py-2! max-xl:text-[1em]/[150%]! "
           >
-            Register Now
+            {eventMetaData.isHomepage ? "Learn More" : "Register Now"}
           </PrimaryBtn>
           <PrimaryBtn
             isLink={true}
-            href={`#${learnMoreSection}`}
-            onClick={(e) => {
-              e.preventDefault();
-              lenis?.scrollTo(`#${learnMoreSection}`, { offset: -100 });
-            }}
+            href={
+              eventMetaData.isHomepage
+                ? "https://mscsc.netlify.app/"
+                : `/${eventId}/${learnMoreSection}`
+            }
             className="before:bg-secondary-bg text-black! after:bg-primary! hover:text-white! text-[1.1em]/[155%]! tracking-wide px-4! py-2.5! max-xl:px-3.25! max-xl:py-2! max-xl:text-[1em]/[150%]!"
           >
-            Learn More
+            {eventMetaData.isHomepage ? "Visit Page" : "Learn More"}
           </PrimaryBtn>
         </div>
       </div>

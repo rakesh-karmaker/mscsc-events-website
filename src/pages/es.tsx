@@ -1,11 +1,12 @@
-import EventAside from "@/components/event-page/event-aside";
-import EventInfo from "@/components/event-page/event-info";
+import EventAside from "@/components/es-page/es-aside";
+import EventInfo from "@/components/es-page/es-info";
 import { useEventData } from "@/hooks/use-event-data";
 import type {
   ExplorionExperienceType,
   ExplorionSegmentType,
 } from "@/types/event-data-types";
 import { useEffect, type ReactNode } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router";
 
 export function isEventType(
@@ -39,12 +40,18 @@ export default function Event(): ReactNode {
   }
 
   return (
-    <section className="w-full max-w-max-width h-full flex gap-10 max-lg:gap-5 max-md:flex-col-reverse py-7">
-      <EventAside activeSlug={seSlug} />
-      <div className="w-full h-full p-4 border-2 rounded-md border-primary">
-        <EventInfo eventData={data} />
-      </div>
-      {/* <SegmentInfo segment={data} /> */}
-    </section>
+    <>
+      <Helmet>
+        <title>
+          {eventMetaData.eventName} - {data.title}
+        </title>
+      </Helmet>
+      <section className="w-full max-w-max-width h-full flex gap-10 max-lg:gap-5 max-md:flex-col-reverse py-7">
+        <EventAside activeSlug={seSlug} />
+        <div className="w-full h-full p-4 border-2 rounded-md border-primary">
+          <EventInfo eventData={data} />
+        </div>
+      </section>
+    </>
   );
 }

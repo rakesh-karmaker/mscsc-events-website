@@ -10,6 +10,9 @@ export default function HeroBg(): ReactNode {
       <div className="w-fit max-w-screen h-full absolute rotate-180 -bottom-2 left-0 overflow-hidden">
         <HeroBgWave isRegistrationPage={false} />
       </div>
+      <div className="w-fit max-w-screen h-full absolute -bottom-full left-0 overflow-hidden -scale-x-100">
+        <HeroBgWave isRegistrationPage={false} />
+      </div>
     </div>
   );
 }

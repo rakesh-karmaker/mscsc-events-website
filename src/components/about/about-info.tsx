@@ -13,6 +13,7 @@ export default function AboutInfo({
   about,
   isInnerRegistration,
   registrationUrl,
+  isHomePage,
 }: AboutTopProps): ReactNode {
   const currentEventId = useParams().eventId || "";
 
@@ -46,13 +47,15 @@ export default function AboutInfo({
           <PrimaryBtn
             isLink={true}
             href={
-              isInnerRegistration
-                ? currentEventId + "/registration/"
-                : registrationUrl
+              isHomePage
+                ? "https://mscsc.netlify.app/"
+                : isInnerRegistration
+                  ? currentEventId + "/registration/"
+                  : registrationUrl
             }
             className="flex gap-1.5 items-center z-99"
           >
-            Register Now <FaArrowRight />
+            {isHomePage ? "Visit Page" : "Register Now"} <FaArrowRight />
           </PrimaryBtn>
         </div>
       </div>

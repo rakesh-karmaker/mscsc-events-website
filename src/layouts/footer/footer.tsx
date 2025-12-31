@@ -20,6 +20,7 @@ export default function Footer(): ReactNode {
           isInnerRegistration: eventMetaData.isInnerRegistration,
           registrationUrl: eventMetaData.registrationUrl || "",
         }}
+        isHomepage={eventMetaData.isHomepage}
       />
       <FooterRight
         contactLinks={contactLinks || {}}

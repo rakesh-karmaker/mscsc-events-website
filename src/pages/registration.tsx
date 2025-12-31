@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 export default function Registration(): ReactNode {
   // Fetch event data using the custom hook
   const { formData, segmentData, eventMetaData } = useEventData();
-  if (!formData || !segmentData || !eventMetaData) {
+  if (!formData || !segmentData || !eventMetaData || eventMetaData.isHomepage) {
     throw new Error("Registration data is unavailable");
   }
 
