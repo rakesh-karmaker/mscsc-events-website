@@ -31,7 +31,7 @@ export default function RadioField({
             }}
             type="button"
           >
-            <div className="pointer-events-none items-center">
+            <div className="pointer-events-none flex items-center">
               <Radio
                 checked={selectedOption === option}
                 value={option}
