@@ -63,8 +63,9 @@ export const caFormSchema = z.object({
   }),
 
   description: z
-    .string({ required_error: "Description is required" })
-    .min(10, "Description must be at least 10 characters"),
+    .string()
+    .min(10, "Description must be at least 10 characters")
+    .optional(),
 });
 
 // Type for the form data derived from the Zod schema

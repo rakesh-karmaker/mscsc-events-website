@@ -33,7 +33,7 @@ export default function CAApplicationForm(): ReactNode {
     setSelectedGender(gender as "male" | "female");
   }
 
-  const [hasPrevExp, setHasPrevExp] = useState<boolean>(false);
+  const [hasPrevExp, setHasPrevExp] = useState<boolean>(true);
   function handleHasPrevExpRadioClick(value: string) {
     if (value === "yes") setValue("havePreviousExperience", "yes");
     else if (value === "no") setValue("havePreviousExperience", "no");
@@ -182,118 +182,6 @@ export default function CAApplicationForm(): ReactNode {
           </div>
         </Stack>
       </FormBox>
-
-      {/* <FormBox title="Segment Selection">
-        <div className="flex flex-col gap-6">
-          <div className="w-full grid grid-cols-2 max-2xl:grid-cols-1 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4">
-            {segments.map((segment, index) => (
-              <div
-                key={index}
-                className="flex items-center px-5 py-3 rounded-sm border border-primary hover:bg-light-gray/20! transition-colors cursor-pointer"
-                style={{
-                  background: selectedSegments.includes(segment.title)
-                    ? "color-mix(in oklab, var(--light-gray) 20%, transparent)"
-                    : "color-mix(in oklab, var(--white) 20%, transparent)",
-                }}
-                onClick={() => {
-                  let updatedSegments;
-                  if (selectedSegments.includes(segment.title)) {
-                    updatedSegments = selectedSegments.filter(
-                      (item) => item !== segment.title
-                    );
-                  } else {
-                    updatedSegments = [...selectedSegments, segment.title];
-                  }
-                  setSelectedSegments(updatedSegments);
-                  setValue("segments", updatedSegments); // Sync with form
-                }}
-              >
-                <div className="pointer-events-none">
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        {...register("segments")}
-                        checked={selectedSegments.includes(segment.title)}
-                        style={{
-                          color: "var(--primary-color)",
-                        }}
-                      />
-                    }
-                    label={segment.title}
-                    style={{
-                      pointerEvents: "none",
-                      color: "var(--primary-color)",
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-          {errors.segments && (
-            <p className="text-red-600 text-sm">
-              {errors.segments.message as string}
-            </p>
-          )}
-        </div>
-      </FormBox> */}
-
-      {/* <FormBox title="Payment Information">
-        <div className="flex flex-col gap-6">
-          <div className="w-full flex flex-col gap-2">
-            <h3 className="text-xl max-sm:text-lg font-medium text-primary">
-              Select Transaction Method:
-            </h3>
-            <div>
-              <PaymentSteps
-                transactionMethods={transactionMethods}
-                setMethod={handlePaymentMethodChange}
-                fees={fees}
-              />
-            </div>
-          </div>
-          <Stack spacing={3} sx={{ maxWidth: "100%" }}>
-            <TextField
-              {...register("transactionPhoneNumber")}
-              id="transactionPhoneNumber"
-              label="Payment Phone Number"
-              variant="outlined"
-              placeholder="Your Payment Phone Number"
-              error={!!errors.transactionPhoneNumber}
-              helperText={errors.transactionPhoneNumber?.message}
-              fullWidth
-            />
-
-            <TextField
-              {...register("transactionId")}
-              id="transactionId"
-              label="Transaction ID"
-              variant="outlined"
-              placeholder="Your Transaction ID"
-              error={!!errors.transactionId}
-              helperText={errors.transactionId?.message}
-              fullWidth
-            />
-          </Stack>
-        </div>
-      </FormBox>
-
-      <FormBox title="Reference Information">
-        <div className="flex flex-col gap-2">
-          <p className="text-[1.1rem]">
-            Campus Ambassador or how did you hear about us?
-          </p>
-          <TextField
-            {...register("reference")}
-            id="reference"
-            label="Reference"
-            variant="outlined"
-            placeholder="Campus Ambassador Name"
-            error={!!errors.reference}
-            helperText={errors.reference?.message}
-            fullWidth
-          />
-        </div>
-      </FormBox> */}
 
       <PrimaryBtn
         type="submit"
