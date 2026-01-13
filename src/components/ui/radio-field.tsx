@@ -6,6 +6,7 @@ type RadioFieldProps = {
   onClick: (option: string) => void;
   selectedOption: string;
   children: ReactNode;
+  errors: any;
 };
 
 export default function RadioField({
@@ -13,6 +14,7 @@ export default function RadioField({
   onClick,
   selectedOption,
   children,
+  errors,
 }: RadioFieldProps) {
   return (
     <div className="w-full h-full flex flex-col gap-1.5">
@@ -46,6 +48,9 @@ export default function RadioField({
           </button>
         ))}
       </div>
+      {errors && (
+        <p className="text-red-600 text-sm">{errors.message as string}</p>
+      )}
     </div>
   );
 }

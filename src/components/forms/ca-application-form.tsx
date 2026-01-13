@@ -18,6 +18,9 @@ export default function CAApplicationForm(): ReactNode {
     setValue,
   } = useForm({
     resolver: zodResolver(caFormSchema),
+    defaultValues: {
+      havePreviousExperience: "yes",
+    },
   });
 
   function onSubmit(data: CAFormSchemaType) {
@@ -114,6 +117,7 @@ export default function CAApplicationForm(): ReactNode {
             options={["male", "female"]}
             onClick={handleGenderRadioClick}
             selectedOption={selectedGender}
+            errors={errors && errors.gender}
           >
             <h3 className="text-lg text-text">Gender</h3>
           </RadioField>
@@ -154,6 +158,7 @@ export default function CAApplicationForm(): ReactNode {
             options={["yes", "no"]}
             onClick={handleHasPrevExpRadioClick}
             selectedOption={hasPrevExp ? "yes" : "no"}
+            errors={errors && errors.havePreviousExperience}
           >
             <h3 className="text-lg text-text">
               Do you have previous campus ambassador experience?
