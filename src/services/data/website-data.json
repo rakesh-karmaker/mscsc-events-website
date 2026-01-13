@@ -8,6 +8,7 @@
   "isInnerRegistration": true,
   "eventDescription": "A celebration of knowledge, innovation, and human curiosity. From the tiniest atoms to the farthest galaxies, every mystery awaits discovery.",
   "registrationUrl": "",
+  "hasCAForm": true,
   "contactLinks": {
     "email": "info@explorion.com",
     "facebook": "https://www.facebook.com/explorionevent",
@@ -33,9 +34,15 @@
         "number": "019XXXXXXXX",
         "code": "*322#"
       }
-    }
+    },
+    "registrationDeadline": "2024-12-31T23:59:59Z"
   },
-  "registrations": 256,
+  "caFormData": {
+    "title": "Explorion - Campus Ambassador Application",
+    "details": "<p>Join the Explorion Campus Ambassador Program and be a part of an exciting journey to promote science and innovation in your campus! As a Campus Ambassador, you'll have the opportunity to develop leadership skills, network with like-minded individuals, and gain valuable experience in event promotion and organization.</p>\n<p>Responsibilities include promoting the event on social media, organizing campus events, and engaging with students to encourage participation. In return, you'll receive exclusive perks, certificates, and the chance to be recognized as a key contributor to the success of Explorion.</p>\n<p>Apply now to become a Campus Ambassador and help us inspire the next generation of scientists and innovators!</p>",
+    "applicationDeadline": "2024-12-31T23:59:59Z"
+  },
+  "participantCount": 256,
   "prizeCount": 25,
   "sections": [
     "hero",
@@ -60,7 +67,8 @@
   "aboutData": {
     "title": "Why attend Explorion",
     "heading": "Explorion is not just an event, it’s a journey into the unknown, inspiring the next generation of thinkers, dreamers, and innovators.",
-    "text": "Explorion is where ideas take shape and imagination finds purpose. From interactive experiments to thought-provoking exhibitions, the event brings together curious minds eager to explore the wonders of science. Whether you’re a participant, a visitor, or a mentor, Explorion offers the perfect space to learn, share, and get inspired by innovation happening all around you."
+    "text": "Explorion is where ideas take shape and imagination finds purpose. From interactive experiments to thought-provoking exhibitions, the event brings together curious minds eager to explore the wonders of science. Whether you’re a participant, a visitor, or a mentor, Explorion offers the perfect space to learn, share, and get inspired by innovation happening all around you.",
+    "imgUrl": "/explorion/science-fest.jpg"
   },
   "pastEventData": [
     {
@@ -68,8 +76,8 @@
       "imgUrl": "/intraschool-2023.png",
       "eventName": "Intraschool Exploration 2023",
       "eventDescription": "This is an intraschool event organized solely for the participation and augmentation of the current students of MUBC. No students of other institutions are eligible for participation.",
-      "location": "Spondon Edu & Consultancy Ltd",
-      "date": "Jan 27, 2023",
+      "eventLocation": "Spondon Edu & Consultancy Ltd",
+      "eventDate": "Jan 27, 2023",
       "participantCount": 229,
       "segmentCount": 8
     },
@@ -78,8 +86,8 @@
       "imgUrl": "/intraschool-2023.png",
       "eventName": "Intraschool Exploration 2023",
       "eventDescription": "This is an intraschool event organized solely for the participation and augmentation of the current students of MUBC. No students of other institutions are eligible for participation.",
-      "location": "Spondon Edu & Consultancy Ltd",
-      "date": "Jan 27, 2023",
+      "eventLocation": "Spondon Edu & Consultancy Ltd",
+      "eventDate": "Jan 27, 2023",
       "participantCount": 229,
       "segmentCount": 8
     },
@@ -88,8 +96,8 @@
       "imgUrl": "/intraschool-2023.png",
       "eventName": "Intraschool Exploration 2023",
       "eventDescription": "This is an intraschool event organized solely for the participation and augmentation of the current students of MUBC. No students of other institutions are eligible for participation.",
-      "location": "Spondon Edu & Consultancy Ltd",
-      "date": "Jan 27, 2023",
+      "eventLocation": "Spondon Edu & Consultancy Ltd",
+      "eventDate": "Jan 27, 2023",
       "participantCount": 229,
       "segmentCount": 8
     }

@@ -54,8 +54,8 @@ export default function EventCard({
               {pastEventData.eventName}
             </h3>
             <EventTags
-              location={pastEventData.location}
-              date={pastEventData.date}
+              location={pastEventData.eventLocation}
+              date={pastEventData.eventDate}
             />
           </div>
           <div className="w-full flex flex-col gap-3 z-99">

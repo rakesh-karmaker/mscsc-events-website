@@ -11,6 +11,7 @@ import type {
   ExplorionSPType,
   ExplorionVideoSectionType,
   FormDataType,
+  CAFormDataType,
 } from "@/types/event-data-types";
 import { create } from "zustand";
 
@@ -23,6 +24,9 @@ export type EventDataStateType = {
 
   formData: FormDataType | null;
   setFormData: (formData: FormDataType) => void;
+
+  caFormData: CAFormDataType | null;
+  setCAFormData: (caFormData: CAFormDataType) => void;
 
   sections: string[];
   setSections: (sections: string[]) => void;
@@ -69,6 +73,9 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
   formData: null,
   setFormData: (formData) => set({ formData }),
 
+  caFormData: null,
+  setCAFormData: (caFormData) => set({ caFormData }),
+
   sections: [],
   setSections: (sections) => set({ sections }),
 
@@ -113,7 +120,10 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
         : false,
       eventDescription: websiteData.eventDescription || "",
       registrationUrl: websiteData.registrationUrl || "",
-      registrations: websiteData.registrations ? websiteData.registrations : 0,
+      hasCAForm: websiteData.hasCAForm ? websiteData.hasCAForm : false,
+      participantCount: websiteData.participantCount
+        ? websiteData.participantCount
+        : 0,
       prizeCount: websiteData.prizeCount ? websiteData.prizeCount : 0,
     };
     set({ eventMetaData: metaData });
@@ -123,6 +133,9 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
 
     // set the form data
     set({ formData: websiteData.formData || null });
+
+    // set the CA form data
+    set({ caFormData: websiteData.caFormData || null });
 
     // set the sections
     set({ sections: websiteData.sections || [] });

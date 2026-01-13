@@ -1,15 +1,15 @@
 import FormInfo from "@/components/forms/form-info";
 import { useEffect, type ReactNode } from "react";
-import RegistrationForm from "@/components/forms/registration-form";
 import { useEventData } from "@/hooks/use-event-data";
 import { Helmet } from "react-helmet-async";
 import FormPageHeader from "@/components/form-page-header";
+import CAApplicationForm from "@/components/forms/ca-application-form";
 
-export default function Registration(): ReactNode {
+export default function CAApplication(): ReactNode {
   // Fetch event data using the custom hook
-  const { formData, segmentData, eventMetaData } = useEventData();
-  if (!formData || !segmentData || !eventMetaData) {
-    throw new Error("Registration data is unavailable");
+  const { caFormData, eventMetaData } = useEventData();
+  if (!eventMetaData || !eventMetaData.hasCAForm || !caFormData) {
+    throw new Error("Application data is unavailable");
   }
 
   useEffect(() => {
@@ -22,19 +22,15 @@ export default function Registration(): ReactNode {
   return (
     <>
       <Helmet>
-        <title>{eventMetaData.eventName} - Registration</title>
+        <title>{eventMetaData.eventName} - CA Application</title>
       </Helmet>
       <section className="w-full h-full flex flex-col gap-10 max-sm:gap-0 items-center">
         <FormPageHeader>
-          Become a Part of <br /> the Scientific Experience
+          Become one of <br /> the Change Agents
         </FormPageHeader>
         <div className="w-full flex gap-10 max-w-max-width max-sm:max-w-full mb-20 max-lg:flex-col">
-          <FormInfo title={formData.title} details={formData.details} />
-          <RegistrationForm
-            transactionMethods={formData.transactionMethods}
-            fees={formData.fees}
-            segments={segmentData}
-          />
+          <FormInfo title={caFormData.title} details={caFormData.details} />
+          <CAApplicationForm />
         </div>
       </section>
     </>

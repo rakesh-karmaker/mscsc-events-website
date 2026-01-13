@@ -6,7 +6,11 @@ import HeroBgWave from "./ui/hero-bg-wave";
 
 gsap.registerPlugin(useGSAP);
 
-export default function RegistrationHeader(): ReactNode {
+export default function FormPageHeader({
+  children,
+}: {
+  children: ReactNode;
+}): ReactNode {
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   useGSAP(() => {
@@ -22,7 +26,7 @@ export default function RegistrationHeader(): ReactNode {
           className="text-pure-white text-8xl/[110%] max-xl:text-7xl max-md:text-5xl/[120%] max-sm:text-4xl/[130%] font-normal max-w-[20ch]"
           ref={headingRef}
         >
-          Become a Part of <br /> the Scientific Experience
+          {children}
         </h1>
       </div>
       <div className="w-full h-full absolute top-0 left-0 max-w-screen overflow-hidden">

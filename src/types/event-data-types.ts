@@ -8,7 +8,8 @@ export type EventMetaDataType = {
   isInnerRegistration: boolean;
   eventDescription: string;
   registrationUrl?: string;
-  registrations: number;
+  hasCAForm: boolean;
+  participantCount: number;
   prizeCount: number;
 };
 
@@ -25,6 +26,13 @@ export type FormDataType = {
       qrCodeUrl?: string;
     };
   };
+  registrationDeadline: string;
+};
+
+export type CAFormDataType = {
+  title: string;
+  details: string;
+  applicationDeadline: string;
 };
 
 //* Explorion Template types
@@ -51,8 +59,8 @@ export type ExplorionPastEventType = {
   imgUrl: string;
   eventName: string;
   eventDescription: string;
-  location: string;
-  date: string;
+  eventLocation: string;
+  eventDate: string;
   participantCount: number;
   segmentCount: number;
 };

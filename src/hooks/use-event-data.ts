@@ -4,6 +4,7 @@ export function useEventData() {
   const eventMetaData = useEventDataStore((state) => state.eventMetaData);
   const contactLinks = useEventDataStore((state) => state.contactLinks);
   const formData = useEventDataStore((state) => state.formData);
+  const caFormData = useEventDataStore((state) => state.caFormData);
   const sections = useEventDataStore((state) => state.sections);
   const heroData = useEventDataStore((state) => state.heroData);
   const videoData = useEventDataStore((state) => state.videoData);
@@ -25,6 +26,7 @@ export function useEventData() {
     eventMetaData,
     contactLinks,
     formData,
+    caFormData,
     sections,
     heroData,
     videoData,

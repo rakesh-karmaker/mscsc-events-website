@@ -28,7 +28,7 @@ export default function About(): ReactNode {
       />
       {eventMetaData.isHomepage ? null : (
         <AboutBottom
-          registrations={eventMetaData.registrations}
+          participantCount={eventMetaData.participantCount}
           segmentCount={segmentData?.length || 0}
           prizeCount={eventMetaData.prizeCount}
         />

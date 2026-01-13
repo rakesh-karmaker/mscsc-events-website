@@ -2,19 +2,21 @@ import type { ReactNode } from "react";
 import Counter from "../ui/counter";
 
 type AboutBottomProps = {
-  registrations: number;
+  participantCount: number;
   segmentCount: number;
   prizeCount: number;
 };
 
 export default function AboutBottom({
-  registrations,
+  participantCount,
   segmentCount,
   prizeCount,
 }: AboutBottomProps): ReactNode {
   return (
     <div className="w-full h-full border-t-2 border-primary pt-5 grid grid-cols-3 max-[810px]:grid-cols-2 max-[810px]:grid-rows-2 gap-10 max-sm:grid-cols-1">
-      <AboutCounterItem count={registrations}>Registrations</AboutCounterItem>
+      <AboutCounterItem count={participantCount}>
+        Registrations
+      </AboutCounterItem>
       <AboutCounterItem count={segmentCount}>
         Interesting Segments
       </AboutCounterItem>
