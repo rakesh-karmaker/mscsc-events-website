@@ -35,38 +35,7 @@
     "imgUrl": "/explorion/science-fest.jpg",
     "prizeCount": 25
   },
-  "pastEventData": [
-    {
-      "eventSlug": "intraschool-exploration-2023",
-      "imgUrl": "/intraschool-2023.png",
-      "eventName": "Intraschool Exploration 2023",
-      "eventDescription": "This is an intraschool event organized solely for the participation and augmentation of the current students of MUBC. No students of other institutions are eligible for participation.",
-      "eventLocation": "Spondon Edu & Consultancy Ltd",
-      "eventDate": "Jan 27, 2023",
-      "participantCount": 229,
-      "segmentCount": 8
-    },
-    {
-      "eventSlug": "intraschool-exploration-2023_2",
-      "imgUrl": "/intraschool-2023.png",
-      "eventName": "Intraschool Exploration 2023",
-      "eventDescription": "This is an intraschool event organized solely for the participation and augmentation of the current students of MUBC. No students of other institutions are eligible for participation.",
-      "eventLocation": "Spondon Edu & Consultancy Ltd",
-      "eventDate": "Jan 27, 2023",
-      "participantCount": 229,
-      "segmentCount": 8
-    },
-    {
-      "eventSlug": "intraschool-exploration-2023_3",
-      "imgUrl": "/intraschool-2023.png",
-      "eventName": "Intraschool Exploration 2023",
-      "eventDescription": "This is an intraschool event organized solely for the participation and augmentation of the current students of MUBC. No students of other institutions are eligible for participation.",
-      "eventLocation": "Spondon Edu & Consultancy Ltd",
-      "eventDate": "Jan 27, 2023",
-      "participantCount": 229,
-      "segmentCount": 8
-    }
-  ],
+
   "faqData": [
     {
       "question": "Who can participate in Explorion?",

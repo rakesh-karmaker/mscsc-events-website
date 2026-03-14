@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import type { ReactNode } from "react";
 import { FaClock, FaLocationDot } from "react-icons/fa6";
 import { GoPlus } from "react-icons/go";
@@ -23,7 +24,7 @@ export default function EventMeta({
         <div className="flex gap-1.5 items-center min-w-fit">
           <FaClock className="text-text max-md:text-sm" />
           <p className="text-text font-medium text-lg max-md:text-sm">
-            {eventDate}
+            {dayjs(eventDate).format("MMMM D, YYYY")}
           </p>
         </div>
       )}

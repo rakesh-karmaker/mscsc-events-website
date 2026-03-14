@@ -1,17 +1,21 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Navbar from "@/layouts/navbar/navbar";
 import HomePageData from "@/services/data/home-page-data.json";
 import ExplorionPageData from "@/services/data/explorion-page-data.json";
-import { Outlet, useParams } from "react-router";
+import { Outlet, useNavigate, useParams } from "react-router";
 import Footer from "./footer/footer";
 import { useEventData } from "@/hooks/use-event-data";
 import Loader from "@/components/ui/loader";
 import { Helmet } from "react-helmet-async";
-import { getEventBySlug } from "@/lib/api/event";
+import { getAllEvents, getEventBySlug, getJSONData } from "@/lib/api/event";
+import type { AxiosError } from "axios";
 
 export default function HomeLayout(): ReactNode {
   const { setEventData, eventMetaData, hasFetchedData, setHasFetchedData } =
     useEventData();
+
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   // all sections
   const allSections: string[] = [
@@ -38,33 +42,78 @@ export default function HomeLayout(): ReactNode {
 
   useEffect(() => {
     async function fetchData(id: string) {
-      const response = await getEventBySlug(id);
-      if (response.status === 200 && response.data) {
-        console.log("Fetched event data:", response.data);
-        setEventData(response.data);
+      try {
+        const response = await getEventBySlug(id);
+        if (response.status !== 200 || !response.data) {
+          setError("Failed to fetch event data");
+        }
+
+        const eventData = await getJSONData(response.data.dataUrl);
+        if (!eventData) {
+          setError("Failed to fetch event JSON data");
+        }
+
+        setEventData(eventData);
         setHasFetchedData(true);
-      } else {
-        throw new Error("Event data not found");
+      } catch (error: AxiosError | any) {
+        if (error.response) {
+          setError(
+            `Error: ${error.response.status} - ${error.response.data.message || "An error occurred while fetching event data"}`,
+          );
+        }
       }
     }
 
+    async function fetchPastEvents() {
+      try {
+        const res = await getAllEvents();
+        if (res.status !== 200 || !res.data) {
+          setError("Failed to fetch past events data");
+          return;
+        }
+
+        setEventData({ ...staticData["home"], pastEventData: res.data });
+        setHasFetchedData(true);
+      } catch (error: AxiosError | any) {
+        if (error.response) {
+          setError(
+            `Error: ${error.response.status} - ${error.response.data.message || "An error occurred while fetching past events data"}`,
+          );
+        }
+      }
+    }
+
+    if (!eventId) {
+      navigate("/home");
+    }
+
     // Validate eventId and sectionId
-    if (eventId && allSections.includes(eventId)) {
-      throw new Error("Invalid event ID");
+    else if (eventId && allSections.includes(eventId)) {
+      setError("Invalid event ID");
     } else if (sectionId && !allSections.includes(sectionId)) {
-      throw new Error("Invalid section ID");
+      setError("Invalid section ID");
     }
 
     // Set event data based on eventId
     else if (!eventMetaData && eventId && staticData[eventId]) {
-      setEventData(staticData[eventId]);
-      setHasFetchedData(true);
+      if (eventId === "home") {
+        fetchPastEvents();
+      } else {
+        setEventData(staticData[eventId]);
+        setHasFetchedData(true);
+      }
     } else if (eventId && !staticData[eventId]) {
       fetchData(eventId);
     } else {
-      throw new Error("Event ID is required");
+      setError("Event ID is required");
     }
   }, [eventId]);
+
+  useEffect(() => {
+    if (error) {
+      throw new Error(error);
+    }
+  }, [error]);
 
   if (!hasFetchedData || !eventMetaData) {
     return (

@@ -58,7 +58,7 @@ export type ExplorionAboutSectionType = {
 
 export type ExplorionPastEventType = {
   eventSlug: string;
-  imgUrl: string;
+  eventBannerUrl: string;
   eventName: string;
   eventDescription: string;
   eventLocation: string;

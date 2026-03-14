@@ -7,6 +7,7 @@ import Counter from "../ui/counter";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import animateFadeUp from "@/animations/fade-up";
+import dayjs from "dayjs";
 
 gsap.registerPlugin(useGSAP);
 
@@ -63,9 +64,10 @@ export default function EventCard({
               {pastEventData.eventDescription}
             </p>
             <PrimaryBtn
-              isLink={true}
-              href={`/${pastEventData.eventSlug}/home`}
               className="group flex items-center"
+              onClick={() => [
+                window.open(`/${pastEventData.eventSlug}`, "_blank"),
+              ]}
             >
               Explore Event{" "}
               <FaArrowRightLong className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
@@ -86,7 +88,7 @@ export default function EventCard({
         style={cardHeight ? { height: cardHeight } : {}}
       >
         <img
-          src={pastEventData.imgUrl}
+          src={pastEventData.eventBannerUrl}
           alt={pastEventData.eventName}
           className="h-full w-full object-cover object-center"
         />
@@ -137,7 +139,7 @@ function EventTags({
       </div>
       <div className="px-3 py-1.5 bg-primary rounded-sm text-white flex gap-1 items-center text-sm">
         <FaCalendarAlt />
-        <p>{date}</p>
+        <p>{dayjs(date).format("DD MMM YYYY")}</p>
       </div>
     </div>
   );
