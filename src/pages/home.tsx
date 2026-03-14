@@ -16,13 +16,17 @@ import capitalize from "@/utils/capitalize";
 import Events from "@/components/events/events";
 
 export default function Home(): ReactNode {
-  const sectionId = useParams().section || "home";
+  // Get section and eventId from URL parameters
+  const sectionId = useParams().section || "hero";
+
+  // Initialize Lenis for smooth scrolling
   const lenis = useLenis();
+
   const navigate = useNavigate();
   const { sections, eventMetaData } = useEventData();
 
   if (!sections || !eventMetaData) {
-    navigate("/");
+    navigate("/home");
     return (
       <div className="w-full h-full min-h-screen flex justify-center items-center">
         <Loader />
@@ -66,7 +70,9 @@ export default function Home(): ReactNode {
         </title>
       </Helmet>
       {sections.map((section) => {
-        return sectionComponents[section] || null;
+        if (!eventMetaData.hiddenSections.includes(section)) {
+          return sectionComponents[section] || null;
+        }
       })}
     </>
   );

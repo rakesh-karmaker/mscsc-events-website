@@ -8,7 +8,12 @@ import CAApplicationForm from "@/components/forms/ca-application-form";
 export default function CAApplication(): ReactNode {
   // Fetch event data using the custom hook
   const { caFormData, eventMetaData } = useEventData();
-  if (!eventMetaData || !eventMetaData.hasCAForm || !caFormData) {
+  if (
+    !eventMetaData ||
+    !eventMetaData.hasCAForm ||
+    !caFormData ||
+    eventMetaData.isHomepage
+  ) {
     throw new Error("Application data is unavailable");
   }
 

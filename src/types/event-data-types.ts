@@ -3,6 +3,7 @@ export type EventMetaDataType = {
   isHomepage: boolean;
   eventName: string;
   eventLogoUrl: string;
+  eventFaviconUrl: string;
   eventDate: string;
   eventLocation: string;
   isInnerRegistration: boolean;
@@ -10,7 +11,7 @@ export type EventMetaDataType = {
   registrationUrl?: string;
   hasCAForm: boolean;
   participantCount: number;
-  prizeCount: number;
+  hiddenSections: string[];
 };
 
 export type ContactLinksType = { [platform: string]: string };
@@ -52,6 +53,7 @@ export type ExplorionAboutSectionType = {
   title: string;
   heading: string;
   text: string;
+  prizeCount: number;
 };
 
 export type ExplorionPastEventType = {

@@ -30,7 +30,7 @@ export default function About(): ReactNode {
         <AboutBottom
           participantCount={eventMetaData.participantCount}
           segmentCount={segmentData?.length || 0}
-          prizeCount={eventMetaData.prizeCount}
+          prizeCount={aboutData.prizeCount}
         />
       )}
     </section>

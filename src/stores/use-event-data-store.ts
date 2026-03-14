@@ -113,6 +113,7 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
       isHomepage: websiteData.isHomepage || false,
       eventName: websiteData.eventName || "",
       eventLogoUrl: websiteData.eventLogoUrl || "",
+      eventFaviconUrl: websiteData.eventFaviconUrl || "",
       eventDate: websiteData.eventDate || "",
       eventLocation: websiteData.eventLocation || "",
       isInnerRegistration: websiteData.isInnerRegistration
@@ -124,7 +125,7 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
       participantCount: websiteData.participantCount
         ? websiteData.participantCount
         : 0,
-      prizeCount: websiteData.prizeCount ? websiteData.prizeCount : 0,
+      hiddenSections: websiteData.hiddenSections || [],
     };
     set({ eventMetaData: metaData });
 

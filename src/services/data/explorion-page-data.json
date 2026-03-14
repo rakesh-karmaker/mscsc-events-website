@@ -2,7 +2,7 @@
   "template": "Explorion",
   "eventName": "Explorion",
   "eventLogoUrl": "/explorion/event-icon.png",
-  "isHomepage": true,
+  "eventFaviconUrl": "/explorion/event-icon.png",
   "eventDate": "3 July, 2026",
   "eventLocation": "Mirpur, Dhaka",
   "isInnerRegistration": true,
@@ -43,7 +43,6 @@
     "applicationDeadline": "2024-12-31T23:59:59Z"
   },
   "participantCount": 256,
-  "prizeCount": 25,
   "sections": [
     "hero",
     "video",
@@ -55,6 +54,7 @@
     "faqs",
     "contact"
   ],
+  "hiddenSections": [],
   "heroData": {
     "icons": ["division", "rocket", "chess", "atom"],
     "heading": "Exploring the Universe Within and Beyond",
@@ -68,40 +68,9 @@
     "title": "Why attend Explorion",
     "heading": "Explorion is not just an event, it’s a journey into the unknown, inspiring the next generation of thinkers, dreamers, and innovators.",
     "text": "Explorion is where ideas take shape and imagination finds purpose. From interactive experiments to thought-provoking exhibitions, the event brings together curious minds eager to explore the wonders of science. Whether you’re a participant, a visitor, or a mentor, Explorion offers the perfect space to learn, share, and get inspired by innovation happening all around you.",
-    "imgUrl": "/explorion/science-fest.jpg"
+    "imgUrl": "/explorion/science-fest.jpg",
+    "prizeCount": 25
   },
-  "pastEventData": [
-    {
-      "eventSlug": "intraschool-exploration-2023",
-      "imgUrl": "/intraschool-2023.png",
-      "eventName": "Intraschool Exploration 2023",
-      "eventDescription": "This is an intraschool event organized solely for the participation and augmentation of the current students of MUBC. No students of other institutions are eligible for participation.",
-      "eventLocation": "Spondon Edu & Consultancy Ltd",
-      "eventDate": "Jan 27, 2023",
-      "participantCount": 229,
-      "segmentCount": 8
-    },
-    {
-      "eventSlug": "intraschool-exploration-2023_2",
-      "imgUrl": "/intraschool-2023.png",
-      "eventName": "Intraschool Exploration 2023",
-      "eventDescription": "This is an intraschool event organized solely for the participation and augmentation of the current students of MUBC. No students of other institutions are eligible for participation.",
-      "eventLocation": "Spondon Edu & Consultancy Ltd",
-      "eventDate": "Jan 27, 2023",
-      "participantCount": 229,
-      "segmentCount": 8
-    },
-    {
-      "eventSlug": "intraschool-exploration-2023_3",
-      "imgUrl": "/intraschool-2023.png",
-      "eventName": "Intraschool Exploration 2023",
-      "eventDescription": "This is an intraschool event organized solely for the participation and augmentation of the current students of MUBC. No students of other institutions are eligible for participation.",
-      "eventLocation": "Spondon Edu & Consultancy Ltd",
-      "eventDate": "Jan 27, 2023",
-      "participantCount": 229,
-      "segmentCount": 8
-    }
-  ],
   "segmentsData": [
     {
       "segmentSlug": "robotics-automation",
@@ -393,8 +362,7 @@
     },
     {
       "question": "Will there be prizes for the competitions?",
-      "answer": "Yes, there will be awards and recognition for outstanding participants in various segments of the event. Details about the prizes will be provided during the event.",
-      "rules": "<ul><li>Teams can consist of 1-4 members.</li><li>Robots must adhere to size and weight restrictions.</li><li>Participants must bring their own materials and tools for robot construction.</li><li>All programming must be done on-site during the event.</li></ul>"
+      "answer": "Yes, there will be awards and recognition for outstanding participants in various segments of the event. Details about the prizes will be provided during the event."
     },
     {
       "question": "How can I stay updated about the event?",
