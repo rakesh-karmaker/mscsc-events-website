@@ -4,6 +4,8 @@ export type EventMetaDataType = {
   eventName: string;
   eventLogoUrl: string;
   eventFaviconUrl: string;
+  hideRegistrationForm: boolean;
+  hideCAForm: boolean;
   eventDate: string;
   eventLocation: string;
   isInnerRegistration: boolean;

@@ -13,7 +13,7 @@ export async function getEventBySlug(slug: string) {
   });
 }
 
-export async function getJSONData(url: string) {
+export async function getJSONData(url: string, extraData: any = {}) {
   const response = await axios.get(url);
-  return response.data;
+  return { ...response.data, ...extraData };
 }

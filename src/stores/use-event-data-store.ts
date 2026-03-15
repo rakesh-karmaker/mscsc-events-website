@@ -114,6 +114,10 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
       eventName: websiteData.eventName || "",
       eventLogoUrl: websiteData.eventLogoUrl || "",
       eventFaviconUrl: websiteData.eventFaviconUrl || "",
+      hideRegistrationForm: websiteData.hideRegistrationForm
+        ? websiteData.hideRegistrationForm
+        : false,
+      hideCAForm: websiteData.hideCAForm ? websiteData.hideCAForm : false,
       eventDate: websiteData.eventDate || "",
       eventLocation: websiteData.eventLocation || "",
       isInnerRegistration: websiteData.isInnerRegistration

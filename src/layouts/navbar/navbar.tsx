@@ -9,7 +9,7 @@ export default function Navbar(): ReactNode {
   const currentEventId = useParams().eventId || "";
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { eventMetaData, sections } = useEventData();
+  const { eventMetaData, formData, sections } = useEventData();
 
   if (!eventMetaData) {
     return null;
@@ -31,7 +31,7 @@ export default function Navbar(): ReactNode {
           eventName={eventMetaData.eventName || ""}
         />
         <NavLinks sections={sections} isOpen={isOpen} setIsOpen={setIsOpen} />
-        {eventMetaData.isHomepage ? null : (
+        {eventMetaData.isHomepage || !formData ? null : (
           <NavLink
             to={
               eventMetaData.isInnerRegistration

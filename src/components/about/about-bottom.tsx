@@ -12,7 +12,6 @@ export default function AboutBottom({
   segmentCount,
   prizeCount,
 }: AboutBottomProps): ReactNode {
-  console.log(participantCount, segmentCount, prizeCount);
   return (
     <div className="w-full h-full border-t-2 border-primary pt-5 grid grid-cols-3 max-[810px]:grid-cols-2 max-[810px]:grid-rows-2 gap-10 max-sm:grid-cols-1">
       <AboutCounterItem count={participantCount}>

@@ -4,7 +4,6 @@ import HomeLayout from "@/layouts/home-layout";
 import { lazy, Suspense } from "react";
 import Loader from "@/components/ui/loader";
 import PageNotFound from "@/pages/page-not-found";
-import Redirect from "@/pages/redirect";
 
 const HomePage = lazy(() => import("@/pages/home"));
 const EventPage = lazy(() => import("@/pages/es"));
@@ -22,9 +21,6 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Redirect />,
-      },
-      {
         path: "/:eventId?/:section?",
         element: (
           <Suspense

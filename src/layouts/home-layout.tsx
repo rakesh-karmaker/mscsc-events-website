@@ -9,6 +9,7 @@ import Loader from "@/components/ui/loader";
 import { Helmet } from "react-helmet-async";
 import { getAllEvents, getEventBySlug, getJSONData } from "@/lib/api/event";
 import type { AxiosError } from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 export default function HomeLayout(): ReactNode {
   const { setEventData, eventMetaData, hasFetchedData, setHasFetchedData } =
@@ -40,49 +41,46 @@ export default function HomeLayout(): ReactNode {
   const eventId = useParams().eventId;
   const sectionId = useParams().section || "hero";
 
+  // Fetch past events data for home page
+  const {
+    data: pastEventsData,
+    error: pastEventError,
+    isLoading: pastEventsLoading,
+    refetch: refetchPastEventData,
+  } = useQuery({
+    queryKey: ["pastEvents"],
+    queryFn: getAllEvents,
+    enabled: false,
+  });
+
+  // Fetch event data based on eventId
+  const {
+    data: eventData,
+    isLoading: eventDataLoading,
+    error: eventDataError,
+    refetch: refetchEventData,
+  } = useQuery({
+    queryKey: ["eventData", eventId],
+    queryFn: () =>
+      getEventBySlug(eventId as string)
+        .then((res) =>
+          res.status === 200 && res.data
+            ? getJSONData(res.data.dataUrl, {
+                hideRegistrationForm: res.data.hideRegistrationForm,
+                hideCAForm: res.data.hideCAForm,
+              })
+            : console.log("hello"),
+        )
+        .catch((error: AxiosError | any) => {
+          setError(
+            `Error: ${error.response?.status} - ${error.response?.data?.message || "An error occurred while fetching event data"}`,
+          );
+          return null;
+        }),
+    enabled: false,
+  });
+
   useEffect(() => {
-    async function fetchData(id: string) {
-      try {
-        const response = await getEventBySlug(id);
-        if (response.status !== 200 || !response.data) {
-          setError("Failed to fetch event data");
-        }
-
-        const eventData = await getJSONData(response.data.dataUrl);
-        if (!eventData) {
-          setError("Failed to fetch event JSON data");
-        }
-
-        setEventData(eventData);
-        setHasFetchedData(true);
-      } catch (error: AxiosError | any) {
-        if (error.response) {
-          setError(
-            `Error: ${error.response.status} - ${error.response.data.message || "An error occurred while fetching event data"}`,
-          );
-        }
-      }
-    }
-
-    async function fetchPastEvents() {
-      try {
-        const res = await getAllEvents();
-        if (res.status !== 200 || !res.data) {
-          setError("Failed to fetch past events data");
-          return;
-        }
-
-        setEventData({ ...staticData["home"], pastEventData: res.data });
-        setHasFetchedData(true);
-      } catch (error: AxiosError | any) {
-        if (error.response) {
-          setError(
-            `Error: ${error.response.status} - ${error.response.data.message || "An error occurred while fetching past events data"}`,
-          );
-        }
-      }
-    }
-
     if (!eventId) {
       navigate("/home");
     }
@@ -97,17 +95,38 @@ export default function HomeLayout(): ReactNode {
     // Set event data based on eventId
     else if (!eventMetaData && eventId && staticData[eventId]) {
       if (eventId === "home") {
-        fetchPastEvents();
+        refetchPastEventData();
+        if (pastEventError) {
+          setError("Failed to fetch past events data");
+        } else if (pastEventsData) {
+          setEventData({
+            ...staticData[eventId],
+            pastEventData: pastEventsData.data,
+          });
+          setHasFetchedData(true);
+        }
       } else {
         setEventData(staticData[eventId]);
         setHasFetchedData(true);
       }
     } else if (eventId && !staticData[eventId]) {
-      fetchData(eventId);
-    } else {
-      setError("Event ID is required");
+      refetchEventData();
+      if (eventDataError) {
+        setError("Failed to fetch event data");
+      } else if (eventData) {
+        setEventData(eventData);
+        setHasFetchedData(true);
+      }
     }
-  }, [eventId]);
+  }, [
+    eventId,
+    refetchEventData,
+    refetchPastEventData,
+    pastEventsLoading,
+    eventDataLoading,
+    pastEventError,
+    eventDataError,
+  ]);
 
   useEffect(() => {
     if (error) {

@@ -17,7 +17,11 @@ export default function PageNotFound(): ReactNode {
             </p>
           </div>
         </div>
-        <PrimaryBtn isLink={true} href="/" className="text-lg max-sm:text-base">
+        <PrimaryBtn
+          isLink={true}
+          href="/home"
+          className="text-lg max-sm:text-base"
+        >
           Go to Homepage
         </PrimaryBtn>
       </div>
