@@ -11,7 +11,7 @@ const ACCEPTED_IMAGE_TYPES = [
 type FileFromForm = FileList;
 
 // Zod schema for form validation
-export const registerSchema = z.object({
+export const registrationFormSchema = z.object({
   name: z
     .string({ required_error: "Name is required" })
     .min(2, "Name must be at least 2 characters"),
@@ -23,6 +23,7 @@ export const registerSchema = z.object({
     .min(10, "Contact number must be at least 10 characters"),
   facebookUrl: z
     .string({ required_error: "Facebook URL is required" })
+    .url({ message: "Invalid URL format" })
     .min(2, "Facebook URL must be at least 2 characters"),
   photo: z
     .custom<FileFromForm>((fileList) => fileList instanceof FileList, {
@@ -33,7 +34,7 @@ export const registerSchema = z.object({
         files.length > 0 &&
         files[0].size <= MAX_FILE_SIZE &&
         ACCEPTED_IMAGE_TYPES.includes(
-          files[0].type as (typeof ACCEPTED_IMAGE_TYPES)[number]
+          files[0].type as (typeof ACCEPTED_IMAGE_TYPES)[number],
         ),
       (files) => ({
         message:
@@ -42,7 +43,7 @@ export const registerSchema = z.object({
             : files[0].size > MAX_FILE_SIZE
               ? `Max image size is ${MAX_FILE_SIZE / 1024 / 1024}MB.`
               : "Only JPG, JPEG, PNG, and WebP formats are supported.",
-      })
+      }),
     ),
 
   institution: z
@@ -50,7 +51,10 @@ export const registerSchema = z.object({
     .min(2, "Institution name must be at least 2 characters"),
   grade: z
     .string({ required_error: "Grade is required" })
-    .min(1, "Grade must be at least 1 character"),
+    .min(1, "Invalid grade selection"),
+  category: z
+    .string({ required_error: "Category is required" })
+    .min(1, "Invalid category selection"),
 
   segments: z
     .array(z.string(), {
@@ -68,10 +72,18 @@ export const registerSchema = z.object({
     .string({ required_error: "Transaction ID is required" })
     .min(2, "Transaction ID must be at least 2 characters"),
 
-  reference: z
-    .string({ required_error: "Reference is required" })
-    .min(2, "Reference must be at least 2 characters"),
+  reference: z.string().optional(),
+  clubReference: z.string().optional(),
+
+  abideByTerms: z.literal(true, {
+    errorMap: () => ({ message: "You must agree to the terms and conditions" }),
+  }),
+  confirmDataAccuracy: z.literal(true, {
+    errorMap: () => ({
+      message: "You must confirm that your data is accurate",
+    }),
+  }),
 });
 
 // Type for the form data derived from the Zod schema
-export type RegisterSchemaType = z.infer<typeof registerSchema>;
+export type RegistrationFormType = z.infer<typeof registrationFormSchema>;

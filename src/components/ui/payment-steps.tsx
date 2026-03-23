@@ -8,6 +8,7 @@ type PaymentStepsProps = {
   fees: number;
   method?: string;
   setMethod: (method: string) => void;
+  ref: string;
 };
 
 export default function PaymentSteps({
@@ -15,6 +16,7 @@ export default function PaymentSteps({
   method = "bkash",
   fees,
   setMethod,
+  ref,
 }: PaymentStepsProps): ReactNode {
   const [currentMethod, setCurrentMethod] = useState<string>(method);
 
@@ -25,7 +27,7 @@ export default function PaymentSteps({
   const currentMethodData = transactionMethods[currentMethod];
 
   return (
-    <div className="w-full flex justify-between gap-5 flex-wrap">
+    <div className="w-full flex justify-between gap-5 max-lg:flex-wrap">
       <div className="flex flex-col gap-3">
         <div className="w-fit flex gap-2 max-lg:flex-wrap">
           {Object.keys(transactionMethods).map((platform) => (
@@ -41,6 +43,7 @@ export default function PaymentSteps({
           currentMethodData={currentMethodData}
           currentMethod={currentMethod}
           fees={fees}
+          ref={ref}
         />
       </div>
       <QrCode
@@ -61,7 +64,7 @@ function QrCode({
   if (!qrCodeUrl) return null;
 
   return (
-    <div className="p-4 rounded-md border bg-primary-bg border-primary flex flex-col gap-2 items-center">
+    <div className="p-4 rounded-md border bg-primary-bg border-primary flex flex-col gap-2 items-center min-w-56.5">
       <img src={qrCodeUrl} alt="QR Code" className="w-48 h-48 object-contain" />
       <h4 className="font-medium text-text text-sm">
         Scan to pay via {platform.charAt(0).toUpperCase() + platform.slice(1)}
@@ -74,10 +77,12 @@ function Steps({
   currentMethodData,
   currentMethod,
   fees,
+  ref,
 }: {
   currentMethodData: { number: string; code: string; qrCodeUrl?: string };
   currentMethod: string;
   fees: number;
+  ref: string;
 }): ReactNode {
   return (
     <ul className="list-disc pl-5">
@@ -91,6 +96,13 @@ function Steps({
       <li className="text-text">
         Send amount <span className="font-medium">৳{fees}</span> to this number{" "}
         <span className="font-medium">{currentMethodData.number}</span>
+      </li>
+      <li className="text-text">
+        Add{" "}
+        <span className="font-medium px-2 py-1 bg-orange-50 border border-primary/60 rounded-sm">
+          {ref}
+        </span>{" "}
+        in the transaction note or as reference.{" "}
       </li>
       <li className="text-text">
         Copy transaction ID after successful send money
