@@ -35,6 +35,8 @@ export async function registerForEvent(
       continue;
     } else if (key === "reference" || key === "clubReference") {
       formData.append(key, data[key] || "N/A");
+    } else if (key === "teamSegmentsData") {
+      formData.append(key, JSON.stringify(data[key]));
     } else {
       formData.append(key, data[key as keyof RegistrationFormType] as string);
     }

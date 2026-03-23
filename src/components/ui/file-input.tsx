@@ -2,10 +2,10 @@ import type React from "react";
 import { useRef, type ReactNode } from "react";
 import { FaUpload } from "react-icons/fa";
 import type { FieldErrors, UseFormRegister, Path } from "react-hook-form";
-import type { RegisterSchemaType } from "@/lib/validation/register-schema";
+import type { RegistrationFormType } from "@/lib/validation/register-schema";
 import type { CAFormSchemaType } from "@/lib/validation/ca-form-schema";
 
-type FileInputProps<T extends RegisterSchemaType | CAFormSchemaType> = {
+type FileInputProps<T extends RegistrationFormType | CAFormSchemaType> = {
   register: UseFormRegister<T>;
   errors: FieldErrors<T>;
   children: string;
@@ -14,7 +14,7 @@ type FileInputProps<T extends RegisterSchemaType | CAFormSchemaType> = {
 };
 
 export default function FileInput<
-  T extends RegisterSchemaType | CAFormSchemaType,
+  T extends RegistrationFormType | CAFormSchemaType,
 >({
   register,
   errors,

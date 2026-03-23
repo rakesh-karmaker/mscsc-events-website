@@ -1,6 +1,6 @@
 import FormInfo from "@/components/forms/form-info";
 import { useEffect, type ReactNode } from "react";
-import RegistrationForm from "@/components/forms/registration-form";
+import RegistrationForm from "@/components/forms/registration-form/registration-form";
 import { useEventData } from "@/hooks/use-event-data";
 import { Helmet } from "react-helmet-async";
 import FormPageHeader from "@/components/form-page-header";

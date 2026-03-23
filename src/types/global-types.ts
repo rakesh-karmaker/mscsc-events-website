@@ -8,6 +8,7 @@ export type SegmentType = {
   summary: string;
   details: string;
   rules: string;
+  maxTeamSize: number;
 };
 
 export type ScheduleType = {

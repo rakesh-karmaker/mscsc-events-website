@@ -62,6 +62,8 @@ export const registrationFormSchema = z.object({
     })
     .min(1, "At least one segment must be selected"),
 
+  teamSegmentsData: z.any().optional(),
+
   transactionMethod: z
     .string({ required_error: "Transaction method is required" })
     .min(2, "Transaction method must be at least 2 characters"),

@@ -79,6 +79,7 @@ export type ExplorionSegmentType = {
   summary: string;
   details: string;
   rules: string;
+  maxTeamSize: number;
 };
 
 export type ExplorionExperienceType = {
