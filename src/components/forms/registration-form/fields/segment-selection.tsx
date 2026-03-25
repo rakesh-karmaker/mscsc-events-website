@@ -141,6 +141,15 @@ export default function SegmentSelectionFields({
                 </span>
                 .
               </li>
+              <li>
+                After all team members have registered and gotten each a
+                registration confirmation email, the team leader, along with the
+                team members, will get a{" "}
+                <span className="font-medium">
+                  team registration confirmation email
+                </span>
+                .
+              </li>
             </ul>
             <span className="text-primary">
               If you have questions or need help, please contact support.
