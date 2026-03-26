@@ -20,7 +20,7 @@ export default function HomeLayout(): ReactNode {
 
   // all sections
   const allSections: string[] = [
-    "hero",
+    "home",
     "video",
     "about",
     "events",
@@ -39,7 +39,7 @@ export default function HomeLayout(): ReactNode {
 
   // Get section and eventId from URL parameters
   const eventId = useParams().eventId;
-  const sectionId = useParams().section || "hero";
+  const sectionId = useParams().section || "home";
 
   // Fetch past events data for home page
   const {
@@ -68,6 +68,7 @@ export default function HomeLayout(): ReactNode {
             ? getJSONData(res.data.dataUrl, {
                 hideRegistrationForm: res.data.hideRegistrationForm,
                 hideCAForm: res.data.hideCAForm,
+                participantCount: res.data.participantCount,
               })
             : console.log("hello"),
         )

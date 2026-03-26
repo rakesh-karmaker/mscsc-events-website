@@ -9,15 +9,16 @@ import getCategory from "@/utils/get-category";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState, type ReactNode } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type UseFormRegister } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useParams, useSearchParams } from "react-router";
 import PersonalInfoFields from "./fields/personal-information";
 import InstitutionInfoFields from "./fields/institution-information";
 import ReferenceInformationFields from "./fields/reference-information";
 import PaymentInformationFields from "./fields/payment-information";
-import ConfirmationFields from "./fields/confirmation";
+import ConfirmationFields from "../confirmation";
 import SegmentSelectionFields from "./fields/segment-selection";
+import type { CAApplicationType } from "@/lib/validation/ca-form-schema";
 
 type RegistrationFormProps = {
   transactionMethods: {
@@ -198,36 +199,22 @@ export default function RegistrationForm({
         searchParams={searchParams}
       />
 
-      <ConfirmationFields register={register} eventName={eventName} />
+      <ConfirmationFields
+        register={
+          register as UseFormRegister<RegistrationFormType | CAApplicationType>
+        }
+        eventName={eventName}
+      />
 
       <PrimaryBtn
         type="submit"
-        className="px-4! text-lg! max-sm:w-full! max-sm:self-center! max-sm:max-w-[calc(100%-10vw)]!"
+        className="px-4! text-lg! max-sm:w-full! max-sm:self-center! max-sm:max-w-[calc(100%-10vw)]! disabled:cursor-not-allowed! disabled:opacity-50! disabled:pointer-events-none!"
         disabled={registrationMutation.isPending}
       >
-        Submit Registration
+        {registrationMutation.isPending
+          ? "Submitting..."
+          : "Submit Registration"}
       </PrimaryBtn>
     </form>
-  );
-}
-
-export function FormBox({
-  children,
-  title,
-  hideTitle = false,
-}: {
-  children: ReactNode;
-  title: string;
-  hideTitle?: boolean;
-}): ReactNode {
-  return (
-    <div className="w-full h-fit flex flex-col gap-8 p-8 bg-secondary-bg border-2 border-primary max-sm:border-l-0 max-sm:border-r-0 max-sm:rounded-none max-sm:p-[5vw] rounded-lg">
-      {!hideTitle && (
-        <h2 className="text-3xl max-sm:text-2xl text-primary font-medium pb-3 border-b border-primary">
-          {title}
-        </h2>
-      )}
-      <div>{children}</div>
-    </div>
   );
 }

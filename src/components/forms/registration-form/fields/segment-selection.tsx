@@ -8,8 +8,8 @@ import {
 } from "react";
 import type { UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { Checkbox, FormControlLabel, TextField } from "@mui/material";
-import { FormBox } from "../registration-form";
 import type { SegmentType } from "@/types/global-types";
+import FormBox from "../../form-box";
 
 type SegmentSelectionFieldsProps = {
   register: UseFormRegister<RegistrationFormType>;

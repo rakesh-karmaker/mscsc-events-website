@@ -11,7 +11,7 @@ const ACCEPTED_IMAGE_TYPES = [
 type FileFromForm = FileList;
 
 // Zod schema for form validation
-export const caFormSchema = z.object({
+export const caApplicationSchema = z.object({
   name: z
     .string({ required_error: "Name is required" })
     .min(2, "Name must be at least 2 characters"),
@@ -33,7 +33,7 @@ export const caFormSchema = z.object({
         files.length > 0 &&
         files[0].size <= MAX_FILE_SIZE &&
         ACCEPTED_IMAGE_TYPES.includes(
-          files[0].type as (typeof ACCEPTED_IMAGE_TYPES)[number]
+          files[0].type as (typeof ACCEPTED_IMAGE_TYPES)[number],
         ),
       (files) => ({
         message:
@@ -42,7 +42,7 @@ export const caFormSchema = z.object({
             : files[0].size > MAX_FILE_SIZE
               ? `Max image size is ${MAX_FILE_SIZE / 1024 / 1024}MB.`
               : "Only JPG, JPEG, PNG, and WebP formats are supported.",
-      })
+      }),
     ),
   address: z
     .string({ required_error: "Address is required" })
@@ -58,15 +58,22 @@ export const caFormSchema = z.object({
     .string({ required_error: "Grade is required" })
     .min(1, "Grade must be at least 1 character"),
 
-  havePreviousExperience: z.enum(["yes", "no"], {
+  description: z.string().min(10, "Description must be at least 10 characters"),
+
+  hasPreviousExperience: z.enum(["yes", "no"], {
     required_error: "This field is required",
   }),
+  previousExperienceDetails: z.string().optional(),
 
-  description: z
-    .string()
-    .min(10, "Description must be at least 10 characters")
-    .optional(),
+  abideByTerms: z.literal(true, {
+    errorMap: () => ({ message: "You must agree to the terms and conditions" }),
+  }),
+  confirmDataAccuracy: z.literal(true, {
+    errorMap: () => ({
+      message: "You must confirm that your data is accurate",
+    }),
+  }),
 });
 
 // Type for the form data derived from the Zod schema
-export type CAFormSchemaType = z.infer<typeof caFormSchema>;
+export type CAApplicationType = z.infer<typeof caApplicationSchema>;

@@ -1,8 +1,8 @@
 import type { RegistrationFormType } from "@/lib/validation/register-schema";
 import type { ReactNode } from "react";
 import type { UseFormRegister } from "react-hook-form";
-import { FormBox } from "../registration-form";
 import { TextField } from "@mui/material";
+import FormBox from "../../form-box";
 
 type ReferenceInformationFieldsProps = {
   register: UseFormRegister<RegistrationFormType>;

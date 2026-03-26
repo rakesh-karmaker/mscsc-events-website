@@ -1,11 +1,12 @@
 import type { RegistrationFormType } from "@/lib/validation/register-schema";
 import type { ReactNode } from "react";
 import type { UseFormRegister } from "react-hook-form";
-import { FormBox } from "../registration-form";
 import { Checkbox, FormControlLabel } from "@mui/material";
+import type { CAApplicationType } from "@/lib/validation/ca-form-schema";
+import FormBox from "./form-box";
 
 type ConfirmationFieldsProps = {
-  register: UseFormRegister<RegistrationFormType>;
+  register: UseFormRegister<RegistrationFormType | CAApplicationType>;
   eventName: string;
 };
 

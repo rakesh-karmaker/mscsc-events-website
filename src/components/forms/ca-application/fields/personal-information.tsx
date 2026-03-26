@@ -1,19 +1,35 @@
 import { TextField } from "@mui/material";
 import FileInput from "@/components/ui/file-input";
-import type { ReactNode } from "react";
-import type { RegistrationFormType } from "@/lib/validation/register-schema";
-import type { UseFormRegister } from "node_modules/react-hook-form/dist/types/form";
+import { useState, type ReactNode } from "react";
+import type {
+  UseFormRegister,
+  UseFormSetValue,
+} from "node_modules/react-hook-form/dist/types/form";
 import FormBox from "../../form-box";
+import type { CAApplicationType } from "@/lib/validation/ca-form-schema";
+import RadioField from "@/components/ui/radio-field";
 
 type PersonalInfoFieldsProps = {
-  register: UseFormRegister<RegistrationFormType>;
+  register: UseFormRegister<CAApplicationType>;
   errors: { [key: string]: any };
+  setValue: UseFormSetValue<CAApplicationType>;
 };
 
 export default function PersonalInfoFields({
   register,
   errors,
+  setValue,
 }: PersonalInfoFieldsProps): ReactNode {
+  const [selectedGender, setSelectedGender] = useState<"male" | "female" | "">(
+    "",
+  );
+
+  function handleGenderRadioClick(gender: string) {
+    if (gender === "male") setValue("gender", "male");
+    else if (gender === "female") setValue("gender", "female");
+    setSelectedGender(gender as "male" | "female");
+  }
+
   return (
     <FormBox title="Personal Information">
       <div className="flex flex-col gap-6 max-xl:gap-6">
@@ -65,8 +81,28 @@ export default function PersonalInfoFields({
           />
         </div>
         <FileInput register={register} errors={errors} name={"photo"}>
-          Upload Your Photo*
+          Upload Your Photo
         </FileInput>
+
+        <TextField
+          {...register("address")}
+          id="address"
+          label="Address*"
+          variant="outlined"
+          placeholder="Your Address"
+          error={!!errors.address}
+          helperText={errors.address?.message}
+          fullWidth
+        />
+
+        <RadioField
+          options={["male", "female"]}
+          onClick={handleGenderRadioClick}
+          selectedOption={selectedGender}
+          errors={errors && errors.gender}
+        >
+          <h3 className="text-lg text-text">Gender</h3>
+        </RadioField>
       </div>
     </FormBox>
   );

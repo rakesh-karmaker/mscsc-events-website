@@ -1,5 +1,4 @@
 import { useEffect, type ReactNode } from "react";
-import { FormBox } from "../registration-form";
 import {
   FormControl,
   InputLabel,
@@ -16,6 +15,7 @@ import type {
 import getCategory from "@/utils/get-category";
 import type { RegistrationFormType } from "@/lib/validation/register-schema";
 import grades from "@/utils/grades";
+import FormBox from "../../form-box";
 
 type InstitutionInfoFieldsProps = {
   register: UseFormRegister<RegistrationFormType>;

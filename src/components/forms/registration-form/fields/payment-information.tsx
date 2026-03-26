@@ -5,9 +5,9 @@ import type {
   UseFormSetValue,
   UseFormWatch,
 } from "react-hook-form";
-import { FormBox } from "../registration-form";
 import PaymentSteps from "@/components/ui/payment-steps";
 import { Stack, TextField } from "@mui/material";
+import FormBox from "../../form-box";
 
 type PaymentInformationFieldsProps = {
   register: UseFormRegister<RegistrationFormType>;

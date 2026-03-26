@@ -107,6 +107,7 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
   setFaqData: (faqData) => set({ faqData }),
 
   setEventData: (websiteData) => {
+    console.log("Setting event data in store:", websiteData);
     // set the event meta data
     const metaData: EventMetaDataType = {
       template: websiteData.template || "",
