@@ -87,7 +87,7 @@ export default function HomeLayout(): ReactNode {
     }
 
     // Validate eventId and sectionId
-    else if (eventId && allSections.includes(eventId)) {
+    else if (eventId && eventId !== "home" && allSections.includes(eventId)) {
       setError("Invalid event ID");
     } else if (sectionId && !allSections.includes(sectionId)) {
       setError("Invalid section ID");
