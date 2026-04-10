@@ -75,6 +75,13 @@ export default function RegistrationForm({
         error.response?.data?.message ||
         "Registration failed. Please try again.";
       toast.error(errorMessage);
+      setError("root", { type: "manual", message: errorMessage });
+      if (error.response?.data?.subject) {
+        setError(error.response.data.subject, {
+          type: "manual",
+          message: error.response.data.message,
+        });
+      }
     },
   });
 
@@ -204,6 +211,7 @@ export default function RegistrationForm({
           register as UseFormRegister<RegistrationFormType | CAApplicationType>
         }
         eventName={eventName}
+        errors={errors}
       />
 
       <PrimaryBtn

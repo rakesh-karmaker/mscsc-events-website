@@ -8,12 +8,15 @@ import FormBox from "./form-box";
 type ConfirmationFieldsProps = {
   register: UseFormRegister<RegistrationFormType | CAApplicationType>;
   eventName: string;
+  errors: { [key: string]: any };
 };
 
 export default function ConfirmationFields({
   register,
   eventName,
+  errors,
 }: ConfirmationFieldsProps): ReactNode {
+  console.log("ConfirmationFields errors:", errors);
   return (
     <FormBox title="Confirmation" hideTitle={true}>
       <div className="flex flex-col gap-5">
@@ -72,6 +75,11 @@ export default function ConfirmationFields({
             }}
           />
         </div>
+        {errors.root && (
+          <p className="text-red-500 text-base -mt-2">
+            {errors.root.message ?? "An error occurred."}
+          </p>
+        )}
       </div>
     </FormBox>
   );

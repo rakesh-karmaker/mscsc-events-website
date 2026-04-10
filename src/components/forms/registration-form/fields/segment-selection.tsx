@@ -29,6 +29,7 @@ export default function SegmentSelectionFields({
   setSelectedSegments,
 }: SegmentSelectionFieldsProps): ReactNode {
   const [teamSegments, setTeamSegments] = useState<SegmentType[]>([]);
+  console.log(errors);
 
   return (
     <>
@@ -159,7 +160,7 @@ export default function SegmentSelectionFields({
             {teamSegments.map((segment, index) => (
               <div
                 key={index}
-                className="w-full flex flex-col gap-4 px-2 py-4 border-t border-primary"
+                className="w-full flex flex-col gap-4 px-2 pt-4 border-t border-primary"
               >
                 <h3 className="text-xl max-sm:text-lg font-medium text-primary">
                   {segment.title} Team Details
@@ -252,6 +253,14 @@ export default function SegmentSelectionFields({
                     />
                   )}
                 </div>
+                {errors.teamSegmentsData?.[segment.segmentSlug] && (
+                  <p className="text-red-600 text-base">
+                    {
+                      errors.teamSegmentsData[segment.segmentSlug]
+                        ?.message as string
+                    }
+                  </p>
+                )}
               </div>
             ))}
           </div>
