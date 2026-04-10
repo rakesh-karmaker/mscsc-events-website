@@ -3,7 +3,7 @@ import {
   type CAApplicationType,
 } from "@/lib/validation/ca-form-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { ReactNode } from "react";
+import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { useForm, type UseFormRegister } from "react-hook-form";
 import PrimaryBtn from "../../ui/primary-btn";
 import PersonalInfoFields from "./fields/personal-information";
@@ -18,8 +18,10 @@ import { toast } from "react-hot-toast";
 
 export default function CAApplicationForm({
   eventName,
+  setApplicationCompleted,
 }: {
   eventName: string;
+  setApplicationCompleted: Dispatch<SetStateAction<boolean>>;
 }): ReactNode {
   const eventSlug = useParams().eventId || "event-slug"; // Replace with actual slug from params
   const {
@@ -40,6 +42,7 @@ export default function CAApplicationForm({
     mutationFn: async (data: CAApplicationType) => applyForCA(eventSlug, data),
     onSuccess: () => {
       toast.success("Application submitted successfully!");
+      setApplicationCompleted(true);
     },
     onError: (error: any) => {
       toast.error(
@@ -97,6 +100,7 @@ export default function CAApplicationForm({
           register as UseFormRegister<RegistrationFormType | CAApplicationType>
         }
         eventName={eventName}
+        errors={errors}
       />
 
       <PrimaryBtn

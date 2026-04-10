@@ -16,7 +16,6 @@ export default function ConfirmationFields({
   eventName,
   errors,
 }: ConfirmationFieldsProps): ReactNode {
-  console.log("ConfirmationFields errors:", errors);
   return (
     <FormBox title="Confirmation" hideTitle={true}>
       <div className="flex flex-col gap-5">

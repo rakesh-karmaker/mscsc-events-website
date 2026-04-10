@@ -8,7 +8,13 @@ import type { SegmentType } from "@/types/global-types";
 import getCategory from "@/utils/get-category";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { useEffect, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useState,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
+} from "react";
 import { useForm, type UseFormRegister } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useParams, useSearchParams } from "react-router";
@@ -27,6 +33,16 @@ type RegistrationFormProps = {
   fees: number;
   segments: SegmentType[];
   eventName: string;
+  setHasRegistered: Dispatch<SetStateAction<boolean>>;
+  setTeamSegmentsData: Dispatch<
+    SetStateAction<{
+      [segmentSlug: string]: {
+        teamName: string;
+        leaderEmail: string;
+        memberEmails: string[];
+      };
+    } | null>
+  >;
 };
 
 export default function RegistrationForm({
@@ -34,6 +50,8 @@ export default function RegistrationForm({
   fees,
   segments,
   eventName,
+  setHasRegistered,
+  setTeamSegmentsData,
 }: RegistrationFormProps): ReactNode {
   const eventSlug = useParams().eventId || "event-slug"; // Replace with actual slug from params
   const [searchParams] = useSearchParams();
@@ -69,6 +87,7 @@ export default function RegistrationForm({
       registerForEvent(eventSlug, data),
     onSuccess: () => {
       toast.success("Registration successful!");
+      setHasRegistered(true);
     },
     onError: (error: any) => {
       const errorMessage =
@@ -158,6 +177,8 @@ export default function RegistrationForm({
           ) || [],
       };
     });
+
+    setTeamSegmentsData(teamSegmentsData);
 
     // If there are any team segment errors, do not proceed
     if (doesHaveTeamSegmentError) {
