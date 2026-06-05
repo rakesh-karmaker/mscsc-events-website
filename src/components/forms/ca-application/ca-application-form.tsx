@@ -23,7 +23,7 @@ export default function CAApplicationForm({
   eventName: string;
   setApplicationCompleted: Dispatch<SetStateAction<boolean>>;
 }): ReactNode {
-  const eventSlug = useParams().eventId || "event-slug"; // Replace with actual slug from params
+  const eventSlug = useParams().eventSlug || "event-slug"; // Replace with actual slug from params
   const {
     register,
     handleSubmit,

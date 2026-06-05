@@ -32,7 +32,7 @@ export default function CAApplication(): ReactNode {
     ? new Date() > new Date(caFormData.applicationDeadline)
     : false;
 
-  const eventId = useParams().eventId || "";
+  const eventSlug = useParams().eventSlug || "";
 
   if (applicationCompleted) {
     return (
@@ -54,7 +54,7 @@ export default function CAApplication(): ReactNode {
             </div>
             <PrimaryBtn
               isLink={true}
-              href={`/${eventId}/hero`}
+              href={`/${eventSlug}/home`}
               className="text-lg max-sm:text-base z-999"
             >
               Go to Homepage
@@ -88,7 +88,7 @@ export default function CAApplication(): ReactNode {
             </div>
             <PrimaryBtn
               isLink={true}
-              href={`/${eventId}/hero`}
+              href={`/${eventSlug}/hero`}
               className="text-lg max-sm:text-base z-999"
             >
               Go to Homepage

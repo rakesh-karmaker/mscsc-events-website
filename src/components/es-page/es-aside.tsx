@@ -8,7 +8,7 @@ type EventAsideProps = {
 };
 
 export default function EventAside({ activeSlug }: EventAsideProps): ReactNode {
-  const eventId = useParams().eventId || "";
+  const eventSlug = useParams().eventSlug || "";
   const { experienceData, segmentData } = useEventData();
 
   return (
@@ -22,7 +22,7 @@ export default function EventAside({ activeSlug }: EventAsideProps): ReactNode {
             {segmentData.map((segment) => (
               <li key={segment.title} className="w-full h-full">
                 <NavLink
-                  to={`/${eventId}/events/${segment.segmentSlug}`}
+                  to={`/${eventSlug}/events/${segment.segmentSlug}`}
                   className={
                     "w-full h-full text-[0.99rem] text-text transition-colors py-2.5 px-5 hover:bg-primary/10 active:bg-primary/20 flex items-center gap-3 border-b border-primary/10" +
                     (activeSlug === segment.segmentSlug
@@ -47,7 +47,7 @@ export default function EventAside({ activeSlug }: EventAsideProps): ReactNode {
             {experienceData.map((experience) => (
               <li key={experience.title} className="w-full h-full">
                 <NavLink
-                  to={`/${eventId}/events/${experience.experienceSlug}`}
+                  to={`/${eventSlug}/events/${experience.experienceSlug}`}
                   className={
                     "w-full h-full text-[0.99rem] text-text transition-colors py-2.5 px-5 hover:bg-primary/10 active:bg-primary/20 flex items-center gap-3 border-b border-primary/10" +
                     (activeSlug === experience.experienceSlug

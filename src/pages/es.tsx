@@ -10,7 +10,7 @@ import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router";
 
 export function isEventType(
-  item: ExplorionSegmentType | ExplorionExperienceType
+  item: ExplorionSegmentType | ExplorionExperienceType,
 ): item is ExplorionSegmentType {
   return "segmentSlug" in item;
 }
@@ -33,7 +33,7 @@ export default function Event(): ReactNode {
   const data = [...(segmentData ?? []), ...(experienceData ?? [])].find(
     (segment: ExplorionSegmentType | ExplorionExperienceType) =>
       (isEventType(segment) && segment.segmentSlug === seSlug) ||
-      (!isEventType(segment) && segment.experienceSlug === seSlug)
+      (!isEventType(segment) && segment.experienceSlug === seSlug),
   );
   if (!data) {
     throw new Error(`Event with ID ${seSlug} not found`);

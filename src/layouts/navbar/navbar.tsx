@@ -4,12 +4,14 @@ import { NavLink, useParams } from "react-router";
 import NavLinks from "./nav-links";
 import { FaArrowRight, FaBars, FaXmark } from "react-icons/fa6";
 import { useEventData } from "@/hooks/use-event-data";
+import { useUser } from "@/hooks/use-user";
 
 export default function Navbar(): ReactNode {
-  const currentEventId = useParams().eventId || "";
+  const currentEventSlug = useParams().eventSlug || "";
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { eventMetaData, formData, sections } = useEventData();
+  const { user } = useUser();
 
   if (!eventMetaData) {
     return null;
@@ -31,11 +33,19 @@ export default function Navbar(): ReactNode {
           eventName={eventMetaData.eventName || ""}
         />
         <NavLinks sections={sections} isOpen={isOpen} setIsOpen={setIsOpen} />
-        {eventMetaData.isHomepage || !formData ? null : (
+        {eventMetaData.isHomepage || !formData ? null : user?.photoUrl ? (
+          <NavLink to={`/${currentEventSlug}/profile/`}>
+            <img
+              src={user.photoUrl}
+              alt="Profile"
+              className="w-10 h-10 rounded-full object-cover border-2 border-primary"
+            />
+          </NavLink>
+        ) : (
           <NavLink
             to={
               eventMetaData.isInnerRegistration
-                ? currentEventId + "/registration/"
+                ? currentEventSlug + "/registration/"
                 : eventMetaData.registrationUrl || ""
             }
             target={eventMetaData.isInnerRegistration ? "_self" : "_blank"}

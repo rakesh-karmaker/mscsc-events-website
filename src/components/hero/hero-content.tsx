@@ -20,10 +20,10 @@ export default function HeroContent(): ReactNode {
   // Determine which section to link to for "Learn More"
   const learnMoreSection = sections.includes("about") ? "about" : "segments";
 
-  // Get eventId from URL parameters
-  const eventId = useParams().eventId || "";
+  // Get eventSlug from URL parameters
+  const eventSlug = useParams().eventSlug || "";
   const registrationLink = eventMetaData.isInnerRegistration
-    ? `${eventId}/registration/`
+    ? `${eventSlug}/registration/`
     : eventMetaData.registrationUrl;
 
   // Refs for GSAP animation
@@ -60,7 +60,7 @@ export default function HeroContent(): ReactNode {
             isLink={true}
             href={
               eventMetaData.isHomepage
-                ? `/${eventId}/${learnMoreSection}`
+                ? `/${eventSlug}/${learnMoreSection}`
                 : registrationLink
             }
             className="text-[1.1em]/[155%]! tracking-wide px-4! py-2.5! max-xl:px-3.25! max-xl:py-2! max-xl:text-[1em]/[150%]! "
@@ -72,7 +72,7 @@ export default function HeroContent(): ReactNode {
             href={
               eventMetaData.isHomepage
                 ? "https://mscsc.netlify.app/"
-                : `/${eventId}/${learnMoreSection}`
+                : `/${eventSlug}/${learnMoreSection}`
             }
             className="before:bg-secondary-bg text-black! after:bg-primary! hover:text-white! text-[1.1em]/[155%]! tracking-wide px-4! py-2.5! max-xl:px-3.25! max-xl:py-2! max-xl:text-[1em]/[150%]!"
           >

@@ -13,7 +13,7 @@ export default function FooterRight({
   eventLocation,
   sections,
 }: FooterRightProps): ReactNode {
-  const eventId = useParams().eventId || "";
+  const eventSlug = useParams().eventSlug || "";
 
   const contactLinkItems = [
     { platform: "Email", url: contactLinks.email, isLink: true },
@@ -78,7 +78,7 @@ export default function FooterRight({
                 return (
                   <NavLink
                     key={section}
-                    to={`/${eventId}/${url}`}
+                    to={`/${eventSlug}/${url}`}
                     className={({ isActive }) =>
                       `transition-all duration-200 hover:text-primary ${isActive ? "text-primary font-medium" : "text-primary/70"}`
                     }
@@ -86,7 +86,7 @@ export default function FooterRight({
                     {name}
                   </NavLink>
                 );
-              }
+              },
             )}
           </div>
         </div>

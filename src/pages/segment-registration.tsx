@@ -6,9 +6,12 @@ import { Helmet } from "react-helmet-async";
 import FormPageHeader from "@/components/form-page-header";
 import PrimaryBtn from "@/components/ui/primary-btn";
 import { useParams } from "react-router";
-import type { EventMetaDataType } from "@/types/event-data-types";
+import type {
+  EventMetaDataType,
+  ExplorionSegmentType,
+} from "@/types/event-data-types";
 
-export default function Registration(): ReactNode {
+export default function SegmentRegistration(): ReactNode {
   // Fetch event data using the custom hook
   const { formData, segmentData, eventMetaData } = useEventData();
   if (!formData || !segmentData || !eventMetaData || eventMetaData.isHomepage) {
@@ -28,13 +31,13 @@ export default function Registration(): ReactNode {
 
   const eventSlug = useParams().eventSlug || "";
   const [hasRegistered, setHasRegistered] = useState(false);
-  // const [teamSegmentsData, setTeamSegmentsData] = useState<{
-  //   [segmentSlug: string]: {
-  //     teamName: string;
-  //     leaderEmail: string;
-  //     memberEmails: string[];
-  //   };
-  // } | null>(null);
+  const [teamSegmentsData, setTeamSegmentsData] = useState<{
+    [segmentSlug: string]: {
+      teamName: string;
+      leaderEmail: string;
+      memberEmails: string[];
+    };
+  } | null>(null);
 
   if (
     !hasDeadlinePassed &&
@@ -55,8 +58,8 @@ export default function Registration(): ReactNode {
         </Helmet>
         <RegistrationCompleteCard
           eventMetaData={eventMetaData}
-          // teamSegmentsData={teamSegmentsData}
-          // segmentData={segmentData}
+          teamSegmentsData={teamSegmentsData}
+          segmentData={segmentData}
           eventSlug={eventSlug}
         />
       </>
@@ -116,19 +119,19 @@ export default function Registration(): ReactNode {
 
 function RegistrationCompleteCard({
   eventMetaData,
-  // teamSegmentsData,
-  // segmentData,
+  teamSegmentsData,
+  segmentData,
   eventSlug,
 }: {
   eventMetaData: EventMetaDataType;
-  // teamSegmentsData: {
-  //   [segmentSlug: string]: {
-  //     teamName: string;
-  //     leaderEmail: string;
-  //     memberEmails: string[];
-  //   };
-  // } | null;
-  // segmentData: ExplorionSegmentType[];
+  teamSegmentsData: {
+    [segmentSlug: string]: {
+      teamName: string;
+      leaderEmail: string;
+      memberEmails: string[];
+    };
+  } | null;
+  segmentData: ExplorionSegmentType[];
   eventSlug: string;
 }): ReactNode {
   return (
@@ -144,7 +147,7 @@ function RegistrationCompleteCard({
             important updates and information regarding the event via email.
             Stay tuned for an exciting experience ahead!
           </p>
-          {/* {teamSegmentsData && Object.keys(teamSegmentsData).length > 0 && (
+          {teamSegmentsData && Object.keys(teamSegmentsData).length > 0 && (
             <div className="mt-4 text-left text-text">
               <h3 className="text-xl font-semibold mb-2 text-primary">
                 Your Team Information:
@@ -185,7 +188,7 @@ function RegistrationCompleteCard({
                 a team confirmation email shortly.
               </p>
             </div>
-          )} */}
+          )}
         </div>
         <PrimaryBtn
           isLink={true}

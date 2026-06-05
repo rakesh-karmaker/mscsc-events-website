@@ -33,35 +33,41 @@ export default function ContactInfo({
               scrollTrigger: {
                 trigger: iconsContainerRef.current,
               },
-            }
+            },
           );
         });
     }
   }, []);
 
   return (
-    <div className="w-full max-w-182.5 border-r-2 max-lg:border-r-0 max-lg:border-b-2 max-lg:max-w-full border-primary py-16 pr-4">
+    <div className="w-full h-full max-w-182.5 border-r-2 max-lg:border-r-0 max-lg:border-b-2 max-lg:max-w-full border-primary py-16 pr-4">
       <div className="w-full max-w-137.5 flex flex-col gap-8">
         <ContactHeading />
         <div className="w-full flex flex-col gap-7" ref={iconsContainerRef}>
-          <ContactItem
-            heading="Call Us"
-            icon="phone"
-            url={formatUrl("phone", contactData.phone)}
-            text={contactData.phone}
-          />
-          <ContactItem
-            heading="Email Us"
-            icon="email"
-            url={formatUrl("email", contactData.email)}
-            text={contactData.email}
-          />
-          <ContactItem
-            heading="Facebook"
-            icon="facebook"
-            url={contactData.facebook}
-            text={eventName + " on Facebook"}
-          />
+          {contactData?.phone ? (
+            <ContactItem
+              heading="Call Us"
+              icon="phone"
+              url={formatUrl("phone", contactData.phone)}
+              text={contactData.phone}
+            />
+          ) : null}
+          {contactData?.email ? (
+            <ContactItem
+              heading="Email Us"
+              icon="email"
+              url={formatUrl("email", contactData.email)}
+              text={contactData.email}
+            />
+          ) : null}
+          {contactData?.facebook ? (
+            <ContactItem
+              heading="Facebook"
+              icon="facebook"
+              url={contactData.facebook}
+              text={eventName + " on Facebook"}
+            />
+          ) : null}
         </div>
       </div>
     </div>

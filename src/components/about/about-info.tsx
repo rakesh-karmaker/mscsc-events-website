@@ -15,7 +15,7 @@ export default function AboutInfo({
   registrationUrl,
   isHomePage,
 }: AboutTopProps): ReactNode {
-  const currentEventId = useParams().eventId || "";
+  const eventSlug = useParams().eventSlug || "";
 
   const { title, heading, text } = about;
 
@@ -50,7 +50,7 @@ export default function AboutInfo({
               isHomePage
                 ? "https://mscsc.netlify.app/"
                 : isInnerRegistration
-                  ? currentEventId + "/registration/"
+                  ? eventSlug + "/registration/"
                   : registrationUrl
             }
             className="flex gap-1.5 items-center z-99"

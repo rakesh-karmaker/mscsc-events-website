@@ -16,7 +16,7 @@ import capitalize from "@/utils/capitalize";
 import Events from "@/components/events/events";
 
 export default function Home(): ReactNode {
-  // Get section and eventId from URL parameters
+  // Get section from URL parameters
   const sectionId = useParams().section || "hero";
 
   // Initialize Lenis for smooth scrolling
@@ -69,11 +69,17 @@ export default function Home(): ReactNode {
           {eventMetaData.eventName} - {capitalize(sectionId)}
         </title>
       </Helmet>
-      {sections.map((section) => {
-        if (!eventMetaData.hiddenSections.includes(section)) {
-          return sectionComponents[section] || null;
-        }
-      })}
+      {sections
+        .filter((section) => !eventMetaData.hiddenSections.includes(section))
+        .map((section) => {
+          if (section !== "contact") {
+            return sectionComponents[section] || null;
+          }
+        })}
+      {sections.includes("contact") &&
+      !eventMetaData.hiddenSections.includes("contact")
+        ? sectionComponents["contact"]
+        : null}
     </>
   );
 }

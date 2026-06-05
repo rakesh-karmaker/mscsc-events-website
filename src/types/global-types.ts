@@ -9,6 +9,15 @@ export type SegmentType = {
   details: string;
   rules: string;
   maxTeamSize: number;
+  isPaidSegment: boolean;
+  fees: number;
+  transactionMethods?: {
+    [platform: string]: {
+      number: string;
+      qrCodeUrl?: string;
+      qrCodePublicId?: string;
+    };
+  };
 };
 
 export type ScheduleType = {

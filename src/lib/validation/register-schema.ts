@@ -1,6 +1,6 @@
 import { z } from "zod/v3";
 
-const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
   "image/jpg",
@@ -18,6 +18,9 @@ export const registrationFormSchema = z.object({
   email: z.string({ required_error: "Email is required" }).email({
     message: "Invalid email address",
   }),
+  password: z
+    .string({ required_error: "Password is required" })
+    .min(6, "Password must be at least 6 characters"),
   phoneNumber: z
     .string({ required_error: "Provide your contact number" })
     .min(10, "Contact number must be at least 10 characters"),
@@ -61,8 +64,6 @@ export const registrationFormSchema = z.object({
       required_error: "At least one segment must be selected",
     })
     .min(1, "At least one segment must be selected"),
-
-  teamSegmentsData: z.any().optional(),
 
   transactionMethod: z
     .string({ required_error: "Transaction method is required" })

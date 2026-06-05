@@ -1,8 +1,6 @@
 import { ReactLenis, type LenisRef } from "lenis/react";
-
 import { useEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
-
 import { Toaster } from "react-hot-toast";
 
 export default function App({ children }: { children: ReactNode }): ReactNode {
@@ -14,12 +12,6 @@ export default function App({ children }: { children: ReactNode }): ReactNode {
     }
 
     gsap.ticker.add(update);
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    }); // Scroll to top on initial load
-
     return () => gsap.ticker.remove(update);
   }, []);
 

@@ -53,7 +53,7 @@ export default function ContactForm() {
           scrollTrigger: {
             trigger: contactForm.current,
           },
-        }
+        },
       );
     }
   }, []);
@@ -61,7 +61,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-170 max-lg:max-w-full py-16 w-full flex flex-col gap-8"
+      className="max-w-170 max-lg:max-w-full py-16 w-full flex flex-col gap-8 justify-self-end max-xl:justify-self-start max-xl:py-10"
       ref={contactForm}
     >
       <div className="w-full flex flex-col gap-8">

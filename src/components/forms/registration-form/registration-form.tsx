@@ -25,6 +25,9 @@ import PaymentInformationFields from "./fields/payment-information";
 import ConfirmationFields from "../confirmation";
 import SegmentSelectionFields from "./fields/segment-selection";
 import type { CAApplicationType } from "@/lib/validation/ca-form-schema";
+import type { AxiosError, AxiosResponse } from "axios";
+import type { UserDataPreviewType } from "@/types/user-data-types";
+import { useUser } from "@/hooks/use-user";
 
 type RegistrationFormProps = {
   transactionMethods: {
@@ -34,15 +37,15 @@ type RegistrationFormProps = {
   segments: SegmentType[];
   eventName: string;
   setHasRegistered: Dispatch<SetStateAction<boolean>>;
-  setTeamSegmentsData: Dispatch<
-    SetStateAction<{
-      [segmentSlug: string]: {
-        teamName: string;
-        leaderEmail: string;
-        memberEmails: string[];
-      };
-    } | null>
-  >;
+  // setTeamSegmentsData: Dispatch<
+  //   SetStateAction<{
+  //     [segmentSlug: string]: {
+  //       teamName: string;
+  //       leaderEmail: string;
+  //       memberEmails: string[];
+  //     };
+  //   } | null>
+  // >;
 };
 
 export default function RegistrationForm({
@@ -51,9 +54,11 @@ export default function RegistrationForm({
   segments,
   eventName,
   setHasRegistered,
-  setTeamSegmentsData,
+  // setTeamSegmentsData,
 }: RegistrationFormProps): ReactNode {
-  const eventSlug = useParams().eventId || "event-slug"; // Replace with actual slug from params
+  const eventSlug = useParams().eventSlug || "event-slug"; // Replace with actual slug from params
+  const { setUser } = useUser();
+
   const [searchParams] = useSearchParams();
   const [selectedSegments, setSelectedSegments] = useState<string[]>([]);
 
@@ -85,18 +90,27 @@ export default function RegistrationForm({
   const registrationMutation = useMutation({
     mutationFn: (data: RegistrationFormType) =>
       registerForEvent(eventSlug, data),
-    onSuccess: () => {
+    onSuccess: (
+      res: AxiosResponse<{
+        message: string;
+        token: string;
+        registrationData: UserDataPreviewType;
+      }>,
+    ) => {
       toast.success("Registration successful!");
-      setHasRegistered(true);
+      localStorage.setItem(`${eventSlug}-registrationToken`, res.data.token);
+      setUser(res.data.registrationData || null);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      // setHasRegistered(true);
     },
-    onError: (error: any) => {
+    onError: (error: AxiosError<{ message: string; subject?: string }>) => {
       const errorMessage =
         error.response?.data?.message ||
         "Registration failed. Please try again.";
       toast.error(errorMessage);
       setError("root", { type: "manual", message: errorMessage });
       if (error.response?.data?.subject) {
-        setError(error.response.data.subject, {
+        setError(error.response.data.subject as any, {
           type: "manual",
           message: error.response.data.message,
         });
@@ -121,72 +135,72 @@ export default function RegistrationForm({
     }
 
     // filter the teamSegmentsData
-    let doesHaveTeamSegmentError = false;
-    const teamSegmentsData: {
-      [segmentSlug: string]: {
-        teamName: string;
-        leaderEmail: string;
-        memberEmails: string[];
-      };
-    } = {};
+    // let doesHaveTeamSegmentError = false;
+    // const teamSegmentsData: {
+    //   [segmentSlug: string]: {
+    //     teamName: string;
+    //     leaderEmail: string;
+    //     memberEmails: string[];
+    //   };
+    // } = {};
 
-    selectedSegments.forEach((segmentName: string) => {
-      const segment: SegmentType | undefined = segments.find(
-        (s) => s.title === segmentName,
-      );
-      if (!segment || segment.teamType !== "team") {
-        return;
-      }
-      if (
-        !data.teamSegmentsData ||
-        !data.teamSegmentsData[segment.segmentSlug]
-      ) {
-        toast.error(
-          `Please fill out team information for the ${segment.title} segment.`,
-        );
-        setError("teamSegmentsData", {
-          type: "manual",
-          message: `Team information is required for ${segment.title}`,
-        });
-        doesHaveTeamSegmentError = true;
-        return;
-      }
-      // check the field values
-      const teamData = data.teamSegmentsData[segment.segmentSlug];
-      if (!teamData.teamName) {
-        setError(`teamSegmentsData.${segment.segmentSlug}.teamName`, {
-          type: "manual",
-          message: "Team name is required",
-        });
-        doesHaveTeamSegmentError = true;
-      }
-      if (!teamData.leaderEmail) {
-        setError(`teamSegmentsData.${segment.segmentSlug}.leaderEmail`, {
-          type: "manual",
-          message: "Team leader email is required",
-        });
-        doesHaveTeamSegmentError = true;
-      }
+    // selectedSegments.forEach((segmentName: string) => {
+    //   const segment: SegmentType | undefined = segments.find(
+    //     (s) => s.title === segmentName,
+    //   );
+    //   if (!segment || segment.teamType !== "team") {
+    //     return;
+    //   }
+    //   if (
+    //     !data.teamSegmentsData ||
+    //     !data.teamSegmentsData[segment.segmentSlug]
+    //   ) {
+    //     toast.error(
+    //       `Please fill out team information for the ${segment.title} segment.`,
+    //     );
+    //     setError("teamSegmentsData", {
+    //       type: "manual",
+    //       message: `Team information is required for ${segment.title}`,
+    //     });
+    //     doesHaveTeamSegmentError = true;
+    //     return;
+    //   }
+    //   // check the field values
+    //   const teamData = data.teamSegmentsData[segment.segmentSlug];
+    //   if (!teamData.teamName) {
+    //     setError(`teamSegmentsData.${segment.segmentSlug}.teamName`, {
+    //       type: "manual",
+    //       message: "Team name is required",
+    //     });
+    //     doesHaveTeamSegmentError = true;
+    //   }
+    //   if (!teamData.leaderEmail) {
+    //     setError(`teamSegmentsData.${segment.segmentSlug}.leaderEmail`, {
+    //       type: "manual",
+    //       message: "Team leader email is required",
+    //     });
+    //     doesHaveTeamSegmentError = true;
+    //   }
 
-      teamSegmentsData[segment.segmentSlug] = {
-        teamName: teamData.teamName,
-        leaderEmail: teamData.leaderEmail,
-        memberEmails:
-          teamData.memberEmails.filter(
-            (email: string) => email && email.trim() !== "",
-          ) || [],
-      };
-    });
+    //   teamSegmentsData[segment.segmentSlug] = {
+    //     teamName: teamData.teamName,
+    //     leaderEmail: teamData.leaderEmail,
+    //     memberEmails:
+    //       teamData.memberEmails.filter(
+    //         (email: string) => email && email.trim() !== "",
+    //       ) || [],
+    //   };
+    // });
 
-    setTeamSegmentsData(teamSegmentsData);
+    // setTeamSegmentsData(teamSegmentsData);
 
     // If there are any team segment errors, do not proceed
-    if (doesHaveTeamSegmentError) {
-      return;
-    }
+    // if (doesHaveTeamSegmentError) {
+    //   return;
+    // }
 
-    const { teamSegmentsData: _, ...restData } = data;
-    registrationMutation.mutate({ ...restData, teamSegmentsData });
+    // const { teamSegmentsData: _, ...restData } = data;
+    registrationMutation.mutate(data);
   };
 
   return (
@@ -206,7 +220,7 @@ export default function RegistrationForm({
         register={register}
         setValue={setValue}
         errors={errors}
-        segments={segments}
+        segments={segments.filter((segment) => !segment.isPaidSegment)}
         selectedSegments={selectedSegments}
         setSelectedSegments={setSelectedSegments}
       />

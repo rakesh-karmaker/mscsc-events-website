@@ -2,22 +2,36 @@ import { api } from "@/config/axios";
 import axios from "axios";
 import type { RegistrationFormType } from "../validation/register-schema";
 import type { CAApplicationType } from "../validation/ca-form-schema";
+import type { UserDataPreviewType } from "@/types/user-data-types";
 
 export async function getAllEvents() {
   return api.get("/event/all");
 }
 
-export async function getEventBySlug(slug: string) {
+export async function getEventBySlug(
+  slug: string,
+  token: string | null = null,
+) {
   return api.get(`/event/${slug}`, {
-    headers: {
-      shorten: "true", // Custom header to indicate that we want shortened data
-    },
+    ...(token
+      ? {
+          headers: { Authorization: `Bearer ${token}`, shorten: "true" },
+        }
+      : { headers: { shorten: "true" } }),
   });
 }
 
 export async function getJSONData(
   url: string,
-  extraData: { [key: string]: string | boolean | number } = {},
+  extraData: {
+    [key: string]:
+      | string
+      | boolean
+      | number
+      | UserDataPreviewType
+      | null
+      | undefined;
+  } = {},
 ) {
   const response = await axios.get(url);
   return { ...response.data, ...extraData };
@@ -39,8 +53,6 @@ export async function registerForEvent(
       continue;
     } else if (key === "reference" || key === "clubReference") {
       formData.append(key, data[key] || "N/A");
-    } else if (key === "teamSegmentsData") {
-      formData.append(key, JSON.stringify(data[key]));
     } else {
       formData.append(key, data[key as keyof RegistrationFormType] as string);
     }

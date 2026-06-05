@@ -66,7 +66,12 @@ export type ExplorionPastEventType = {
   eventLocation: string;
   eventDate: string;
   participantCount: number;
-  segmentCount: number;
+  segments: {
+    segmentSlug: string;
+    isTeamSegment: boolean;
+    isPaidSegment: boolean;
+    fees: number;
+  }[];
 };
 
 export type ExplorionSegmentType = {
@@ -80,6 +85,15 @@ export type ExplorionSegmentType = {
   details: string;
   rules: string;
   maxTeamSize: number;
+  isPaidSegment: boolean;
+  fees: number;
+  transactionMethods?: {
+    [platform: string]: {
+      number: string;
+      qrCodeUrl?: string;
+      qrCodePublicId?: string;
+    };
+  };
 };
 
 export type ExplorionExperienceType = {

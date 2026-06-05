@@ -39,7 +39,7 @@ export default function FaqRight({
               scrollTrigger: {
                 trigger: containerRef.current,
               },
-            }
+            },
           );
         });
     }

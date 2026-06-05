@@ -78,7 +78,7 @@ export default function EventCard({
           <EventMetaDataCounter count={pastEventData.participantCount}>
             Participants
           </EventMetaDataCounter>
-          <EventMetaDataCounter count={pastEventData.segmentCount}>
+          <EventMetaDataCounter count={pastEventData.segments.length}>
             Interesting Segments
           </EventMetaDataCounter>
         </div>

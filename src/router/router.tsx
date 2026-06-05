@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: "/:eventId?/:section?",
+        path: "/:eventSlug?/:section?",
         element: (
           <Suspense
             fallback={
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
 
       // es path
       {
-        path: "/:eventId/events/:seSlug",
+        path: "/:eventSlug/events/:seSlug",
         element: (
           <Suspense
             fallback={
@@ -55,7 +55,23 @@ export const router = createBrowserRouter([
 
       // Registration path
       {
-        path: "/:eventId/registration/",
+        path: "/:eventSlug/registration/",
+        element: (
+          <Suspense
+            fallback={
+              <div className="w-full h-[calc(100vh-var(--nav-height))]">
+                <Loader />
+              </div>
+            }
+          >
+            <RegistrationPage />
+          </Suspense>
+        ),
+        errorElement: <PageNotFound />,
+      },
+
+      {
+        path: "/:eventSlug/registration/:segmentSlug",
         element: (
           <Suspense
             fallback={
@@ -72,7 +88,7 @@ export const router = createBrowserRouter([
 
       // CA application path
       {
-        path: "/:eventId/ca-application/",
+        path: "/:eventSlug/ca-application/",
         element: (
           <Suspense
             fallback={
