@@ -31,7 +31,7 @@ export default function SegmentRegistration(): ReactNode {
 
   const eventSlug = useParams().eventSlug || "";
   const [hasRegistered, setHasRegistered] = useState(false);
-  const [teamSegmentsData, setTeamSegmentsData] = useState<{
+  const [teamSegmentsData, _] = useState<{
     [segmentSlug: string]: {
       teamName: string;
       leaderEmail: string;

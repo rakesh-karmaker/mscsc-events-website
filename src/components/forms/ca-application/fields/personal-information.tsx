@@ -1,10 +1,7 @@
 import { TextField } from "@mui/material";
 import FileInput from "@/components/ui/file-input";
 import { useState, type ReactNode } from "react";
-import type {
-  UseFormRegister,
-  UseFormSetValue,
-} from "node_modules/react-hook-form/dist/types/form";
+import type { UseFormRegister, UseFormSetValue } from "react-hook-form";
 import FormBox from "../../form-box";
 import type { CAApplicationType } from "@/lib/validation/ca-form-schema";
 import RadioField from "@/components/ui/radio-field";

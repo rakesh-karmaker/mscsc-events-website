@@ -7,7 +7,7 @@ import {
   type SetStateAction,
 } from "react";
 import type { UseFormRegister, UseFormSetValue } from "react-hook-form";
-import { Checkbox, FormControlLabel, TextField } from "@mui/material";
+import { Checkbox, FormControlLabel } from "@mui/material";
 import type { SegmentType } from "@/types/global-types";
 import FormBox from "../../form-box";
 
@@ -163,7 +163,7 @@ export default function SegmentSelectionFields({
               If you have questions or need help, please contact support.
             </span>
           </div>
-          <div className="flex flex-col gap-6 mt-4">
+          {/* <div className="flex flex-col gap-6 mt-4">
             {teamSegments.map((segment, index) => (
               <div
                 key={index}
@@ -270,7 +270,7 @@ export default function SegmentSelectionFields({
                 )}
               </div>
             ))}
-          </div>
+          </div> */}
         </FormBox>
       </Activity>
     </>

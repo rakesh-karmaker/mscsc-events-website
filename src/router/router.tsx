@@ -6,9 +6,10 @@ import Loader from "@/components/ui/loader";
 import PageNotFound from "@/pages/page-not-found";
 
 const HomePage = lazy(() => import("@/pages/home"));
-const EventPage = lazy(() => import("@/pages/es"));
+const SegmentAndExpPage = lazy(() => import("@/pages/es"));
 const RegistrationPage = lazy(() => import("@/pages/registration"));
 const CAApplicationPage = lazy(() => import("@/pages/ca-application"));
+const ProfilePage = lazy(() => import("@/pages/profile"));
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,22 @@ export const router = createBrowserRouter([
         errorElement: <PageNotFound />,
       },
 
+      {
+        path: "/:eventSlug/profile",
+        element: (
+          <Suspense
+            fallback={
+              <div className="w-full h-[calc(100vh-var(--nav-height))]">
+                <Loader />
+              </div>
+            }
+          >
+            <ProfilePage />
+          </Suspense>
+        ),
+        errorElement: <PageNotFound />,
+      },
+
       // es path
       {
         path: "/:eventSlug/events/:seSlug",
@@ -47,7 +64,7 @@ export const router = createBrowserRouter([
               </div>
             }
           >
-            <EventPage />
+            <SegmentAndExpPage />
           </Suspense>
         ),
         errorElement: <PageNotFound />,

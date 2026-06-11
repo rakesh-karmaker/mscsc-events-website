@@ -53,7 +53,7 @@ export default function RegistrationForm({
   fees,
   segments,
   eventName,
-  setHasRegistered,
+  // setHasRegistered,
   // setTeamSegmentsData,
 }: RegistrationFormProps): ReactNode {
   const eventSlug = useParams().eventSlug || "event-slug"; // Replace with actual slug from params

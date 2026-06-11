@@ -18,8 +18,14 @@ export default function Navbar(): ReactNode {
   }
 
   return (
-    <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-linear-to-b from-primary-bg to-primary-bg/80 backdrop-blur-xs z-9999 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.1)]">
-      <nav className="py-3 w-full max-w-max-width h-fit flex justify-between items-center">
+    <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-linear-to-b from-primary-bg to-primary-bg/80 backdrop-blur-xs z-99 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.1)]">
+      <nav
+        className="py-3 w-full max-w-max-width h-fit grid gap-10 items-center max-md:flex max-sm:gap-5"
+        style={{
+          gridTemplateColumns:
+            eventMetaData.isHomepage || !formData ? "1fr auto" : "1fr auto 1fr",
+        }}
+      >
         <Activity mode={window.innerWidth >= 768 ? "hidden" : "visible"}>
           <button
             className="text-2xl cursor-pointer transition-colors duration-200 hover:text-primary/70 focus:text-primary/70 focus-within:text-primary/70"
@@ -33,26 +39,31 @@ export default function Navbar(): ReactNode {
           eventName={eventMetaData.eventName || ""}
         />
         <NavLinks sections={sections} isOpen={isOpen} setIsOpen={setIsOpen} />
-        {eventMetaData.isHomepage || !formData ? null : user?.photoUrl ? (
-          <NavLink to={`/${currentEventSlug}/profile/`}>
-            <img
-              src={user.photoUrl}
-              alt="Profile"
-              className="w-10 h-10 rounded-full object-cover border-2 border-primary"
-            />
-          </NavLink>
-        ) : (
-          <NavLink
-            to={
-              eventMetaData.isInnerRegistration
-                ? currentEventSlug + "/registration/"
-                : eventMetaData.registrationUrl || ""
-            }
-            target={eventMetaData.isInnerRegistration ? "_self" : "_blank"}
-            className="flex gap-1.25 items-center text-[1.08em] border-2 border-primary px-4.25 py-2 max-xl:text-[0.9em]/[140%] max-xl:px-3.5 bg-primary text-white rounded-full hover:bg-secondary-bg hover:text-primary focus:bg-secondary-bg focus:text-primary focus-within:bg-secondary-bg focus-within:text-primary transition-colors duration-200"
-          >
-            Register <FaArrowRight />
-          </NavLink>
+
+        {eventMetaData.isHomepage || !formData ? null : (
+          <div className="w-full flex justify-end max-sm:justify-self-end">
+            {user?.photoUrl ? (
+              <NavLink to={`/${currentEventSlug}/profile/`}>
+                <img
+                  src={user.photoUrl}
+                  alt="Profile"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-primary"
+                />
+              </NavLink>
+            ) : (
+              <NavLink
+                to={
+                  eventMetaData.isInnerRegistration
+                    ? currentEventSlug + "/registration/"
+                    : eventMetaData.registrationUrl || ""
+                }
+                target={eventMetaData.isInnerRegistration ? "_self" : "_blank"}
+                className="flex gap-1.25 items-center text-[1.08em] border-2 border-primary px-4.25 py-2 max-xl:text-[0.9em]/[140%] max-xl:px-3.5 bg-primary text-white rounded-full hover:bg-secondary-bg hover:text-primary focus:bg-secondary-bg focus:text-primary focus-within:bg-secondary-bg focus-within:text-primary transition-colors duration-200"
+              >
+                Register <FaArrowRight />
+              </NavLink>
+            )}
+          </div>
         )}
       </nav>
     </header>
