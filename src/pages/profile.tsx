@@ -4,7 +4,7 @@ import type { User } from "@/types/user-data-types";
 import { capitalize } from "@mui/material/utils";
 import { useQuery } from "@tanstack/react-query";
 import { type ReactNode } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { IoMdMail } from "react-icons/io";
 import {
   FaClock,
@@ -18,15 +18,19 @@ import { MdCategory } from "react-icons/md";
 import dayjs from "dayjs";
 import { useEventData } from "@/hooks/use-event-data";
 import SegmentPreviewCard from "@/components/profile/segment-preview-card";
+import PrimaryBtn from "@/components/ui/primary-btn";
+import { useUser } from "@/hooks/use-user";
 
 export default function Profile(): ReactNode {
   const eventSlug = useParams().eventSlug || "";
   const token = localStorage.getItem(`${eventSlug}-registrationToken`) || "";
   const { segmentData } = useEventData();
+  const navigate = useNavigate();
+  const { setUser } = useUser();
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["userData"],
-    queryFn: () => {
+    queryFn: async () => {
       if (token) {
         return getUserData(token, eventSlug).then((res) => res.data);
       } else {
@@ -35,17 +39,17 @@ export default function Profile(): ReactNode {
     },
   });
 
+  if (error || !token) {
+    console.error("Error fetching user data:", error);
+    throw new Error("Failed to fetch user data");
+  }
+
   if (isLoading || !data || !segmentData) {
     return (
       <div className="w-full h-full min-h-screen flex justify-center items-center">
         <Loader />
       </div>
     );
-  }
-
-  if (error) {
-    console.error("Error fetching user data:", error);
-    throw new Error("Failed to fetch user data");
   }
 
   const userData = data.userData as User;
@@ -84,21 +88,21 @@ export default function Profile(): ReactNode {
           height="300px"
           src={data.bannerUrl}
           alt="Event Banner"
-          className="w-full h-auto max-w-[calc(var(--max-width)+4rem)] aspect-30/7 object-cover object-center rounded-bl-md rounded-br-md"
+          className="w-full h-auto min-h-44 max-w-[calc(var(--max-width)+4rem)] aspect-30/7 object-cover object-center rounded-bl-md rounded-br-md"
         />
       </div>
       <div className="w-full h-full mx-auto flex flex-col gap-10">
-        <div className="w-full flex gap-5 items-end max-w-max-width mx-auto">
-          <div className="w-70 min-w-70 max-w-70 h-70 min-h-70 max-h-70 p-4 bg-primary/5 backdrop-blur-sm flex justify-center items-center rounded-[20%] -mt-20">
+        <div className="w-full flex max-sm:flex-col gap-5 max-md:gap-2 items-end max-md:items-start max-w-max-width mx-auto">
+          <div className="w-70 max-lg:w-55 max-md:w-45 min-w-70 max-lg:min-w-55 max-md:min-w-45 max-w-70 max-lg:max-w-55 max-md:max-w-45 h-70 max-lg:h-55 max-md:h-45 min-h-70 max-lg:min-h-55 max-md:min-h-45 max-h-70 max-lg:max-h-55 max-md:max-h-45 p-4 max-xl:p-3 bg-primary/5 backdrop-blur-sm flex justify-center items-center rounded-[20%] -mt-20 max-md:-mt-10">
             <img
               src={userData.photoUrl}
               alt="Profile Image"
               className="w-full h-full object-cover rounded-[20%]"
             />
           </div>
-          <div className="flex flex-col mt-2 mb-2">
+          <div className="flex flex-col mt-2 max-lg:mt-5 mb-2">
             <div className="flex gap-2 items-center">
-              <h1 className="text-5xl font-medium text-primary">
+              <h1 className="text-5xl max-lg:text-4xl max-md:3xl font-medium text-primary">
                 {userData.name}
               </h1>{" "}
               {getStatusTag(userData.status)}
@@ -117,19 +121,31 @@ export default function Profile(): ReactNode {
                 <p>{userData.rejectionReason}</p>
               </div>
             )}
+            <div className="mt-2">
+              <PrimaryBtn
+                onClick={() => {
+                  localStorage.removeItem(`${eventSlug}-registrationToken`);
+                  setUser(null);
+                  navigate(`/${eventSlug}/home`);
+                }}
+                className="py-1.5!"
+              >
+                Sign Out
+              </PrimaryBtn>
+            </div>
           </div>
         </div>
 
         <div className="w-full h-full border-t-2 border-primary pb-10 max-w-[calc(var(--max-width)+4rem)] mx-auto">
-          <div className="w-full h-full max-w-max-width mx-auto flex gap-10">
-            <div className="w-fit h-auto border-r-2 border-primary py-5 flex flex-col gap-5 pr-30 relative">
-              <div className="w-full h-fit sticky top-20 flex flex-col gap-7">
+          <div className="w-full h-full max-w-max-width max-md:max-w-full mx-auto flex gap-10 max-md:flex-col">
+            <div className="w-fit max-md:w-full h-auto border-r-2 max-md:border-r-0 max-md:border-b-2 border-primary py-5 flex flex-col gap-5 pr-30 max-xl:pr-5 max-md:pr-0 relative">
+              <div className="profile-left w-full h-fit sticky top-20 flex max-md:max-w-max-width max-md:mx-auto flex-col gap-7">
                 <div>
                   <h2 className="text-2xl font-medium text-primary mb-2">
                     Registration Information
                   </h2>
                   <div className="flex flex-col gap-3 ml-3">
-                    <p className="flex gap-1 items-center text-text text-lg">
+                    <p className="flex gap-1 flex-wrap items-center text-text text-lg">
                       <FaQrcode className="text-text text-base" />{" "}
                       <span className="leading-4 -mb-0.75">
                         CODE:{" "}
@@ -140,7 +156,7 @@ export default function Profile(): ReactNode {
                             : "Rejected"}
                       </span>
                     </p>
-                    <p className="flex gap-1 items-center text-text text-lg">
+                    <p className="flex gap-1 flex-wrap items-center text-text text-lg">
                       <FaClock className="text-text text-base" />{" "}
                       <span className="leading-4 -mb-0.75">
                         {dayjs(userData.registrationDate).format("MMM D, YYYY")}
@@ -154,7 +170,7 @@ export default function Profile(): ReactNode {
                     Personal Information
                   </h2>
                   <div className="flex flex-col gap-3 ml-3">
-                    <p className="flex gap-1 items-center text-text text-lg">
+                    <p className="flex gap-1 flex-wrap items-center text-text text-lg">
                       <FaPhone className="text-text text-sm" />{" "}
                       <span className="leading-4 -mb-0.5">
                         {userData.phoneNumber}
@@ -164,7 +180,7 @@ export default function Profile(): ReactNode {
                       href={`mailto:${userData.email}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex gap-1 items-center text-text text-lg hover:text-primary transition-colors"
+                      className="flex gap-1 flex-wrap items-center text-text text-lg hover:text-primary transition-colors"
                     >
                       <IoMdMail className="text-text text-base" />{" "}
                       <span className="leading-4 -mb-0.75">
@@ -175,7 +191,7 @@ export default function Profile(): ReactNode {
                       href={userData.facebookUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex gap-1 items-center text-text text-lg hover:text-primary transition-colors"
+                      className="flex gap-1 flex-wrap items-center text-text text-lg hover:text-primary transition-colors"
                     >
                       <FaFacebook className="text-text text-base" />{" "}
                       <span className="leading-4 -mb-0.75">
@@ -190,13 +206,13 @@ export default function Profile(): ReactNode {
                     Institution Information
                   </h2>
                   <div className="flex flex-col gap-3 ml-3">
-                    <p className="flex gap-1 items-center text-text text-lg">
+                    <p className="flex gap-1 flex-wrap items-center text-text text-lg">
                       <FaSchool className="text-text text-base" />{" "}
                       <span className="leading-4 -mb-0.75">
                         {userData.institution}
                       </span>
                     </p>
-                    <p className="flex gap-1 items-center text-text text-lg">
+                    <p className="flex gap-1 flex-wrap items-center text-text text-lg">
                       <MdCategory className="text-text text-base" />{" "}
                       <span className="leading-4 -mb-0.75">
                         {getCategory(userData.grade)} Category
@@ -207,12 +223,12 @@ export default function Profile(): ReactNode {
               </div>
             </div>
 
-            <div className="w-full h-full border-primary py-5 flex flex-col gap-9">
+            <div className="w-full h-full border-primary py-5 flex flex-col gap-9 max-md:max-w-max-width max-md:mx-auto">
               <div>
                 <h2 className="text-2xl font-medium text-primary mb-2">
                   Your Registered Segments
                 </h2>
-                <div className="w-full h-full grid grid-cols-3 gap-4">
+                <div className="w-full h-full grid grid-cols-3 max-xl:grid-cols-2 max-900:grid-cols-1 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4">
                   {userData.segments.map((s) => {
                     const segmentInfo = segmentData.find(
                       (segment) => segment.segmentSlug === s,
@@ -239,7 +255,7 @@ export default function Profile(): ReactNode {
                 <h2 className="text-2xl font-medium text-primary mb-2">
                   Check Out Other Segments
                 </h2>
-                <div className="w-full h-full grid grid-cols-3 gap-4">
+                <div className="w-full h-full grid grid-cols-3 max-xl:grid-cols-2 max-900:grid-cols-1 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4">
                   {segmentData.map((segment) => {
                     if (userData.segments.includes(segment.segmentSlug)) {
                       return null;

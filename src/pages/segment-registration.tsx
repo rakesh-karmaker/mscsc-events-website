@@ -10,6 +10,7 @@ import type {
   EventMetaDataType,
   ExplorionSegmentType,
 } from "@/types/event-data-types";
+import { useUser } from "@/hooks/use-user";
 
 export default function SegmentRegistration(): ReactNode {
   // Fetch event data using the custom hook
@@ -17,6 +18,8 @@ export default function SegmentRegistration(): ReactNode {
   if (!formData || !segmentData || !eventMetaData || eventMetaData.isHomepage) {
     throw new Error("Registration data is unavailable");
   }
+
+  const { user } = useUser();
 
   useEffect(() => {
     window.scrollTo({
@@ -30,6 +33,7 @@ export default function SegmentRegistration(): ReactNode {
     : false;
 
   const eventSlug = useParams().eventSlug || "";
+  const segmentSlug = useParams().seSlug || "";
   const [hasRegistered, setHasRegistered] = useState(false);
   const [teamSegmentsData, _] = useState<{
     [segmentSlug: string]: {
@@ -49,6 +53,10 @@ export default function SegmentRegistration(): ReactNode {
     window.location.href = eventMetaData.registrationUrl;
     return null; // Return null to prevent rendering the rest of the component
   }
+
+  // if (!user) {
+  //   return (
+  // }
 
   if (hasRegistered) {
     return (

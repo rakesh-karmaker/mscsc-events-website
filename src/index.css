@@ -56,6 +56,9 @@
 
   --spacing-max-width: var(--max-width);
   --spacing-nav-height: var(--nav-height);
+
+  /* breakpoints */
+  --breakpoint-900: 56.25rem; /* 900px */
 }
 
 body {
@@ -140,4 +143,11 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: 0 0;
+}
+
+@media screen and (max-height: 700px) {
+  .profile-left {
+    position: relative;
+    top: 0;
+  }
 }

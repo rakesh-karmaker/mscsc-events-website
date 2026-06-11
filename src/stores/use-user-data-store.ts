@@ -3,7 +3,7 @@ import { create } from "zustand";
 
 export type UserDataStateType = {
   userData: UserDataPreviewType | null;
-  setUserData: (userData: UserDataPreviewType) => void;
+  setUserData: (userData: UserDataPreviewType | null) => void;
 };
 
 export const useUserDataStore = create<UserDataStateType>((set) => ({

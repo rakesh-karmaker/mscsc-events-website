@@ -1,20 +1,27 @@
 import FormattedTextContent from "@/components/ui/formatted-text-content/formatted-text-content";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Link, useParams } from "react-router";
 
 type FormInfoType = {
   title: string;
   details: string;
+  isLoginPage?: boolean;
 };
 
-export default function FormInfo({ title, details }: FormInfoType): ReactNode {
+export default function FormInfo({
+  title,
+  details,
+  isLoginPage = false,
+}: FormInfoType): ReactNode {
   const divRef = useRef<HTMLDivElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
+  const eventSlug = useParams().eventSlug || "";
 
   useEffect(() => {
     if (divRef.current) {
       const checkOverflow = () => {
         setIsOverflowing(
-          divRef.current!.scrollHeight > divRef.current!.clientHeight
+          divRef.current!.scrollHeight > divRef.current!.clientHeight,
         );
       };
       checkOverflow();
@@ -26,7 +33,9 @@ export default function FormInfo({ title, details }: FormInfoType): ReactNode {
   }, [details]); // Depend on details to recheck if content changes
 
   return (
-    <div className="w-full max-w-162.5  max-lg:max-w-full relative">
+    <div
+      className={`w-full ${isLoginPage ? "max-w-2xl" : "max-w-162.5"} max-lg:max-w-full relative`}
+    >
       <div
         ref={divRef}
         className="w-full h-fit overflow-auto max-h-[calc(100vh-var(--nav-height)-4rem)] max-lg:max-h-full sticky top-[calc(var(--nav-height)+2rem)] flex flex-col gap-2 p-8 bg-secondary-bg max-sm:bg-secondary-bg border-2 max-sm:border-l-0 max-sm:border-r-0 max-sm:rounded-none max-sm:p-[5vw] border-primary rounded-lg"
@@ -35,9 +44,32 @@ export default function FormInfo({ title, details }: FormInfoType): ReactNode {
         <h2 className="text-3xl font-medium pb-3 border-b border-primary text-primary">
           {title}
         </h2>
-        <div className="text-[0.925rem] text-primary">
+        <div className="text-[0.925rem] text-text">
           <FormattedTextContent content={details} />
         </div>
+        <p className="text-base text-text mt-4">
+          {isLoginPage ? (
+            <>
+              Don't have an account?{" "}
+              <Link
+                to={`/${eventSlug}/registration`}
+                className="text-dark-teal underline"
+              >
+                Register Now
+              </Link>
+            </>
+          ) : (
+            <>
+              If you have already registered for this event, then{" "}
+              <Link
+                to={`/${eventSlug}/login`}
+                className="text-dark-teal underline"
+              >
+                Login Now
+              </Link>
+            </>
+          )}
+        </p>
       </div>
     </div>
   );

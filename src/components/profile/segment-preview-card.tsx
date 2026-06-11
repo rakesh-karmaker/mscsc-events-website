@@ -38,7 +38,7 @@ export default function SegmentPreviewCard({
             {segmentInfo.title}
           </h3>
           <div className="w-full flex flex-col gap-2">
-            <div className="w-full flex gap-1.5">
+            <div className="w-full flex gap-1.5 flex-wrap">
               <div className="px-2.25 py-1.5 bg-primary rounded-sm text-white flex gap-1.5 items-center text-sm">
                 <GoPeople />
                 <p>{segmentInfo.teamType}</p>

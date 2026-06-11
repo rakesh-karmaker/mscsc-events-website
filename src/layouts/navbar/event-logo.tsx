@@ -13,14 +13,14 @@ export default function EventLogo({
   return (
     <NavLink
       to={`/${eventSlug}`}
-      className="flex items-center gap-2 max-xl:gap-1.5 rounded-full max-md:w-full"
+      className="flex w-fit max-md:min-w-fit items-center gap-2 max-xl:gap-1.5 rounded-full"
     >
       <img
         src={logoUrl}
         alt={`${eventName} Logo`}
         className="w-9.5 h-9.5 min-w-9.5 min-h-fit max-w-9.5 max-h-9.5 object-contain max-xl:w-8 max-xl:h-8 max-xl:min-w-8 max-xl:max-w-8 rounded-full"
       />
-      <span className="font-semibold min-w-fit text-[1.2em] max-xl:text-[1.1em] text-primary">
+      <span className="font-semibold min-w-fit text-[1.2em] max-xl:text-[1.1em] text-primary max-sm:hidden">
         {eventName}
       </span>
     </NavLink>

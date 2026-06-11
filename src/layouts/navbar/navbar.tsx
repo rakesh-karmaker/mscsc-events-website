@@ -20,13 +20,13 @@ export default function Navbar(): ReactNode {
   return (
     <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-linear-to-b from-primary-bg to-primary-bg/80 backdrop-blur-xs z-99 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.1)]">
       <nav
-        className="py-3 w-full max-w-max-width h-fit grid gap-10 items-center max-md:flex max-sm:gap-5"
+        className="py-3 w-full max-w-max-width h-fit grid gap-15 max-sm:gap-3 items-center max-md:flex max-lg:gap-5"
         style={{
           gridTemplateColumns:
             eventMetaData.isHomepage || !formData ? "1fr auto" : "1fr auto 1fr",
         }}
       >
-        <Activity mode={window.innerWidth >= 768 ? "hidden" : "visible"}>
+        <Activity mode={window.innerWidth >= 1024 ? "hidden" : "visible"}>
           <button
             className="text-2xl cursor-pointer transition-colors duration-200 hover:text-primary/70 focus:text-primary/70 focus-within:text-primary/70"
             onClick={() => setIsOpen(!isOpen)}
@@ -41,7 +41,7 @@ export default function Navbar(): ReactNode {
         <NavLinks sections={sections} isOpen={isOpen} setIsOpen={setIsOpen} />
 
         {eventMetaData.isHomepage || !formData ? null : (
-          <div className="w-full flex justify-end max-sm:justify-self-end">
+          <div className="w-fit max-md:w-full max-md:justify-end min-w-10 flex justify-self-end max-sm:justify-self-end">
             {user?.photoUrl ? (
               <NavLink to={`/${currentEventSlug}/profile/`}>
                 <img
