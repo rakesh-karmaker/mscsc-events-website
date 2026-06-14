@@ -37,15 +37,17 @@ export default function Home(): ReactNode {
   useEffect(() => {
     if (lenis) {
       // Use requestAnimationFrame to ensure scrolling happens after rendering
-      requestAnimationFrame(() => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          window.scrollTo({
-            top: section.offsetTop - 100,
-            behavior: "smooth",
-          });
-        }
-      });
+      setTimeout(() => {
+        requestAnimationFrame(() => {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            window.scrollTo({
+              top: section.offsetTop - 100,
+              behavior: "smooth",
+            });
+          }
+        });
+      }, 100); // Adjust the timeout duration as needed
     }
   }, [sectionId, lenis]);
 

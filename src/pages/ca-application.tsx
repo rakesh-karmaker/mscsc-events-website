@@ -80,7 +80,7 @@ export default function CAApplication(): ReactNode {
                   ? "Application Unavailable"
                   : "Application Closed"}
               </h2>
-              <p className="text-lg/snug text-text">
+              <p className="text-lg/snug max-xl:text-base text-text">
                 {eventMetaData.hideCAForm
                   ? "We are currently not accepting CA applications. Please stay tuned for future updates!"
                   : "The application deadline has passed. Please stay tuned for future events and opportunities!"}

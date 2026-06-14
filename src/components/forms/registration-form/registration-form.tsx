@@ -8,13 +8,7 @@ import type { SegmentType } from "@/types/global-types";
 import getCategory from "@/utils/get-category";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import {
-  useEffect,
-  useState,
-  type Dispatch,
-  type ReactNode,
-  type SetStateAction,
-} from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useForm, type UseFormRegister } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useParams, useSearchParams } from "react-router";
@@ -31,21 +25,15 @@ import { useUser } from "@/hooks/use-user";
 
 type RegistrationFormProps = {
   transactionMethods: {
-    [platform: string]: { number: string; code: string; qrCodeUrl?: string };
+    [platform: string]: {
+      number: string;
+      qrCodeUrl?: string;
+      qrCodePublicId?: string;
+    };
   };
   fees: number;
   segments: SegmentType[];
   eventName: string;
-  setHasRegistered: Dispatch<SetStateAction<boolean>>;
-  // setTeamSegmentsData: Dispatch<
-  //   SetStateAction<{
-  //     [segmentSlug: string]: {
-  //       teamName: string;
-  //       leaderEmail: string;
-  //       memberEmails: string[];
-  //     };
-  //   } | null>
-  // >;
 };
 
 export default function RegistrationForm({
@@ -53,8 +41,6 @@ export default function RegistrationForm({
   fees,
   segments,
   eventName,
-  // setHasRegistered,
-  // setTeamSegmentsData,
 }: RegistrationFormProps): ReactNode {
   const eventSlug = useParams().eventSlug || "event-slug"; // Replace with actual slug from params
   const { setUser } = useUser();
@@ -133,73 +119,6 @@ export default function RegistrationForm({
       setError("grade", { type: "manual", message: "Grade is required" });
       return;
     }
-
-    // filter the teamSegmentsData
-    // let doesHaveTeamSegmentError = false;
-    // const teamSegmentsData: {
-    //   [segmentSlug: string]: {
-    //     teamName: string;
-    //     leaderEmail: string;
-    //     memberEmails: string[];
-    //   };
-    // } = {};
-
-    // selectedSegments.forEach((segmentName: string) => {
-    //   const segment: SegmentType | undefined = segments.find(
-    //     (s) => s.title === segmentName,
-    //   );
-    //   if (!segment || segment.teamType !== "team") {
-    //     return;
-    //   }
-    //   if (
-    //     !data.teamSegmentsData ||
-    //     !data.teamSegmentsData[segment.segmentSlug]
-    //   ) {
-    //     toast.error(
-    //       `Please fill out team information for the ${segment.title} segment.`,
-    //     );
-    //     setError("teamSegmentsData", {
-    //       type: "manual",
-    //       message: `Team information is required for ${segment.title}`,
-    //     });
-    //     doesHaveTeamSegmentError = true;
-    //     return;
-    //   }
-    //   // check the field values
-    //   const teamData = data.teamSegmentsData[segment.segmentSlug];
-    //   if (!teamData.teamName) {
-    //     setError(`teamSegmentsData.${segment.segmentSlug}.teamName`, {
-    //       type: "manual",
-    //       message: "Team name is required",
-    //     });
-    //     doesHaveTeamSegmentError = true;
-    //   }
-    //   if (!teamData.leaderEmail) {
-    //     setError(`teamSegmentsData.${segment.segmentSlug}.leaderEmail`, {
-    //       type: "manual",
-    //       message: "Team leader email is required",
-    //     });
-    //     doesHaveTeamSegmentError = true;
-    //   }
-
-    //   teamSegmentsData[segment.segmentSlug] = {
-    //     teamName: teamData.teamName,
-    //     leaderEmail: teamData.leaderEmail,
-    //     memberEmails:
-    //       teamData.memberEmails.filter(
-    //         (email: string) => email && email.trim() !== "",
-    //       ) || [],
-    //   };
-    // });
-
-    // setTeamSegmentsData(teamSegmentsData);
-
-    // If there are any team segment errors, do not proceed
-    // if (doesHaveTeamSegmentError) {
-    //   return;
-    // }
-
-    // const { teamSegmentsData: _, ...restData } = data;
     registrationMutation.mutate(data);
   };
 

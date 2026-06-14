@@ -1,16 +1,13 @@
 import FormInfo from "@/components/forms/form-info";
-import { useEffect, useState, type ReactNode } from "react";
-import RegistrationForm from "@/components/forms/registration-form/registration-form";
+import { useEffect, type ReactNode } from "react";
 import { useEventData } from "@/hooks/use-event-data";
 import { Helmet } from "react-helmet-async";
 import FormPageHeader from "@/components/form-page-header";
 import PrimaryBtn from "@/components/ui/primary-btn";
 import { useParams } from "react-router";
-import type {
-  EventMetaDataType,
-  ExplorionSegmentType,
-} from "@/types/event-data-types";
 import { useUser } from "@/hooks/use-user";
+import { deSlugify } from "@/utils/de-slugify";
+import SegmentRegistrationForm from "@/components/forms/segment-registration-form";
 
 export default function SegmentRegistration(): ReactNode {
   // Fetch event data using the custom hook
@@ -33,15 +30,7 @@ export default function SegmentRegistration(): ReactNode {
     : false;
 
   const eventSlug = useParams().eventSlug || "";
-  const segmentSlug = useParams().seSlug || "";
-  const [hasRegistered, setHasRegistered] = useState(false);
-  const [teamSegmentsData, _] = useState<{
-    [segmentSlug: string]: {
-      teamName: string;
-      leaderEmail: string;
-      memberEmails: string[];
-    };
-  } | null>(null);
+  const segmentSlug = useParams().segmentSlug || "";
 
   if (
     !hasDeadlinePassed &&
@@ -49,35 +38,97 @@ export default function SegmentRegistration(): ReactNode {
     !eventMetaData.hideRegistrationForm &&
     eventMetaData.registrationUrl
   ) {
-    // If the registration is not through the website and the deadline hasn't passed, redirect to the external registration URL
-    window.location.href = eventMetaData.registrationUrl;
-    return null; // Return null to prevent rendering the rest of the component
+    return (
+      <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
+        <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
+          <div>
+            <h2 className="text-3xl font-bold mb-4 text-primary">
+              Registration Unavailable
+            </h2>
+            <p className="text-lg/snug max-xl:text-base text-text">
+              Website registration for this segment is currently unavailable.
+              Please register through the official registration link provided by
+              the event organizers. We look forward to your participation in the
+              event!
+            </p>
+          </div>
+          <PrimaryBtn
+            isLink={true}
+            href={`/${eventSlug}/home`}
+            className="text-lg max-sm:text-base z-999"
+          >
+            Go to Homepage
+          </PrimaryBtn>
+        </div>
+      </div>
+    );
   }
 
-  // if (!user) {
-  //   return (
-  // }
-
-  if (hasRegistered) {
+  if (!user) {
     return (
-      <>
-        <Helmet>
-          <title>{eventMetaData.eventName} - Registration</title>
-        </Helmet>
-        <RegistrationCompleteCard
-          eventMetaData={eventMetaData}
-          teamSegmentsData={teamSegmentsData}
-          segmentData={segmentData}
-          eventSlug={eventSlug}
-        />
-      </>
+      <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
+        <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
+          <div>
+            <h2 className="text-3xl font-bold mb-4 text-primary">
+              Registration Required
+            </h2>
+            <p className="text-lg/snug max-xl:text-base text-text">
+              Please register for the event to access the registration form. If
+              you have already registered, please log in with the email you used
+              for registration to complete your segment registration. We look
+              forward to your participation in the event!
+            </p>
+          </div>
+          <PrimaryBtn
+            isLink={true}
+            href={`/${eventSlug}/registration`}
+            className="text-lg max-sm:text-base z-999"
+          >
+            Register
+          </PrimaryBtn>
+        </div>
+      </div>
     );
+  }
+
+  if (user.segments.includes(segmentSlug)) {
+    return (
+      <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
+        <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
+          <div>
+            <h2 className="text-3xl font-bold mb-4 text-primary">
+              Registration Completed
+            </h2>
+            <p className="text-lg/snug max-xl:text-base text-text">
+              Our records indicate that you have already registered for this
+              segment. If you have any questions about your registration status,
+              please contact our support team for assistance. We look forward to
+              your participation in the event!
+            </p>
+          </div>
+          <PrimaryBtn
+            isLink={true}
+            href={`/${eventSlug}/profile`}
+            className="text-lg max-sm:text-base z-999"
+          >
+            Profile Page
+          </PrimaryBtn>
+        </div>
+      </div>
+    );
+  }
+
+  const segmentInfo = segmentData.find((s) => s.segmentSlug === segmentSlug);
+  if (!segmentInfo) {
+    throw new Error("Segment data not found");
   }
 
   return (
     <>
       <Helmet>
-        <title>{eventMetaData.eventName} - Registration</title>
+        <title>
+          {eventMetaData.eventName} - {deSlugify(segmentSlug)}
+        </title>
       </Helmet>
       {hasDeadlinePassed || eventMetaData.hideRegistrationForm ? (
         <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
@@ -88,7 +139,7 @@ export default function SegmentRegistration(): ReactNode {
                   ? "Registration Unavailable"
                   : "Registration Closed"}
               </h2>
-              <p className="text-lg/snug text-text">
+              <p className="text-lg/snug max-xl:text-base text-text">
                 {eventMetaData.hideRegistrationForm
                   ? "We are currently not accepting registration requests. Please stay tuned for future updates!"
                   : "The registration deadline has passed. Please stay tuned for future events and opportunities!"}
@@ -109,103 +160,19 @@ export default function SegmentRegistration(): ReactNode {
             Become a Part of <br /> the Scientific Experience
           </FormPageHeader>
           <div className="w-full flex gap-10 max-w-max-width max-sm:max-w-full mb-20 max-lg:flex-col">
-            <FormInfo title={formData.title} details={formData.details} />
-            <RegistrationForm
-              transactionMethods={formData.transactionMethods}
-              fees={formData.fees}
-              segments={segmentData}
-              eventName={eventMetaData.eventName}
-              setHasRegistered={setHasRegistered}
-              // setTeamSegmentsData={setTeamSegmentsData}
+            <FormInfo
+              title={`${segmentInfo.title} Segment Registration`}
+              details={segmentInfo.details + segmentInfo.rules}
+              page={
+                segmentInfo.teamType === "team"
+                  ? "team-registration"
+                  : "segment-registration"
+              }
             />
+            <SegmentRegistrationForm segmentInfo={segmentInfo} />
           </div>
         </section>
       )}
     </>
-  );
-}
-
-function RegistrationCompleteCard({
-  eventMetaData,
-  teamSegmentsData,
-  segmentData,
-  eventSlug,
-}: {
-  eventMetaData: EventMetaDataType;
-  teamSegmentsData: {
-    [segmentSlug: string]: {
-      teamName: string;
-      leaderEmail: string;
-      memberEmails: string[];
-    };
-  } | null;
-  segmentData: ExplorionSegmentType[];
-  eventSlug: string;
-}): ReactNode {
-  return (
-    <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
-      <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
-        <div>
-          <h2 className="text-3xl font-bold mb-4 text-primary">
-            Registration Successful
-          </h2>
-          <p className="text-base/snug text-text">
-            Thank you for registering for {eventMetaData.eventName}! We have
-            received your registration details. We will notify you about
-            important updates and information regarding the event via email.
-            Stay tuned for an exciting experience ahead!
-          </p>
-          {teamSegmentsData && Object.keys(teamSegmentsData).length > 0 && (
-            <div className="mt-4 text-left text-text">
-              <h3 className="text-xl font-semibold mb-2 text-primary">
-                Your Team Information:
-              </h3>
-              {Object.entries(teamSegmentsData).map(
-                ([segmentSlug, teamData]) => (
-                  <div key={segmentSlug} className="mt-2">
-                    <h4 className="text-lg font-medium text-secondary">
-                      Segment:{" "}
-                      {segmentData.find((s) => s.segmentSlug === segmentSlug)
-                        ?.title || segmentSlug}
-                    </h4>
-                    <p>
-                      <strong className="font-medium">Team Name:</strong>{" "}
-                      {teamData.teamName}
-                    </p>
-                    <p>
-                      <strong className="font-medium">
-                        Team Leader Email:
-                      </strong>{" "}
-                      {teamData.leaderEmail}
-                    </p>
-                    {teamData.memberEmails.length > 0 && (
-                      <div>
-                        <strong className="font-medium">Team Members:</strong>
-                        <ul className="list-disc list-inside ml-3">
-                          {teamData.memberEmails.map((email, index) => (
-                            <li key={index}>{email}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                ),
-              )}
-              <p className="mt-3 text-[1.01rem]/[120%] text-text italic">
-                After your other team members have registered, you will receive
-                a team confirmation email shortly.
-              </p>
-            </div>
-          )}
-        </div>
-        <PrimaryBtn
-          isLink={true}
-          href={`/${eventSlug}/hero`}
-          className="text-lg max-sm:text-base z-999"
-        >
-          Go to Homepage
-        </PrimaryBtn>
-      </div>
-    </div>
   );
 }

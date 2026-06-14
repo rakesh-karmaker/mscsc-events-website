@@ -45,7 +45,7 @@ export default function Login(): ReactNode {
             <h2 className="text-3xl font-bold mb-4 text-primary">
               Login Unavailable
             </h2>
-            <p className="text-lg/snug text-text">
+            <p className="text-lg/snug max-xl:text-base text-text">
               This event uses an external registration system, so login through
               the website is unavailable. Please click the button below to go to
               the event homepage and access the external registration/login
@@ -77,7 +77,7 @@ export default function Login(): ReactNode {
             details={
               "Please enter your email and password to access your account and manage your event participation. We are excited to have you back and look forward to seeing you at the event!"
             }
-            isLoginPage={true}
+            page="login"
           />
           <LoginForm />
         </div>

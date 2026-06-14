@@ -25,8 +25,8 @@ export type FormDataType = {
   transactionMethods: {
     [platform: string]: {
       number: string;
-      code: string;
       qrCodeUrl?: string;
+      qrCodePublicId?: string;
     };
   };
   registrationDeadline: string;

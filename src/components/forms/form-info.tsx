@@ -5,13 +5,17 @@ import { Link, useParams } from "react-router";
 type FormInfoType = {
   title: string;
   details: string;
-  isLoginPage?: boolean;
+  page?:
+    | "login"
+    | "registration"
+    | "team-registration"
+    | "segment-registration";
 };
 
 export default function FormInfo({
   title,
   details,
-  isLoginPage = false,
+  page = "registration",
 }: FormInfoType): ReactNode {
   const divRef = useRef<HTMLDivElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -34,7 +38,7 @@ export default function FormInfo({
 
   return (
     <div
-      className={`w-full ${isLoginPage ? "max-w-2xl" : "max-w-162.5"} max-lg:max-w-full relative`}
+      className={`w-full ${page === "login" ? "max-w-2xl" : "max-w-162.5"} max-lg:max-w-full relative`}
     >
       <div
         ref={divRef}
@@ -48,27 +52,34 @@ export default function FormInfo({
           <FormattedTextContent content={details} />
         </div>
         <p className="text-base text-text mt-4">
-          {isLoginPage ? (
+          {page === "login" || page === "registration" ? (
+            page === "login" ? (
+              <>
+                Don't have an account?{" "}
+                <Link
+                  to={`/${eventSlug}/registration`}
+                  className="text-dark-teal underline"
+                >
+                  Register Now
+                </Link>
+              </>
+            ) : (
+              <>
+                If you have already registered for this event, then{" "}
+                <Link
+                  to={`/${eventSlug}/login`}
+                  className="text-dark-teal underline"
+                >
+                  Login Now
+                </Link>
+              </>
+            )
+          ) : page === "team-registration" ? (
             <>
-              Don't have an account?{" "}
-              <Link
-                to={`/${eventSlug}/registration`}
-                className="text-dark-teal underline"
-              >
-                Register Now
-              </Link>
+              Registering a team? Please make sure all your team members have
+              registered for the event.
             </>
-          ) : (
-            <>
-              If you have already registered for this event, then{" "}
-              <Link
-                to={`/${eventSlug}/login`}
-                className="text-dark-teal underline"
-              >
-                Login Now
-              </Link>
-            </>
-          )}
+          ) : null}
         </p>
       </div>
     </div>

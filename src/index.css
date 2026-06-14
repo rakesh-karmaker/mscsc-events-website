@@ -59,6 +59,7 @@
 
   /* breakpoints */
   --breakpoint-900: 56.25rem; /* 900px */
+  --breakpoint-xs: 25rem; /* 400px */
 }
 
 body {

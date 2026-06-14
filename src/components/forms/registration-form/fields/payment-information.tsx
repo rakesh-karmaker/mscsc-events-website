@@ -1,4 +1,3 @@
-import type { RegistrationFormType } from "@/lib/validation/register-schema";
 import type { ReactNode } from "react";
 import type {
   UseFormRegister,
@@ -8,17 +7,24 @@ import type {
 import PaymentSteps from "@/components/ui/payment-steps";
 import { Stack, TextField } from "@mui/material";
 import FormBox from "../../form-box";
+import { useParams } from "react-router";
+import { deSlugify } from "@/utils/de-slugify";
 
 type PaymentInformationFieldsProps = {
-  register: UseFormRegister<RegistrationFormType>;
+  register: UseFormRegister<any>;
   errors: { [key: string]: any };
   transactionMethods: {
-    [platform: string]: { number: string; code: string; qrCodeUrl?: string };
+    [platform: string]: {
+      number: string;
+      qrCodeUrl?: string;
+      qrCodePublicId?: string;
+    };
   };
   fees: number;
   eventName: string;
-  setValue: UseFormSetValue<RegistrationFormType>;
-  watch: UseFormWatch<RegistrationFormType>;
+  setValue: UseFormSetValue<any>;
+  watch: UseFormWatch<any>;
+  isSegmentRegistration?: boolean;
 };
 
 export default function PaymentInformationFields({
@@ -29,7 +35,10 @@ export default function PaymentInformationFields({
   eventName,
   setValue,
   watch,
+  isSegmentRegistration = false,
 }: PaymentInformationFieldsProps): ReactNode {
+  const segmentSlug = useParams().segmentSlug || "";
+
   const handlePaymentMethodChange = (method: string) => {
     setValue("transactionMethod", method);
   };
@@ -48,7 +57,7 @@ export default function PaymentInformationFields({
               transactionMethods={transactionMethods}
               setMethod={handlePaymentMethodChange}
               fees={fees}
-              ref={`${eventName} - ${emailValue || "your email"}`}
+              ref={`${isSegmentRegistration ? deSlugify(segmentSlug, false) : eventName} - ${emailValue || "your email"}`}
             />
           </div>
         </div>

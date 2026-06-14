@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export default function PageNotFound(): ReactNode {
   return (
     <section className="w-screen h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center bg-primary-bg">
-      <div className="w-full max-w-max-width flex flex-col gap-6 z-99 items-center">
+      <div className="w-full max-w-max-width flex flex-col gap-6 z-9 items-center">
         <div className="flex flex-col text-center items-center gap-2">
           <p className="text-lg max-sm:text-base text-primary">404 Not Found</p>
           <div className="flex flex-col gap-4 items-center">

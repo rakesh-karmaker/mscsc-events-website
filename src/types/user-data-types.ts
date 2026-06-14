@@ -6,6 +6,7 @@ export type PaidSegmentData = {
   transactionId: string;
   status: "pending" | "validated" | "rejected";
   rejectionReason?: string;
+  registrationDate: string;
 };
 
 export type TeamSegmentData = {
@@ -53,4 +54,5 @@ export type UserDataPreviewType = Pick<
   | "paidSoloSegments"
   | "teamSegmentsData"
   | "status"
+  | "segments"
 >;

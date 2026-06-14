@@ -45,7 +45,7 @@ export default function TeamDetails({
   return (
     <div className="w-full h-full flex flex-col gap-3">
       <div>
-        <h3 className="text-3xl">{details.teamName}</h3>
+        <h3 className="text-3xl text-primary">{details.teamName}</h3>
         <p className="text-base mb-0.5! text-gray-600">
           {deSlugify(details.segmentSlug, false)}
         </p>
@@ -59,9 +59,9 @@ export default function TeamDetails({
         <h3 className="text-xl mb-1!">Team Leader:</h3>
         <div className="flex flex-col gap-1"></div>
 
-        <div className="w-full text-[0.97rem] flex gap-1 text-gray-700">
+        <div className="w-full text-[0.97rem] flex gap-1 text-gray-700 ml-2">
           <span className="min-w-fit">Email: </span>
-          <span className="font-medium">{details.leaderEmail}</span>
+          <span className="font-medium text-text">{details.leaderEmail}</span>
         </div>
       </div>
 
@@ -69,7 +69,7 @@ export default function TeamDetails({
         <h3 className="text-xl mb-1!">Team Members:</h3>
         <div className="flex flex-col gap-1"></div>
         {details.memberEmails.length > 0 ? (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 ml-2">
             {details.memberEmails.map((memberEmail: string, index: number) => {
               return (
                 <div
@@ -77,13 +77,13 @@ export default function TeamDetails({
                   className="w-full text-[0.97rem] flex gap-1 text-gray-700"
                 >
                   <span className="min-w-fit">Email: </span>
-                  <span className="font-medium">{memberEmail}</span>
+                  <span className="font-medium text-text">{memberEmail}</span>
                 </div>
               );
             })}
           </div>
         ) : (
-          <p className="text-gray-500">No members added to the team.</p>
+          <p className="text-gray-500 ml-2">No members added to the team.</p>
         )}
       </div>
     </div>

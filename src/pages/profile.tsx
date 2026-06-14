@@ -1,8 +1,8 @@
 import Loader from "@/components/ui/loader";
-import { getUserData } from "@/lib/api/user";
+import { addFreeSoloSegment, getUserData } from "@/lib/api/user";
 import type { User } from "@/types/user-data-types";
 import { capitalize } from "@mui/material/utils";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { type ReactNode } from "react";
 import { useNavigate, useParams } from "react-router";
 import { IoMdMail } from "react-icons/io";
@@ -20,13 +20,42 @@ import { useEventData } from "@/hooks/use-event-data";
 import SegmentPreviewCard from "@/components/profile/segment-preview-card";
 import PrimaryBtn from "@/components/ui/primary-btn";
 import { useUser } from "@/hooks/use-user";
+import { toast } from "react-hot-toast";
+import type { AxiosError, AxiosResponse } from "axios";
 
 export default function Profile(): ReactNode {
   const eventSlug = useParams().eventSlug || "";
   const token = localStorage.getItem(`${eventSlug}-registrationToken`) || "";
   const { segmentData } = useEventData();
   const navigate = useNavigate();
-  const { setUser } = useUser();
+  const { setUser, user } = useUser();
+
+  const queryClient = useQueryClient();
+  const segmentMutation = useMutation({
+    mutationFn: (segmentSlug: string) =>
+      addFreeSoloSegment(
+        localStorage.getItem(token) || "",
+        eventSlug,
+        segmentSlug,
+      ),
+    onSuccess: (res: AxiosResponse<{ segments?: string[] }>) => {
+      queryClient.invalidateQueries({ queryKey: ["userData"] });
+      toast.success("Segment added successfully!");
+
+      if (!user) return;
+
+      const { segments, ...rest } = user;
+      const updatedUser = {
+        ...rest,
+        segments: res.data?.segments || segments,
+      } as User;
+      setUser(updatedUser);
+    },
+    onError: (error: AxiosError<{ message?: string }>) => {
+      console.error("Error adding free solo segment:", error);
+      toast.error("Failed to add segment. Please try again.");
+    },
+  });
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["userData"],
@@ -38,6 +67,7 @@ export default function Profile(): ReactNode {
       }
     },
   });
+  const userData = data?.userData as User;
 
   if (error || !token) {
     console.error("Error fetching user data:", error);
@@ -51,8 +81,6 @@ export default function Profile(): ReactNode {
       </div>
     );
   }
-
-  const userData = data.userData as User;
 
   function getStatusTag(
     status: "pending" | "validated" | "rejected",
@@ -141,7 +169,7 @@ export default function Profile(): ReactNode {
             <div className="w-fit max-md:w-full h-auto border-r-2 max-md:border-r-0 max-md:border-b-2 border-primary py-5 flex flex-col gap-5 pr-30 max-xl:pr-5 max-md:pr-0 relative">
               <div className="profile-left w-full h-fit sticky top-20 flex max-md:max-w-max-width max-md:mx-auto flex-col gap-7">
                 <div>
-                  <h2 className="text-2xl font-medium text-primary mb-2">
+                  <h2 className="text-2xl font-medium text-primary mb-2 min-w-[17ch] max-xs:min-w-0">
                     Registration Information
                   </h2>
                   <div className="flex flex-col gap-3 ml-3">
@@ -180,7 +208,7 @@ export default function Profile(): ReactNode {
                       href={`mailto:${userData.email}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex gap-1 flex-wrap items-center text-text text-lg hover:text-primary transition-colors"
+                      className="flex gap-1 max-sm:flex-wrap items-center text-text text-lg hover:text-primary transition-colors"
                     >
                       <IoMdMail className="text-text text-base" />{" "}
                       <span className="leading-4 -mb-0.75">
@@ -241,6 +269,7 @@ export default function Profile(): ReactNode {
                       <SegmentPreviewCard
                         key={segmentInfo.segmentSlug}
                         segmentInfo={segmentInfo}
+                        userData={userData}
                         eventSlug={eventSlug}
                         isRegistered={true}
                       />
@@ -250,28 +279,35 @@ export default function Profile(): ReactNode {
               </div>
 
               {/* Not registered section */}
-              <div>
-                {" "}
-                <h2 className="text-2xl font-medium text-primary mb-2">
-                  Check Out Other Segments
-                </h2>
-                <div className="w-full h-full grid grid-cols-3 max-xl:grid-cols-2 max-900:grid-cols-1 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4">
-                  {segmentData.map((segment) => {
-                    if (userData.segments.includes(segment.segmentSlug)) {
-                      return null;
-                    }
+              {userData.status != "rejected" && (
+                <>
+                  <div>
+                    <h2 className="text-2xl font-medium text-primary mb-2">
+                      Check Out Other Segments
+                    </h2>
+                    <div className="w-full h-full grid grid-cols-3 max-xl:grid-cols-2 max-900:grid-cols-1 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4">
+                      {segmentData.map((segment) => {
+                        if (userData.segments.includes(segment.segmentSlug)) {
+                          return null;
+                        }
 
-                    return (
-                      <SegmentPreviewCard
-                        key={segment.segmentSlug}
-                        segmentInfo={segment}
-                        eventSlug={eventSlug}
-                        isRegistered={false}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
+                        return (
+                          <SegmentPreviewCard
+                            key={segment.segmentSlug}
+                            segmentInfo={segment}
+                            eventSlug={eventSlug}
+                            isRegistered={false}
+                            onClick={(segmentSlug) =>
+                              segmentMutation.mutate(segmentSlug)
+                            }
+                            isPending={segmentMutation.isPending}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

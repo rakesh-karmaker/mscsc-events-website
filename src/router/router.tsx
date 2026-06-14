@@ -8,6 +8,9 @@ import PageNotFound from "@/pages/page-not-found";
 const HomePage = lazy(() => import("@/pages/home"));
 const SegmentAndExpPage = lazy(() => import("@/pages/es"));
 const RegistrationPage = lazy(() => import("@/pages/registration"));
+const SegmentRegistrationPage = lazy(
+  () => import("@/pages/segment-registration"),
+);
 const LoginPage = lazy(() => import("@/pages/login"));
 const CAApplicationPage = lazy(() => import("@/pages/ca-application"));
 const ProfilePage = lazy(() => import("@/pages/profile"));
@@ -114,7 +117,7 @@ export const router = createBrowserRouter([
               </div>
             }
           >
-            <RegistrationPage />
+            <SegmentRegistrationPage />
           </Suspense>
         ),
         errorElement: <PageNotFound />,

@@ -17,11 +17,15 @@ export default function SegmentPreviewCard({
   eventSlug,
   isRegistered = false,
   userData,
+  onClick,
+  isPending = false,
 }: {
   segmentInfo: ExplorionSegmentType;
   eventSlug: string;
   isRegistered: boolean;
   userData?: User;
+  onClick?: (segmentSlug: string) => void;
+  isPending?: boolean;
 }): ReactNode {
   const [detailsModelOpen, setDetailsModelOpen] = useState<boolean>(false);
 
@@ -84,17 +88,17 @@ export default function SegmentPreviewCard({
                 <div className="min-h-fit max-sm:max-h-full p-7! max-sm:p-[calc((100vw-var(--max-elements-width))/2)]! rounded-lg max-sm:rounded-none bg-primary-bg flex flex-col max-sm:justify-center gap-5">
                   <div className="w-full flex flex-col">
                     <div className="w-full flex justify-between items-start gap-4">
-                      <h2 className="text-2xl font-medium max-xs:text-2xl">
+                      <h2 className="text-2xl font-medium max-xs:text-2xl text-primary">
                         Team Details
                       </h2>
                       <button
                         onClick={() => setDetailsModelOpen(false)}
-                        className="text-3xl transition-all duration-200 hover:text-red-400 cursor-pointer"
+                        className="text-3xl text-primary transition-all duration-200 hover:text-red-400 cursor-pointer"
                       >
                         <LuX />
                       </button>
                     </div>
-                    <div className="w-full h-px bg-light-black/10 mt-2! mb-7!"></div>
+                    <div className="w-full h-px bg-black/10 mt-2! mb-7!"></div>
                     <TeamDetails
                       details={userData?.teamSegmentsData?.find(
                         (team) => team.segmentSlug === segmentInfo.segmentSlug,
@@ -108,12 +112,21 @@ export default function SegmentPreviewCard({
         ) : null
       ) : (
         <div className="w-full flex gap-2 mt-2">
-          <PrimaryBtn
-            isLink={true}
-            href={`/${eventSlug}/registration/${segmentInfo.segmentSlug}`}
-          >
-            Register Now
-          </PrimaryBtn>
+          {segmentInfo.teamType === "solo" && !segmentInfo.isPaidSegment ? (
+            <PrimaryBtn
+              onClick={() => onClick && onClick(segmentInfo.segmentSlug)}
+              disabled={isPending}
+            >
+              {isPending ? "Registering..." : "Register Now"}
+            </PrimaryBtn>
+          ) : (
+            <PrimaryBtn
+              isLink={true}
+              href={`/${eventSlug}/registration/${segmentInfo.segmentSlug}`}
+            >
+              Register Now
+            </PrimaryBtn>
+          )}
         </div>
       )}
     </div>

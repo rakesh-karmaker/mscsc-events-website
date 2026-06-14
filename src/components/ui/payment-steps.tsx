@@ -1,9 +1,14 @@
 import { useEffect, useState, type ReactNode } from "react";
 import PaymentMethodCard from "./payment-method-card";
+import { TRANSACTION_METHOD_CODES } from "@/services/transaction-method-codes";
 
 type PaymentStepsProps = {
   transactionMethods: {
-    [platform: string]: { number: string; code: string; qrCodeUrl?: string };
+    [platform: string]: {
+      number: string;
+      qrCodeUrl?: string;
+      qrCodePublicId?: string;
+    };
   };
   fees: number;
   method?: string;
@@ -13,7 +18,7 @@ type PaymentStepsProps = {
 
 export default function PaymentSteps({
   transactionMethods,
-  method = "bkash",
+  method = Object.keys(transactionMethods)[0],
   fees,
   setMethod,
   ref,
@@ -24,7 +29,10 @@ export default function PaymentSteps({
     setMethod(currentMethod);
   }, [currentMethod, setMethod]);
 
-  const currentMethodData = transactionMethods[currentMethod];
+  const currentMethodData = {
+    ...transactionMethods[currentMethod],
+    code: TRANSACTION_METHOD_CODES[currentMethod] || "",
+  };
 
   return (
     <div className="w-full flex justify-between gap-5 max-lg:flex-wrap">
