@@ -10,7 +10,8 @@ import { LuX } from "react-icons/lu";
 import type { User } from "@/types/user-data-types";
 import type { ReactNode } from "react";
 import { useState } from "react";
-import TeamDetails from "./team-detils";
+import TeamDetails from "./team-details";
+import capitalize from "@/utils/capitalize";
 
 export default function SegmentPreviewCard({
   segmentInfo,
@@ -19,6 +20,7 @@ export default function SegmentPreviewCard({
   userData,
   onClick,
   isPending = false,
+  status,
 }: {
   segmentInfo: ExplorionSegmentType;
   eventSlug: string;
@@ -26,6 +28,7 @@ export default function SegmentPreviewCard({
   userData?: User;
   onClick?: (segmentSlug: string) => void;
   isPending?: boolean;
+  status?: "pending" | "validated" | "rejected";
 }): ReactNode {
   const [detailsModelOpen, setDetailsModelOpen] = useState<boolean>(false);
 
@@ -56,10 +59,17 @@ export default function SegmentPreviewCard({
                 <p>{segmentInfo.locationType}</p>
               </div>
               {segmentInfo.isPaidSegment ? (
-                <div className="px-2.25 py-1.5 bg-primary rounded-sm text-white flex gap-0.75 items-center text-sm">
-                  <TbCurrencyTaka />
-                  <p>{segmentInfo.fees}</p>
-                </div>
+                <>
+                  <div className="px-2.25 py-1.5 bg-primary rounded-sm text-white flex gap-0.75 items-center text-sm">
+                    <TbCurrencyTaka />
+                    <p>{segmentInfo.fees}</p>
+                  </div>
+                  {status && (
+                    <div className="px-2.25 py-1.5 bg-primary rounded-sm text-white flex gap-0.75 items-center text-sm">
+                      <p>{capitalize(status)}</p>
+                    </div>
+                  )}
+                </>
               ) : null}
             </div>
             <p className="text-[1rem]/[135%] text-text">

@@ -33,11 +33,7 @@ export default function Profile(): ReactNode {
   const queryClient = useQueryClient();
   const segmentMutation = useMutation({
     mutationFn: (segmentSlug: string) =>
-      addFreeSoloSegment(
-        localStorage.getItem(token) || "",
-        eventSlug,
-        segmentSlug,
-      ),
+      addFreeSoloSegment(token, eventSlug, segmentSlug),
     onSuccess: (res: AxiosResponse<{ segments?: string[] }>) => {
       queryClient.invalidateQueries({ queryKey: ["userData"] });
       toast.success("Segment added successfully!");
@@ -53,7 +49,7 @@ export default function Profile(): ReactNode {
     },
     onError: (error: AxiosError<{ message?: string }>) => {
       console.error("Error adding free solo segment:", error);
-      toast.error("Failed to add segment. Please try again.");
+      toast.error(error.response?.data?.message || "Failed to add segment");
     },
   });
 
@@ -272,6 +268,11 @@ export default function Profile(): ReactNode {
                         userData={userData}
                         eventSlug={eventSlug}
                         isRegistered={true}
+                        status={
+                          userData.paidSoloSegments.find(
+                            (ps) => ps.segmentSlug === segmentInfo.segmentSlug,
+                          )?.status
+                        }
                       />
                     );
                   })}

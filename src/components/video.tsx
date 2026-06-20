@@ -34,7 +34,7 @@ export default function Video(): ReactNode {
       gsap.fromTo(
         playerRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 2, ease: "power2.out" }
+        { opacity: 1, duration: 2, ease: "power2.out" },
       );
     }
   }, [isReady]);
@@ -55,17 +55,19 @@ export default function Video(): ReactNode {
         <Suspense
           fallback={<div className="skeleton h-full w-full aspect-video"></div>}
         >
-          <div ref={playerRef} className="opacity-0">
+          <div
+            ref={playerRef}
+            className="opacity-0 user-select-none pointer-events-none"
+          >
             <ReactPlayer
               playing={true}
-              muted={true}
+              muted={!videoData.hasAudio}
               src={videoData.url}
               width="100%"
               height="100%"
               loop={true}
               preload="auto"
-              className="min-h-fit"
-              crossOrigin="anonymous"
+              className="w-full h-auto aspect-video"
               config={{
                 youtube: {
                   disablekb: 1,
@@ -75,6 +77,8 @@ export default function Video(): ReactNode {
               }}
               onPlay={() => setIsReady(true)} // Trigger fade-in
               onError={() => setIsError(true)}
+              title="YouTube video player"
+              controls={false}
             />
           </div>
         </Suspense>
