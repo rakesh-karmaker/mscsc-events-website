@@ -14,7 +14,7 @@ export default function animateTextReveal(text: HTMLDivElement) {
       "linear-gradient(88.63deg, #043841 3.66%, #02899f 118.11%)";
     const width = container.offsetWidth;
     const words = container.querySelectorAll<HTMLElement>(
-      ".will-change-transform"
+      ".will-change-transform",
     );
     words.forEach((w) => {
       w.style.display = "inline-block";
