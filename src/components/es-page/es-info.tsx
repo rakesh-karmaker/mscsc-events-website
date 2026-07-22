@@ -4,9 +4,9 @@ import type {
 } from "@/types/event-data-types";
 import type { ReactNode } from "react";
 import Icon from "../ui/icon";
-import { GoPeople } from "react-icons/go";
-import { FaGlobeAsia } from "react-icons/fa";
-import { IoLocationOutline } from "react-icons/io5";
+import GoPeople from "~icons/ic/baseline-people-alt";
+import FaGlobeAsia from "~icons/fa7-solid/globe-asia";
+import GoLocation from "~icons/ic/baseline-location-on";
 import FormattedTextContent from "../ui/formatted-text-content/formatted-text-content";
 
 export default function EventInfo<
@@ -33,7 +33,7 @@ export default function EventInfo<
               {eventData.locationType === "online" ? (
                 <FaGlobeAsia />
               ) : (
-                <IoLocationOutline />
+                <GoLocation />
               )}
               <p>{eventData.locationType}</p>
             </div>

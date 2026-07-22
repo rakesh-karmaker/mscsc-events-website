@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import PrimaryBtn from "../ui/primary-btn";
-import { FaArrowRight } from "react-icons/fa6";
+import FaArrowRight from "~icons/fa6-solid/arrow-right";
 
 export default function ContactBox(): ReactNode {
   return (

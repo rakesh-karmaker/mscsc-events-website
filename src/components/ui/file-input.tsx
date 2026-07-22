@@ -1,6 +1,6 @@
 import type React from "react";
 import { useRef, type ReactNode } from "react";
-import { FaUpload } from "react-icons/fa";
+import FaUpload from "~icons/fa/upload";
 import type { FieldErrors, UseFormRegister, Path } from "react-hook-form";
 import type { RegistrationFormType } from "@/lib/validation/register-schema";
 import type { CAApplicationType } from "@/lib/validation/ca-form-schema";

@@ -1,8 +1,9 @@
 import type { ExplorionPastEventType } from "@/types/event-data-types";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { FaCalendarAlt } from "react-icons/fa";
+import FaCalendarAlt from "~icons/fa7-solid/calendar-alt";
 import PrimaryBtn from "../ui/primary-btn";
-import { FaArrowRightLong, FaLocationDot } from "react-icons/fa6";
+import FaArrowRightLong from "~icons/fa6-solid/arrow-right-long";
+import GoLocation from "~icons/ic/baseline-location-on";
 import Counter from "../ui/counter";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -134,7 +135,7 @@ function EventTags({
   return (
     <div className="w-full flex gap-3 flex-wrap">
       <div className="px-3 py-1.5 bg-primary rounded-sm text-white flex gap-1 items-center text-sm">
-        <FaLocationDot />
+        <GoLocation />
         <p>{location}</p>
       </div>
       <div className="px-3 py-1.5 bg-primary rounded-sm text-white flex gap-1 items-center text-sm">

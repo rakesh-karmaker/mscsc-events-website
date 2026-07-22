@@ -1,6 +1,6 @@
 import { useRef, type ReactNode } from "react";
 import PrimaryBtn from "@/components/ui/primary-btn";
-import { FaArrowRight } from "react-icons/fa6";
+import FaArrowRight from "~icons/fa6-solid/arrow-right";
 import { useParams } from "react-router";
 import type { AboutTopProps } from "./about-top";
 import gsap from "gsap";

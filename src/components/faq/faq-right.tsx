@@ -9,7 +9,7 @@ import {
   type ReactNode,
   type SetStateAction,
 } from "react";
-import { RxCross2 } from "react-icons/rx";
+import RxCross2 from "~icons/radix-icons/cross-2";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);

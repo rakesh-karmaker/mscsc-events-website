@@ -5,16 +5,14 @@ import { capitalize } from "@mui/material/utils";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { type ReactNode } from "react";
 import { useNavigate, useParams } from "react-router";
-import { IoMdMail } from "react-icons/io";
-import {
-  FaClock,
-  FaFacebook,
-  FaPhone,
-  FaQrcode,
-  FaSchool,
-} from "react-icons/fa6";
+import FaFacebook from "~icons/fa/facebook";
+import FaPhoneAlt from "~icons/fa/phone";
+import FaSchool from "~icons/fa6-solid/school";
+import IoMdMail from "~icons/ion/md-mail";
+import FaClock from "~icons/fa6-regular/clock";
+import FaQrcode from "~icons/fa6-solid/qrcode";
+import CategoryIcon from "~icons/material-symbols/category";
 import getCategory from "@/utils/get-category";
-import { MdCategory } from "react-icons/md";
 import dayjs from "dayjs";
 import { useEventData } from "@/hooks/use-event-data";
 import SegmentPreviewCard from "@/components/profile/segment-preview-card";
@@ -195,7 +193,7 @@ export default function Profile(): ReactNode {
                   </h2>
                   <div className="flex flex-col gap-3 ml-3">
                     <p className="flex gap-1 flex-wrap items-center text-text text-lg">
-                      <FaPhone className="text-text text-sm" />{" "}
+                      <FaPhoneAlt className="text-text text-sm" />{" "}
                       <span className="leading-4 -mb-0.5">
                         {userData.phoneNumber}
                       </span>
@@ -237,7 +235,7 @@ export default function Profile(): ReactNode {
                       </span>
                     </p>
                     <p className="flex gap-1 flex-wrap items-center text-text text-lg">
-                      <MdCategory className="text-text text-base" />{" "}
+                      <CategoryIcon className="text-text text-base" />{" "}
                       <span className="leading-4 -mb-0.75">
                         {getCategory(userData.grade)} Category
                       </span>

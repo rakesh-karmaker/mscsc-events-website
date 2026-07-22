@@ -2,7 +2,9 @@ import { Activity, useState, type ReactNode } from "react";
 import EventLogo from "./event-logo";
 import { NavLink, useParams } from "react-router";
 import NavLinks from "./nav-links";
-import { FaArrowRight, FaBars, FaXmark } from "react-icons/fa6";
+import FaArrowRight from "~icons/fa6-solid/arrow-right";
+import LuX from "~icons/lucide/x";
+import FaBars from "~icons/fa7-solid/bars";
 import { useEventData } from "@/hooks/use-event-data";
 import { useUser } from "@/hooks/use-user";
 
@@ -17,13 +19,19 @@ export default function Navbar(): ReactNode {
     return null;
   }
 
+  const isDeadlinePassed = formData?.registrationDeadline
+    ? new Date(formData.registrationDeadline) < new Date()
+    : false;
+
   return (
     <header className="sticky top-0 w-full h-fit flex justify-center items-center bg-linear-to-b from-primary-bg to-primary-bg/80 backdrop-blur-xs z-99 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.1)]">
       <nav
         className="py-3 w-full max-w-max-width h-fit grid gap-15 max-sm:gap-3 items-center max-md:flex max-lg:gap-5"
         style={{
           gridTemplateColumns:
-            eventMetaData.isHomepage || !formData ? "1fr auto" : "1fr auto 1fr",
+            eventMetaData.isHomepage || !formData || isDeadlinePassed
+              ? "1fr auto"
+              : "1fr auto 1fr",
         }}
       >
         <Activity mode={window.innerWidth >= 1024 ? "hidden" : "visible"}>
@@ -31,7 +39,7 @@ export default function Navbar(): ReactNode {
             className="text-2xl cursor-pointer transition-colors duration-200 hover:text-primary/70 focus:text-primary/70 focus-within:text-primary/70"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <FaXmark /> : <FaBars />}
+            {isOpen ? <LuX /> : <FaBars />}
           </button>
         </Activity>
         <EventLogo
@@ -40,7 +48,7 @@ export default function Navbar(): ReactNode {
         />
         <NavLinks sections={sections} isOpen={isOpen} setIsOpen={setIsOpen} />
 
-        {eventMetaData.isHomepage || !formData ? null : (
+        {eventMetaData.isHomepage || !formData || isDeadlinePassed ? null : (
           <div className="w-fit max-md:w-full max-md:justify-end min-w-10 flex justify-self-end max-sm:justify-self-end">
             {user?.photoUrl ? (
               <NavLink to={`/${currentEventSlug}/profile/`}>

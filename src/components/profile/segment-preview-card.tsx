@@ -1,12 +1,12 @@
 import PrimaryBtn from "@/components/ui/primary-btn";
-import { TbCurrencyTaka } from "react-icons/tb";
-import { FaGlobeAsia } from "react-icons/fa";
-import { IoLocationOutline } from "react-icons/io5";
-import { GoPeople } from "react-icons/go";
+import TbCurrencyTaka from "~icons/tabler/currency-taka";
+import FaGlobeAsia from "~icons/fa7-solid/globe-asia";
+import GoLocation from "~icons/ic/baseline-location-on";
+import GoPeople from "~icons/ic/baseline-people-alt";
+import LuX from "~icons/lucide/x";
 import Icon from "@/components/ui/icon";
 import type { ExplorionSegmentType } from "@/types/event-data-types";
 import Modal from "@mui/material/Modal";
-import { LuX } from "react-icons/lu";
 import type { User } from "@/types/user-data-types";
 import type { ReactNode } from "react";
 import { useState } from "react";
@@ -54,7 +54,7 @@ export default function SegmentPreviewCard({
                 {segmentInfo.locationType === "online" ? (
                   <FaGlobeAsia />
                 ) : (
-                  <IoLocationOutline />
+                  <GoLocation />
                 )}
                 <p>{segmentInfo.locationType}</p>
               </div>

@@ -43,7 +43,7 @@ export default function Sponsors(): ReactNode {
               scrollTrigger: {
                 trigger: element,
               },
-            }
+            },
           );
         });
     }
@@ -80,7 +80,7 @@ export default function Sponsors(): ReactNode {
             <img
               src={sponsor.logoUrl}
               alt={sponsor.name}
-              className="w-full max-w-[50%] max-[450px]:max-w-[40%] h-auto"
+              className="w-full max-w-[50%] max-[450px]:max-w-[40%] h-auto max-h-[85%] object-contain"
             />
           </a>
         ))}

@@ -5,7 +5,7 @@ import {
   type SetStateAction,
 } from "react";
 import PrimaryBtn from "../ui/primary-btn";
-import { RiCalendarScheduleFill } from "react-icons/ri";
+import FaCalendarAlt from "~icons/fa7-solid/calendar-alt";
 import { useGSAP } from "@gsap/react";
 import animateTextReveal from "@/animations/text-reveal";
 import animateScheduleLeft from "@/animations/schedule-left";
@@ -92,7 +92,7 @@ function DateItem({
       }
     >
       <span className="w-fit flex gap-1 items-center">
-        <RiCalendarScheduleFill />
+        <FaCalendarAlt />
         <span>{date}</span>
       </span>
     </PrimaryBtn>
