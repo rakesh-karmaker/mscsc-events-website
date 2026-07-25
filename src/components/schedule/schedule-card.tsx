@@ -1,6 +1,7 @@
 import type { ScheduleType } from "@/types/global-types";
 import type { ReactNode } from "react";
 import Icon from "../ui/icon";
+import dayjs from "dayjs";
 
 export default function ScheduleCard({
   scheduleData,
@@ -19,9 +20,10 @@ export default function ScheduleCard({
         <div className="w-full flex flex-col gap-0.5">
           <div className="flex flex-col">
             <span className="text-[0.95rem] font-medium text-primary/80">
-              {scheduleData.time}
+              {dayjs(scheduleData.fromTime, "HH:mm").format("h:mm A")} -{" "}
+              {dayjs(scheduleData.toTime, "HH:mm").format("h:mm A")}
             </span>
-            <h4 className="text-[1.3rem] font-medium text-primary">
+            <h4 className="text-[1.3rem]/[1.1] font-medium text-primary pb-1">
               {scheduleData.title}
             </h4>
           </div>

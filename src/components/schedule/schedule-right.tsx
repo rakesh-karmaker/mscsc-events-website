@@ -20,6 +20,8 @@ export default function ScheduleRight({
   const currentScheduleData = scheduleData[date] || [];
   const segmentContainerRef = useRef<HTMLDivElement>(null);
 
+  console.log(currentScheduleData);
+
   useGSAP(() => {
     if (segmentContainerRef.current) {
       // Kill existing animations and ScrollTriggers
@@ -45,7 +47,7 @@ export default function ScheduleRight({
               scrollTrigger: {
                 trigger: segmentContainerRef.current,
               },
-            }
+            },
           );
         });
     }

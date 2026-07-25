@@ -106,7 +106,8 @@ export type ExplorionExperienceType = {
 export type ExplorionScheduleSectionType = {
   [date: string]: {
     icon: string;
-    time: string;
+    fromTime: string;
+    toTime: string;
     title: string;
     description: string;
   }[];

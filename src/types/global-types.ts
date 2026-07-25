@@ -22,7 +22,8 @@ export type SegmentType = {
 
 export type ScheduleType = {
   icon: string;
-  time: string;
+  fromTime: string;
+  toTime: string;
   title: string;
   description: string;
 };

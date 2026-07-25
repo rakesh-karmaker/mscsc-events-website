@@ -14,12 +14,23 @@ import FaClock from "~icons/fa6-regular/clock";
 import FaEnvelope from "~icons/fa6-regular/envelope";
 import FaRobot from "~icons/fa6-solid/robot";
 import FaStar from "~icons/fa6-solid/star";
+import FaBrain from "~icons/fa6-solid/brain";
+import FaPen from "~icons/fa6-solid/pen-fancy";
+import FaIt from "~icons/fa6-solid/laptop-code";
+import FaCube from "~icons/fa6-solid/cube";
+import FaDna from "~icons/fa6-solid/dna";
 
+import IcArticle from "~icons/ic/round-article";
+import IcMovie from "~icons/ic/round-movie";
+import IcSpell from "~icons/ic/round-spellcheck";
+import IcAudio from "~icons/ic/round-spatial-audio-off";
+import IcText from "~icons/ic/round-text-fields";
 import GiChessQueen from "~icons/game-icons/chess-queen";
 import HiLightBulb from "~icons/heroicons-solid/light-bulb";
 import IoMdRocket from "~icons/ion/md-rocket";
 import LiaAtomSolid from "~icons/la/atom";
 import LuDivide from "~icons/lucide/divide";
+import LuLanguages from "~icons/lucide/languages";
 import TbMath from "~icons/tabler/math";
 import MdGames from "~icons/ic/baseline-games";
 
@@ -37,21 +48,32 @@ export default function Icon({ iconName, className }: IconProps): ReactNode {
     phone: <FaPhoneAlt className={className} />,
 
     // general icons
-    division: <LuDivide className={className} />,
-    rocket: <IoMdRocket className={className} />,
-    chess: <GiChessQueen className={className} />,
+    article: <IcArticle className={className} />,
     atom: <LiaAtomSolid className={className} />,
-    robot: <FaRobot className={className} />,
+    brain: <FaBrain className={className} />,
     bulb: <HiLightBulb className={className} />,
-    globe: <FaGlobeAsia className={className} />,
-    paint: <FaPalette className={className} />,
-    math: <TbMath className={className} />,
-    puzzle: <FaPuzzlePiece className={className} />,
-    debate: <BiSolidConversation className={className} />,
-    star: <FaStar className={className} />,
-    games: <MdGames className={className} />,
-    workshops: <FaChalkboardTeacher className={className} />,
+    chess: <GiChessQueen className={className} />,
     clock: <FaClock className={className} />,
+    cube: <FaCube className={className} />,
+    debate: <BiSolidConversation className={className} />,
+    division: <LuDivide className={className} />,
+    dna: <FaDna className={className} />,
+    games: <MdGames className={className} />,
+    globe: <FaGlobeAsia className={className} />,
+    it: <FaIt className={className} />,
+    language: <LuLanguages className={className} />,
+    math: <TbMath className={className} />,
+    movie: <IcMovie className={className} />,
+    paint: <FaPalette className={className} />,
+    pen: <FaPen className={className} />,
+    puzzle: <FaPuzzlePiece className={className} />,
+    robot: <FaRobot className={className} />,
+    rocket: <IoMdRocket className={className} />,
+    speech: <IcAudio className={className} />,
+    spell: <IcSpell className={className} />,
+    star: <FaStar className={className} />,
+    text: <IcText className={className} />,
+    workshops: <FaChalkboardTeacher className={className} />,
   };
 
   return icons[iconName] || null;
