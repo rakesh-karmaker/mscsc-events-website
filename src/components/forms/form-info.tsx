@@ -7,7 +7,12 @@ type FormInfoType = {
   title: string;
   details: string;
   page?:
-    "login" | "registration" | "team-registration" | "segment-registration";
+    | "login"
+    | "registration"
+    | "team-registration"
+    | "segment-registration"
+    | "ca-application"
+    | "other";
 };
 
 export default function FormInfo({

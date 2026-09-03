@@ -1,6 +1,6 @@
 {
   "template": "Explorion",
-  "eventName": "Events",
+  "eventName": "MSCSC Events",
   "eventLogoUrl": "/home/logo.webp",
   "eventFaviconUrl": "/home/favicon.ico",
   "isHomepage": true,
@@ -11,43 +11,39 @@
   "registrationUrl": "",
   "hasCAForm": true,
   "contactLinks": {
-    "email": "info@explorion.com",
-    "facebook": "https://www.facebook.com/explorionevent",
+    "email": "mscscofficial17@gmail.com",
+    "facebook": "https://www.instagram.com/_mscsclub_/",
     "instagram": "https://www.instagram.com/explorionevent",
-    "phone": "+8801234567890"
+    "phone": "+8801644330810"
   },
   "participantCount": 256,
-  "sections": ["hero", "video", "about", "events", "faqs", "contact"],
+  "sections": ["hero", "about", "events", "faqs", "contact"],
   "hiddenSections": [],
   "heroData": {
     "icons": ["division", "rocket", "chess", "atom"],
     "heading": "Exploring the Universe Within and Beyond",
-    "text": "A celebration of knowledge, innovation, and human curiosity. From the tiniest atoms to the farthest galaxies, every mystery awaits discovery. Join us on a journey to explore the wonders of science — within us and beyond the stars."
-  },
-  "videoData": {
-    "hasAudio": false,
-    "url": "/home/promo-video.mp4"
+    "text": "A celebration of knowledge, innovation, and human curiosity. From the tiniest atoms to the farthest galaxies, every mystery awaits discovery. Join us on a journey to explore the wonders of science - within us and beyond the stars."
   },
   "aboutData": {
-    "title": "Why attend Explorion",
-    "heading": "Explorion is not just an event, it’s a journey into the unknown, inspiring the next generation of thinkers, dreamers, and innovators.",
-    "text": "Explorion is where ideas take shape and imagination finds purpose. From interactive experiments to thought-provoking exhibitions, the event brings together curious minds eager to explore the wonders of science. Whether you’re a participant, a visitor, or a mentor, Explorion offers the perfect space to learn, share, and get inspired by innovation happening all around you.",
+    "title": "About MSCSC Events",
+    "heading": "For the Curious Minds, By the Curious Minds",
+    "text": "MSCSC Events is where ideas take shape and imagination finds purpose. From interactive experiments to thought-provoking exhibitions, the event brings together curious minds eager to explore the wonders of science. Whether you’re a participant, a visitor, or a mentor, MSCSC Events offers the perfect space to learn, share, and get inspired by innovation happening all around you.",
     "imgUrl": "/home/science-fest.jpg",
     "prizeCount": 25
   },
 
   "faqData": [
     {
-      "question": "Who can participate in Explorion?",
-      "answer": "Explorion is open to students, educators, and science enthusiasts of all ages who are passionate about exploring scientific concepts and innovations."
+      "question": "Who can participate in these events?",
+      "answer": "MSCSC Events is open to students, educators, and science enthusiasts of all ages who are passionate about exploring scientific concepts and innovations."
     },
     {
       "question": "How do I register for the event?",
-      "answer": "You can register for Explorion through our online registration portal available on the event website. Simply fill out the registration form and submit it before the deadline."
+      "answer": "You can register for MSCSC Events through our online registration portal available on the event website. Simply fill out the registration form and submit it before the deadline."
     },
     {
       "question": "Are there any participation fees?",
-      "answer": "Participation in Explorion is free of charge. However, certain segments may have specific requirements or materials that participants need to bring."
+      "answer": "Fees vary depending on the event and category of participation. Please refer to the registration section on our website for detailed information about fees and payment methods."
     },
     {
       "question": "What safety measures are in place for the event?",
@@ -55,7 +51,7 @@
     },
     {
       "question": "Can I volunteer for the event?",
-      "answer": "Yes! We welcome volunteers who are interested in contributing to the success of Explorion. Please contact us through the volunteer section on our website for more information."
+      "answer": "Yes! We welcome volunteers who are interested in contributing to the success of MSCSC Events. Please contact us."
     },
     {
       "question": "Will there be prizes for the competitions?",
@@ -63,11 +59,11 @@
     },
     {
       "question": "How can I stay updated about the event?",
-      "answer": "You can stay updated by following our official social media channels and subscribing to our newsletter for the latest news and announcements about Explorion."
+      "answer": "You can stay updated by following our official social media channels for the latest news and announcements about MSCSC Events."
     },
     {
       "question": "Who can I contact for more information?",
-      "answer": "For more information, please reach out to us via the contact form on our website or email us at info@explorion.com."
+      "answer": "For more information, please reach out to us via the contact form on our website or email us at mscscofficial17@gmail.com."
     },
     {
       "question": "What should I bring to the event?",

@@ -76,7 +76,6 @@ export default function CAApplication(): ReactNode {
       <Helmet>
         <title>{eventMetaData.eventName} - CA Application</title>
       </Helmet>
-      {/* {hasDeadlinePassed || eventMetaData.hideCAForm ? ( */}
       {hasDeadlinePassed || eventMetaData.hideCAForm ? (
         <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
           <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
@@ -107,7 +106,11 @@ export default function CAApplication(): ReactNode {
             Become one of <br /> the Campus Ambassadors
           </FormPageHeader>
           <div className="w-full flex gap-10 max-w-max-width max-sm:max-w-full mb-20 max-lg:flex-col">
-            <FormInfo title={caFormData.title} details={caFormData.details} />
+            <FormInfo
+              title={caFormData.title}
+              details={caFormData.details}
+              page="ca-application"
+            />
             <CAApplicationForm
               eventName={eventMetaData.eventName}
               setApplicationCompleted={setApplicationCompleted}
