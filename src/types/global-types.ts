@@ -9,6 +9,7 @@ export type SegmentType = {
   details: string;
   rules: string;
   maxTeamSize: number;
+  category: string[];
   isPaidSegment: boolean;
   fees: number;
   transactionMethods?: {

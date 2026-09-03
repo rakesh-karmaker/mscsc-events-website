@@ -44,14 +44,14 @@ export default function Registration(): ReactNode {
       </Helmet>
       {hasDeadlinePassed || eventMetaData.hideRegistrationForm ? (
         <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
-          <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
+          <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-5.5 items-center max-sm:p-6">
             <div>
-              <h2 className="text-3xl font-bold mb-4 text-primary">
+              <h2 className="text-3xl font-bold mb-2 text-primary">
                 {eventMetaData.hideRegistrationForm
                   ? "Registration Unavailable"
                   : "Registration Closed"}
               </h2>
-              <p className="text-lg/snug max-xl:text-base text-text">
+              <p className="text-base/snug max-xl:text-base text-text">
                 {eventMetaData.hideRegistrationForm
                   ? "We are currently not accepting registration requests. Please stay tuned for future updates!"
                   : "The registration deadline has passed. Please stay tuned for future events and opportunities!"}
@@ -60,7 +60,7 @@ export default function Registration(): ReactNode {
             <PrimaryBtn
               isLink={true}
               href={`/${eventSlug}/home`}
-              className="text-lg max-sm:text-base z-999"
+              className="text-base max-sm:text-base z-999"
             >
               Go to Homepage
             </PrimaryBtn>

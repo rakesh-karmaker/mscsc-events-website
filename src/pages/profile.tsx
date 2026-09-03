@@ -116,6 +116,21 @@ export default function Profile(): ReactNode {
     );
   }
 
+  const availableSegments =
+    userData.status != "rejected"
+      ? segmentData.filter((segment) => {
+          if (
+            getCategory(userData.grade) &&
+            !userData.segments.includes(segment.segmentSlug)
+          ) {
+            return segment.category.length > 0
+              ? segment.category.includes(getCategory(userData.grade)!)
+              : true;
+          }
+          return false;
+        })
+      : [];
+
   return (
     <>
       <section className="w-full h-full flex flex-col relative">
@@ -329,11 +344,7 @@ export default function Profile(): ReactNode {
                         Check Out Other Segments
                       </h2>
                       <div className="w-full h-full grid grid-cols-3 max-xl:grid-cols-2 max-900:grid-cols-1 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4">
-                        {segmentData.map((segment) => {
-                          if (userData.segments.includes(segment.segmentSlug)) {
-                            return null;
-                          }
-
+                        {availableSegments.map((segment) => {
                           return (
                             <SegmentPreviewCard
                               key={segment.segmentSlug}

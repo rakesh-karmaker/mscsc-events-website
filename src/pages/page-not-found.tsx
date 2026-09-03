@@ -8,7 +8,7 @@ export default function PageNotFound(): ReactNode {
         <div className="flex flex-col text-center items-center gap-2">
           <p className="text-lg max-sm:text-base text-primary">404 Not Found</p>
           <div className="flex flex-col gap-4 items-center">
-            <h1 className="text-6xl font-bold max-sm:text-4xl gradient-text">
+            <h1 className="text-6xl font-bold max-sm:text-4xl text-primary">
               Oops! Page Not Found
             </h1>
             <p className="max-w-[40ch] text-lg text-text max-sm:text-base">

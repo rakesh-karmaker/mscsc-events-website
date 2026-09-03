@@ -8,6 +8,7 @@ import { useParams } from "react-router";
 import { useUser } from "@/hooks/use-user";
 import { deSlugify } from "@/utils/de-slugify";
 import SegmentRegistrationForm from "@/components/forms/segment-registration-form";
+import getCategory from "@/utils/get-category";
 
 export default function SegmentRegistration(): ReactNode {
   // Fetch event data using the custom hook
@@ -32,6 +33,8 @@ export default function SegmentRegistration(): ReactNode {
   const eventSlug = useParams().eventSlug || "";
   const segmentSlug = useParams().segmentSlug || "";
 
+  const category = getCategory(user?.grade || "");
+
   if (
     !hasDeadlinePassed &&
     !eventMetaData.isInnerRegistration &&
@@ -40,12 +43,12 @@ export default function SegmentRegistration(): ReactNode {
   ) {
     return (
       <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
-        <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
+        <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-5.5 items-center max-sm:p-6">
           <div>
-            <h2 className="text-3xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl font-bold mb-2 text-primary">
               Registration Unavailable
             </h2>
-            <p className="text-lg/snug max-xl:text-base text-text">
+            <p className="text-base/snug max-xl:text-base text-text">
               Website registration for this segment is currently unavailable.
               Please register through the official registration link provided by
               the event organizers. We look forward to your participation in the
@@ -67,12 +70,12 @@ export default function SegmentRegistration(): ReactNode {
   if (!user) {
     return (
       <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
-        <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
+        <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-5.5 items-center max-sm:p-6">
           <div>
-            <h2 className="text-3xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl font-bold mb-2 text-primary">
               Registration Required
             </h2>
-            <p className="text-lg/snug max-xl:text-base text-text">
+            <p className="text-base/snug max-xl:text-base text-text">
               Please register for the event to access the registration form. If
               you have already registered, please log in with the email you used
               for registration to complete your segment registration. We look
@@ -94,12 +97,12 @@ export default function SegmentRegistration(): ReactNode {
   if (user.segments.includes(segmentSlug)) {
     return (
       <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
-        <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
+        <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-5.5 items-center max-sm:p-6">
           <div>
-            <h2 className="text-3xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl font-bold mb-2 text-primary">
               Registration Completed
             </h2>
-            <p className="text-lg/snug max-xl:text-base text-text">
+            <p className="text-base/snug max-xl:text-base text-text">
               Our records indicate that you have already registered for this
               segment. If you have any questions about your registration status,
               please contact our support team for assistance. We look forward to
@@ -109,7 +112,7 @@ export default function SegmentRegistration(): ReactNode {
           <PrimaryBtn
             isLink={true}
             href={`/${eventSlug}/profile`}
-            className="text-lg max-sm:text-base z-999"
+            className="text-base max-sm:text-base z-999"
           >
             Profile Page
           </PrimaryBtn>
@@ -123,6 +126,36 @@ export default function SegmentRegistration(): ReactNode {
     throw new Error("Segment data not found");
   }
 
+  if (
+    segmentInfo.category.length > 0 &&
+    !segmentInfo.category.includes(category)
+  ) {
+    return (
+      <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
+        <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-5.5 items-center max-sm:p-6">
+          <div>
+            <h2 className="text-3xl font-bold mb-2 text-primary">
+              Registration Unavailable
+            </h2>
+            <p className="text-base/snug max-xl:text-base text-text">
+              We apologize, but the registration for this segment is not
+              available for your category ({category}). Please check the
+              available segments for your category and register accordingly. We
+              look forward to your participation in the event!
+            </p>
+          </div>
+          <PrimaryBtn
+            isLink={true}
+            href={`/${eventSlug}/profile`}
+            className="text-base max-sm:text-base z-999"
+          >
+            Profile Page
+          </PrimaryBtn>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Helmet>
@@ -132,14 +165,14 @@ export default function SegmentRegistration(): ReactNode {
       </Helmet>
       {hasDeadlinePassed || eventMetaData.hideRegistrationForm ? (
         <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
-          <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
+          <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-5.5 items-center max-sm:p-6">
             <div>
-              <h2 className="text-3xl font-bold mb-4 text-primary">
+              <h2 className="text-3xl font-bold mb-2 text-primary">
                 {eventMetaData.hideRegistrationForm
                   ? "Registration Unavailable"
                   : "Registration Closed"}
               </h2>
-              <p className="text-lg/snug max-xl:text-base text-text">
+              <p className="text-base/snug max-xl:text-base text-text">
                 {eventMetaData.hideRegistrationForm
                   ? "We are currently not accepting registration requests. Please stay tuned for future updates!"
                   : "The registration deadline has passed. Please stay tuned for future events and opportunities!"}

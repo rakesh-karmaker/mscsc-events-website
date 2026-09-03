@@ -85,6 +85,7 @@ export type ExplorionSegmentType = {
   details: string;
   rules: string;
   maxTeamSize: number;
+  category: string[];
   isPaidSegment: boolean;
   fees: number;
   transactionMethods?: {

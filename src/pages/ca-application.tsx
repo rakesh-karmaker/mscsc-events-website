@@ -41,9 +41,9 @@ export default function CAApplication(): ReactNode {
           <title>{eventMetaData.eventName} - CA Application</title>
         </Helmet>
         <div className="w-full h-full min-h-[calc(100vh-var(--nav-height))] flex justify-center items-center p-10 max-sm:max-w-max-width max-sm:mx-auto max-sm:px-0">
-          <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-7 items-center max-sm:p-6">
+          <div className="bg-secondary-bg rounded-lg shadow-lg p-8 text-center max-w-md border-2 border-primary flex flex-col gap-5.5 items-center max-sm:p-6">
             <div>
-              <h2 className="text-3xl font-bold mb-4 text-primary">
+              <h2 className="text-3xl font-bold mb-2 text-primary">
                 Application Submitted
               </h2>
               <p className="text-base/snug text-text">
@@ -55,7 +55,7 @@ export default function CAApplication(): ReactNode {
             <PrimaryBtn
               isLink={true}
               href={`/${eventSlug}/home`}
-              className="text-lg max-sm:text-base z-999"
+              className="text-base max-sm:text-base z-999"
             >
               Go to Homepage
             </PrimaryBtn>

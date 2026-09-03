@@ -56,6 +56,7 @@ export default function RegistrationForm({
     setValue,
     setError,
     watch,
+    control,
   } = useForm({
     resolver: zodResolver(registrationFormSchema),
     defaultValues: {
@@ -144,6 +145,7 @@ export default function RegistrationForm({
         segments={segments.filter((segment) => !segment.isPaidSegment)}
         selectedSegments={selectedSegments}
         setSelectedSegments={setSelectedSegments}
+        control={control}
       />
 
       <PaymentInformationFields

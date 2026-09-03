@@ -51,6 +51,7 @@ export type UserDataPreviewType = Pick<
   | "name"
   | "email"
   | "photoUrl"
+  | "grade"
   | "paidSoloSegments"
   | "teamSegmentsData"
   | "status"
