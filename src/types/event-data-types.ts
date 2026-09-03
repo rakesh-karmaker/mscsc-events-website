@@ -4,6 +4,7 @@ export type EventMetaDataType = {
   eventName: string;
   eventLogoUrl: string;
   eventFaviconUrl: string;
+  eventBannerUrl: string;
   hideRegistrationForm: boolean;
   hideCAForm: boolean;
   eventDate: string;

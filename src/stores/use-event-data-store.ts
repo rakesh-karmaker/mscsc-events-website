@@ -114,6 +114,7 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
       eventName: websiteData.eventName || "",
       eventLogoUrl: websiteData.eventLogoUrl || "",
       eventFaviconUrl: websiteData.eventFaviconUrl || "",
+      eventBannerUrl: websiteData.eventBannerUrl || "",
       hideRegistrationForm: websiteData.hideRegistrationForm
         ? websiteData.hideRegistrationForm
         : false,
