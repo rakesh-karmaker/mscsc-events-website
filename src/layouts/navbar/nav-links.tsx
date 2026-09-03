@@ -1,3 +1,4 @@
+import withEventSlug from "@/utils/with-event-slug";
 import {
   Activity,
   type Dispatch,
@@ -15,7 +16,7 @@ export default function NavLinks({
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }): ReactNode {
-  const eventSlug = useParams().eventSlug;
+  const eventSlug = useParams().eventSlug || "";
 
   const preferredNavLinks: Record<string, { name: string; url: string }> = {
     hero: {
@@ -79,7 +80,10 @@ export default function NavLinks({
                   className="max-lg:w-full"
                 >
                   <NavLink
-                    to={`/${eventSlug}/${preferredNavLinks[section].url}`}
+                    to={withEventSlug(
+                      `/${preferredNavLinks[section].url}`,
+                      eventSlug,
+                    )}
                     className={({ isActive }) =>
                       `${isActive ? "text-primary font-medium" : "text-primary/70"} text-[1em] max-lg:text-[1em] hover:text-primary focus:text-primary focus-within:text-primary transition-colors duration-200 max-lg:shadow-[0px_0px_0px_1px_rgba(0,0,0,0.04)] max-lg:w-full max-lg:block max-lg:px-[5vw] max-lg:py-4 max-lg:hover:bg-secondary-bg/40 max-lg:focus:bg-secondary-bg/40 max-lg:focus-within:bg-secondary-bg/40 rounded-lg`
                     }

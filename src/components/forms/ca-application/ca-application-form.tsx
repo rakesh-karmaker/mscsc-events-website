@@ -15,6 +15,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import { applyForCA } from "@/lib/api/event";
 import { toast } from "react-hot-toast";
+import { EVENT_SLUG } from "@/config/constants";
 
 export default function CAApplicationForm({
   eventName,
@@ -23,7 +24,7 @@ export default function CAApplicationForm({
   eventName: string;
   setApplicationCompleted: Dispatch<SetStateAction<boolean>>;
 }): ReactNode {
-  const eventSlug = useParams().eventSlug || "event-slug"; // Replace with actual slug from params
+  const eventSlug = useParams().eventSlug || EVENT_SLUG || ""; // Replace with actual slug from params
   const {
     register,
     handleSubmit,

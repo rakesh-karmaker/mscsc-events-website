@@ -7,6 +7,7 @@ import LuX from "~icons/lucide/x";
 import FaBars from "~icons/fa7-solid/bars";
 import { useEventData } from "@/hooks/use-event-data";
 import { useUser } from "@/hooks/use-user";
+import withEventSlug from "@/utils/with-event-slug";
 
 export default function Navbar(): ReactNode {
   const currentEventSlug = useParams().eventSlug || "";
@@ -51,7 +52,7 @@ export default function Navbar(): ReactNode {
         {eventMetaData.isHomepage || !formData || isDeadlinePassed ? null : (
           <div className="w-fit max-md:w-full max-md:justify-end min-w-10 flex justify-self-end max-sm:justify-self-end">
             {user?.photoUrl ? (
-              <NavLink to={`/${currentEventSlug}/profile/`}>
+              <NavLink to={withEventSlug(`/profile/`, currentEventSlug)}>
                 <img
                   src={user.photoUrl}
                   alt="Profile"
@@ -62,7 +63,7 @@ export default function Navbar(): ReactNode {
               <NavLink
                 to={
                   eventMetaData.isInnerRegistration
-                    ? currentEventSlug + "/registration/"
+                    ? withEventSlug("/registration/", currentEventSlug)
                     : eventMetaData.registrationUrl || ""
                 }
                 target={eventMetaData.isInnerRegistration ? "_self" : "_blank"}

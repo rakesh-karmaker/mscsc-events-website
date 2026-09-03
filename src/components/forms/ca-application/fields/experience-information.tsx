@@ -39,6 +39,7 @@ export default function ExperienceInfoFields({
           multiline
           minRows={4}
         />
+
         <Stack spacing={2} sx={{ maxWidth: "100%" }}>
           <RadioField
             options={["yes", "no"]}
@@ -72,6 +73,17 @@ export default function ExperienceInfoFields({
             </div>
           </div>
         </Stack>
+
+        <TextField
+          {...register("canGet")}
+          id="canGet"
+          label="How many participants do you realistically think you can bring?*"
+          variant="outlined"
+          placeholder="e.g. 10, 20, 50, 100"
+          error={!!errors.canGet}
+          helperText={errors.canGet?.message}
+          fullWidth
+        />
       </Stack>
     </FormBox>
   );

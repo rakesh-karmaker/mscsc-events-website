@@ -6,6 +6,7 @@ import type { AboutTopProps } from "./about-top";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import animateAboutInfo from "@/animations/about-info";
+import withEventSlug from "@/utils/with-event-slug";
 
 gsap.registerPlugin(useGSAP);
 
@@ -50,7 +51,7 @@ export default function AboutInfo({
               isHomePage
                 ? "https://mscsc.netlify.app/"
                 : isInnerRegistration
-                  ? eventSlug + "/registration/"
+                  ? withEventSlug("/registration/", eventSlug)
                   : registrationUrl
             }
             className="flex gap-1.5 items-center z-99"

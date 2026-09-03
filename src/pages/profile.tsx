@@ -22,9 +22,11 @@ import { useUser } from "@/hooks/use-user";
 import { toast } from "react-hot-toast";
 import type { AxiosError, AxiosResponse } from "axios";
 import { Modal } from "@mui/material";
+import { EVENT_SLUG } from "@/config/constants";
+import withEventSlug from "@/utils/with-event-slug";
 
 export default function Profile(): ReactNode {
-  const eventSlug = useParams().eventSlug || "";
+  const eventSlug = useParams().eventSlug || EVENT_SLUG || "";
   const token = localStorage.getItem(`${eventSlug}-registrationToken`) || "";
   const { segmentData } = useEventData();
   const navigate = useNavigate();
@@ -178,7 +180,7 @@ export default function Profile(): ReactNode {
                   onClick={() => {
                     localStorage.removeItem(`${eventSlug}-registrationToken`);
                     setUser(null);
-                    navigate(`/${eventSlug}/home`);
+                    navigate(withEventSlug(`/home`, eventSlug));
                   }}
                   className="py-1.5!"
                 >

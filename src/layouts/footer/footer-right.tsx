@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Link, NavLink, useParams } from "react-router";
 import ContactLinkItem from "./contact-link-item";
+import withEventSlug from "@/utils/with-event-slug";
 
 type FooterRightProps = {
   contactLinks: { [platform: string]: string };
@@ -78,7 +79,7 @@ export default function FooterRight({
                 return (
                   <NavLink
                     key={section}
-                    to={`/${eventSlug}/${url}`}
+                    to={withEventSlug(`/${url}`, eventSlug)}
                     className={({ isActive }) =>
                       `transition-all duration-200 hover:text-primary ${isActive ? "text-primary font-medium" : "text-primary/70"}`
                     }

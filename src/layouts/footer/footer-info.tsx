@@ -1,5 +1,6 @@
 import PrimaryBtn from "@/components/ui/primary-btn";
 import SocialIcons from "@/components/ui/social-icons";
+import withEventSlug from "@/utils/with-event-slug";
 import type { ReactNode } from "react";
 import { useParams } from "react-router";
 
@@ -21,7 +22,7 @@ export default function FooterInfo({
   const eventSlug = useParams().eventSlug || "";
 
   const registrationLink = footerData.isInnerRegistration
-    ? `${eventSlug}/registration/`
+    ? withEventSlug(`/registration`, eventSlug)
     : footerData.registrationUrl;
 
   return (

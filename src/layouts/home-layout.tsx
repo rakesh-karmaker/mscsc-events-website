@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLenis } from "lenis/react";
 import type { UserDataPreviewType } from "@/types/user-data-types";
 import { useUser } from "@/hooks/use-user";
+import { EVENT_SLUG, IS_DIFFERENT_DOMAIN } from "@/config/constants";
 
 export default function HomeLayout(): ReactNode {
   const { setEventData, eventMetaData, hasFetchedData, setHasFetchedData } =
@@ -44,7 +45,7 @@ export default function HomeLayout(): ReactNode {
   }; // Add more events and their corresponding data as needed when creating new templates
 
   // Get section and eventSlug from URL parameters
-  const eventSlug = useParams().eventSlug;
+  const eventSlug = IS_DIFFERENT_DOMAIN ? EVENT_SLUG : useParams().eventSlug;
   const sectionId = useParams().section || "home";
 
   // Fetch past events data for home page
@@ -79,8 +80,7 @@ export default function HomeLayout(): ReactNode {
                 hideCAForm: res.data.hideCAForm,
                 participantCount: res.data.participantCount,
                 registrationData: res.data.registrationData as
-                  | UserDataPreviewType
-                  | undefined,
+                  UserDataPreviewType | undefined,
               })
             : Promise.reject(new Error("Failed to fetch event data")),
         )
@@ -155,6 +155,7 @@ export default function HomeLayout(): ReactNode {
   }, [error]);
 
   useEffect(() => {
+    console.log("Location changed:", location.pathname, location.search);
     // Keep route changes deterministic with Lenis-managed scrolling.
     requestAnimationFrame(() => {
       lenis?.scrollTo(0, { immediate: true, force: true });

@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import animateHeroContent from "@/animations/hero-content";
 import { useEventData } from "@/hooks/use-event-data";
+import withEventSlug from "@/utils/with-event-slug";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(SplitText);
@@ -23,7 +24,7 @@ export default function HeroContent(): ReactNode {
   // Get eventSlug from URL parameters
   const eventSlug = useParams().eventSlug || "";
   const registrationLink = eventMetaData.isInnerRegistration
-    ? `${eventSlug}/registration/`
+    ? withEventSlug("/registration/", eventSlug)
     : eventMetaData.registrationUrl;
 
   // Refs for GSAP animation
@@ -39,7 +40,7 @@ export default function HeroContent(): ReactNode {
   return (
     <div className="max-w-287.5 flex flex-col gap-4 items-center">
       <h1
-        className="text-[5.375em]/[115%] max-xl:text-[3.5em] max-md:text-[3em] max-sm:text-[2.5em] max-[450px]:text-[2em] text-black font-bold max-w-[20ch] text-center gradient-text"
+        className="text-[5em]/[115%] max-xl:text-[3.5em] max-md:text-[3em] max-sm:text-[2.5em] max-[450px]:text-[2em] text-black font-bold max-w-[20ch] text-center gradient-text"
         ref={headingRef}
         style={{
           opacity: 0,
@@ -60,7 +61,7 @@ export default function HeroContent(): ReactNode {
             isLink={true}
             href={
               eventMetaData.isHomepage
-                ? `/${eventSlug}/${learnMoreSection}`
+                ? withEventSlug(`/${learnMoreSection}`, eventSlug)
                 : registrationLink
             }
             className="text-[1.1em]/[155%]! tracking-wide px-4! py-2.5! max-xl:px-3.25! max-xl:py-2! max-xl:text-[1em]/[150%]! "
@@ -72,7 +73,7 @@ export default function HeroContent(): ReactNode {
             href={
               eventMetaData.isHomepage
                 ? "https://mscsc.netlify.app/"
-                : `/${eventSlug}/${learnMoreSection}`
+                : withEventSlug(`/${learnMoreSection}`, eventSlug)
             }
             className="before:bg-secondary-bg text-black! after:bg-primary! hover:text-white! text-[1.1em]/[155%]! tracking-wide px-4! py-2.5! max-xl:px-3.25! max-xl:py-2! max-xl:text-[1em]/[150%]!"
           >

@@ -1,3 +1,4 @@
+import withEventSlug from "@/utils/with-event-slug";
 import { type ReactNode } from "react";
 import { NavLink, useParams } from "react-router";
 
@@ -8,11 +9,11 @@ export default function EventLogo({
   logoUrl: string;
   eventName: string;
 }): ReactNode {
-  const eventSlug = useParams().eventSlug;
+  const eventSlug = useParams().eventSlug || ""; // Replace with actual slug from params
 
   return (
     <NavLink
-      to={`/${eventSlug}`}
+      to={withEventSlug(`/`, eventSlug)}
       className="flex w-fit max-md:min-w-fit items-center gap-2 max-xl:gap-1.5 rounded-full"
     >
       <img

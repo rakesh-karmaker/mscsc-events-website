@@ -6,6 +6,7 @@ import FormPageHeader from "@/components/form-page-header";
 import CAApplicationForm from "@/components/forms/ca-application/ca-application-form";
 import PrimaryBtn from "@/components/ui/primary-btn";
 import { useParams } from "react-router";
+import withEventSlug from "@/utils/with-event-slug";
 
 export default function CAApplication(): ReactNode {
   // Fetch event data using the custom hook
@@ -35,6 +36,11 @@ export default function CAApplication(): ReactNode {
   const eventSlug = useParams().eventSlug || "";
 
   if (applicationCompleted) {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
     return (
       <>
         <Helmet>
@@ -54,7 +60,7 @@ export default function CAApplication(): ReactNode {
             </div>
             <PrimaryBtn
               isLink={true}
-              href={`/${eventSlug}/home`}
+              href={withEventSlug(`/home`, eventSlug)}
               className="text-base max-sm:text-base z-999"
             >
               Go to Homepage

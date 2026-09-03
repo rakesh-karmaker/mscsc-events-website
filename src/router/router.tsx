@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/:eventSlug/profile",
+        path: "/:eventSlug?/profile",
         element: (
           <Suspense
             fallback={
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
 
       // es path
       {
-        path: "/:eventSlug/events/:seSlug",
+        path: "/:eventSlug?/events/:seSlug",
         element: (
           <Suspense
             fallback={
@@ -76,7 +76,7 @@ export const router = createBrowserRouter([
 
       // Registration path
       {
-        path: "/:eventSlug/registration/",
+        path: "/:eventSlug?/registration/",
         element: (
           <Suspense
             fallback={
@@ -92,7 +92,7 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/:eventSlug/login",
+        path: "/:eventSlug?/login",
         element: (
           <Suspense
             fallback={
@@ -108,7 +108,7 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/:eventSlug/registration/:segmentSlug",
+        path: "/:eventSlug?/registration/:segmentSlug",
         element: (
           <Suspense
             fallback={
@@ -125,7 +125,7 @@ export const router = createBrowserRouter([
 
       // CA application path
       {
-        path: "/:eventSlug/ca-application/",
+        path: "/:eventSlug?/ca-application/",
         element: (
           <Suspense
             fallback={

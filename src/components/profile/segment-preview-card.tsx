@@ -12,6 +12,7 @@ import type { ReactNode } from "react";
 import { useState } from "react";
 import TeamDetails from "./team-details";
 import capitalize from "@/utils/capitalize";
+import withEventSlug from "@/utils/with-event-slug";
 
 export default function SegmentPreviewCard({
   segmentInfo,
@@ -132,7 +133,10 @@ export default function SegmentPreviewCard({
           ) : (
             <PrimaryBtn
               isLink={true}
-              href={`/${eventSlug}/registration/${segmentInfo.segmentSlug}`}
+              href={withEventSlug(
+                `/registration/${segmentInfo.segmentSlug}`,
+                eventSlug,
+              )}
             >
               Register Now
             </PrimaryBtn>

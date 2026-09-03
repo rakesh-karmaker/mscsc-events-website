@@ -15,6 +15,8 @@ import toast from "react-hot-toast";
 import PrimaryBtn from "../ui/primary-btn";
 import FormBox from "./form-box";
 import TextField from "@mui/material/TextField";
+import withEventSlug from "@/utils/with-event-slug";
+import { EVENT_SLUG } from "@/config/constants";
 
 export default function LoginForm(): ReactNode {
   const eventSlug = useParams().eventSlug || "";
@@ -31,10 +33,13 @@ export default function LoginForm(): ReactNode {
       }>,
     ) => {
       const { token, userData } = res.data;
-      localStorage.setItem(`${eventSlug}-registrationToken`, token);
+      localStorage.setItem(
+        `${eventSlug || EVENT_SLUG}-registrationToken`,
+        token,
+      );
       setUser(userData);
       toast.success("Login successful!");
-      navigate(`/${eventSlug}/profile`);
+      navigate(withEventSlug(`/profile`, eventSlug));
     },
     onError: (err: AxiosError<{ message?: string }>) => {
       console.error("Login error:", err);

@@ -9,6 +9,7 @@ import { useUser } from "@/hooks/use-user";
 import { deSlugify } from "@/utils/de-slugify";
 import SegmentRegistrationForm from "@/components/forms/segment-registration-form";
 import getCategory from "@/utils/get-category";
+import withEventSlug from "@/utils/with-event-slug";
 
 export default function SegmentRegistration(): ReactNode {
   // Fetch event data using the custom hook
@@ -57,7 +58,7 @@ export default function SegmentRegistration(): ReactNode {
           </div>
           <PrimaryBtn
             isLink={true}
-            href={`/${eventSlug}/home`}
+            href={withEventSlug(`/home`, eventSlug)}
             className="text-lg max-sm:text-base z-999"
           >
             Go to Homepage
@@ -84,7 +85,7 @@ export default function SegmentRegistration(): ReactNode {
           </div>
           <PrimaryBtn
             isLink={true}
-            href={`/${eventSlug}/registration`}
+            href={withEventSlug(`/registration`, eventSlug)}
             className="text-lg max-sm:text-base z-999"
           >
             Register
@@ -111,7 +112,7 @@ export default function SegmentRegistration(): ReactNode {
           </div>
           <PrimaryBtn
             isLink={true}
-            href={`/${eventSlug}/profile`}
+            href={withEventSlug(`/profile`, eventSlug)}
             className="text-base max-sm:text-base z-999"
           >
             Profile Page
@@ -146,7 +147,7 @@ export default function SegmentRegistration(): ReactNode {
           </div>
           <PrimaryBtn
             isLink={true}
-            href={`/${eventSlug}/profile`}
+            href={withEventSlug(`/profile`, eventSlug)}
             className="text-base max-sm:text-base z-999"
           >
             Profile Page
@@ -180,7 +181,7 @@ export default function SegmentRegistration(): ReactNode {
             </div>
             <PrimaryBtn
               isLink={true}
-              href={`/${eventSlug}/home`}
+              href={withEventSlug(`/home`, eventSlug)}
               className="text-lg max-sm:text-base z-999"
             >
               Go to Homepage

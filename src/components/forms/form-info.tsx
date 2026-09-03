@@ -1,4 +1,5 @@
 import FormattedTextContent from "@/components/ui/formatted-text-content/formatted-text-content";
+import withEventSlug from "@/utils/with-event-slug";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link, useParams } from "react-router";
 
@@ -6,10 +7,7 @@ type FormInfoType = {
   title: string;
   details: string;
   page?:
-    | "login"
-    | "registration"
-    | "team-registration"
-    | "segment-registration";
+    "login" | "registration" | "team-registration" | "segment-registration";
 };
 
 export default function FormInfo({
@@ -57,7 +55,7 @@ export default function FormInfo({
               <>
                 Don't have an account?{" "}
                 <Link
-                  to={`/${eventSlug}/registration`}
+                  to={withEventSlug(`/registration`, eventSlug)}
                   className="text-dark-teal underline"
                 >
                   Register Now
@@ -67,7 +65,7 @@ export default function FormInfo({
               <>
                 If you have already registered for this event, then{" "}
                 <Link
-                  to={`/${eventSlug}/login`}
+                  to={withEventSlug(`/login`, eventSlug)}
                   className="text-dark-teal underline"
                 >
                   Login Now

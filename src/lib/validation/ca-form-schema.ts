@@ -1,6 +1,6 @@
 import { z } from "zod/v3";
 
-const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
   "image/jpg",
@@ -64,6 +64,18 @@ export const caApplicationSchema = z.object({
     required_error: "This field is required",
   }),
   previousExperienceDetails: z.string().optional(),
+  canGet: z
+    .string({ required_error: "This field is required" })
+    .min(1, "You must specify how many participants you can bring")
+    .refine(
+      (value) =>
+        value
+          ? Array.from(value).every((char) => !/[A-Za-z]/.test(char))
+          : false,
+      {
+        message: "Batch must contain only numbers",
+      },
+    ),
 
   abideByTerms: z.literal(true, {
     errorMap: () => ({ message: "You must agree to the terms and conditions" }),

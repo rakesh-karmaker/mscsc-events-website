@@ -22,6 +22,8 @@ import type { CAApplicationType } from "@/lib/validation/ca-form-schema";
 import type { AxiosError, AxiosResponse } from "axios";
 import type { UserDataPreviewType } from "@/types/user-data-types";
 import { useUser } from "@/hooks/use-user";
+import { EVENT_SLUG } from "@/config/constants";
+import withEventSlug from "@/utils/with-event-slug";
 
 type RegistrationFormProps = {
   transactionMethods: {
@@ -42,7 +44,7 @@ export default function RegistrationForm({
   segments,
   eventName,
 }: RegistrationFormProps): ReactNode {
-  const eventSlug = useParams().eventSlug || "event-slug"; // Replace with actual slug from params
+  const eventSlug = useParams().eventSlug || EVENT_SLUG || ""; // Replace with actual slug from params
   const { setUser } = useUser();
   const navigate = useNavigate();
 
@@ -90,7 +92,7 @@ export default function RegistrationForm({
       localStorage.setItem("isNewRegister", "true");
       setUser(res.data.registrationData || null);
       window.scrollTo({ top: 0, behavior: "smooth" });
-      navigate(`/${eventSlug}/profile`);
+      navigate(withEventSlug(`/profile`, eventSlug));
     },
     onError: (error: AxiosError<{ message: string; subject?: string }>) => {
       const errorMessage =

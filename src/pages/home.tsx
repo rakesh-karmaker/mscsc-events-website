@@ -14,10 +14,13 @@ import Loader from "@/components/ui/loader";
 import { Helmet } from "react-helmet-async";
 import capitalize from "@/utils/capitalize";
 import Events from "@/components/events/events";
+import { IS_DIFFERENT_DOMAIN } from "@/config/constants";
 
 export default function Home(): ReactNode {
   // Get section from URL parameters
-  const sectionId = useParams().section || "hero";
+  const sectionId = IS_DIFFERENT_DOMAIN
+    ? useParams().eventSlug || "home"
+    : useParams().section || "hero";
 
   // Initialize Lenis for smooth scrolling
   const lenis = useLenis();

@@ -8,6 +8,7 @@ import GoPeople from "~icons/ic/baseline-people-alt";
 import FaGlobeAsia from "~icons/fa7-solid/globe-asia";
 import GoLocation from "~icons/ic/baseline-location-on";
 import TbCurrencyTaka from "~icons/tabler/currency-taka";
+import withEventSlug from "@/utils/with-event-slug";
 
 export default function SegmentCard({
   segmentData,
@@ -58,7 +59,10 @@ export default function SegmentCard({
         <div className="w-full flex gap-2">
           <PrimaryBtn
             isLink={true}
-            href={`/${eventSlug}/events/${segmentData.segmentSlug}`}
+            href={withEventSlug(
+              `/events/${segmentData.segmentSlug}`,
+              eventSlug,
+            )}
             className="flex items-center hover:after:w-full! hover:after:left-0! hover:after:top-0! hover:text-primary! hover:[&>svg]:translate-x-1! transition-all"
           >
             Learn More <FaArrowRight className="ml-2 transition-transform" />
@@ -66,7 +70,10 @@ export default function SegmentCard({
           {segmentData.isPaidSegment ? (
             <PrimaryBtn
               isLink={true}
-              href={`/${eventSlug}/registration/${segmentData.segmentSlug}`}
+              href={withEventSlug(
+                `/registration/${segmentData.segmentSlug}`,
+                eventSlug,
+              )}
             >
               Register Now
             </PrimaryBtn>

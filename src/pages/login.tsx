@@ -6,6 +6,7 @@ import PrimaryBtn from "@/components/ui/primary-btn";
 import { useNavigate, useParams } from "react-router";
 import { useUser } from "@/hooks/use-user";
 import LoginForm from "@/components/forms/login-form";
+import withEventSlug from "@/utils/with-event-slug";
 
 export default function Login(): ReactNode {
   // Fetch event data using the custom hook
@@ -54,7 +55,7 @@ export default function Login(): ReactNode {
           </div>
           <PrimaryBtn
             isLink={true}
-            href={`/${eventSlug}/home`}
+            href={withEventSlug(`/home`, eventSlug)}
             className="text-lg max-sm:text-base z-999"
           >
             Go to Homepage

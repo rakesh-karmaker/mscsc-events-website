@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import FormPageHeader from "@/components/form-page-header";
 import PrimaryBtn from "@/components/ui/primary-btn";
 import { useParams } from "react-router";
+import withEventSlug from "@/utils/with-event-slug";
 
 export default function Registration(): ReactNode {
   // Fetch event data using the custom hook
@@ -59,7 +60,7 @@ export default function Registration(): ReactNode {
             </div>
             <PrimaryBtn
               isLink={true}
-              href={`/${eventSlug}/home`}
+              href={withEventSlug(`/home`, eventSlug)}
               className="text-base max-sm:text-base z-999"
             >
               Go to Homepage

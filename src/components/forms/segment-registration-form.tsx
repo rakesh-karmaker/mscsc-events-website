@@ -24,6 +24,8 @@ import ConfirmationFields from "./confirmation";
 import PrimaryBtn from "../ui/primary-btn";
 import FormBox from "./form-box";
 import TextField from "@mui/material/TextField";
+import { EVENT_SLUG } from "@/config/constants";
+import withEventSlug from "@/utils/with-event-slug";
 
 interface SegmentRegistrationFormProps {
   segmentInfo: ExplorionSegmentType;
@@ -32,7 +34,7 @@ interface SegmentRegistrationFormProps {
 export default function SegmentRegistrationForm({
   segmentInfo,
 }: SegmentRegistrationFormProps): ReactNode {
-  const eventSlug = useParams().eventSlug || "";
+  const eventSlug = useParams().eventSlug || EVENT_SLUG || "";
   const token = localStorage.getItem(`${eventSlug}-registrationToken`) || "";
   const navigate = useNavigate();
   const { user, setUser } = useUser();
@@ -108,7 +110,7 @@ export default function SegmentRegistrationForm({
       }
 
       localStorage.setItem("isNewPaidSegment", "true");
-      navigate(`/${eventSlug}/profile`);
+      navigate(withEventSlug(`/profile`, eventSlug));
     },
     onError: (error: AxiosError<{ message?: string }>) => {
       toast.error(
