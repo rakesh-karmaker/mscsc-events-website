@@ -180,20 +180,6 @@ export default function HomeLayout(): ReactNode {
           rel="icon"
           href={eventMetaData.eventFaviconUrl || eventMetaData.eventLogoUrl}
         />
-
-        <meta
-          name="image"
-          property="og:image"
-          content={eventMetaData.eventBannerUrl}
-        />
-        <meta property="og:image" content={eventMetaData.eventBannerUrl} />
-        <meta
-          property="og:image:secure_url"
-          content={eventMetaData.eventBannerUrl}
-        />
-        <meta property="og:image:type" content="image/webp" />
-        <meta property="og:image:width" content="200" />
-        <meta property="og:image:alt" content="Image of MSCSC site" />
       </Helmet>
       <Navbar />
       <Outlet />
