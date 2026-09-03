@@ -107,7 +107,7 @@ function Steps({
       </li>
       <li className="text-text">
         Add{" "}
-        <span className="font-medium px-2 py-1 bg-orange-50 border border-primary/60 rounded-sm">
+        <span className="font-medium px-2 py-1 bg-orange-50 border border-primary/60 rounded-sm block break-all max-w-[47ch]">
           {ref}
         </span>{" "}
         in the transaction note or as reference.{" "}

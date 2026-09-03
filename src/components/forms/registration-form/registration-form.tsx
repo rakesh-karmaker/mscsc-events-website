@@ -11,7 +11,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState, type ReactNode } from "react";
 import { useForm, type UseFormRegister } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useParams, useSearchParams } from "react-router";
+import { useNavigate, useParams, useSearchParams } from "react-router";
 import PersonalInfoFields from "./fields/personal-information";
 import InstitutionInfoFields from "./fields/institution-information";
 import ReferenceInformationFields from "./fields/reference-information";
@@ -44,6 +44,7 @@ export default function RegistrationForm({
 }: RegistrationFormProps): ReactNode {
   const eventSlug = useParams().eventSlug || "event-slug"; // Replace with actual slug from params
   const { setUser } = useUser();
+  const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
   const [selectedSegments, setSelectedSegments] = useState<string[]>([]);
@@ -85,9 +86,10 @@ export default function RegistrationForm({
     ) => {
       toast.success("Registration successful!");
       localStorage.setItem(`${eventSlug}-registrationToken`, res.data.token);
+      localStorage.setItem("isNewRegister", "true");
       setUser(res.data.registrationData || null);
       window.scrollTo({ top: 0, behavior: "smooth" });
-      // setHasRegistered(true);
+      navigate(`/${eventSlug}/profile`);
     },
     onError: (error: AxiosError<{ message: string; subject?: string }>) => {
       const errorMessage =

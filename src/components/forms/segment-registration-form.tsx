@@ -107,6 +107,7 @@ export default function SegmentRegistrationForm({
         toast.success("Team segment added successfully!");
       }
 
+      localStorage.setItem("isNewPaidSegment", "true");
       navigate(`/${eventSlug}/profile`);
     },
     onError: (error: AxiosError<{ message?: string }>) => {
