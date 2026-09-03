@@ -56,6 +56,7 @@ export type ExplorionAboutSectionType = {
   title: string;
   heading: string;
   text: string;
+  imgUrl?: string;
   prizeCount: number;
 };
 

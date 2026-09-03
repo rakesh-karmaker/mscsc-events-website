@@ -4,12 +4,13 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SocialIcons from "../ui/social-icons";
+import type { ExplorionAboutSectionType } from "@/types/event-data-types";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 export type AboutTopProps = {
-  about: { title: string; heading: string; text: string };
+  about: ExplorionAboutSectionType;
   isInnerRegistration: boolean;
   registrationUrl: string;
   isHomePage: boolean;
@@ -38,7 +39,7 @@ export default function AboutTop({
             trigger: imageRef.current,
             start: "30% bottom",
           },
-        }
+        },
       );
     }
   }, []);
@@ -57,7 +58,7 @@ export default function AboutTop({
       <div className="w-full h-full aspect-[1/0.9] max-xl:aspect-[1/1.1] max-lg:aspect-auto overflow-hidden rounded-lg shadow-md">
         <img
           ref={imageRef}
-          src="/explorion/science-fest.jpg"
+          src={about.imgUrl || "/home/science-fest.jpg"}
           alt="Science Fest"
           className="w-full h-full object-cover object-center"
         />
