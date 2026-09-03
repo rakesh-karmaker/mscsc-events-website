@@ -22,7 +22,7 @@ export default function ContactLinkItem({
           {url}
         </Link>
       ) : (
-        <span className="text-lg">{url}</span>
+        <span className="text-lg text-text">{url}</span>
       )}
     </div>
   );
