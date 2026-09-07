@@ -102,12 +102,16 @@ function Steps({
         or dial <span className="font-medium">{currentMethodData.code}</span>
       </li>
       <li className="text-text">
-        Send amount <span className="font-medium">৳{fees}</span> to this number{" "}
+        Send amount{" "}
+        <span className="font-bold">
+          ৳<span className="pl-px">{fees}</span>
+        </span>{" "}
+        to this number{" "}
         <span className="font-medium">{currentMethodData.number}</span>
       </li>
       <li className="text-text">
         Add{" "}
-        <span className="font-medium px-2 py-1 bg-orange-50 border border-primary/60 rounded-sm block break-all max-w-[47ch]">
+        <span className="font-medium px-2 py-1 bg-orange-50 border border-primary/60 rounded-sm inline-block break-all max-w-[47ch]">
           {ref}
         </span>{" "}
         in the transaction note or as reference.{" "}

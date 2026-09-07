@@ -112,6 +112,8 @@ export const useEventDataStore = create<EventDataStateType>((set) => ({
       template: websiteData.template || "",
       isHomepage: websiteData.isHomepage || false,
       eventName: websiteData.eventName || "",
+      eventType: websiteData.eventType || "inter",
+      eventShortName: websiteData.eventShortName || "",
       eventLogoUrl: websiteData.eventLogoUrl || "",
       eventFaviconUrl: websiteData.eventFaviconUrl || "",
       eventBannerUrl: websiteData.eventBannerUrl || "",

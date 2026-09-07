@@ -36,6 +36,7 @@ type RegistrationFormProps = {
   fees: number;
   segments: SegmentType[];
   eventName: string;
+  eventType: "intra" | "inter" | "both";
 };
 
 export default function RegistrationForm({
@@ -43,6 +44,7 @@ export default function RegistrationForm({
   fees,
   segments,
   eventName,
+  eventType,
 }: RegistrationFormProps): ReactNode {
   const eventSlug = useParams().eventSlug || EVENT_SLUG || ""; // Replace with actual slug from params
   const { setUser } = useUser();
@@ -119,6 +121,24 @@ export default function RegistrationForm({
       return;
     }
 
+    if (eventType === "intra" && !data.branch) {
+      toast.error("Please select your school branch.");
+      setError("branch", { type: "manual", message: "Branch is required" });
+      return;
+    }
+
+    if (
+      eventType !== "intra" &&
+      (!data.institution || data.institution.trim() === "")
+    ) {
+      toast.error("Please enter your institution name.");
+      setError("institution", {
+        type: "manual",
+        message: "Institution name is required",
+      });
+      return;
+    }
+
     if (data.grade === "" || data.grade === "select") {
       toast.error("Please select your class/grade.");
       setError("grade", { type: "manual", message: "Grade is required" });
@@ -138,6 +158,7 @@ export default function RegistrationForm({
         setValue={setValue}
         errors={errors}
         watch={watch}
+        control={control}
       />
 
       <SegmentSelectionFields
@@ -150,15 +171,17 @@ export default function RegistrationForm({
         control={control}
       />
 
-      <PaymentInformationFields
-        register={register}
-        errors={errors}
-        transactionMethods={transactionMethods}
-        fees={fees}
-        eventName={eventName}
-        setValue={setValue}
-        watch={watch}
-      />
+      {fees > 0 && (
+        <PaymentInformationFields
+          register={register}
+          errors={errors}
+          transactionMethods={transactionMethods}
+          fees={fees}
+          eventName={eventName}
+          setValue={setValue}
+          watch={watch}
+        />
+      )}
 
       <ReferenceInformationFields
         register={register}

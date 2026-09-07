@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import type {
+  Control,
   UseFormRegister,
   UseFormSetValue,
   UseFormWatch,
@@ -16,12 +17,16 @@ import getCategory from "@/utils/get-category";
 import type { RegistrationFormType } from "@/lib/validation/register-schema";
 import grades from "@/utils/grades";
 import FormBox from "../../form-box";
+import { useEventData } from "@/hooks/use-event-data";
+import SelectInput from "@/components/ui/select-input";
+import { branches } from "@/services/data/basic-data";
 
 type InstitutionInfoFieldsProps = {
   register: UseFormRegister<RegistrationFormType>;
   setValue: UseFormSetValue<RegistrationFormType>;
   errors: { [key: string]: any };
   watch: UseFormWatch<RegistrationFormType>;
+  control: Control<RegistrationFormType>;
 };
 
 export default function InstitutionInfoFields({
@@ -29,8 +34,10 @@ export default function InstitutionInfoFields({
   setValue,
   errors,
   watch,
+  control,
 }: InstitutionInfoFieldsProps): ReactNode {
   const gradeValue = watch("grade", "select");
+  const { eventMetaData } = useEventData();
 
   useEffect(() => {
     if (!gradeValue || gradeValue === "select") return;
@@ -41,16 +48,28 @@ export default function InstitutionInfoFields({
     <FormBox title="Institution Information">
       <div className="flex flex-col gap-6">
         <Stack spacing={3} sx={{ maxWidth: "100%" }}>
-          <TextField
-            {...register("institution")}
-            id="institution"
-            label="Institution Name*"
-            variant="outlined"
-            placeholder="Your Institution Name"
-            error={!!errors.institution}
-            helperText={errors.institution?.message}
-            fullWidth
-          />
+          {eventMetaData?.eventType === "intra" ? (
+            <SelectInput
+              control={control}
+              name="branch"
+              errors={errors}
+              dataList={branches}
+            >
+              School Branch
+            </SelectInput>
+          ) : (
+            <TextField
+              {...register("institution")}
+              id="institution"
+              label="Institution Name*"
+              variant="outlined"
+              placeholder="Your Institution Name"
+              error={!!errors.institution}
+              helperText={errors.institution?.message}
+              fullWidth
+            />
+          )}
+
           <div className="w-full flex gap-4 max-xl:flex-col max-xl:gap-6 mt-2">
             <div className="w-full flex flex-col gap-1">
               <FormControl fullWidth error={!!errors.grade} required>

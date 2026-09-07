@@ -50,8 +50,17 @@ export const registrationFormSchema = z.object({
     ),
 
   institution: z
-    .string({ required_error: "Institution name is required" })
-    .min(2, "Institution name must be at least 2 characters"),
+    .string()
+    .optional()
+    .refine((value) => !value || value.length >= 2, {
+      message: "Institution name must be at least 2 characters",
+    }),
+  branch: z
+    .string()
+    .optional()
+    .refine((value) => !value || value.length >= 2, {
+      message: "Branch name must be at least 2 characters",
+    }),
   grade: z
     .string({ required_error: "Grade is required" })
     .min(1, "Invalid grade selection"),
@@ -66,14 +75,23 @@ export const registrationFormSchema = z.object({
     .min(1, "At least one segment must be selected"),
 
   transactionMethod: z
-    .string({ required_error: "Transaction method is required" })
-    .min(2, "Transaction method must be at least 2 characters"),
+    .string()
+    .optional()
+    .refine((value) => !value || value.length >= 2, {
+      message: "Transaction method must be at least 2 characters",
+    }),
   transactionPhoneNumber: z
-    .string({ required_error: "Transaction phone number is required" })
-    .min(10, "Transaction phone number must be at least 10 characters"),
+    .string()
+    .optional()
+    .refine((value) => !value || value.length >= 10, {
+      message: "Transaction phone number must be at least 10 characters",
+    }),
   transactionId: z
-    .string({ required_error: "Transaction ID is required" })
-    .min(2, "Transaction ID must be at least 2 characters"),
+    .string()
+    .optional()
+    .refine((value) => !value || value.length >= 2, {
+      message: "Transaction ID must be at least 2 characters",
+    }),
 
   reference: z.string().optional(),
   clubReference: z.string().optional(),

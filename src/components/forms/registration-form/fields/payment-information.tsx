@@ -9,6 +9,7 @@ import { Stack, TextField } from "@mui/material";
 import FormBox from "../../form-box";
 import { useParams } from "react-router";
 import { deSlugify } from "@/utils/de-slugify";
+import { useEventData } from "@/hooks/use-event-data";
 
 type PaymentInformationFieldsProps = {
   register: UseFormRegister<any>;
@@ -38,6 +39,7 @@ export default function PaymentInformationFields({
   isSegmentRegistration = false,
 }: PaymentInformationFieldsProps): ReactNode {
   const segmentSlug = useParams().segmentSlug || "";
+  const { eventMetaData } = useEventData();
 
   const handlePaymentMethodChange = (method: string) => {
     setValue("transactionMethod", method);
@@ -57,7 +59,7 @@ export default function PaymentInformationFields({
               transactionMethods={transactionMethods}
               setMethod={handlePaymentMethodChange}
               fees={fees}
-              ref={`${isSegmentRegistration ? deSlugify(segmentSlug, false) : eventName} - ${emailValue || "your email"}`}
+              ref={`${isSegmentRegistration ? deSlugify(segmentSlug, false) : eventMetaData?.eventShortName || eventName} - ${emailValue || "your email"}`}
             />
           </div>
         </div>

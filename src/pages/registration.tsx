@@ -79,6 +79,7 @@ export default function Registration(): ReactNode {
               fees={formData.fees}
               segments={segmentData}
               eventName={eventMetaData.eventName}
+              eventType={eventMetaData.eventType}
             />
           </div>
         </section>
