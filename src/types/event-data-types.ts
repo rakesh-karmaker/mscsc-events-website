@@ -2,6 +2,8 @@ export type EventMetaDataType = {
   template: string;
   isHomepage: boolean;
   eventName: string;
+  eventType: "intra" | "inter" | "both";
+  eventShortName: string;
   eventLogoUrl: string;
   eventFaviconUrl: string;
   eventBannerUrl: string;

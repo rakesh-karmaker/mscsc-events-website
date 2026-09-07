@@ -31,6 +31,11 @@ import IoMdRocket from "~icons/ion/md-rocket";
 import LiaAtomSolid from "~icons/la/atom";
 import LuDivide from "~icons/lucide/divide";
 import LuLanguages from "~icons/lucide/languages";
+import LuShapes from "~icons/lucide/shapes";
+import LuCode from "~icons/lucide/code-xml";
+import LuCalculator from "~icons/lucide/calculator";
+import LuMap from "~icons/lucide/map";
+import GoPeople from "~icons/ic/baseline-people-alt";
 import TbMath from "~icons/tabler/math";
 import MdGames from "~icons/ic/baseline-games";
 
@@ -52,8 +57,10 @@ export default function Icon({ iconName, className }: IconProps): ReactNode {
     atom: <LiaAtomSolid className={className} />,
     brain: <FaBrain className={className} />,
     bulb: <HiLightBulb className={className} />,
+    calculator: <LuCalculator className={className} />,
     chess: <GiChessQueen className={className} />,
     clock: <FaClock className={className} />,
+    code: <LuCode className={className} />,
     cube: <FaCube className={className} />,
     debate: <BiSolidConversation className={className} />,
     division: <LuDivide className={className} />,
@@ -62,13 +69,16 @@ export default function Icon({ iconName, className }: IconProps): ReactNode {
     globe: <FaGlobeAsia className={className} />,
     it: <FaIt className={className} />,
     language: <LuLanguages className={className} />,
+    map: <LuMap className={className} />,
     math: <TbMath className={className} />,
     movie: <IcMovie className={className} />,
     paint: <FaPalette className={className} />,
     pen: <FaPen className={className} />,
+    people: <GoPeople className={className} />,
     puzzle: <FaPuzzlePiece className={className} />,
     robot: <FaRobot className={className} />,
     rocket: <IoMdRocket className={className} />,
+    shapes: <LuShapes className={className} />,
     speech: <IcAudio className={className} />,
     spell: <IcSpell className={className} />,
     star: <FaStar className={className} />,
