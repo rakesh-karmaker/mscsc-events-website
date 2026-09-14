@@ -11,17 +11,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 export type AboutTopProps = {
   about: ExplorionAboutSectionType;
-  isInnerRegistration: boolean;
-  registrationUrl: string;
-  isHomePage: boolean;
 };
 
 export default function AboutTop({
   about,
-  isInnerRegistration,
-  registrationUrl,
   contactLinks,
-  isHomePage,
 }: AboutTopProps & {
   contactLinks: { [platform: string]: string };
 }): ReactNode {
@@ -47,12 +41,7 @@ export default function AboutTop({
   return (
     <div className="w-full h-full flex max-lg:flex-col gap-20 max-xl:gap-10 justify-between">
       <div className="w-full flex flex-col justify-between gap-10">
-        <AboutInfo
-          about={about}
-          isInnerRegistration={isInnerRegistration}
-          registrationUrl={registrationUrl}
-          isHomePage={isHomePage}
-        />
+        <AboutInfo about={about} />
         <SocialIcons contactLinks={contactLinks} />
       </div>
       <div className="w-full h-full aspect-[1/0.9] max-xl:aspect-[1/1.1] max-lg:aspect-auto overflow-hidden rounded-lg shadow-md">

@@ -59,16 +59,10 @@ export default function HeroContent(): ReactNode {
         <div className="flex gap-4 flex-wrap justify-center">
           <PrimaryBtn
             isLink={true}
-            href={
-              eventMetaData.isHomepage || eventMetaData.hideRegistrationForm
-                ? withEventSlug(`/${learnMoreSection}`, eventSlug)
-                : registrationLink
-            }
+            href={withEventSlug(`/ca-application`, eventSlug)}
             className="text-[1.1em]/[155%]! tracking-wide px-4! py-2.5! max-xl:px-3.25! max-xl:py-2! max-xl:text-[1em]/[150%]! "
           >
-            {eventMetaData.isHomepage || eventMetaData.hideRegistrationForm
-              ? "Learn More"
-              : "Register Now"}
+            Apply Now
           </PrimaryBtn>
           <PrimaryBtn
             isLink={true}

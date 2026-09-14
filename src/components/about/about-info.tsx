@@ -2,20 +2,19 @@ import { useRef, type ReactNode } from "react";
 import PrimaryBtn from "@/components/ui/primary-btn";
 import FaArrowRight from "~icons/fa6-solid/arrow-right";
 import { useParams } from "react-router";
-import type { AboutTopProps } from "./about-top";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import animateAboutInfo from "@/animations/about-info";
 import withEventSlug from "@/utils/with-event-slug";
+import type { ExplorionAboutSectionType } from "@/types/event-data-types";
 
 gsap.registerPlugin(useGSAP);
 
 export default function AboutInfo({
   about,
-  isInnerRegistration,
-  registrationUrl,
-  isHomePage,
-}: AboutTopProps): ReactNode {
+}: {
+  about: ExplorionAboutSectionType;
+}): ReactNode {
   const eventSlug = useParams().eventSlug || "";
 
   const { title, heading, text } = about;
@@ -47,16 +46,10 @@ export default function AboutInfo({
           <p className="text-[1.01em]/[136%] mb-4 text-text">{text}</p>
           <PrimaryBtn
             isLink={true}
-            href={
-              isHomePage
-                ? "https://mscsc.netlify.app/"
-                : isInnerRegistration
-                  ? withEventSlug("/registration/", eventSlug)
-                  : registrationUrl
-            }
+            href={withEventSlug(`/ca-application`, eventSlug)}
             className="flex gap-1.5 items-center z-99"
           >
-            {isHomePage ? "Visit Page" : "Register Now"} <FaArrowRight />
+            Apply Now <FaArrowRight />
           </PrimaryBtn>
         </div>
       </div>

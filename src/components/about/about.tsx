@@ -19,13 +19,7 @@ export default function About(): ReactNode {
         maxWidth: sections.includes("video") ? "110rem" : "var(--max-width)",
       }}
     >
-      <AboutTop
-        about={aboutData}
-        isInnerRegistration={eventMetaData.isInnerRegistration}
-        registrationUrl={eventMetaData.registrationUrl || ""}
-        contactLinks={contactLinks || {}}
-        isHomePage={eventMetaData.isHomepage}
-      />
+      <AboutTop about={aboutData} contactLinks={contactLinks || {}} />
       {eventMetaData.isHomepage ? null : (
         <AboutBottom
           participantCount={eventMetaData.participantCount}

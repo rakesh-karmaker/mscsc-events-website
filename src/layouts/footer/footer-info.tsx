@@ -12,18 +12,10 @@ type FooterInfoProps = {
     isInnerRegistration: boolean;
     registrationUrl: string;
   };
-  isHomepage: boolean;
 };
 
-export default function FooterInfo({
-  footerData,
-  isHomepage,
-}: FooterInfoProps): ReactNode {
+export default function FooterInfo({ footerData }: FooterInfoProps): ReactNode {
   const eventSlug = useParams().eventSlug || "";
-
-  const registrationLink = footerData.isInnerRegistration
-    ? withEventSlug(`/registration`, eventSlug)
-    : footerData.registrationUrl;
 
   return (
     <div className="w-full max-w-132.5 flex flex-col justify-between pt-26.25 pb-10 max-[950px]:gap-12 max-[950px]:pb-0 max-[950px]:max-w-max-width max-[950px]:px-[calc((100vw-var(--max-width))/2)] max-[950px]:pt-16">
@@ -38,9 +30,9 @@ export default function FooterInfo({
           <PrimaryBtn
             className="px-4.5! py-2.5! text-[1.08em]"
             isLink={true}
-            href={isHomepage ? "https://mscsc.netlify.app/" : registrationLink}
+            href={withEventSlug(`/ca-application`, eventSlug)}
           >
-            {isHomepage ? "Visit Page" : "Register Now"}
+            Apply Now
           </PrimaryBtn>
         </div>
       </div>
