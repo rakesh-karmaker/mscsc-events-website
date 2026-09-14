@@ -94,8 +94,8 @@ export default function FooterRight({
       </div>
       <p className="w-full pl-15 pr-[calc((100vw-var(--max-width))/2)] pt-10 border-t-2 border-primary text-[1.1em] max-[1500px]:text-[1em] max-[950px]:pl-0 max-[950px]:pr-0 max-[950px]:px-[calc((100vw-var(--max-width))/2)]!">
         <span className="text-primary">
-          Copyright © {new Date().getFullYear()} MSCSC - All rights reserved ||
-          Developed By:{" "}
+          Copyright © {new Date().getFullYear()} MUBCMF2026 - All rights
+          reserved || Developed By:{" "}
           <Link
             to="https://github.com/rakesh-karmaker"
             className="text-primary/80 transition-all duration-200 hover:text-primary"
