@@ -23,9 +23,6 @@ export default function HeroContent(): ReactNode {
 
   // Get eventSlug from URL parameters
   const eventSlug = useParams().eventSlug || "";
-  const registrationLink = eventMetaData.isInnerRegistration
-    ? withEventSlug("/registration/", eventSlug)
-    : eventMetaData.registrationUrl;
 
   // Refs for GSAP animation
   const headingRef = useRef<HTMLDivElement>(null);
