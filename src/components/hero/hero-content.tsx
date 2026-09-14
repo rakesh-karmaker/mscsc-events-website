@@ -60,13 +60,15 @@ export default function HeroContent(): ReactNode {
           <PrimaryBtn
             isLink={true}
             href={
-              eventMetaData.isHomepage
+              eventMetaData.isHomepage || eventMetaData.hideRegistrationForm
                 ? withEventSlug(`/${learnMoreSection}`, eventSlug)
                 : registrationLink
             }
             className="text-[1.1em]/[155%]! tracking-wide px-4! py-2.5! max-xl:px-3.25! max-xl:py-2! max-xl:text-[1em]/[150%]! "
           >
-            {eventMetaData.isHomepage ? "Learn More" : "Register Now"}
+            {eventMetaData.isHomepage || eventMetaData.hideRegistrationForm
+              ? "Learn More"
+              : "Register Now"}
           </PrimaryBtn>
           <PrimaryBtn
             isLink={true}
